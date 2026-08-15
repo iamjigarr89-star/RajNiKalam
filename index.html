@@ -61,7 +61,7 @@
       transition: background-color 0.3s, color 0.3s; 
     }
 
-    /* Header & Navigation */
+    /* Header & Navigation (Set to Absolute so it doesn't scroll down) */
     header { 
       background: var(--card-bg); 
       color: var(--text-main); 
@@ -70,8 +70,10 @@
       justify-content: space-between; 
       align-items: center;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      position: sticky;
+      position: absolute;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 1000;
       border-bottom: 1px solid var(--border-color);
     }
@@ -86,38 +88,11 @@
       cursor: pointer;
     }
 
-    .header-right { display: flex; align-items: center; gap: 1rem; }
-
-    nav { display: flex; gap: 0.3rem; align-items: center; flex-wrap: wrap; }
-    nav a { 
-      color: var(--text-sub); 
-      text-decoration: none; 
-      font-weight: 600; 
-      padding: 0.5rem 0.9rem;
-      border-radius: 20px;
-      transition: all 0.2s ease;
-      font-size: 0.95rem;
-      cursor: pointer;
-    }
-    nav a:hover, nav a.active { 
-      background-color: var(--google-blue-light); 
-      color: var(--google-blue); 
-    }
-
-    nav a.green-active {
-      background-color: var(--success-green-light) !important;
-      color: var(--success-green) !important;
-    }
-    nav a.purple-active {
-      background-color: var(--purple-color-light) !important;
-      color: var(--purple-color) !important;
-    }
+    .header-right { display: flex; align-items: center; gap: 1rem; margin-left: auto; }
 
     .header-social {
       display: flex;
       gap: 0.5rem;
-      border-left: 1px solid var(--border-color);
-      padding-left: 0.8rem;
       align-items: center;
     }
     .header-social a, .admin-icon-btn, .notif-icon-btn, .theme-toggle-btn {
@@ -177,7 +152,7 @@
       opacity: 0.8;
     }
 
-    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    main { max-width: 900px; margin: 5.5rem auto 2rem auto; padding: 0 1rem; }
 
     .section-card { 
       background: var(--card-bg); 
@@ -782,16 +757,14 @@
     @media (max-width: 600px) {
       .home-photo-gallery { grid-template-columns: 1fr; }
       .home-photo-gallery img { height: 200px; }
-      header { padding: 0.8rem 1rem; flex-direction: column; gap: 10px; }
-      .header-right { width: 100%; justify-content: space-between; flex-wrap: wrap; }
-      nav { gap: 0.2rem; width: 100%; justify-content: center; }
-      nav a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
-      main { padding: 0 0.8rem; margin: 1.2rem auto; }
+      header { padding: 0.8rem 1rem; }
+      .header-right { margin-left: auto; }
+      main { padding: 0 0.8rem; margin: 4.5rem auto 1.2rem auto; }
       .section-card { padding: 1.2rem; }
       .reading-post-card { padding: 1.2rem; }
       .reader-modal-body { padding: 1.2rem; font-size: 1.1rem; line-height: 1.9; }
       .replies-container { margin-left: 0.8rem; }
-      .header-social { border-left: none; padding-left: 0; margin-top: 5px; width: 100%; justify-content: center; }
+      .header-social { border-left: none; padding-left: 0; justify-content: flex-end; }
     }
   </style>
 </head>
@@ -804,13 +777,6 @@
     </div>
 
     <div class="header-right">
-      <nav>
-        <a id="nav-p1" class="active" onclick="switchPage('page-1')">મુખ્ય હોમ (Page 1)</a>
-        <a id="nav-p2" onclick="switchPage('page-2')">સાહિત્ય (Page 2)</a>
-        <a id="nav-p3" onclick="switchPage('page-3')">અમારા વિશે & સંપર્ક (Page 3)</a>
-        <a id="nav-p4" onclick="switchPage('page-4')">કોમેન્ટ્સ (Page 4)</a>
-      </nav>
-
       <div class="header-social">
         <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
           <i class="fa-solid fa-sun" id="theme-icon"></i>
@@ -820,6 +786,7 @@
           <span class="notif-badge" id="notif-dot" style="display: none;"></span>
         </button>
         <a href="https://instagram.com/jigneshgediya078" id="insta-link" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://facebook.com" id="fb-link" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a href="https://youtube.com/@jigneshgediya078" id="yt-link" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
         <button class="admin-icon-btn" onclick="openAdminWithAuth()" title="Admin Panel"><i class="fa-solid fa-gear"></i></button>
       </div>
@@ -900,9 +867,9 @@
               <p><i class="fas fa-envelope" style="color: var(--success-green);"></i> <strong>Email:</strong> <a href="mailto:s27334560@gmail.com">s27334560@gmail.com</a></p>
               
               <div class="social-icons-box">
-                  <a href="https://instagram.com/jigneshgediya078" target="_blank" class="insta" title="Instagram"><i class="fab fa-instagram"></i></a>
-                  <a href="https://facebook.com" target="_blank" class="fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                  <a href="https://youtube.com/@jigneshgediya078" target="_blank" class="yt" title="YouTube"><i class="fab fa-youtube"></i></a>
+                  <a href="https://instagram.com/jigneshgediya078" id="page3-insta" target="_blank" class="insta" title="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="https://facebook.com" id="page3-fb" target="_blank" class="fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://youtube.com/@jigneshgediya078" id="page3-yt" target="_blank" class="yt" title="YouTube"><i class="fab fa-youtube"></i></a>
               </div>
           </div>
 
@@ -1042,6 +1009,11 @@
       <div class="form-group" style="margin-top: 0.8rem;">
         <label><i class="fab fa-instagram"></i> Instagram URL:</label>
         <input type="url" id="admin-insta-url" placeholder="https://instagram.com/jigneshgediya078">
+      </div>
+
+      <div class="form-group">
+        <label><i class="fab fa-facebook-f"></i> Facebook URL:</label>
+        <input type="url" id="admin-fb-url" placeholder="https://facebook.com">
       </div>
 
       <div class="form-group">
@@ -1261,15 +1233,10 @@
       document.getElementById(pageId).style.display = 'block';
       document.getElementById('page-nav-bar').style.display = 'flex';
 
-      const navP3 = document.getElementById('nav-p3');
       const btnP3 = document.getElementById('p-btn-3');
-      const navP4 = document.getElementById('nav-p4');
       const btnP4 = document.getElementById('p-btn-4');
       const logo = document.getElementById('site-logo');
 
-      document.querySelectorAll('nav a').forEach(a => {
-        a.classList.remove('active', 'green-active', 'purple-active');
-      });
       document.querySelectorAll('.page-btn').forEach(b => {
         b.classList.remove('active', 'green-active', 'purple-active');
       });
@@ -1277,23 +1244,19 @@
       const footer = document.getElementById('site-footer');
 
       if(pageId === 'page-1') {
-        document.getElementById('nav-p1').classList.add('active');
         document.getElementById('p-btn-1').classList.add('active');
         logo.style.color = "var(--google-blue)";
         footer.style.display = 'none';
         renderHomeDailyPosts();
       } else if(pageId === 'page-2') {
-        document.getElementById('nav-p2').classList.add('active');
         document.getElementById('p-btn-2').classList.add('active');
         logo.style.color = "var(--google-blue)";
         footer.style.display = 'none';
       } else if(pageId === 'page-3') {
-        navP3.classList.add('green-active');
         btnP3.classList.add('green-active');
         logo.style.color = "var(--success-green)";
         footer.style.display = 'block';
       } else if(pageId === 'page-4') {
-        navP4.classList.add('purple-active');
         btnP4.classList.add('purple-active');
         logo.style.color = "var(--purple-color)";
         footer.style.display = 'none';
@@ -2066,10 +2029,21 @@
 
     function saveSocialLinks() {
       const insta = document.getElementById('admin-insta-url').value;
+      const fb = document.getElementById('admin-fb-url').value;
       const yt = document.getElementById('admin-yt-url').value;
 
-      if(insta) document.getElementById('insta-link').href = insta;
-      if(yt) document.getElementById('yt-link').href = yt;
+      if(insta) {
+        document.getElementById('insta-link').href = insta;
+        document.getElementById('page3-insta').href = insta;
+      }
+      if(fb) {
+        document.getElementById('fb-link').href = fb;
+        document.getElementById('page3-fb').href = fb;
+      }
+      if(yt) {
+        document.getElementById('yt-link').href = yt;
+        document.getElementById('page3-yt').href = yt;
+      }
 
       alert("સોશિયલ મીડિયા લિંક્સ અપડેટ થઈ ગઈ છે!");
     }
