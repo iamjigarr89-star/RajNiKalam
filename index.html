@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>રાજ ની કલમ !</title>
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      /* LIGHT THEME VARIABLES */
+      --google-blue: #1a73e8;
+      --google-blue-hover: #1557b0;
+      --google-blue-light: #e8f0fe;
+      --bg-gray: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-main: #202124;
+      --text-sub: #4a5568;
+      --border-color: #dadce0;
+      --danger-red: #d93025;
+      --danger-red-light: #fce8e6;
+      --draft-amber: #f2990a;
+      --draft-amber-light: #fef7e0;
+      --success-green: #2e7d32;
+      --success-green-light: #e8f5e9;
+      --purple-color: #673ab7;
+      --purple-color-light: #ede7f6;
+    }
+
+    /* HIGH VISIBILITY DARK THEME VARIABLES (DEFAULT DARK) */
+    body.dark-theme {
+      --bg-gray: #121212;
+      --card-bg: #1e1e1e;
+      --text-main: #f3f4f6;
+      --text-sub: #cbd5e1;
+      --border-color: #334155;
+      --google-blue: #38bdf8;
+      --google-blue-hover: #0284c7;
+      --google-blue-light: #0c4a6e;
+      --danger-red: #f87171;
+      --danger-red-light: #450a0a;
+      --draft-amber: #facc15;
+      --draft-amber-light: #422006;
+      --success-green: #4ade80;
+      --success-green-light: #052e16;
+      --purple-color: #c084fc;
+      --purple-color-light: #3b0764;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Gujarati', 'Roboto', sans-serif; }
+    
+    body { 
+      background-color: var(--bg-gray); 
+      color: var(--text-main); 
+      line-height: 1.8; 
+      font-weight: 500;
+      -webkit-font-smoothing: antialiased; 
+      transition: background-color 0.3s, color 0.3s; 
+    }
+
+    /* Header & Navigation */
+    header { 
+      background: var(--card-bg); 
+      color: var(--text-main); 
+      padding: 0.8rem 2rem; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo { 
+      font-size: 1.6rem; 
+      font-weight: 700; 
+      color: var(--google-blue); 
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 1rem; }
+
+    nav { display: flex; gap: 0.3rem; align-items: center; flex-wrap: wrap; }
+    nav a { 
+      color: var(--text-sub); 
+      text-decoration: none; 
+      font-weight: 600; 
+      padding: 0.5rem 0.9rem;
+      border-radius: 20px;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+    nav a:hover, nav a.active { 
+      background-color: var(--google-blue-light); 
+      color: var(--google-blue); 
+    }
+
+    nav a.green-active {
+      background-color: var(--success-green-light) !important;
+      color: var(--success-green) !important;
+    }
+    nav a.purple-active {
+      background-color: var(--purple-color-light) !important;
+      color: var(--purple-color) !important;
+    }
+
+    .header-social {
+      display: flex;
+      gap: 0.5rem;
+      border-left: 1px solid var(--border-color);
+      padding-left: 0.8rem;
+      align-items: center;
+    }
+    .header-social a, .admin-icon-btn, .notif-icon-btn, .theme-toggle-btn {
+      color: var(--google-blue);
+      background: var(--google-blue-light);
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+    .header-social a:hover, .admin-icon-btn:hover, .notif-icon-btn:hover, .theme-toggle-btn:hover {
+      background: var(--google-blue);
+      color: #000000;
+      font-weight: bold;
+      transform: translateY(-2px);
+    }
+
+    .notif-badge {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 10px;
+      height: 10px;
+      background-color: var(--danger-red);
+      border-radius: 50%;
+      border: 2px solid var(--card-bg);
+    }
+
+    /* SEARCH BAR */
+    .search-box-container {
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 10px;
+    }
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1.4rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: 25px;
+      outline: none;
+      font-size: 1rem;
+      font-weight: 500;
+      background: var(--card-bg);
+      color: var(--text-main);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    .search-input::placeholder {
+      color: var(--text-sub);
+      opacity: 0.8;
+    }
+
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+
+    .section-card { 
+      background: var(--card-bg); 
+      padding: 2rem; 
+      margin-bottom: 1.5rem;
+      border-radius: 12px; 
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .section-card:hover {
+      border-color: var(--google-blue);
+      box-shadow: 0 6px 16px rgba(56,189,248,0.2);
+      transform: translateY(-2px);
+    }
+
+    .home-hero-card {
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--border-color);
+      background: var(--card-bg);
+      cursor: default;
+    }
+
+    .home-photo-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin: 1.8rem 0;
+    }
+    .home-photo-gallery img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .section-title { 
+      color: var(--google-blue); 
+      padding-bottom: 0.5rem; 
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .pagination-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 2.5rem 0 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    .page-btn {
+      padding: 0.6rem 1.4rem;
+      border-radius: 20px;
+      border: 1.5px solid var(--border-color);
+      background: var(--card-bg);
+      color: var(--text-sub);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .page-btn:hover, .page-btn.active {
+      background: var(--google-blue);
+      color: #000000;
+      font-weight: 700;
+      border-color: var(--google-blue);
+    }
+    .page-btn.green-active {
+      background: var(--success-green) !important;
+      color: #000000 !important;
+      font-weight: 700 !important;
+      border-color: var(--success-green) !important;
+    }
+    .page-btn.purple-active {
+      background: var(--purple-color) !important;
+      color: #000000 !important;
+      font-weight: 700 !important;
+      border-color: var(--purple-color) !important;
+    }
+
+    #detail-view-page {
+      display: none;
+      background: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      min-height: 400px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--google-blue);
+      background: var(--google-blue-light);
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+      transition: 0.2s;
+      border: 1px solid var(--border-color);
+    }
+    .back-btn:hover { background: var(--google-blue); color: #000; }
+
+    /* Reading UI Card Styling */
+    .reading-post-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.6rem 1.8rem;
+      margin-top: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: all 0.2s ease;
+    }
+    .reading-post-card:hover { 
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4); 
+      border-color: var(--google-blue);
+    }
+    .reading-post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+    .reading-post-title {
+      font-size: 1.25rem;
+      color: var(--google-blue);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .post-date { font-size: 0.88rem; color: var(--text-sub); font-weight: 500; }
+
+    .reading-post-body {
+      color: var(--text-main);
+      font-size: 1.1rem;
+      line-height: 1.9;
+      white-space: pre-line;
+      letter-spacing: 0.2px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .read-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 1rem;
+      color: var(--google-blue);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--google-blue-light);
+      border: 1px solid var(--border-color);
+      padding: 8px 18px;
+      border-radius: 18px;
+      transition: all 0.2s ease;
+    }
+    .read-more-btn:hover { background: var(--google-blue); color: #000; }
+
+    /* Admin Form Styling */
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: var(--text-sub); }
+    .form-group input, .form-group textarea, .form-group select { 
+      width: 100%; 
+      padding: 0.85rem; 
+      border: 1.5px solid var(--border-color); 
+      border-radius: 8px; 
+      outline: none;
+      font-size: 1rem;
+      font-weight: 500;
+      background: var(--card-bg);
+      color: var(--text-main);
+    }
+
+    .inbox-card {
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+      background: var(--card-bg);
+    }
+
+    .inbox-textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 0.85rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 1rem;
+      line-height: 1.7;
+      resize: vertical;
+      outline: none;
+      background: var(--card-bg);
+      color: var(--text-main);
+      margin-bottom: 0.8rem;
+    }
+
+    .inbox-action-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn-action {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .delete-inbox-btn { background: var(--danger-red-light); color: var(--danger-red); border-color: var(--danger-red); }
+    .delete-inbox-btn:hover { background: var(--danger-red); color: #000; }
+
+    .draft-inbox-btn { background: var(--draft-amber-light); color: var(--draft-amber); border-color: var(--draft-amber); }
+    .draft-inbox-btn:hover { background: var(--draft-amber); color: #000; }
+
+    .publish-inbox-btn { background: var(--success-green-light); color: var(--success-green); border-color: var(--success-green); }
+    .publish-inbox-btn:hover { background: var(--success-green); color: #000; }
+
+    .btn { 
+      background: var(--google-blue); 
+      color: #000000; 
+      padding: 0.75rem 1.8rem; 
+      border: none; 
+      border-radius: 6px; 
+      cursor: pointer; 
+      font-size: 1rem; 
+      font-weight: 700;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: var(--google-blue-hover); color: #fff; }
+
+    .btn-add-inbox {
+      background: var(--google-blue);
+      color: #000;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-draft-viewer {
+      background: var(--draft-amber);
+      color: #000;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-draft-viewer:hover { background: var(--draft-amber-light); color: var(--draft-amber); }
+
+    /* Modal Popup Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: var(--card-bg);
+      color: var(--text-main);
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 650px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border: 1.5px solid var(--border-color);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    /* READER MODAL */
+    .reader-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 3000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .reader-modal-box {
+      background: var(--card-bg); 
+      color: var(--text-main);
+      width: 100%;
+      max-width: 760px;
+      max-height: 90vh;
+      border-radius: 16px;
+      border: 1.5px solid var(--border-color);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: popIn 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .reader-modal-header {
+      padding: 1.2rem 1.8rem;
+      background: var(--card-bg);
+      border-bottom: 1.5px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reader-modal-title {
+      font-size: 1.4rem;
+      color: var(--google-blue);
+      font-weight: 700;
+    }
+
+    .reader-modal-close {
+      background: var(--bg-gray);
+      border: 1px solid var(--border-color);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--text-sub);
+      transition: all 0.2s ease;
+    }
+    .reader-modal-close:hover {
+      background: var(--danger-red);
+      color: #000;
+    }
+
+    .reader-modal-body {
+      padding: 2rem;
+      overflow-y: auto;
+      color: var(--text-main);
+      font-size: 1.25rem;
+      line-height: 2.1;
+      white-space: pre-line;
+      letter-spacing: 0.3px;
+    }
+
+    .reader-modal-footer {
+      padding: 0.9rem 1.8rem;
+      background: var(--bg-gray);
+      border-top: 1.5px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-sub);
+    }
+
+    /* COMMENTS & REPLY SECTION */
+    .comments-section {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 2px dashed var(--border-color);
+    }
+    .comments-section h4 {
+      font-size: 1.2rem;
+      color: var(--google-blue);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .comment-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg-gray);
+      padding: 1.2rem;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-color);
+    }
+    .comment-form input, .comment-form textarea {
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      outline: none;
+      background: var(--card-bg);
+      color: var(--text-main);
+    }
+    .comment-form textarea { resize: vertical; min-height: 75px; }
+
+    .comment-card {
+      background: var(--bg-gray);
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .comment-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+    .comment-author {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 0.98rem;
+    }
+    .comment-time {
+      font-size: 0.8rem;
+      color: var(--text-sub);
+    }
+    .comment-text {
+      font-size: 1.05rem;
+      color: var(--text-main);
+      margin-bottom: 0.6rem;
+      white-space: pre-line;
+    }
+    .comment-actions {
+      display: flex;
+      gap: 14px;
+      font-size: 0.88rem;
+      align-items: center;
+    }
+    .action-link {
+      color: var(--google-blue);
+      cursor: pointer;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .action-link:hover { text-decoration: underline; }
+    .action-link.delete { color: var(--danger-red); }
+
+    .replies-container {
+      margin-left: 1.5rem;
+      margin-top: 0.8rem;
+      border-left: 3px solid var(--google-blue);
+      padding-left: 0.8rem;
+    }
+    .reply-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 0.75rem 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .reply-input-box {
+      margin-top: 0.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: var(--card-bg);
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    /* Page 3 Green Theme */
+    .green-theme-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-color) !important;
+      border-left: 6px solid var(--success-green) !important;
+      cursor: default !important;
+    }
+    .green-theme-card:hover {
+      border-color: var(--success-green) !important;
+      box-shadow: 0 4px 14px rgba(74, 222, 128, 0.2) !important;
+    }
+    .green-theme-title { color: var(--success-green) !important; }
+
+    /* Page 4 Purple Theme */
+    .purple-theme-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-color) !important;
+      border-left: 6px solid var(--purple-color) !important;
+      cursor: default !important;
+    }
+
+    /* Contact Component Styles */
+    .contact-container-box { background: var(--card-bg); padding: 10px 0; border-radius: 10px; }
+    .contact-info-box { margin: 15px 0; }
+    .contact-info-box a { color: var(--google-blue); font-weight: 600; text-decoration: none; }
+    .social-icons-box { margin-top: 15px; }
+    .social-icons-box a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 18px;
+      margin-right: 10px;
+      transition: 0.3s;
+    }
+    .social-icons-box .insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+    .social-icons-box .fb { background-color: #1877f2; }
+    .social-icons-box .yt { background-color: #ff0000; }
+    
+    .social-icons-box a:hover { transform: scale(1.1); opacity: 0.9; }
+    .contact-divider { border: 0; height: 1px; background: var(--border-color); margin: 25px 0; }
+    .contact-input-group { margin-bottom: 15px; }
+    .contact-input-group label { display: block; margin-bottom: 5px; font-weight: 600; color: var(--text-sub); }
+    .contact-input-group input, .contact-input-group textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-weight: 500;
+      background: var(--card-bg);
+      color: var(--text-main);
+    }
+    .contact-submit-btn {
+      background-color: var(--success-green);
+      color: #000;
+      font-weight: 700;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+      transition: 0.3s;
+    }
+    .contact-submit-btn:hover { background-color: var(--success-green-light); color: var(--success-green); }
+
+    /* Switch */
+    .switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #475569; transition: .4s; border-radius: 34px;
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px;
+      background-color: white; transition: .4s; border-radius: 50%;
+    }
+    input:checked + .slider { background-color: var(--google-blue); }
+    input:checked + .slider:before { transform: translateX(24px); }
+
+    .account-card-box {
+      background: var(--bg-gray);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .account-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 1rem;
+      background: var(--card-bg);
+      border-radius: 6px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 0.5rem;
+    }
+
+    footer { 
+      display: none;
+      background: var(--success-green-light); 
+      color: var(--success-green); 
+      text-align: center; 
+      padding: 2.5rem 1rem; 
+      border-top: 2px solid var(--success-green);
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 600px) {
+      .home-photo-gallery { grid-template-columns: 1fr; }
+      .home-photo-gallery img { height: 200px; }
+      header { padding: 0.8rem 1rem; flex-direction: column; gap: 10px; }
+      .header-right { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+      nav { gap: 0.2rem; width: 100%; justify-content: center; }
+      nav a { padding: 0.4rem 0.6rem; font-size: 0.85rem; }
+      main { padding: 0 0.8rem; margin: 1.2rem auto; }
+      .section-card { padding: 1.2rem; }
+      .reading-post-card { padding: 1.2rem; }
+      .reader-modal-body { padding: 1.2rem; font-size: 1.1rem; line-height: 1.9; }
+      .replies-container { margin-left: 0.8rem; }
+      .header-social { border-left: none; padding-left: 0; margin-top: 5px; width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body class="dark-theme">
+
+  <!-- Header -->
+  <header id="main-header">
+    <div class="logo" id="site-logo" onclick="switchPage('page-1')">
+      <i class="fa-solid fa-pen-nib"></i> રાજ ની કલમ !
+    </div>
+
+    <div class="header-right">
+      <nav>
+        <a id="nav-p1" class="active" onclick="switchPage('page-1')">મુખ્ય હોમ (Page 1)</a>
+        <a id="nav-p2" onclick="switchPage('page-2')">સાહિત્ય (Page 2)</a>
+        <a id="nav-p3" onclick="switchPage('page-3')">અમારા વિશે & સંપર્ક (Page 3)</a>
+        <a id="nav-p4" onclick="switchPage('page-4')">કોમેન્ટ્સ (Page 4)</a>
+      </nav>
+
+      <div class="header-social">
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+          <i class="fa-solid fa-sun" id="theme-icon"></i>
+        </button>
+        <button class="notif-icon-btn" onclick="openNotifModal()" title="Notifications">
+          <i class="fa-solid fa-bell"></i>
+          <span class="notif-badge" id="notif-dot" style="display: none;"></span>
+        </button>
+        <a href="https://instagram.com/jigneshgediya078" id="insta-link" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://youtube.com/@jigneshgediya078" id="yt-link" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <button class="admin-icon-btn" onclick="openAdminWithAuth()" title="Admin Panel"><i class="fa-solid fa-gear"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Area -->
+  <main>
+
+    <!-- Global Search Bar -->
+    <div class="search-box-container">
+      <input type="text" id="global-search-input" class="search-input" placeholder="🔍 સાહિત્યિક કૃતિઓ કે લેખ શોધો (Search posts)..." oninput="handleSearch()">
+    </div>
+    
+    <!-- PAGE 1: MAIN HOME PAGE -->
+    <div id="page-1" class="page-section">
+      <div class="section-card home-hero-card">
+        <h1 class="section-title" id="home-title-disp" style="font-size: 2rem;"><i class="fa-solid fa-house"></i> જીવન અને સાહિત્યના વિચારો</h1>
+        
+        <div class="home-photo-gallery">
+          <img id="home-img-1" src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Photo 1">
+          <img id="home-img-2" src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80" alt="Photo 2">
+        </div>
+
+        <div id="home-content-disp" style="color: var(--text-main); font-size: 1.15rem; line-height: 1.9; white-space: pre-line;">
+          રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. અહીં આપને રોજેરોજ નવતર વિચારો, સાહિત્યિક લેખ અને ઉપયોગી વાચન સામગ્રી મળશે.
+        </div>
+
+        <div style="margin-top: 2.5rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+          <h3 style="color: var(--google-blue); font-size: 1.25rem;"><i class="fa-solid fa-book-reader"></i> દૈનિક વાચન સામગ્રી (Daily Reading Posts):</h3>
+          <div id="home-daily-container"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: LITERATURE COLUMNS -->
+    <div id="page-2" class="page-section" style="display: none;">
+      <div class="section-card" onclick="openDetailView('articles')">
+        <h2 class="section-title"><i class="fa-solid fa-newspaper"></i> લેખો (Articles)</h2>
+        <p id="articles-preview" style="color: var(--text-sub);">અહીં આપના તમામ પ્રકાશિત સામાન્ય લેખો જોવા મળશે...</p>
+      </div>
+
+      <div class="section-card" onclick="openDetailView('gazal')">
+        <h2 class="section-title"><i class="fa-solid fa-feather-pointed"></i> ગઝલ</h2>
+        <p id="gazal-preview" style="color: var(--text-sub);">અહીં શ્રેષ્ઠ ગઝલો અને તેના શેરો-શાયરીનું સંગ્રહ સ્થાન રહેશે...</p>
+      </div>
+
+      <div class="section-card" onclick="openDetailView('kavita')">
+        <h2 class="section-title"><i class="fa-solid fa-music"></i> કવિતા</h2>
+        <p id="kavita-preview" style="color: var(--text-sub);">અહીં સુંદર કાવ્યો, ભાવનાત્મક કવિતાઓ અને ગીતો જોવા મળશે...</p>
+      </div>
+
+      <div class="section-card" onclick="openDetailView('chand')">
+        <h2 class="section-title"><i class="fa-solid fa-scroll"></i> છંદ</h2>
+        <p id="chand-preview" style="color: var(--text-sub);">અહીં બંધારણીય અને છંદોબદ્ધ રચેલી કૃતિઓનું વાચન મળશે...</p>
+      </div>
+
+      <div class="section-card" onclick="openDetailView('navalkatha')">
+        <h2 class="section-title"><i class="fa-solid fa-book-open"></i> નવલકથા</h2>
+        <p id="navalkatha-preview" style="color: var(--text-sub);">અહીં ધારાવાહિક વાર્તાઓ અને નવલકથાઓના પ્રકરણો વાંચવા મળશે...</p>
+      </div>
+    </div>
+
+    <!-- PAGE 3: ABOUT US & CONTACT -->
+    <div id="page-3" class="page-section" style="display: none;">
+      <div class="section-card green-theme-card" onclick="openDetailView('about')">
+        <h2 class="section-title green-theme-title"><i class="fa-solid fa-address-card"></i> અમારા વિશે (About Us)</h2>
+        <p id="about-preview" style="color: var(--text-sub);">આ પ્લેટફોર્મ ગુજરાતી સાહિત્ય માટેનું વિશેષ સ્થાન છે...</p>
+      </div>
+
+      <!-- MERGED CONTACT US SECTION -->
+      <div class="section-card green-theme-card">
+        <div class="contact-container-box">
+          <h2 class="section-title green-theme-title"><i class="fa-solid fa-envelope"></i> Contact Us (સંપર્ક કરો)</h2>
+          <p style="color: var(--text-sub); margin-top: 5px;">કોઈપણ પ્રશ્ન કે સૂચન માટે અમારો સંપર્ક કરો અથવા નીચે કોમેન્ટ કરો.</p>
+
+          <div class="contact-info-box">
+              <p><i class="fas fa-envelope" style="color: var(--success-green);"></i> <strong>Email:</strong> <a href="mailto:s27334560@gmail.com">s27334560@gmail.com</a></p>
+              
+              <div class="social-icons-box">
+                  <a href="https://instagram.com/jigneshgediya078" target="_blank" class="insta" title="Instagram"><i class="fab fa-instagram"></i></a>
+                  <a href="https://facebook.com" target="_blank" class="fb" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                  <a href="https://youtube.com/@jigneshgediya078" target="_blank" class="yt" title="YouTube"><i class="fab fa-youtube"></i></a>
+              </div>
+          </div>
+
+          <hr class="contact-divider">
+
+          <!-- Comment / Contact Form Section -->
+          <h3 style="color: var(--success-green); margin-bottom: 15px;">Leave a Comment</h3>
+          <form action="#" method="POST" onsubmit="event.preventDefault(); submitContactComment();">
+              <div class="contact-input-group">
+                  <label for="contact-email">તમારું Gmail Address / નામ:</label>
+                  <input type="text" id="contact-email" name="email" placeholder="તમારું નામ અથવા ઇમેઇલ લખો" required>
+              </div>
+
+              <div class="contact-input-group">
+                  <label for="contact-comment">તમારી કોમેન્ટ / મેસેજ:</label>
+                  <textarea id="contact-comment" name="comment" rows="5" placeholder="અહીં તમારો મેસેજ લખો..." required></textarea>
+              </div>
+
+              <button type="submit" class="contact-submit-btn">Submit Comment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 4: ALL COMMENTS PAGE -->
+    <div id="page-4" class="page-section" style="display: none;">
+      <div class="section-card purple-theme-card">
+        <h2 class="section-title" style="color: var(--purple-color);"><i class="fa-solid fa-comments"></i> તમામ યુઝર કોમેન્ટ્સ (User Comments)</h2>
+        <p style="color: var(--text-sub); margin-bottom: 1.5rem;">સંપર્ક ફોર્મ અને વેબસાઈટ પર આવેલી તમામ કોમેન્ટ્સ અહીં જોવા મળશે.</p>
+        
+        <div id="all-user-comments-container">
+          <!-- Dynamic Comments List -->
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE NAVIGATION BUTTONS -->
+    <div class="pagination-bar" id="page-nav-bar">
+      <button id="p-btn-1" class="page-btn active" onclick="switchPage('page-1')">Page 1 (Home)</button>
+      <button id="p-btn-2" class="page-btn" onclick="switchPage('page-2')">Page 2 (સાહિત્ય)</button>
+      <button id="p-btn-3" class="page-btn" onclick="switchPage('page-3')">Page 3 (About/Contact)</button>
+      <button id="p-btn-4" class="page-btn" onclick="switchPage('page-4')">Page 4 (કોમેન્ટ્સ)</button>
+    </div>
+
+    <!-- DETAIL VIEW PAGE -->
+    <div id="detail-view-page">
+      <div class="back-btn" id="detail-back-btn" onclick="closeDetailView()"><i class="fa-solid fa-arrow-left"></i> પાછા જાઓ</div>
+      <h1 id="detail-title" style="color: var(--google-blue); margin-bottom: 1rem;"></h1>
+      <hr style="border: 0; border-top: 1px solid var(--border-color); margin-bottom: 1.5rem;">
+      <div id="detail-content" style="line-height: 1.9; font-size: 1.15rem; color: var(--text-main); white-space: pre-line;"></div>
+
+      <div style="margin-top: 2.5rem;">
+        <h3 id="detail-reading-list-head" style="color: var(--google-blue); font-size: 1.2rem;"><i class="fa-solid fa-book-open-reader"></i> વાચન કલેક્શન (Reading List):</h3>
+        <div id="daily-posts-container"></div>
+      </div>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div id="admin-panel" class="section-card" style="display: none; border: 2px solid var(--google-blue); cursor: default;">
+      <h2 class="section-title"><i class="fa-solid fa-gear"></i> Admin Panel</h2>
+      
+      <div class="form-group" style="margin-top: 1rem;">
+        <label>જે કોલમમાં ફેરફાર કરવો હોય કે કોમેન્ટ્સ જોવી હોય તે પસંદ કરો:</label>
+        <select id="admin-col-select" onchange="loadSelectedColumnData()">
+          <option value="all">-- તમામ કોમેન્ટ્સ જુઓ (All Comments) --</option>
+          <option value="home">Page 1: Home (મુખ્ય)</option>
+          <option value="articles">Page 2: Articles (લેખો)</option>
+          <option value="gazal">Page 2: ગઝલ</option>
+          <option value="kavita">Page 2: કવિતા</option>
+          <option value="chand">Page 2: છંદ</option>
+          <option value="navalkatha">Page 2: નવલકથા</option>
+          <option value="about">Page 3: About Us & Contact Comments</option>
+        </select>
+      </div>
+
+      <div id="admin-main-edit-sec">
+        <div class="form-group">
+          <label>આ કોલમનું મુખ્ય ટાઇટલ બદલો:</label>
+          <input type="text" id="admin-col-title">
+        </div>
+
+        <!-- PHOTO ADDING BOX FOR HOME -->
+        <div id="admin-photo-box" style="background: var(--bg-gray); padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 1.2rem;">
+          <h4 style="color: var(--draft-amber); margin-bottom: 0.8rem;"><i class="fa-solid fa-image"></i> હોમ પેજ માટે ૨ ફોટા ઉમેરો (Image URLs):</h4>
+          <div class="form-group">
+            <label>ફોટો ૧ ની URL (Image Link 1):</label>
+            <input type="url" id="admin-photo-1" placeholder="https://example.com/photo1.jpg">
+          </div>
+          <div class="form-group">
+            <label>ફોટો ૨ ની URL (Image Link 2):</label>
+            <input type="url" id="admin-photo-2" placeholder="https://example.com/photo2.jpg">
+          </div>
+        </div>
+
+        <!-- INBOX 1: Main Content -->
+        <div class="inbox-card">
+          <label style="font-weight: bold; color: var(--text-sub); display: block; margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-inbox"></i> Inbox 1: મુખ્ય વિગત (Main Header Content)
+          </label>
+          <textarea id="admin-col-content" class="inbox-textarea" placeholder="મુખ્ય પૃષ્ઠનું વર્ણન કે વિગત લખો..."></textarea>
+          <div class="inbox-action-bar">
+            <button class="btn-action publish-inbox-btn" onclick="saveMainContent()"><i class="fa-solid fa-paper-plane"></i> Save & Update Title/Header</button>
+          </div>
+        </div>
+
+        <!-- ADDITIONAL DYNAMIC INBOXES -->
+        <div id="dynamic-inboxes-container"></div>
+
+        <!-- MANUAL ADD INBOX BUTTON -->
+        <button class="btn btn-add-inbox" onclick="addNewInboxManual()">
+          <i class="fa-solid fa-square-plus"></i> + Add New Inbox (નવું ઈનબોક્સ પોસ્ટ ઉમેરો)
+        </button>
+
+        <!-- VIEW SAVED DRAFTS BUTTON -->
+        <div style="margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+          <button class="btn btn-draft-viewer" onclick="openDraftModal()">
+            <i class="fa-solid fa-folder-open"></i> 📁 View & Publish Saved Drafts (સેવ કરેલા ડ્રાફ્ટ્સ જુઓ)
+          </button>
+        </div>
+      </div>
+
+      <!-- ADMIN COMMENTS & REPLIES CONTROL SECTION -->
+      <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0 1.5rem 0;">
+      <h3 style="color: var(--google-blue); font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+        <i class="fa-solid fa-comments"></i> કોમેન્ટ્સ & રિપ્લાય મેનેજમેન્ટ (Comments Control)
+      </h3>
+      <p style="color: var(--text-sub); font-size: 0.9rem; margin-bottom: 1rem;">આપ પસંદ કરેલી કોલમની તમામ કોમેન્ટ્સ જોઈ શકો છો, તેને રિપ્લાય આપી શકો છો અથવા ડિલીટ કરી શકો છો:</p>
+
+      <div id="admin-comments-manage-container" style="background: var(--bg-gray); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.2rem; max-height: 450px; overflow-y: auto;">
+        <!-- Dynamic Admin Comments Render -->
+      </div>
+
+      <!-- Social Media Link Editor -->
+      <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0 1.5rem 0;">
+      <h3 style="color: var(--google-blue); font-size: 1.1rem;"><i class="fa-solid fa-link"></i> સોશિયલ મીડિયા લિંક્સ:</h3>
+
+      <div class="form-group" style="margin-top: 0.8rem;">
+        <label><i class="fab fa-instagram"></i> Instagram URL:</label>
+        <input type="url" id="admin-insta-url" placeholder="https://instagram.com/jigneshgediya078">
+      </div>
+
+      <div class="form-group">
+        <label><i class="fab fa-youtube"></i> YouTube URL:</label>
+        <input type="url" id="admin-yt-url" placeholder="https://youtube.com/@jigneshgediya078">
+      </div>
+
+      <button class="btn" onclick="saveSocialLinks()">Save Links</button>
+
+      <!-- ADMIN ACCOUNTS MANAGEMENT -->
+      <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2.5rem 0 1.5rem 0;">
+      <div style="background: var(--bg-gray); padding: 1.5rem; border-radius: 8px;">
+        <h3 style="color: var(--google-blue); font-size: 1.1rem; display: flex; align-items: center; gap: 8px;">
+          <i class="fa-solid fa-users-gear"></i> એડમિન એકાઉન્ટ મેનેજમેન્ટ (Admin Accounts Settings)
+        </h3>
+        <p style="color: var(--text-sub); font-size: 0.9rem; margin: 0.4rem 0 1rem 0;">નવું એડમિન એકાઉન્ટ ઉમેરો અથવા યુઝરનેમ/પાસવર્ડ બદલો:</p>
+
+        <div id="admin-accounts-list" class="account-card-box"></div>
+
+        <button class="btn" style="margin-top: 1rem; background: var(--success-green); color:#000;" onclick="addNewAdminAccount()">
+          <i class="fa-solid fa-user-plus"></i> + Add New Admin Account
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FULL PAGE READING MODAL BOX WITH COMMENTS & REPLIES -->
+  <div class="reader-modal-overlay" id="reader-modal">
+    <div class="reader-modal-box">
+      <div class="reader-modal-header">
+        <div class="reader-modal-title" id="rm-title"><i class="fa-solid fa-book-open"></i> શીર્ષક</div>
+        <button class="reader-modal-close" onclick="closeReaderModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      
+      <div class="reader-modal-body">
+        <div id="rm-body">લખાણ...</div>
+        
+        <!-- COMMENT & REPLY SECTION -->
+        <div class="comments-section">
+          <h4><i class="fa-solid fa-comments"></i> ટિપ્પણીઓ (Comments):</h4>
+          
+          <div class="comment-form">
+            <input type="text" id="c-author" placeholder="તમારું નામ (Your Name)">
+            <textarea id="c-text" placeholder="અહીં તમારી ટિપ્પણી લખો..."></textarea>
+            <button class="btn" style="align-self: flex-start; padding: 0.5rem 1.2rem;" onclick="addComment()">ટિપ્પણી કરો</button>
+          </div>
+
+          <div id="comments-list"></div>
+        </div>
+      </div>
+      
+      <div class="reader-modal-footer">
+        <div><i class="fa-solid fa-feather-pointed"></i> રાજ ની કલમ સાહિત્ય વાચન</div>
+        <div id="rm-date"><i class="fa-regular fa-calendar-days"></i> તારીખ</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTIFICATION MODAL -->
+  <div class="modal-overlay" id="notif-modal">
+    <div class="modal-content" style="max-width: 480px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem;">
+        <h3 style="color: var(--google-blue);"><i class="fa-solid fa-bell"></i> નોટિફિકેશન્સ (Notifications)</h3>
+        <button class="btn-action delete-inbox-btn" onclick="closeNotifModal()">X</button>
+      </div>
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; background: var(--bg-gray); padding: 1rem; border-radius: 8px; margin-bottom: 1.2rem; border: 1px solid var(--border-color);">
+        <div>
+          <strong style="display: block;">નવી પોસ્ટ નોટિફિકેશન</strong>
+          <span style="font-size: 0.85rem; color: var(--text-sub);">નવી સાહિત્યિક પોસ્ટ આવશે ત્યારે નોટિફાય કરાશે</span>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="notif-toggle" onchange="toggleNotifications()">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <h4 style="margin-bottom: 0.8rem; color: var(--text-sub);">તાજેતરની અપડેટ્સ:</h4>
+      <div id="notif-history-list" style="max-height: 200px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+  <!-- DRAFT VIEWER MODAL -->
+  <div class="modal-overlay" id="draft-modal">
+    <div class="modal-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <h3 style="color: var(--google-blue);"><i class="fa-solid fa-bookmark"></i> સેવ કરેલા ડ્રાફ્ટ્સ (Saved Drafts)</h3>
+        <button class="btn-action delete-inbox-btn" onclick="closeDraftModal()">X</button>
+      </div>
+      <div id="drafts-container-list"></div>
+    </div>
+  </div>
+
+  <footer id="site-footer">
+    અલખ !!
+  </footer>
+
+  <script>
+    // HELPER: Format date in Gujarati
+    function getGujaratiDateString(date = new Date()) {
+      return date.toLocaleDateString('gu-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    let activePage = "page-1";
+    let inboxCounter = 2; 
+
+    let isNotifEnabled = true;
+    let notificationsList = [];
+    let currentActivePost = { categoryKey: null, index: null };
+
+    // UPDATED ADMIN CREDENTIALS
+    let adminAccounts = [
+      { id: "jigneshgediya078", pass: "i-am-batman078", role: "Main Owner" }
+    ];
+
+    let defaultSiteData = {
+      home: { 
+        title: "જીવન અને સાહિત્યના વિચારો", 
+        content: "રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. અહીં આપને રોજેરોજ નવતર વિચારો, સાહિત્યિક લેખ અને ઉપયોગી વાચન સામગ્રી મળશે.",
+        img1: "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80",
+        img2: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80",
+        dailyPosts: [],
+        drafts: [] 
+      },
+      articles: { title: "લેખો (Articles)", content: "અહીં આપના તમામ પ્રકાશિત સામાન્ય લેખો વાંચવા મળશે.", dailyPosts: [], drafts: [] },
+      gazal: { title: "ગઝલ સંગ્રહ", content: "દિલથી લખાયેલી સુંદર ગઝલોનું સ્થાન.", dailyPosts: [], drafts: [] },
+      kavita: { title: "કાવ્ય સરિતા (કવિતા)", content: "લાગણીઓથી ભરેલી કવિતાઓનું અનોખું આલેખન.", dailyPosts: [], drafts: [] },
+      chand: { title: "છંદ અને બંધારણ", content: "શાસ્ત્રીય અને છંદોબદ્ધ રચેલી પદ્ય રચનાઓ.", dailyPosts: [], drafts: [] },
+      navalkatha: { title: "નવલકથા (વાર્તા શ્રેણી)", content: "રસપ્રદ ધારાવાહિક નવલકથાઓ.", dailyPosts: [], drafts: [] },
+      about: { 
+        title: "અમારા વિશે (About Us)", 
+        content: "આ પ્લેટફોર્મ ગુજરાતી સાહિત્યિક વિચારો અને સર્જનાત્મક લેખન માટેનું ખાસ સ્થાન છે.", 
+        dailyPosts: [
+          {
+            title: "Contact Us & About Feedbacks",
+            date: getGujaratiDateString(),
+            text: "સંપર્ક ફોર્મ પરથી મોકલેલ ટિપ્પણીઓ",
+            comments: []
+          }
+        ], 
+        drafts: [] 
+      }
+    };
+
+    // LOCAL STORAGE PERSISTENCE
+    let siteData = JSON.parse(localStorage.getItem('raj_ni_kalam_data')) || defaultSiteData;
+
+    function saveToLocalStorage() {
+      localStorage.setItem('raj_ni_kalam_data', JSON.stringify(siteData));
+    }
+
+    // DARK MODE TOGGLE
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+      const icon = document.getElementById('theme-icon');
+      if (document.body.classList.contains('dark-theme')) {
+        icon.className = 'fa-solid fa-sun';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        icon.className = 'fa-solid fa-moon';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Load Saved Theme Preference (Defaulted to Dark Mode)
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.body.classList.remove('dark-theme');
+      document.getElementById('theme-icon').className = 'fa-solid fa-moon';
+    } else {
+      document.body.classList.add('dark-theme');
+      document.getElementById('theme-icon').className = 'fa-solid fa-sun';
+    }
+
+    // SEARCH FUNCTIONALITY
+    function handleSearch() {
+      const query = document.getElementById('global-search-input').value.toLowerCase().trim();
+      const container = document.getElementById('home-daily-container');
+      
+      if (activePage !== 'page-1') {
+        switchPage('page-1');
+      }
+
+      if (!query) {
+        renderHomeDailyPosts();
+        return;
+      }
+
+      container.innerHTML = "";
+      let hasResults = false;
+
+      Object.keys(siteData).forEach(catKey => {
+        if (siteData[catKey].dailyPosts) {
+          siteData[catKey].dailyPosts.forEach((post, idx) => {
+            if (post.title.toLowerCase().includes(query) || post.text.toLowerCase().includes(query)) {
+              hasResults = true;
+              container.innerHTML += createReadingPostHTML(post, catKey, idx);
+            }
+          });
+        }
+      });
+
+      if (!hasResults) {
+        container.innerHTML = "<p style='color:var(--text-sub); margin-top:1rem;'>કોઈ પરિણામ મળ્યા નથી (No matching posts found).</p>";
+      }
+    }
+
+    function switchPage(pageId) {
+      activePage = pageId;
+
+      document.querySelectorAll('.page-section').forEach(p => p.style.display = 'none');
+      document.getElementById('detail-view-page').style.display = 'none';
+      document.getElementById('admin-panel').style.display = 'none';
+
+      document.getElementById(pageId).style.display = 'block';
+      document.getElementById('page-nav-bar').style.display = 'flex';
+
+      const navP3 = document.getElementById('nav-p3');
+      const btnP3 = document.getElementById('p-btn-3');
+      const navP4 = document.getElementById('nav-p4');
+      const btnP4 = document.getElementById('p-btn-4');
+      const logo = document.getElementById('site-logo');
+
+      document.querySelectorAll('nav a').forEach(a => {
+        a.classList.remove('active', 'green-active', 'purple-active');
+      });
+      document.querySelectorAll('.page-btn').forEach(b => {
+        b.classList.remove('active', 'green-active', 'purple-active');
+      });
+
+      const footer = document.getElementById('site-footer');
+
+      if(pageId === 'page-1') {
+        document.getElementById('nav-p1').classList.add('active');
+        document.getElementById('p-btn-1').classList.add('active');
+        logo.style.color = "var(--google-blue)";
+        footer.style.display = 'none';
+        renderHomeDailyPosts();
+      } else if(pageId === 'page-2') {
+        document.getElementById('nav-p2').classList.add('active');
+        document.getElementById('p-btn-2').classList.add('active');
+        logo.style.color = "var(--google-blue)";
+        footer.style.display = 'none';
+      } else if(pageId === 'page-3') {
+        navP3.classList.add('green-active');
+        btnP3.classList.add('green-active');
+        logo.style.color = "var(--success-green)";
+        footer.style.display = 'block';
+      } else if(pageId === 'page-4') {
+        navP4.classList.add('purple-active');
+        btnP4.classList.add('purple-active');
+        logo.style.color = "var(--purple-color)";
+        footer.style.display = 'none';
+        renderPage4Comments();
+      }
+
+      window.scrollTo(0, 0);
+    }
+
+    /* RENDER PAGE 4 COMMENTS */
+    function renderPage4Comments() {
+      const container = document.getElementById('all-user-comments-container');
+      container.innerHTML = "";
+
+      let allComments = [];
+
+      Object.keys(siteData).forEach(catKey => {
+        if (siteData[catKey].dailyPosts) {
+          siteData[catKey].dailyPosts.forEach(post => {
+            if (post.comments && post.comments.length > 0) {
+              post.comments.forEach(c => {
+                allComments.push({ ...c, postTitle: post.title || 'સાહિત્યિક લખાણ', category: catKey });
+              });
+            }
+          });
+        }
+      });
+
+      if (allComments.length === 0) {
+        container.innerHTML = "<p style='color:var(--text-sub); font-size:1rem; text-align:center;'>હજુ સુધી કોઈ કોમેન્ટ મળેલ નથી.</p>";
+        return;
+      }
+
+      allComments.forEach(c => {
+        let repliesHTML = "";
+        if (c.replies && c.replies.length > 0) {
+          c.replies.forEach(r => {
+            repliesHTML += `
+              <div class="reply-card">
+                <div class="comment-header">
+                  <span class="comment-author"><i class="fa-solid fa-reply" style="transform: rotate(180deg);"></i> ${r.author}</span>
+                  <span class="comment-time">${r.time}</span>
+                </div>
+                <div class="comment-text">${r.text}</div>
+              </div>
+            `;
+          });
+        }
+
+        const div = document.createElement('div');
+        div.className = 'comment-card';
+        div.innerHTML = `
+          <div style="font-size:0.85rem; color:var(--purple-color); font-weight:bold; margin-bottom:0.3rem;">
+            પોસ્ટ / વિષય: "${c.postTitle}"
+          </div>
+          <div class="comment-header">
+            <span class="comment-author"><i class="fa-solid fa-user-circle"></i> ${c.author}</span>
+            <span class="comment-time">${c.time}</span>
+          </div>
+          <div class="comment-text">${c.text}</div>
+          <div class="replies-container">
+            ${repliesHTML}
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function createReadingPostHTML(post, categoryKey, index) {
+      const postTitle = post.title ? post.title : 'સાહિત્યિક રચના';
+
+      return `
+        <div class="reading-post-card">
+          <div class="reading-post-header">
+            <div class="reading-post-title" ${categoryKey === 'about' ? 'style="color:var(--success-green);"' : ''}>
+              <i class="fa-solid fa-feather"></i> ${postTitle}
+            </div>
+            <div class="post-date"><i class="fa-regular fa-calendar-days"></i> ${post.date}</div>
+          </div>
+          <div class="reading-post-body">${post.text}</div>
+          <button class="read-more-btn" ${categoryKey === 'about' ? 'style="background:var(--success-green-light); color:var(--success-green);"' : ''} onclick="openReaderModal('${categoryKey}', ${index})">
+            વધુ વાંચો (Read More) <i class="fa-solid fa-up-right-from-square" style="font-size:0.8rem; margin-left:2px;"></i>
+          </button>
+        </div>
+      `;
+    }
+
+    /* READING MODAL & COMMENT MANAGEMENT */
+    function openReaderModal(categoryKey, index) {
+      const post = siteData[categoryKey].dailyPosts[index];
+      if (!post) return;
+
+      currentActivePost = { categoryKey, index };
+
+      if (!post.comments) {
+        post.comments = [];
+      }
+
+      document.getElementById('rm-title').innerText = post.title || "સાહિત્યિક વાચન";
+      document.getElementById('rm-body').innerText = post.text;
+      document.getElementById('rm-date').innerHTML = `<i class="fa-regular fa-calendar-days"></i> ${post.date}`;
+
+      if(categoryKey === 'about') {
+        document.getElementById('rm-title').style.color = "var(--success-green)";
+      } else {
+        document.getElementById('rm-title').style.color = "var(--google-blue)";
+      }
+
+      renderComments();
+      document.getElementById('reader-modal').style.display = 'flex';
+    }
+
+    function closeReaderModal() {
+      document.getElementById('reader-modal').style.display = 'none';
+    }
+
+    function addComment() {
+      const author = document.getElementById('c-author').value.trim() || 'અનામિક યુઝર';
+      const text = document.getElementById('c-text').value.trim();
+
+      if (!text) {
+        alert("મહેરબાની કરીને ટિપ્પણી લખો!");
+        return;
+      }
+
+      const post = siteData[currentActivePost.categoryKey].dailyPosts[currentActivePost.index];
+      post.comments.push({
+        id: Date.now(),
+        author: author,
+        text: text,
+        time: new Date().toLocaleTimeString('gu-IN', { hour: '2-digit', minute: '2-digit' }),
+        replies: []
+      });
+
+      saveToLocalStorage();
+      document.getElementById('c-text').value = "";
+      renderComments();
+      if(document.getElementById('admin-panel').style.display === 'block') {
+        renderAdminCommentsControl();
+      }
+    }
+
+    /* Submit Contact Us Page Comment */
+    function submitContactComment() {
+      const email = document.getElementById('contact-email').value.trim();
+      const text = document.getElementById('contact-comment').value.trim();
+
+      if (!email || !text) {
+        alert("કૃપા કરીને નામ/ઇમેઇલ અને મેસેજ લખો.");
+        return;
+      }
+
+      if (!siteData.about.dailyPosts || siteData.about.dailyPosts.length === 0) {
+        siteData.about.dailyPosts = [{
+          title: "Contact Us & About Feedbacks",
+          date: getGujaratiDateString(),
+          text: "સંપર્ક ફોર્મની કોમેન્ટ્સ",
+          comments: []
+        }];
+      }
+
+      siteData.about.dailyPosts[0].comments.push({
+        id: Date.now(),
+        author: email,
+        text: text,
+        time: new Date().toLocaleTimeString('gu-IN', { hour: '2-digit', minute: '2-digit' }),
+        replies: []
+      });
+
+      saveToLocalStorage();
+      alert("તમારો મેસેજ અને કોમેન્ટ સફળતાપૂર્વક સબમિટ થઈ ગઈ છે! (Page 4 અને Admin માં જોવા મળશે)");
+      document.getElementById('contact-email').value = "";
+      document.getElementById('contact-comment').value = "";
+      
+      if (document.getElementById('admin-panel').style.display === 'block') {
+        renderAdminCommentsControl();
+      }
+    }
+
+    function deleteComment(commentIndex) {
+      if (confirm("શું તમે આ કોમેન્ટ અને તેના તમામ રીપ્લાય ડિલીટ કરવા માંગો છો?")) {
+        const post = siteData[currentActivePost.categoryKey].dailyPosts[currentActivePost.index];
+        post.comments.splice(commentIndex, 1);
+        saveToLocalStorage();
+        renderComments();
+        if(document.getElementById('admin-panel').style.display === 'block') {
+          renderAdminCommentsControl();
+        }
+      }
+    }
+
+    function toggleReplyForm(commentIndex) {
+      const form = document.getElementById(`reply-box-${commentIndex}`);
+      if (form) {
+        form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+
+    function submitReply(commentIndex) {
+      const authorInput = document.getElementById(`r-author-${commentIndex}`).value.trim() || 'અનામિક યુઝર';
+      const textInput = document.getElementById(`r-text-${commentIndex}`).value.trim();
+
+      if (!textInput) {
+        alert("મહેરબાની કરીને રીપ્લાય લખો!");
+        return;
+      }
+
+      const post = siteData[currentActivePost.categoryKey].dailyPosts[currentActivePost.index];
+      post.comments[commentIndex].replies.push({
+        id: Date.now(),
+        author: authorInput,
+        text: textInput,
+        time: new Date().toLocaleTimeString('gu-IN', { hour: '2-digit', minute: '2-digit' })
+      });
+
+      saveToLocalStorage();
+      renderComments();
+      if(document.getElementById('admin-panel').style.display === 'block') {
+        renderAdminCommentsControl();
+      }
+    }
+
+    function deleteReply(commentIndex, replyIndex) {
+      if (confirm("શું તમે આ રીપ્લાય ડિલીટ કરવા માંગો છો?")) {
+        const post = siteData[currentActivePost.categoryKey].dailyPosts[currentActivePost.index];
+        post.comments[commentIndex].replies.splice(replyIndex, 1);
+        saveToLocalStorage();
+        renderComments();
+        if(document.getElementById('admin-panel').style.display === 'block') {
+          renderAdminCommentsControl();
+        }
+      }
+    }
+
+    function renderComments() {
+      const container = document.getElementById('comments-list');
+      container.innerHTML = "";
+
+      const post = siteData[currentActivePost.categoryKey].dailyPosts[currentActivePost.index];
+      if (!post || !post.comments || post.comments.length === 0) {
+        container.innerHTML = "<p style='color:var(--text-sub); font-size:0.95rem;'>હજુ સુધી કોઈ ટિપ્પણી નથી. પ્રથમ ટિપ્પણી કરો!</p>";
+        return;
+      }
+
+      post.comments.forEach((c, cIdx) => {
+        let repliesHTML = "";
+        if (c.replies && c.replies.length > 0) {
+          c.replies.forEach((r, rIdx) => {
+            repliesHTML += `
+              <div class="reply-card">
+                <div class="comment-header">
+                  <span class="comment-author"><i class="fa-solid fa-reply" style="transform: rotate(180deg); font-size: 0.8rem;"></i> ${r.author}</span>
+                  <span class="comment-time">${r.time}</span>
+                </div>
+                <div class="comment-text">${r.text}</div>
+                <div class="comment-actions">
+                  <span class="action-link delete" onclick="deleteReply(${cIdx}, ${rIdx})"><i class="fa-solid fa-trash"></i> ડિલીટ</span>
+                </div>
+              </div>
+            `;
+          });
+        }
+
+        const div = document.createElement('div');
+        div.className = 'comment-card';
+        div.innerHTML = `
+          <div class="comment-header">
+            <span class="comment-author"><i class="fa-solid fa-user-circle"></i> ${c.author}</span>
+            <span class="comment-time">${c.time}</span>
+          </div>
+          <div class="comment-text">${c.text}</div>
+          <div class="comment-actions">
+            <span class="action-link" onclick="toggleReplyForm(${cIdx})"><i class="fa-solid fa-reply"></i> જવાબ આપો</span>
+            <span class="action-link delete" onclick="deleteComment(${cIdx})"><i class="fa-solid fa-trash"></i> ડિલીટ</span>
+          </div>
+
+          <div class="reply-input-box" id="reply-box-${cIdx}" style="display:none;">
+            <input type="text" id="r-author-${cIdx}" placeholder="તમારું નામ">
+            <textarea id="r-text-${cIdx}" placeholder="જવાબ/રીપ્લાય લખો..." style="min-height:50px; font-size:0.9rem; padding:0.5rem; border:1px solid var(--border-color); border-radius:4px;"></textarea>
+            <div style="display:flex; gap:6px;">
+              <button class="btn" style="padding:0.3rem 0.8rem; font-size:0.85rem;" onclick="submitReply(${cIdx})">મોકલો</button>
+              <button class="btn-action delete-inbox-btn" onclick="toggleReplyForm(${cIdx})">રદ કરો</button>
+            </div>
+          </div>
+
+          <div class="replies-container">
+            ${repliesHTML}
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function renderHomeDailyPosts() {
+      const container = document.getElementById('home-daily-container');
+      container.innerHTML = "";
+      if(siteData.home.dailyPosts.length === 0) {
+        container.innerHTML = "<p style='color: var(--text-sub); margin-top: 0.5rem;'>હજુ સુધી હોમ પેજ પર કોઈ દૈનિક પોસ્ટ નથી.</p>";
+      } else {
+        siteData.home.dailyPosts.forEach((post, idx) => {
+          container.innerHTML += createReadingPostHTML(post, 'home', idx);
+        });
+      }
+    }
+
+    function openDetailView(key) {
+      document.querySelectorAll('.page-section').forEach(p => p.style.display = 'none');
+      document.getElementById('page-nav-bar').style.display = 'none';
+      document.getElementById('admin-panel').style.display = 'none';
+      document.getElementById('site-footer').style.display = 'none';
+      document.getElementById('detail-view-page').style.display = 'block';
+
+      const detailTitle = document.getElementById('detail-title');
+      const backBtn = document.getElementById('detail-back-btn');
+      const listHead = document.getElementById('detail-reading-list-head');
+
+      detailTitle.innerText = siteData[key].title;
+      document.getElementById('detail-content').innerText = siteData[key].content;
+
+      if(key === 'about') {
+        detailTitle.style.color = "var(--success-green)";
+        backBtn.style.color = "var(--success-green)";
+        backBtn.style.background = "var(--success-green-light)";
+        listHead.style.color = "var(--success-green)";
+      } else {
+        detailTitle.style.color = "var(--google-blue)";
+        backBtn.style.color = "var(--google-blue)";
+        backBtn.style.background = "var(--google-blue-light)";
+        listHead.style.color = "var(--google-blue)";
+      }
+
+      const dailyContainer = document.getElementById('daily-posts-container');
+      dailyContainer.innerHTML = "";
+
+      if(siteData[key].dailyPosts.length === 0) {
+        dailyContainer.innerHTML = "<p style='color: var(--text-sub); margin-top: 0.5rem;'>અહીં હજુ સુધી કોઈ દૈનિક પોસ્ટ ઉમેરેલી નથી.</p>";
+      } else {
+        siteData[key].dailyPosts.forEach((post, idx) => {
+          dailyContainer.innerHTML += createReadingPostHTML(post, key, idx);
+        });
+      }
+
+      window.scrollTo(0, 0);
+    }
+
+    function closeDetailView() { switchPage(activePage); }
+
+    function openAdminWithAuth() {
+      const adminPanel = document.getElementById('admin-panel');
+
+      if (adminPanel.style.display === "block") {
+        adminPanel.style.display = "none";
+        return;
+      }
+
+      const userInput = prompt("Admin ID લખો:");
+      const accountFound = adminAccounts.find(acc => acc.id === userInput);
+
+      if (accountFound) {
+        const passInput = prompt("Password લખો:");
+        if (passInput === accountFound.pass) {
+          alert("સફળતાપૂર્વક લોગિન થયું!");
+          document.querySelectorAll('.page-section').forEach(p => p.style.display = 'none');
+          document.getElementById('detail-view-page').style.display = 'none';
+          document.getElementById('page-nav-bar').style.display = 'none';
+          document.getElementById('site-footer').style.display = 'none';
+          adminPanel.style.display = 'block';
+          loadSelectedColumnData();
+          renderAccountList();
+        } else {
+          alert("ખોટો પાસવર્ડ!");
+        }
+      } else if (userInput !== null) {
+        alert("ખોટું એડમિન ID!");
+      }
+    }
+
+    function loadSelectedColumnData() {
+      const selectedKey = document.getElementById('admin-col-select').value;
+
+      if (selectedKey === 'all') {
+        document.getElementById('admin-main-edit-sec').style.display = 'none';
+      } else {
+        document.getElementById('admin-main-edit-sec').style.display = 'block';
+        document.getElementById('admin-col-title').value = siteData[selectedKey].title;
+        document.getElementById('admin-col-content').value = siteData[selectedKey].content;
+
+        if (selectedKey === 'home') {
+          document.getElementById('admin-photo-box').style.display = 'block';
+          document.getElementById('admin-photo-1').value = siteData.home.img1 || "";
+          document.getElementById('admin-photo-2').value = siteData.home.img2 || "";
+        } else {
+          document.getElementById('admin-photo-box').style.display = 'none';
+        }
+      }
+
+      document.getElementById('dynamic-inboxes-container').innerHTML = "";
+      inboxCounter = 2;
+
+      renderAdminCommentsControl();
+    }
+
+    /* RENDER ADMIN COMMENTS */
+    function renderAdminCommentsControl() {
+      const selectedKey = document.getElementById('admin-col-select').value;
+      const container = document.getElementById('admin-comments-manage-container');
+      container.innerHTML = "";
+
+      let commentsToRender = [];
+
+      const keysToSearch = selectedKey === 'all' ? Object.keys(siteData) : [selectedKey];
+
+      keysToSearch.forEach(catKey => {
+        const category = siteData[catKey];
+        if (category && category.dailyPosts) {
+          category.dailyPosts.forEach((post, postIdx) => {
+            if (post.comments && post.comments.length > 0) {
+              post.comments.forEach((c, commentIdx) => {
+                commentsToRender.push({
+                  catKey: catKey,
+                  postIdx: postIdx,
+                  commentIdx: commentIdx,
+                  comment: c,
+                  postTitle: post.title || 'સાહિત્યિક લખાણ'
+                });
+              });
+            }
+          });
+        }
+      });
+
+      if (commentsToRender.length === 0) {
+        container.innerHTML = "<p style='color:var(--text-sub); font-size:0.95rem;'>કોઈ કોમેન્ટ્સ પ્રાપ્ત થઈ નથી.</p>";
+        return;
+      }
+
+      commentsToRender.forEach(item => {
+        const c = item.comment;
+        const key = item.catKey;
+        const postIdx = item.postIdx;
+        const commentIdx = item.commentIdx;
+
+        let repliesHTML = "";
+        if (c.replies && c.replies.length > 0) {
+          c.replies.forEach((r, replyIdx) => {
+            repliesHTML += `
+              <div class="reply-card" style="margin-top:0.4rem;">
+                <div class="comment-header">
+                  <span class="comment-author"><i class="fa-solid fa-reply" style="transform: rotate(180deg);"></i> ${r.author}</span>
+                  <span class="comment-time">${r.time}</span>
+                </div>
+                <div class="comment-text">${r.text}</div>
+                <div class="comment-actions">
+                  <button class="btn-action delete-inbox-btn" onclick="adminDeleteReply('${key}', ${postIdx}, ${commentIdx}, ${replyIdx})">
+                    <i class="fa-solid fa-trash"></i> Delete Reply
+                  </button>
+                </div>
+              </div>
+            `;
+          });
+        }
+
+        const card = document.createElement('div');
+        card.className = 'comment-card';
+        card.innerHTML = `
+          <div style="font-size:0.85rem; color:var(--google-blue); font-weight:bold; margin-bottom:0.3rem;">
+            [${key.toUpperCase()}] પોસ્ટ: "${item.postTitle}"
+          </div>
+          <div class="comment-header">
+            <span class="comment-author"><i class="fa-solid fa-user"></i> ${c.author}</span>
+            <span class="comment-time">${c.time}</span>
+          </div>
+          <div class="comment-text">${c.text}</div>
+          
+          <div class="comment-actions" style="margin-top:0.5rem; gap:8px;">
+            <button class="btn-action publish-inbox-btn" onclick="toggleAdminReplyBox('${key}', ${postIdx}, ${commentIdx})">
+              <i class="fa-solid fa-reply"></i> Reply
+            </button>
+            <button class="btn-action delete-inbox-btn" onclick="adminDeleteComment('${key}', ${postIdx}, ${commentIdx})">
+              <i class="fa-solid fa-trash"></i> Delete Comment
+            </button>
+          </div>
+
+          <div class="reply-input-box" id="admin-reply-box-${key}-${postIdx}-${commentIdx}" style="display:none; margin-top:0.8rem;">
+            <input type="text" id="admin-r-author-${key}-${postIdx}-${commentIdx}" value="એડમિન (Admin)" placeholder="એડમિન નામ">
+            <textarea id="admin-r-text-${key}-${postIdx}-${commentIdx}" placeholder="અહીં તમારો ઉત્તર/રિપ્લાય લખો..."></textarea>
+            <div style="display:flex; gap:6px;">
+              <button class="btn" style="padding:0.35rem 0.9rem; font-size:0.85rem;" onclick="adminSubmitReply('${key}', ${postIdx}, ${commentIdx})">સબમિટ રિપ્લાય</button>
+              <button class="btn-action delete-inbox-btn" onclick="toggleAdminReplyBox('${key}', ${postIdx}, ${commentIdx})">રદ કરો</button>
+            </div>
+          </div>
+
+          <div class="replies-container">
+            ${repliesHTML}
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function toggleAdminReplyBox(key, postIdx, commentIdx) {
+      const box = document.getElementById(`admin-reply-box-${key}-${postIdx}-${commentIdx}`);
+      if (box) {
+        box.style.display = box.style.display === 'none' ? 'flex' : 'none';
+      }
+    }
+
+    function adminSubmitReply(key, postIdx, commentIdx) {
+      const author = document.getElementById(`admin-r-author-${key}-${postIdx}-${commentIdx}`).value.trim() || 'એડમિન';
+      const text = document.getElementById(`admin-r-text-${key}-${postIdx}-${commentIdx}`).value.trim();
+
+      if (!text) {
+        alert("મહેરબાની કરીને રિપ્લાય ટેક્સ્ટ લખો!");
+        return;
+      }
+
+      siteData[key].dailyPosts[postIdx].comments[commentIdx].replies.push({
+        id: Date.now(),
+        author: author,
+        text: text,
+        time: new Date().toLocaleTimeString('gu-IN', { hour: '2-digit', minute: '2-digit' })
+      });
+
+      saveToLocalStorage();
+      alert("રિપ્લાય સફળતાપૂર્વક ઉમેરાઈ ગયો!");
+      renderAdminCommentsControl();
+    }
+
+    function adminDeleteComment(key, postIdx, commentIdx) {
+      if (confirm("શું તમે આ કોમેન્ટ અને તેના તમામ રિપ્લાયને એડમિન પોર્ટલમાંથી કાઢી નાખવા માંગો છો?")) {
+        siteData[key].dailyPosts[postIdx].comments.splice(commentIdx, 1);
+        saveToLocalStorage();
+        renderAdminCommentsControl();
+      }
+    }
+
+    function adminDeleteReply(key, postIdx, commentIdx, replyIdx) {
+      if (confirm("શું તમે આ રિપ્લાય કાઢી નાખવા માંગો છો?")) {
+        siteData[key].dailyPosts[postIdx].comments[commentIdx].replies.splice(replyIdx, 1);
+        saveToLocalStorage();
+        renderAdminCommentsControl();
+      }
+    }
+
+    function addNewInboxManual() {
+      addInboxField(inboxCounter, "", "");
+      inboxCounter++;
+    }
+
+    function addInboxField(inboxNum, initialTitle = "", initialText = "") {
+      const container = document.getElementById('dynamic-inboxes-container');
+      
+      const wrapper = document.createElement('div');
+      wrapper.className = 'inbox-card';
+      wrapper.id = `inbox-wrapper-${inboxNum}`;
+
+      wrapper.innerHTML = `
+        <label style="font-weight: bold; color: var(--text-sub); display: block; margin-bottom: 0.5rem;">
+          <i class="fa-solid fa-inbox"></i> Inbox ${inboxNum}: નવી વાચન પોસ્ટ
+        </label>
+        <div class="form-group" style="margin-bottom: 0.6rem;">
+          <input type="text" id="input-title-inbox-${inboxNum}" placeholder="પોસ્ટનું ટાઇટલ (જેમ કે: સંસ્મરણો)..." value="${initialTitle}">
+        </div>
+        <textarea id="input-inbox-${inboxNum}" class="inbox-textarea" placeholder="અહીં વાચન માટેની વિગત લખો...">${initialText}</textarea>
+        
+        <div class="inbox-action-bar">
+          <button class="btn-action delete-inbox-btn" onclick="removeInboxField(${inboxNum})">
+            <i class="fa-solid fa-trash"></i> Delete Inbox
+          </button>
+          <button class="btn-action draft-inbox-btn" onclick="saveInboxAsDraft(${inboxNum})">
+            <i class="fa-solid fa-bookmark"></i> Save as Draft
+          </button>
+          <button class="btn-action publish-inbox-btn" onclick="publishSingleInbox(${inboxNum})">
+            <i class="fa-solid fa-paper-plane"></i> Publish
+          </button>
+        </div>
+      `;
+
+      container.appendChild(wrapper);
+    }
+
+    function removeInboxField(inboxNum) {
+      const wrapper = document.getElementById(`inbox-wrapper-${inboxNum}`);
+      if (wrapper) wrapper.remove();
+    }
+
+    function saveInboxAsDraft(inboxNum) {
+      const title = document.getElementById(`input-title-inbox-${inboxNum}`).value.trim();
+      const text = document.getElementById(`input-inbox-${inboxNum}`).value.trim();
+      const selectedKey = document.getElementById('admin-col-select').value;
+
+      if (selectedKey === 'all') {
+        alert("મહેરબાની કરીને ડ્રાફ્ટ સેવ કરવા માટે ચોક્કસ કેટેગરી પસંદ કરો.");
+        return;
+      }
+
+      if (!text) {
+        alert("ઈનબોક્સ ખાલી છે!");
+        return;
+      }
+
+      siteData[selectedKey].drafts.push({ title: title || "અનામિક ટાઇટલ", text: text });
+      saveToLocalStorage();
+      alert(`Inbox ${inboxNum} નું લખાણ Drafts માં સેવ થઈ ગયું છે!`);
+      removeInboxField(inboxNum);
+    }
+
+    function publishSingleInbox(inboxNum) {
+      const title = document.getElementById(`input-title-inbox-${inboxNum}`).value.trim();
+      const text = document.getElementById(`input-inbox-${inboxNum}`).value.trim();
+      const selectedKey = document.getElementById('admin-col-select').value;
+
+      if (selectedKey === 'all') {
+        alert("મહેરબાની કરીને પોસ્ટ પબ્લિશ કરવા માટે ચોક્કસ કેટેગરી પસંદ કરો.");
+        return;
+      }
+
+      if (!text) {
+        alert("ઈનબોક્સ ખાલી છે!");
+        return;
+      }
+
+      const today = getGujaratiDateString();
+      const postTitle = title || "નવું સાહિત્યિક વાચન";
+
+      siteData[selectedKey].dailyPosts.unshift({ title: postTitle, date: today, text: text, comments: [] });
+      saveToLocalStorage();
+
+      pushNotification(`નવી પોસ્ટ: "${postTitle}" પબ્લિશ થઈ છે!`);
+
+      alert(`Inbox ${inboxNum} નું લખાણ સફળતાપૂર્વક Publish થઈ ગયું છે!`);
+      removeInboxField(inboxNum);
+      switchPage('page-1');
+    }
+
+    function saveMainContent() {
+      const selectedKey = document.getElementById('admin-col-select').value;
+
+      if (selectedKey === 'all') {
+        alert("મુખ્ય હેડર કે ટાઇટલ બદલવા માટે ચોક્કસ કેટેગરી પસંદ કરો.");
+        return;
+      }
+
+      const newTitle = document.getElementById('admin-col-title').value;
+      const newContent = document.getElementById('admin-col-content').value;
+
+      siteData[selectedKey].title = newTitle;
+      siteData[selectedKey].content = newContent;
+
+      if (selectedKey === 'home') {
+        const p1 = document.getElementById('admin-photo-1').value;
+        const p2 = document.getElementById('admin-photo-2').value;
+        if(p1) siteData.home.img1 = p1;
+        if(p2) siteData.home.img2 = p2;
+
+        document.getElementById('home-img-1').src = siteData.home.img1;
+        document.getElementById('home-img-2').src = siteData.home.img2;
+        document.getElementById('home-title-disp').innerText = newTitle;
+        document.getElementById('home-content-disp').innerText = newContent;
+      }
+
+      saveToLocalStorage();
+      alert("મુખ્ય ટાઇટલ અને વિગત સફળતાપૂર્વક સેવ થઈ ગયા છે!");
+      switchPage('page-1');
+    }
+
+    function openDraftModal() {
+      const selectedKey = document.getElementById('admin-col-select').value;
+      
+      if (selectedKey === 'all') {
+        alert("ડ્રાફ્ટ જોવા માટે કૃપા કરીને ચોક્કસ કેટેગરી પસંદ કરો.");
+        return;
+      }
+
+      const container = document.getElementById('drafts-container-list');
+      const drafts = siteData[selectedKey].drafts;
+
+      container.innerHTML = "";
+
+      if(drafts.length === 0) {
+        container.innerHTML = "<p style='color:var(--text-sub);'>કોઈ સેવ કરેલા ડ્રાફ્ટ્સ નથી.</p>";
+      } else {
+        drafts.forEach((draft, idx) => {
+          const div = document.createElement('div');
+          div.style.cssText = "background: var(--bg-gray); border:1px solid var(--border-color); border-radius:8px; padding:1rem; margin-bottom:1rem;";
+          div.innerHTML = `
+            <div style="font-weight:bold; color:var(--google-blue); margin-bottom:0.3rem;">${draft.title}</div>
+            <div style="white-space: pre-line; margin-bottom: 0.8rem;">${draft.text}</div>
+            <div style="display:flex; justify-content:flex-end; gap:8px;">
+              <button class="btn-action delete-inbox-btn" onclick="deleteDraft(${idx})"><i class="fa-solid fa-trash"></i> Delete Draft</button>
+              <button class="btn-action publish-inbox-btn" onclick="publishDraft(${idx})"><i class="fa-solid fa-paper-plane"></i> Publish Draft</button>
+            </div>
+          `;
+          container.appendChild(div);
+        });
+      }
+
+      document.getElementById('draft-modal').style.display = 'flex';
+    }
+
+    function closeDraftModal() {
+      document.getElementById('draft-modal').style.display = 'none';
+    }
+
+    function deleteDraft(index) {
+      const selectedKey = document.getElementById('admin-col-select').value;
+      siteData[selectedKey].drafts.splice(index, 1);
+      saveToLocalStorage();
+      openDraftModal();
+    }
+
+    function publishDraft(index) {
+      const selectedKey = document.getElementById('admin-col-select').value;
+      const draft = siteData[selectedKey].drafts[index];
+      const today = getGujaratiDateString();
+
+      siteData[selectedKey].dailyPosts.unshift({ title: draft.title, date: today, text: draft.text, comments: [] });
+      siteData[selectedKey].drafts.splice(index, 1);
+      saveToLocalStorage();
+
+      pushNotification(`નવી પોસ્ટ પબ્લિશ થઈ: "${draft.title}"`);
+
+      alert("ડ્રાફ્ટ સફળતાપૂર્વક પબ્લિશ થઈ ગયો છે!");
+      closeDraftModal();
+      switchPage('page-1');
+    }
+
+    function openNotifModal() {
+      document.getElementById('notif-modal').style.display = 'flex';
+      document.getElementById('notif-dot').style.display = 'none';
+      document.getElementById('notif-toggle').checked = isNotifEnabled;
+      renderNotifHistory();
+    }
+
+    function closeNotifModal() {
+      document.getElementById('notif-modal').style.display = 'none';
+    }
+
+    function toggleNotifications() {
+      isNotifEnabled = document.getElementById('notif-toggle').checked;
+      if (isNotifEnabled) {
+        alert("નોટિફિકેશન્સ ચાલુ (ON) કરી દેવામાં આવ્યા છે.");
+      } else {
+        alert("નોટિફિકેશન્સ બંધ (OFF) કરી દેવામાં આવ્યા છે.");
+      }
+    }
+
+    function pushNotification(msg) {
+      if (!isNotifEnabled) return;
+
+      notificationsList.unshift({ msg: msg, time: new Date().toLocaleTimeString('gu-IN', { hour: '2-digit', minute: '2-digit' }) });
+      document.getElementById('notif-dot').style.display = 'block';
+    }
+
+    function renderNotifHistory() {
+      const listContainer = document.getElementById('notif-history-list');
+      listContainer.innerHTML = "";
+
+      if (notificationsList.length === 0) {
+        listContainer.innerHTML = "<p style='font-size:0.9rem; color:var(--text-sub);'>હજુ સુધી કોઈ નવી નોટિફિકેશન નથી.</p>";
+      } else {
+        notificationsList.forEach(item => {
+          const div = document.createElement('div');
+          div.style.cssText = "padding: 0.6rem; border-bottom: 1px solid var(--border-color); font-size: 0.9rem;";
+          div.innerHTML = `<i class="fa-solid fa-circle-info" style="color:var(--google-blue);"></i> ${item.msg} <span style="font-size:0.75rem; color:var(--text-sub); display:block; text-align:right;">${item.time}</span>`;
+          listContainer.appendChild(div);
+        });
+      }
+    }
+
+    function saveSocialLinks() {
+      const insta = document.getElementById('admin-insta-url').value;
+      const yt = document.getElementById('admin-yt-url').value;
+
+      if(insta) document.getElementById('insta-link').href = insta;
+      if(yt) document.getElementById('yt-link').href = yt;
+
+      alert("સોશિયલ મીડિયા લિંક્સ અપડેટ થઈ ગઈ છે!");
+    }
+
+    function renderAccountList() {
+      const container = document.getElementById('admin-accounts-list');
+      container.innerHTML = "";
+
+      adminAccounts.forEach((acc, index) => {
+        const div = document.createElement('div');
+        div.className = 'account-item';
+        div.innerHTML = `
+          <div>
+            <strong>ID:</strong> ${acc.id} <span style="color:var(--text-sub); font-size:0.85rem;">(${acc.role})</span>
+          </div>
+          <div>
+            ${index > 0 ? `<button class="delete-inbox-btn" onclick="deleteAdminAccount(${index})"><i class="fa-solid fa-trash"></i> Delete</button>` : `<span style="font-size:0.85rem; color:var(--success-green); font-weight:bold;"><i class="fa-solid fa-shield"></i> Primary</span>`}
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function addNewAdminAccount() {
+      const newId = prompt("નવા Admin નું User ID આપો:");
+      if (!newId) return;
+
+      const newPass = prompt("નવા Admin નો Password આપો:");
+      if (!newPass) return;
+
+      adminAccounts.push({ id: newId, pass: newPass, role: "Co-Admin" });
+      alert(`નવું Admin Account (${newId}) ઉમેરાઈ ગયું છે!`);
+      renderAccountList();
+    }
+
+    function deleteAdminAccount(index) {
+      if(confirm("શું તમે આ એડમિન એકાઉન્ટને કાઢી નાખવા માંગો છો?")) {
+        adminAccounts.splice(index, 1);
+        renderAccountList();
+      }
+    }
+  </script>
+</body>
+</html>
