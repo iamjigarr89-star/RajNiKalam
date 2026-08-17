@@ -1,0 +1,48 @@
+{
+  "socialLinks": {
+    "instagram": "https://instagram.com/jigneshgediya078",
+    "facebook": "https://facebook.com",
+    "youtube": "https://youtube.com/@jigneshgediya078",
+    "twitter": "",
+    "whatsapp": ""
+  },
+  "home1": {
+    "title": "શૈક્ષણિક અને સાહિત્યિક સંસ્કારો",
+    "content": "રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. શિક્ષણ અને સાહિત્ય માનવજીવનના સર્વાંગી વિકાસ માટે અત્યંત જરૂરી છે.",
+    "extraBoxes": []
+  },
+  "articles": {
+    "title": "શ્રેષ્ઠ શૈક્ષણિક લેખો",
+    "content": "શિક્ષણ ક્ષેત્રે નવી તકો અને માર્ગદર્શન પૂરું પાડતા વિશિષ્ટ આર્ટિકલ્સ...",
+    "extraBoxes": []
+  },
+  "gazal": {
+    "title": "સાહિત્યિક ગઝલો",
+    "content": "ભાવનાત્મક ગઝલો અને શાયરીનો અદ્ભુત રસથાળ...",
+    "extraBoxes": []
+  },
+  "kavita": {
+    "title": "કાવ્ય સંચય",
+    "content": "માનવ સંવેદનાઓને વાચા આપતી કવિતાઓ...",
+    "extraBoxes": []
+  },
+  "chand": {
+    "title": "છંદ રચનાઓ",
+    "content": "શાસ્ત્રીય અને બંધારણીય છંદોબદ્ધ કાવ્યો...",
+    "extraBoxes": []
+  },
+  "navalkatha": {
+    "title": "નવલકથા પઠન",
+    "content": "રસપ્રદ ધારાવાહિક વાર્તાઓ અને પ્રકરણો...",
+    "extraBoxes": []
+  },
+  "posts": [
+    {
+      "title": "શિક્ષણનું મહત્વ",
+      "text": "શિક્ષણ એ માત્ર અક્ષરજ્ઞાન નથી પરંતુ જીવન જીવવાની સાચી કળા છે.",
+      "date": "1 જાન્યુઆરી, 2026",
+      "status": "publish",
+      "comments": []
+    }
+  ]
+}
