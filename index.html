@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>રાજ ની કલમ !</title>
+  <meta name="description" id="meta-description" content="ગુજરાતી સાહિત્યિક વેબસાઈટ — ગઝલ, કવિતા, છંદ, નવલકથા અને શૈક્ષણિક લેખો.">
+
+  <!-- Open Graph / Social Share Preview (site-level default) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" id="og-title" content="રાજ ની કલમ !">
+  <meta property="og:description" id="og-description" content="ગુજરાતી સાહિત્યિક વેબસાઈટ — ગઝલ, કવિતા, છંદ, નવલકથા અને શૈક્ષણિક લેખો.">
+  <meta name="twitter:card" content="summary">
+
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --google-blue: #1a73e8;
+      --google-blue-hover: #1557b0;
+      --google-blue-light: #e8f0fe;
+      --bg-gray: #f8f9fa;
+      --card-bg: #ffffff;
+      --text-main: #202124;
+      --text-sub: #4a5568;
+      --border-color: #dadce0;
+      --danger-red: #d93025;
+      --danger-red-light: #fce8e6;
+      --draft-amber: #f2990a;
+      --draft-amber-light: #fef7e0;
+      --success-green: #2e7d32;
+      --success-green-light: #e8f5e9;
+      --purple-color: #673ab7;
+      --purple-color-light: #ede7f6;
+    }
+
+    body.dark-theme {
+      --bg-gray: #121212;
+      --card-bg: #1e1e1e;
+      --text-main: #f3f4f6;
+      --text-sub: #cbd5e1;
+      --border-color: #334155;
+      --google-blue: #38bdf8;
+      --google-blue-hover: #0284c7;
+      --google-blue-light: #0c4a6e;
+      --danger-red: #f87171;
+      --danger-red-light: #450a0a;
+      --draft-amber: #facc15;
+      --draft-amber-light: #422006;
+      --success-green: #4ade80;
+      --success-green-light: #052e16;
+      --purple-color: #c084fc;
+      --purple-color-light: #3b0764;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Gujarati', 'Roboto', sans-serif; }
+    
+    html { scroll-behavior: smooth; }
+
+    body { 
+      background-color: var(--bg-gray); 
+      color: var(--text-main); 
+      line-height: 1.8; 
+      font-weight: 500;
+      -webkit-font-smoothing: antialiased; 
+      transition: background-color 0.3s, color 0.3s; 
+    }
+
+    header { 
+      background: var(--card-bg); 
+      color: var(--text-main); 
+      padding: 0.8rem 2rem; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo { 
+      font-size: 1.6rem; 
+      font-weight: 700; 
+      color: var(--google-blue); 
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 1rem; margin-left: auto; }
+    .header-social { display: flex; gap: 0.5rem; align-items: center; }
+
+    .header-social a, .admin-icon-btn, .notif-icon-btn, .theme-toggle-btn {
+      color: var(--google-blue);
+      background: var(--google-blue-light);
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      border: 1px solid var(--border-color);
+      position: relative;
+    }
+    
+    .header-social a:hover, .admin-icon-btn:hover, .notif-icon-btn:hover, .theme-toggle-btn:hover {
+      background: var(--google-blue);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .search-box-container { margin-bottom: 1.5rem; display: flex; gap: 10px; }
+    .search-input {
+      width: 100%;
+      padding: 0.85rem 1.4rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: 25px;
+      outline: none;
+      font-size: 1rem;
+      font-weight: 500;
+      background: var(--card-bg);
+      color: var(--text-main);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    main { 
+      max-width: 1100px; 
+      margin: 5.5rem auto 2rem auto; 
+      padding: 0 1.2rem; 
+    }
+
+    .section-card { 
+      background: var(--card-bg); 
+      padding: 2rem; 
+      margin-bottom: 2rem;
+      border-radius: 14px; 
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+      transition: all 0.2s ease;
+    }
+
+    .home-photo-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 1.5rem 0;
+    }
+    .home-photo-gallery img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .section-title { 
+      color: var(--google-blue); 
+      padding-bottom: 0.5rem; 
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: var(--text-main);
+    }
+    .line-clamp-3.preview-poem {
+      white-space: pre-line;
+      -webkit-line-clamp: 4;
+    }
+
+    .pagination-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 4.5rem;
+      background: var(--bg-gray);
+      padding: 0.8rem 0;
+      z-index: 900;
+    }
+    .page-btn {
+      padding: 0.6rem 1.4rem;
+      border-radius: 20px;
+      border: 1.5px solid var(--border-color);
+      background: var(--card-bg);
+      color: var(--text-sub);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .page-btn:hover, .page-btn.active {
+      background: var(--google-blue);
+      color: #ffffff;
+      border-color: var(--google-blue);
+    }
+
+    .reading-post-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .reading-post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+    .reading-post-title { 
+      font-size: 1.2rem; 
+      color: var(--google-blue); 
+      font-weight: 700; 
+      cursor: pointer;
+    }
+    .post-date { font-size: 0.85rem; color: var(--text-sub); }
+
+    .post-action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    .read-more-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--google-blue);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      background: var(--google-blue-light);
+      border: 1px solid var(--border-color);
+      padding: 6px 16px;
+      border-radius: 18px;
+    }
+
+    /* Modal Styling */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-content {
+      background: var(--card-bg);
+      color: var(--text-main);
+      padding: 1.5rem;
+      border-radius: 12px;
+      max-width: 480px;
+      width: 90%;
+      border: 1px solid var(--border-color);
+    }
+
+    .entry-btn {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.6rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-register-choice { background: var(--success-green); color: white; }
+    .btn-gmail-choice { background: var(--danger-red); color: white; }
+    .btn-direct-choice { background: var(--google-blue); color: white; }
+
+    .back-btn-option {
+      background: transparent;
+      color: var(--text-sub);
+      font-size: 0.85rem;
+      border: 1px solid var(--border-color);
+      margin-top: 0.6rem;
+    }
+
+    /* Form Controls */
+    .form-group { margin-bottom: 0.8rem; }
+    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.95rem; color: var(--text-sub); }
+    .form-group input, .form-group textarea, .form-group select { 
+      width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); 
+      border-radius: 8px; outline: none; background: var(--card-bg); color: var(--text-main); font-size: 1rem;
+    }
+
+    /* LARGER INPUTS & TEXTAREAS FOR ADMIN */
+    .admin-modal-body input[type="text"], .admin-modal-body input[type="url"] {
+      font-size: 1.05rem !important;
+      padding: 0.75rem 1.1rem !important;
+      font-weight: 600;
+    }
+    .admin-modal-body textarea {
+      font-size: 1.05rem !important;
+      min-height: 220px !important;
+      line-height: 1.7;
+      padding: 1rem !important;
+    }
+
+    .btn { 
+      background: var(--google-blue); color: #fff; padding: 0.6rem 1.2rem; 
+      border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 6px; justify-content: center;
+    }
+    .btn-draft { background: var(--draft-amber); color: #fff; }
+    .btn-add { background: var(--purple-color); color: #fff; }
+    .btn-danger { background: var(--danger-red); color: #fff; }
+    .btn-publish { background: var(--success-green); color: #fff; }
+
+    /* Reader Modal Page */
+    .reader-modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 3000;
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .reader-modal-box {
+      background: var(--card-bg); color: var(--text-main); width: 100%; max-width: 800px;
+      max-height: 85vh; border-radius: 12px; border: 1px solid var(--border-color);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    .reader-modal-header { padding: 1rem 1.4rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+    .reader-modal-body { padding: 1.4rem; overflow-y: auto; font-size: 1.05rem; line-height: 1.85; white-space: pre-line; }
+
+    /* Reading progress bar */
+    .reader-progress-track {
+      position: relative;
+      height: 3px;
+      width: 100%;
+      background: var(--border-color);
+      flex-shrink: 0;
+    }
+    .reader-progress-fill {
+      position: absolute;
+      top: 0; left: 0; height: 100%;
+      width: 0%;
+      background: var(--google-blue);
+      transition: width 0.1s ease-out;
+    }
+
+    /* Admin Panel Overlay */
+    .admin-modal-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); z-index: 2500;
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .admin-modal-box {
+      background: var(--card-bg); color: var(--text-main); width: 100%; max-width: 950px;
+      max-height: 90vh; border-radius: 12px; border: 1px solid var(--google-blue);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    .admin-modal-header { padding: 0.8rem 1.2rem; background: var(--google-blue-light); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+    
+    .admin-nav-tabs {
+      display: flex;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .admin-tab-btn {
+      flex: 1;
+      padding: 0.75rem;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      color: var(--text-sub);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .admin-tab-btn.active {
+      color: var(--google-blue);
+      border-bottom-color: var(--google-blue);
+      background: var(--google-blue-light);
+    }
+
+    .admin-modal-body { padding: 1.5rem; overflow-y: auto; font-size: 0.95rem; }
+
+    /* Dynamic Added Field Styling */
+    .extra-field-group {
+      background: var(--bg-gray);
+      padding: 1rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 1.2rem;
+    }
+    
+    /* 4 COLUMN ACTION ICONS BAR */
+    .column-actions-bar {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .action-icon-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .action-icon-btn:hover { transform: translateY(-1px); }
+    .action-icon-btn.btn-act-add { background: var(--purple-color-light); color: var(--purple-color); border-color: var(--purple-color); }
+    .action-icon-btn.btn-act-delete { background: var(--danger-red-light); color: var(--danger-red); border-color: var(--danger-red); }
+    .action-icon-btn.btn-act-draft { background: var(--draft-amber-light); color: var(--draft-amber); border-color: var(--draft-amber); }
+    .action-icon-btn.btn-act-publish { background: var(--success-green-light); color: var(--success-green); border-color: var(--success-green); }
+
+    /* Comments Component */
+    .comments-section { margin-top: 1.5rem; padding-top: 1rem; border-top: 2px dashed var(--border-color); }
+    .comment-card { background: var(--bg-gray); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.8rem; margin-bottom: 0.6rem; }
+    .comment-header { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 0.3rem; color: var(--text-sub); }
+    
+    .admin-comment-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid var(--google-blue);
+      border-radius: 6px;
+      padding: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .admin-reply-box {
+      margin-top: 0.6rem;
+      padding-top: 0.6rem;
+      border-top: 1px dashed var(--border-color);
+      display: none;
+    }
+    .admin-reply-text {
+      background: var(--google-blue-light);
+      padding: 0.5rem 0.8rem;
+      border-radius: 4px;
+      margin-top: 0.4rem;
+      font-size: 0.88rem;
+    }
+
+    /* ---- Like button ---- */
+    .like-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--border-color); background: var(--bg-gray);
+      color: var(--text-sub); padding: 6px 12px; border-radius: 20px;
+      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+    }
+    .like-btn:hover { border-color: var(--danger-red); color: var(--danger-red); }
+    .like-btn.liked { background: var(--danger-red-light); color: var(--danger-red); border-color: var(--danger-red); cursor: default; }
+    .post-action-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+    /* ---- Pinned post badge ---- */
+    .pin-badge { color: var(--draft-amber); margin-right: 4px; }
+
+    /* ---- Archive filter chips ---- */
+    .archive-filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+    .archive-chip {
+      padding: 5px 12px; border-radius: 16px; font-size: 0.82rem; font-weight: 600;
+      border: 1.5px solid var(--border-color); background: var(--card-bg); color: var(--text-sub);
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    .archive-chip.active, .archive-chip:hover { background: var(--google-blue); color: #fff; border-color: var(--google-blue); }
+
+    /* ---- Reader share button ---- */
+    .rm-share-btn {
+      border: 1px solid var(--border-color); background: var(--bg-gray); color: var(--text-main);
+      border-radius: 6px; padding: 0 10px; height: 30px; font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
+    }
+    .rm-share-btn:hover { background: var(--google-blue); color: #fff; }
+
+    /* ---- Notification bell active state ---- */
+    .notif-icon-btn.notif-on { background: var(--google-blue); color: #fff; }
+    .notif-dot {
+      position: absolute; top: 4px; right: 4px; width: 9px; height: 9px;
+      background: var(--danger-red); border-radius: 50%; border: 2px solid var(--card-bg); display: none;
+    }
+
+    /* ---- Admin: existing posts manager ---- */
+    .admin-post-row {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+      padding: 0.6rem 0.8rem; border: 1px solid var(--border-color); border-radius: 8px;
+      margin-bottom: 0.5rem; background: var(--bg-gray); flex-wrap: wrap;
+    }
+    .admin-post-row .apr-title { font-weight: 600; font-size: 0.92rem; flex: 1; min-width: 140px; }
+    .admin-post-row .apr-actions { display: flex; gap: 6px; }
+
+    @media (max-width: 768px) {
+      header { padding: 0.8rem 1rem; }
+      .logo { font-size: 1.2rem; }
+      main { padding: 0 0.8rem; margin: 4.8rem auto 1.5rem auto; }
+      .section-card { padding: 1.2rem; margin-bottom: 1.2rem; }
+      .home-photo-gallery { grid-template-columns: 1fr; gap: 12px; }
+      .home-photo-gallery img { height: 200px; }
+      .column-actions-bar { justify-content: flex-start; }
+      .admin-nav-tabs { flex-direction: column; }
+
+      /* Reader modal: comfortable full-height reading on phones */
+      .reader-modal-overlay { padding: 0; }
+      .reader-modal-box.pro-reader { max-width: 100%; max-height: 100vh; height: 100%; border-radius: 0; }
+      .reader-modal-header.pro-reader-header { padding: 1rem 1.1rem 0.7rem; }
+      .reader-modal-body.pro-reader-body { padding: 1.3rem 1.2rem 2.5rem; max-width: 100%; }
+      .rm-title-pro { font-size: 1.25rem; }
+      .rm-font-btn { width: 34px; height: 34px; font-size: 1rem; }
+      .rm-close-btn { width: 36px; height: 36px; font-size: 1.05rem; }
+    }
+
+    /* ============ PROFESSIONAL AUTH / ENTRY MODAL ============ */
+    .auth-card {
+      background: var(--card-bg);
+      color: var(--text-main);
+      width: 100%;
+      max-width: 420px;
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+      overflow: hidden;
+      text-align: left;
+    }
+    .auth-card-header {
+      background: linear-gradient(135deg, var(--google-blue), #4f8ef7 70%);
+      padding: 1.8rem 1.6rem 1.4rem;
+      text-align: center;
+      color: #fff;
+    }
+    .auth-card-header .auth-logo {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin: 0 auto 0.7rem auto;
+      border: 1px solid rgba(255,255,255,0.4);
+    }
+    .auth-card-header h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .auth-card-header p { font-size: 0.85rem; opacity: 0.92; font-weight: 500; }
+
+    .auth-tabs { display: flex; border-bottom: 1px solid var(--border-color); }
+    .auth-tab-btn {
+      flex: 1; padding: 0.85rem; text-align: center; font-weight: 700; font-size: 0.92rem;
+      background: transparent; border: none; cursor: pointer; color: var(--text-sub);
+      border-bottom: 2px solid transparent; transition: all 0.2s ease;
+    }
+    .auth-tab-btn.active { color: var(--google-blue); border-bottom-color: var(--google-blue); background: var(--google-blue-light); }
+    .auth-tab-body { padding: 1.4rem 1.6rem 1.6rem; }
+
+    .auth-input-wrap { position: relative; margin-bottom: 0.9rem; }
+    .auth-input-wrap label { display: block; margin-bottom: 0.35rem; font-weight: 600; font-size: 0.85rem; color: var(--text-sub); }
+    .auth-input-wrap .auth-input-icon {
+      position: absolute; left: 0.9rem; top: calc(0.35rem + 1.05rem);
+      color: var(--text-sub); font-size: 0.9rem; pointer-events: none;
+    }
+    .auth-input-wrap input {
+      width: 100%; padding: 0.75rem 1rem 0.75rem 2.4rem; border: 1.5px solid var(--border-color);
+      border-radius: 9px; outline: none; background: var(--bg-gray); color: var(--text-main);
+      font-size: 0.96rem; transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .auth-input-wrap input:focus { border-color: var(--google-blue); box-shadow: 0 0 0 3px var(--google-blue-light); }
+    .auth-input-wrap .pass-toggle-icon {
+      position: absolute; right: 0.9rem; top: calc(0.35rem + 1.05rem);
+      color: var(--text-sub); cursor: pointer; font-size: 0.9rem;
+    }
+    .auth-row-2 { display: flex; gap: 10px; }
+    .auth-row-2 .auth-input-wrap { flex: 1; }
+
+    .auth-error-msg {
+      display: none; background: var(--danger-red-light); color: var(--danger-red);
+      border: 1px solid var(--danger-red); border-radius: 8px; padding: 0.55rem 0.8rem;
+      font-size: 0.82rem; font-weight: 600; margin-bottom: 0.9rem; align-items: center; gap: 6px;
+    }
+    .auth-success-msg {
+      display: none; background: var(--success-green-light); color: var(--success-green);
+      border: 1px solid var(--success-green); border-radius: 8px; padding: 0.55rem 0.8rem;
+      font-size: 0.82rem; font-weight: 600; margin-bottom: 0.9rem; align-items: center; gap: 6px;
+    }
+
+    .auth-submit-btn {
+      width: 100%; padding: 0.8rem; border-radius: 9px; border: none; cursor: pointer;
+      font-size: 0.98rem; font-weight: 700; background: var(--google-blue); color: #fff;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .auth-submit-btn:hover { background: var(--google-blue-hover); }
+    .auth-submit-btn:active { transform: scale(0.98); }
+
+    .auth-divider { display: flex; align-items: center; gap: 10px; margin: 1.1rem 0; color: var(--text-sub); font-size: 0.78rem; }
+    .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
+
+    .auth-guest-btn {
+      width: 100%; padding: 0.75rem; border-radius: 9px; cursor: pointer; font-weight: 600; font-size: 0.9rem;
+      background: transparent; border: 1.5px dashed var(--border-color); color: var(--text-sub);
+      display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;
+    }
+    .auth-guest-btn:hover { border-color: var(--google-blue); color: var(--google-blue); }
+
+    /* ============ PROFESSIONAL READER MODAL ============ */
+    .reader-modal-box.pro-reader { max-width: 760px; }
+    .reader-modal-header.pro-reader-header { flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1.2rem 1.6rem 0.9rem; }
+    .reader-modal-header.pro-reader-header .rm-top-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+    .rm-title-pro {
+      font-size: 1.45rem; font-weight: 700; color: var(--text-main); line-height: 1.35;
+      font-family: 'Noto Sans Gujarati', 'Georgia', serif;
+    }
+    .rm-close-btn { background: var(--bg-gray); border: 1px solid var(--border-color); color: var(--text-main); font-size: 1rem; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; flex-shrink: 0; }
+    .rm-meta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; color: var(--text-sub); font-size: 0.82rem; font-weight: 600; }
+    .rm-meta-row span { display: flex; align-items: center; gap: 5px; }
+    .rm-font-controls { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+    .rm-font-btn {
+      width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border-color);
+      background: var(--bg-gray); color: var(--text-main); cursor: pointer; font-weight: 700; font-size: 0.9rem;
+    }
+    .rm-font-btn:hover { background: var(--google-blue); color: #fff; }
+
+    .reader-modal-body.pro-reader-body {
+      padding: 1.8rem 2.2rem 2rem;
+      font-family: 'Noto Sans Gujarati', Georgia, 'Times New Roman', serif;
+      max-width: 68ch;
+      margin: 0 auto;
+    }
+    .pro-reader-body p {
+      margin-bottom: 1.1em;
+      text-align: justify;
+      letter-spacing: 0.1px;
+    }
+    .pro-reader-body:not(.poem-mode) p:first-of-type::first-letter {
+      font-size: 2.6em;
+      font-weight: 700;
+      float: left;
+      line-height: 0.85;
+      padding-right: 8px;
+      padding-top: 4px;
+      color: var(--google-blue);
+    }
+
+    /* ---- Poetry (કવિતા / ગઝલ / છંદ) reading format ---- */
+    .pro-reader-body.poem-mode #rm-body {
+      text-align: center;
+    }
+    .poem-stanza {
+      margin-bottom: 1.6em;
+    }
+    .poem-line {
+      font-style: italic;
+      line-height: 2;
+      letter-spacing: 0.2px;
+    }
+
+    /* ---- Novel (નવલકથા) reading format: chapters / dialogues ---- */
+    .novel-chapter-heading {
+      text-align: center;
+      font-weight: 700;
+      color: var(--google-blue);
+      font-size: 1.25em;
+      margin: 1.6em 0 1em;
+      letter-spacing: 0.5px;
+    }
+    .novel-chapter-heading:first-child { margin-top: 0.2em; }
+    .novel-dialogue {
+      font-style: italic;
+      padding-left: 1em;
+      border-left: 3px solid var(--google-blue-light);
+      color: var(--text-main);
+    }
+
+    /* ============ ADMIN GITHUB SYNC ============ */
+    .sync-status-badge {
+      display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
+      border-radius: 20px; font-size: 0.78rem; font-weight: 700;
+      border: 1px solid var(--border-color); background: var(--bg-gray); color: var(--text-sub);
+    }
+    .sync-status-badge.status-ok { background: var(--success-green-light); color: var(--success-green); border-color: var(--success-green); }
+    .sync-status-badge.status-error { background: var(--danger-red-light); color: var(--danger-red); border-color: var(--danger-red); }
+    .sync-status-badge.status-loading { background: var(--draft-amber-light); color: var(--draft-amber); border-color: var(--draft-amber); }
+    .sync-status-badge i.fa-spin { animation: rm-spin 1s linear infinite; }
+    @keyframes rm-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+    .github-info-box {
+      background: var(--google-blue-light); border: 1px solid var(--google-blue);
+      border-radius: 10px; padding: 0.9rem 1.1rem; font-size: 0.85rem; color: var(--text-main);
+      margin-bottom: 1.2rem; line-height: 1.6;
+    }
+  </style>
+</head>
+<body class="dark-theme">
+
+  <!-- ENTRY MODAL (Professional Auth Card) -->
+  <div class="modal-overlay" id="entry-modal" style="display: flex;">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <div class="auth-logo"><i class="fa-solid fa-pen-nib"></i></div>
+        <h3>રાજ ની કલમ !</h3>
+        <p>વેબસાઈટમાં પ્રવેશ કરવા વિકલ્પ પસંદ કરો</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="auth-tab-login" onclick="switchAuthTab('login')"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
+        <button class="auth-tab-btn" id="auth-tab-register" onclick="switchAuthTab('register')"><i class="fa-solid fa-user-plus"></i> Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="login-form" class="auth-tab-body">
+        <div class="auth-error-msg" id="login-error-msg"><i class="fa-solid fa-circle-exclamation"></i> <span></span></div>
+        <div class="auth-success-msg" id="login-success-msg"><i class="fa-solid fa-circle-check"></i> <span></span></div>
+
+        <div class="auth-input-wrap">
+          <label>Email / Gmail</label>
+          <i class="fa-solid fa-envelope auth-input-icon"></i>
+          <input type="email" id="login-email" placeholder="you@example.com" autocomplete="username">
+        </div>
+        <div class="auth-input-wrap">
+          <label>Password</label>
+          <i class="fa-solid fa-lock auth-input-icon"></i>
+          <input type="password" id="login-pass" placeholder="Enter Password" autocomplete="current-password">
+          <i class="fa-solid fa-eye pass-toggle-icon" onclick="togglePasswordVisibility('login-pass', this)"></i>
+        </div>
+
+        <button class="auth-submit-btn" onclick="processLogin()"><i class="fa-solid fa-right-to-bracket"></i> Login કરો</button>
+
+        <div class="auth-divider">અથવા</div>
+        <button class="auth-guest-btn" onclick="enterDirectly()"><i class="fa-solid fa-bolt"></i> Without Login (ડાયરેક્ટ પ્રવેશ)</button>
+      </div>
+
+      <!-- Registration Form -->
+      <div id="register-form" class="auth-tab-body" style="display: none;">
+        <div class="auth-error-msg" id="register-error-msg"><i class="fa-solid fa-circle-exclamation"></i> <span></span></div>
+        <div class="auth-success-msg" id="register-success-msg"><i class="fa-solid fa-circle-check"></i> <span></span></div>
+
+        <div class="auth-row-2">
+          <div class="auth-input-wrap">
+            <label>First Name</label>
+            <i class="fa-solid fa-user auth-input-icon"></i>
+            <input type="text" id="reg-fname" placeholder="First Name" autocomplete="given-name">
+          </div>
+          <div class="auth-input-wrap">
+            <label>Last Name</label>
+            <i class="fa-solid fa-user auth-input-icon"></i>
+            <input type="text" id="reg-lname" placeholder="Last Name" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="auth-input-wrap">
+          <label>Email / Gmail</label>
+          <i class="fa-solid fa-envelope auth-input-icon"></i>
+          <input type="email" id="reg-email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <div class="auth-input-wrap">
+          <label>Set Password</label>
+          <i class="fa-solid fa-lock auth-input-icon"></i>
+          <input type="password" id="reg-pass" placeholder="Minimum 6 characters" autocomplete="new-password">
+          <i class="fa-solid fa-eye pass-toggle-icon" onclick="togglePasswordVisibility('reg-pass', this)"></i>
+        </div>
+
+        <button class="auth-submit-btn" style="background: var(--success-green);" onclick="processRegister()"><i class="fa-solid fa-user-plus"></i> Register & Login</button>
+
+        <div class="auth-divider">અથવા</div>
+        <button class="auth-guest-btn" onclick="enterDirectly()"><i class="fa-solid fa-bolt"></i> Without Login (ડાયરેક્ટ પ્રવેશ)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header id="main-header">
+    <div class="logo" id="site-logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <i class="fa-solid fa-pen-nib"></i> રાજ ની કલમ !
+    </div>
+
+    <div class="header-right">
+      <div class="header-social">
+        <button class="notif-icon-btn" id="notif-bell-btn" onclick="toggleNotifications()" title="નવી પોસ્ટ સૂચના ચાલુ/બંધ કરો">
+          <i class="fa-solid fa-bell" id="notif-bell-icon"></i>
+          <span class="notif-dot" id="notif-dot"></span>
+        </button>
+
+        <button class="theme-toggle-btn" onclick="toggleTheme()" title="Toggle Mode">
+          <i class="fa-solid fa-sun" id="theme-icon"></i>
+        </button>
+
+        <button class="admin-icon-btn" id="header-admin-btn" onclick="openAdminPanel()" title="Open Admin Page">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Dynamic Header Social Links linked with Admin Page -->
+        <a id="home-social-instagram" href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a id="home-social-facebook" href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a id="home-social-youtube" href="#" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a id="home-social-twitter" href="#" target="_blank" title="Twitter / X" style="display:none;"><i class="fab fa-x-twitter"></i></a>
+        <a id="home-social-whatsapp" href="#" target="_blank" title="WhatsApp" style="display:none;"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Navigation Bar -->
+    <div class="pagination-bar" id="page-nav-bar">
+      <a class="page-btn active" href="#page-1">Page 1 (Home)</a>
+      <a class="page-btn" href="#page-2">Page 2 (સાહિત્ય)</a>
+      <a class="page-btn" href="#page-3">Page 3 (About/Contact)</a>
+      <a class="page-btn" href="#page-4">Page 4 (કોમેન્ટ્સ)</a>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-box-container">
+      <input type="text" id="global-search-input" class="search-input" placeholder="🔍 સાહિત્યિક કૃતિઓ કે લેખ શોધો (Search)..." oninput="handleSearch()">
+    </div>
+
+    <!-- PAGE 1: HOME -->
+    <section id="page-1">
+      <div class="section-card" id="home-sec-1">
+        <h1 class="section-title" id="home-title-disp" style="cursor:pointer;" onclick="openCustomSectionReader('home1')">
+          <i class="fa-solid fa-graduation-cap"></i> શૈક્ષણિક અને સાહિત્યિક સંસ્કારો
+        </h1>
+        
+        <div class="home-photo-gallery">
+          <img id="home-img-1" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="Educational 1">
+          <img id="home-img-2" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="Educational 2">
+        </div>
+
+        <div id="home-content-disp" class="line-clamp-3">
+          રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. શિક્ષણ અને સાહિત્ય માનવજીવનના સર્વાંગી વિકાસ માટે અત્યંત જરૂરી છે. અહીં આપને રોજેરોજ નવતર વિચારો, શૈક્ષણિક માહિતી, જ્ઞાનવર્ધક લેખો અને શ્રેષ્ઠ સાહિત્ય પઠન સામગ્રી મળશે.
+        </div>
+        <button class="read-more-btn" style="margin-top:0.8rem;" onclick="openCustomSectionReader('home1')"><i class="fa-solid fa-book-open"></i> Read More (આખું વાંચો)</button>
+      </div>
+
+      <div class="section-card">
+        <h3 style="color: var(--google-blue); font-size: 1.2rem; margin-bottom: 0.8rem;">
+          <i class="fa-solid fa-book-reader"></i> દૈનિક સાહિત્યિક પોસ્ટ્સ (Daily Column Posts):
+        </h3>
+        <div class="archive-filter-bar" id="archive-filter-bar"></div>
+        <div id="home-daily-container"></div>
+      </div>
+    </section>
+
+    <!-- PAGE 2: LITERATURE CATEGORIES -->
+    <section id="page-2">
+      <div class="section-card" id="cat-articles">
+        <h2 class="section-title"><i class="fa-solid fa-newspaper"></i> લેખો (Articles)</h2>
+        <div id="articles-posts-container"></div>
+      </div>
+
+      <div class="section-card" id="cat-gazal">
+        <h2 class="section-title"><i class="fa-solid fa-feather-pointed"></i> ગઝલ</h2>
+        <div id="gazal-posts-container"></div>
+      </div>
+
+      <div class="section-card" id="cat-kavita">
+        <h2 class="section-title"><i class="fa-solid fa-music"></i> કવિતા</h2>
+        <div id="kavita-posts-container"></div>
+      </div>
+
+      <div class="section-card" id="cat-chand">
+        <h2 class="section-title"><i class="fa-solid fa-scroll"></i> છંદ</h2>
+        <div id="chand-posts-container"></div>
+      </div>
+
+      <div class="section-card" id="cat-navalkatha">
+        <h2 class="section-title"><i class="fa-solid fa-book-open"></i> નવલકથા</h2>
+        <div id="navalkatha-posts-container"></div>
+      </div>
+    </section>
+
+    <!-- PAGE 3: ABOUT & CONTACT -->
+    <section id="page-3">
+      <div class="section-card" style="border-left: 4px solid var(--success-green);">
+        <h2 class="section-title" style="color: var(--success-green);"><i class="fa-solid fa-address-card"></i> અમારા વિશે (About Us)</h2>
+        <p style="color: var(--text-sub);">આ પ્લેટફોર્મ ગુજરાતી સાહિત્ય અને શૈક્ષણિક વિચારો માટેનું અનોખું સંગમ સ્થાન છે.</p>
+      </div>
+
+      <div class="section-card" style="border-left: 4px solid var(--success-green);">
+        <h2 class="section-title" style="color: var(--success-green);"><i class="fa-solid fa-envelope"></i> Contact Us (સંપર્ક કરો)</h2>
+        <form action="#" method="POST" onsubmit="event.preventDefault(); submitContactComment();">
+          <div class="form-group">
+            <label>તમારું Gmail Address / નામ:</label>
+            <input type="text" id="contact-email" placeholder="તમારું નામ અથવા ઇમેઇલ લખો" required>
+          </div>
+          <div class="form-group">
+            <label>તમારી કોમેન્ટ / મેસેજ:</label>
+            <textarea id="contact-comment" style="min-height: 100px;" placeholder="અહીં તમારો મેસેજ લખો..." required></textarea>
+          </div>
+          <button type="submit" class="btn" style="background: var(--success-green); width: 100%;">Submit Comment</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- PAGE 4: COMMENTS -->
+    <section id="page-4">
+      <div class="section-card" style="border-left: 4px solid var(--purple-color);">
+        <h2 class="section-title" style="color: var(--purple-color);"><i class="fa-solid fa-comments"></i> તમામ યુઝર કોમેન્ટ્સ (User Comments)</h2>
+        <div id="all-user-comments-container"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ADMIN CONTROL PAGE PANEL -->
+  <div class="admin-modal-overlay" id="admin-panel-modal">
+    <div class="admin-modal-box">
+      <div class="admin-modal-header">
+        <h3 style="color: var(--google-blue); font-size: 1.1rem; font-weight:700;"><i class="fa-solid fa-sliders"></i> એડમિન કંટ્રોલ પેનલ (Admin Page)</h3>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="sync-status-badge"><i class="fa-solid fa-plug-circle-xmark"></i> GitHub કનેક્ટ નથી</span>
+          <button style="background:none; border:none; color:var(--text-main); font-size:1.2rem; cursor:pointer;" onclick="closeAdminPanel()">✕</button>
+        </div>
+      </div>
+
+      <!-- ADMIN TAB NAVIGATION (4 PAGES) -->
+      <div class="admin-nav-tabs">
+        <button class="admin-tab-btn active" id="tab-btn-1" onclick="switchAdminTab(1)"><i class="fa-solid fa-pen-to-square"></i> ૧. કોલમ અને લખાણ</button>
+        <button class="admin-tab-btn" id="tab-btn-2" onclick="switchAdminTab(2)"><i class="fa-solid fa-comments"></i> ૨. કોમેન્ટ્સ મોડરેશન</button>
+        <button class="admin-tab-btn" id="tab-btn-3" onclick="switchAdminTab(3)"><i class="fa-solid fa-share-nodes"></i> ૩. સોશિયલ મીડિયા લિંક્સ</button>
+        <button class="admin-tab-btn" id="tab-btn-4" onclick="switchAdminTab(4)"><i class="fa-brands fa-github"></i> ૪. GitHub Sync</button>
+      </div>
+
+      <!-- ADMIN PAGE 1: WRITING BOXES & COLUMN EDITING -->
+      <div class="admin-modal-body" id="admin-page-1">
+        <div class="form-group">
+          <label style="font-size: 1.05rem; font-weight: 700; color: var(--google-blue);">કોલમ કે સેક્શન પસંદ કરો:</label>
+          <select id="admin-col-select" onchange="loadSelectedColumnData()" style="font-size: 1rem; font-weight: 600; padding: 0.7rem;">
+            <option value="home1">શૈક્ષણિક સંસ્કારો (Section 1)</option>
+            <option value="articles">Articles (લેખો)</option>
+            <option value="gazal">ગઝલ</option>
+            <option value="kavita">કવિતા</option>
+            <option value="chand">છંદ</option>
+            <option value="navalkatha">નવલકથા</option>
+          </select>
+        </div>
+
+        <!-- MAIN WRITING BOX WITH 4 DIRECT ACTION ICONS -->
+        <div class="extra-field-group">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; flex-wrap: wrap; gap: 8px;">
+            <label style="margin:0; font-weight:700; font-size: 1.05rem;">મુખ્ય લખાણ બોક્સ (Main Column Box):</label>
+
+            <!-- 4 ACTION ICONS FOR MAIN BOX -->
+            <div class="column-actions-bar">
+              <button class="action-icon-btn btn-act-add" onclick="addNewWritingBox()" title="Add New Box"><i class="fa-solid fa-plus"></i> Add</button>
+              <button class="action-icon-btn btn-act-delete" onclick="clearMainBox()" title="Clear/Delete Text"><i class="fa-solid fa-trash"></i> Delete</button>
+              <button class="action-icon-btn btn-act-draft" onclick="saveAdminChanges('draft')" title="Save as Draft"><i class="fa-solid fa-file-lines"></i> Draft</button>
+              <button class="action-icon-btn btn-act-publish" onclick="saveAdminChanges('publish')" title="Publish Column"><i class="fa-solid fa-paper-plane"></i> Publish</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>મુખ્ય ટાઇટલ બોક્સ (Main Title Box):</label>
+            <input type="text" id="admin-col-title" placeholder="મોટું ટાઇટલ લખો...">
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label>મુખ્ય લખાણ બોક્સ (Main Text Writing Area):</label>
+            <textarea id="admin-col-text" placeholder="અહીં તમારું મુખ્ય વિગતવાર લખાણ ઉમેરો..."></textarea>
+          </div>
+        </div>
+
+        <!-- Dynamic Additional Text Boxes -->
+        <div id="extra-boxes-container"></div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
+        
+        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem;"><i class="fa-solid fa-plus-circle"></i> નવી દૈનિક પોસ્ટ ઉમેરો (Add New Daily Post)</h4>
+        <div class="form-group">
+          <label>પોસ્ટ શીર્ષક / Title Box:</label>
+          <input type="text" id="new-post-title" placeholder="પોસ્ટનું ટાઇટલ લખો..." oninput="saveDraftAutosave()">
+        </div>
+        <div class="form-group">
+          <label>પોસ્ટનું વિગતવાર લખાણ / Writing Box:</label>
+          <textarea id="new-post-text" placeholder="અહીં દૈનિક પોસ્ટનું લખાણ ઉમેરો..." oninput="saveDraftAutosave()"></textarea>
+        </div>
+        <div style="display: flex; gap: 10px; margin-top: 0.8rem;">
+          <button class="btn btn-draft" style="padding: 0.79rem 1.4rem;" onclick="publishNewPost('draft')"><i class="fa-solid fa-file-lines"></i> Save Draft</button>
+          <button class="btn btn-publish" style="padding: 0.79rem 1.4rem;" onclick="publishNewPost('publish')"><i class="fa-solid fa-paper-plane"></i> Publish Post</button>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
+
+        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem;"><i class="fa-solid fa-list-check"></i> હાલની પોસ્ટ્સ મેનેજ કરો (Pin / Delete)</h4>
+        <div id="admin-existing-posts-list"></div>
+      </div>
+
+      <!-- ADMIN PAGE 2: COMMENTS MANAGEMENT -->
+      <div class="admin-modal-body" id="admin-page-2" style="display: none;">
+        <h4 style="color: var(--purple-color); margin-bottom: 0.8rem; font-size:1rem;"><i class="fa-solid fa-comments"></i> કોમેન્ટ્સ કંટ્રોલર (Comments Management)</h4>
+        <div id="admin-comments-list"></div>
+      </div>
+
+      <!-- ADMIN PAGE 3: SOCIAL MEDIA LINK MANAGER -->
+      <div class="admin-modal-body" id="admin-page-3" style="display: none;">
+        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem;">
+          <i class="fa-solid fa-share-nodes"></i> સોશિયલ મીડિયા લિંક્સ કંટ્રોલર (Social Media Links)
+        </h4>
+        <p style="color: var(--text-sub); margin-bottom: 1.2rem; font-size: 0.9rem;">
+          અહીં તમારાં સોશિયલ મીડિયા અકાઉન્ટ્સની URL લિંક્સ ઉમેરો. સેવ કરવા પર વેબસાઇટ પરના ટોપ હેડર આઇકન સાથે લિંક થઈ જશે.
+        </p>
+
+        <div class="extra-field-group">
+          <div class="form-group">
+            <label><i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram Profile URL:</label>
+            <input type="url" id="admin-link-instagram" placeholder="https://instagram.com/yourprofile">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook Page/Profile URL:</label>
+            <input type="url" id="admin-link-facebook" placeholder="https://facebook.com/yourpage">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fab fa-youtube" style="color: #ff0000;"></i> YouTube Channel URL:</label>
+            <input type="url" id="admin-link-youtube" placeholder="https://youtube.com/@yourchannel">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fab fa-x-twitter"></i> Twitter / X Profile URL:</label>
+            <input type="url" id="admin-link-twitter" placeholder="https://x.com/yourusername">
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label><i class="fab fa-whatsapp" style="color: #25d366;"></i> WhatsApp Group / Channel URL:</label>
+            <input type="url" id="admin-link-whatsapp" placeholder="https://chat.whatsapp.com/...">
+          </div>
+        </div>
+
+        <button class="btn btn-publish" style="width: 100%; padding: 0.85rem;" onclick="saveSocialMediaLinks()">
+          <i class="fa-solid fa-floppy-disk"></i> સોશિયલ મીડિયા લિંક્સ સેવ કરો (Save All Links)
+        </button>
+      </div>
+
+      <!-- ADMIN PAGE 4: GITHUB SYNC SETTINGS -->
+      <div class="admin-modal-body" id="admin-page-4" style="display: none;">
+        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem;">
+          <i class="fa-brands fa-github"></i> GitHub Sync સેટિંગ્સ
+        </h4>
+
+        <div class="github-info-box">
+          <i class="fa-solid fa-circle-info"></i> અહીં સેટિંગ્સ સેવ કર્યા પછી, Admin Page પર જે પણ <b>Publish / Draft / Save</b> કરશો તે બધું આપોઆપ તમારા GitHub Repository ના <code id="gh-path-preview">data.json</code> ફાઈલમાં commit થઈ જશે — એટલે કે તે કોડમાં કાયમી સેવ થઈ જશે અને દરેક વિઝિટરને દેખાશે.<br><br>
+          <b>ટોકન કેવી રીતે બનાવવો:</b> GitHub → Settings → Developer settings → Personal access tokens → Fine-grained token → આ repository માટે <b>Contents: Read & Write</b> પરમિશન આપો.<br>
+          ⚠️ ટોકન આ બ્રાઉઝરમાં જ સેવ થાય છે — તેને કોઈની સાથે શેર ન કરો.
+        </div>
+
+        <div class="extra-field-group">
+          <div class="auth-row-2">
+            <div class="form-group">
+              <label>GitHub Username / Organization:</label>
+              <input type="text" id="gh-owner" placeholder="e.g. jigneshgediya078">
+            </div>
+            <div class="form-group">
+              <label>Repository Name:</label>
+              <input type="text" id="gh-repo" placeholder="e.g. RajNiKalam" oninput="document.getElementById('gh-path-preview').innerText = document.getElementById('gh-path').value || 'data.json';">
+            </div>
+          </div>
+          <div class="auth-row-2">
+            <div class="form-group">
+              <label>Branch:</label>
+              <input type="text" id="gh-branch" placeholder="main" value="main">
+            </div>
+            <div class="form-group">
+              <label>Data File Path:</label>
+              <input type="text" id="gh-path" placeholder="data.json" value="data.json" oninput="document.getElementById('gh-path-preview').innerText = this.value || 'data.json';">
+            </div>
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label>Personal Access Token:</label>
+            <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+          </div>
+        </div>
+
+        <div style="display:flex; gap:10px; flex-wrap: wrap;">
+          <button class="btn btn-publish" style="flex:1; padding: 0.85rem;" onclick="saveGithubSettingsForm()">
+            <i class="fa-solid fa-floppy-disk"></i> સેટિંગ્સ સેવ કરો
+          </button>
+          <button class="btn" style="flex:1; padding: 0.85rem;" onclick="pushDataToGithub('Manual sync from Admin Panel')">
+            <i class="fa-solid fa-arrows-rotate"></i> Sync Now (હમણાં સેવ કરો)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FULL CONTENT READ MORE MODAL PAGE -->
+  <div class="reader-modal-overlay" id="reader-modal" onclick="if(event.target===this) closeReaderModal();">
+    <div class="reader-modal-box pro-reader">
+      <div class="reader-progress-track"><div class="reader-progress-fill" id="rm-progress-fill"></div></div>
+      <div class="reader-modal-header pro-reader-header">
+        <div class="rm-top-row">
+          <div class="rm-title-pro" id="rm-title">શીર્ષક</div>
+          <button class="rm-close-btn" onclick="closeReaderModal()">✕</button>
+        </div>
+        <div class="rm-meta-row">
+          <span><i class="fa-regular fa-clock"></i> <span id="rm-read-time">1 મિનિટ</span></span>
+          <span><i class="fa-solid fa-align-left"></i> <span id="rm-word-count">0 શબ્દો</span></span>
+          <div class="rm-font-controls">
+            <button class="rm-share-btn" onclick="shareCurrentReading()" title="Share"><i class="fa-solid fa-share-nodes"></i> Share</button>
+            <button class="rm-font-btn" onclick="adjustReaderFontSize(-1)" title="Decrease font size">A-</button>
+            <button class="rm-font-btn" onclick="adjustReaderFontSize(1)" title="Increase font size">A+</button>
+          </div>
+        </div>
+      </div>
+      <div class="reader-modal-body pro-reader-body" id="rm-body-wrap">
+        <div id="rm-body">લખાણ...</div>
+
+        <div class="comments-section" id="comments-section-wrap">
+          <h5 style="font-size:0.95rem;"><i class="fa-solid fa-comments"></i> ટિપ્પણીઓ (Comments):</h5>
+          <div style="margin-top: 0.8rem;">
+            <div class="form-group">
+              <input type="text" id="c-author" placeholder="તમારું નામ">
+            </div>
+            <div class="form-group">
+              <textarea id="c-text" style="min-height: 80px;" placeholder="તમારી ટિપ્પણી ઉમેરો..."></textarea>
+            </div>
+            <button class="btn" onclick="addComment()">પોસ્ટ ટિપ્પણી</button>
+          </div>
+          <div id="comments-list" style="margin-top: 0.8rem;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function getGujaratiDateString(date = new Date()) {
+      return date.toLocaleDateString('gu-IN', { year: 'numeric', month: 'long', day: 'numeric' });
+    }
+
+    let isAdminLoggedIn = false;
+    let registeredUsers = JSON.parse(localStorage.getItem('raj_registered_users')) || [];
+    let currentPostIdx = null;
+
+    const defaultSiteData = {
+      socialLinks: {
+        instagram: "https://instagram.com/jigneshgediya078",
+        facebook: "https://facebook.com",
+        youtube: "https://youtube.com/@jigneshgediya078",
+        twitter: "",
+        whatsapp: ""
+      },
+      home1: { title: "શૈક્ષણિક અને સાહિત્યિક સંસ્કારો", content: "રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. શિક્ષણ અને સાહિત્ય માનવજીવનના સર્વાંગી વિકાસ માટે અત્યંત જરૂરી છે.", extraBoxes: [] },
+      articles: { title: "શ્રેષ્ઠ શૈક્ષણિક લેખો", content: "શિક્ષણ ક્ષેત્રે નવી તકો અને માર્ગદર્શન પૂરું પાડતા વિશિષ્ટ આર્ટિકલ્સ...", extraBoxes: [] },
+      gazal: { title: "સાહિત્યિક ગઝલો", content: "ભાવનાત્મક ગઝલો અને શાયરીનો અદ્ભુત રસથાળ...", extraBoxes: [] },
+      kavita: { title: "કાવ્ય સંચય", content: "માનવ સંવેદનાઓને વાચા આપતી કવિતાઓ...", extraBoxes: [] },
+      chand: { title: "છંદ રચનાઓ", content: "શાસ્ત્રીય અને બંધારણીય છંદોબદ્ધ કાવ્યો...", extraBoxes: [] },
+      navalkatha: { title: "નવલકથા પઠન", content: "રસપ્રદ ધારાવાહિક વાર્તાઓ અને પ્રકરણો...", extraBoxes: [] },
+      posts: [
+        { title: "શિક્ષણનું મહત્વ", text: "શિક્ષણ એ માત્ર અક્ષરજ્ઞાન નથી પરંતુ જીવન જીવવાની સાચી કળા છે.", date: getGujaratiDateString(), status: 'publish', comments: [] }
+      ]
+    };
+
+    let siteData = JSON.parse(localStorage.getItem('raj_ni_kalam_merged_data')) || JSON.parse(JSON.stringify(defaultSiteData));
+
+    function saveToLocalStorage() {
+      localStorage.setItem('raj_ni_kalam_merged_data', JSON.stringify(siteData));
+    }
+
+    /* ============ GITHUB SYNC (Admin publish/save -> commits to GitHub repo) ============ */
+    const GITHUB_CONFIG_KEY = 'raj_github_config';
+
+    function getGithubConfig() {
+      return JSON.parse(localStorage.getItem(GITHUB_CONFIG_KEY)) || { owner: '', repo: '', branch: 'main', path: 'data.json', token: '' };
+    }
+
+    function loadGithubSettingsForm() {
+      const cfg = getGithubConfig();
+      document.getElementById('gh-owner').value = cfg.owner || '';
+      document.getElementById('gh-repo').value = cfg.repo || '';
+      document.getElementById('gh-branch').value = cfg.branch || 'main';
+      document.getElementById('gh-path').value = cfg.path || 'data.json';
+      document.getElementById('gh-token').value = cfg.token || '';
+      updateSyncStatus(cfg.owner && cfg.repo && cfg.token ? 'idle' : 'unconfigured');
+    }
+
+    function saveGithubSettingsForm() {
+      const cfg = {
+        owner: document.getElementById('gh-owner').value.trim(),
+        repo: document.getElementById('gh-repo').value.trim(),
+        branch: document.getElementById('gh-branch').value.trim() || 'main',
+        path: document.getElementById('gh-path').value.trim() || 'data.json',
+        token: document.getElementById('gh-token').value.trim()
+      };
+      if(!cfg.owner || !cfg.repo || !cfg.token) {
+        alert("કૃપા કરી GitHub Username, Repository Name અને Personal Access Token ભરો!");
+        return;
+      }
+      localStorage.setItem(GITHUB_CONFIG_KEY, JSON.stringify(cfg));
+      updateSyncStatus('idle', 'સેટિંગ્સ સેવ થઈ ગઈ');
+      alert("GitHub સેટિંગ્સ સફળતાપૂર્વક સેવ થઈ ગઈ! હવે Publish/Draft/Save કરવાથી ડેટા GitHub પર commit થશે.");
+    }
+
+    function updateSyncStatus(state, text) {
+      const badges = document.querySelectorAll('.sync-status-badge');
+      const map = {
+        idle:          { cls: 'status-ok',     icon: 'fa-solid fa-check',   label: text || 'GitHub સાથે જોડાયેલ' },
+        loading:       { cls: 'status-loading', icon: 'fa-solid fa-spinner fa-spin', label: text || 'સેવ થઈ રહ્યું છે...' },
+        ok:            { cls: 'status-ok',     icon: 'fa-solid fa-circle-check', label: text || 'GitHub પર સેવ થયું' },
+        error:         { cls: 'status-error',  icon: 'fa-solid fa-circle-exclamation', label: text || 'સેવ નિષ્ફળ' },
+        unconfigured:  { cls: '',              icon: 'fa-solid fa-plug-circle-xmark', label: 'GitHub કનેક્ટ નથી' }
+      };
+      const info = map[state] || map.unconfigured;
+      badges.forEach(b => {
+        b.className = 'sync-status-badge ' + info.cls;
+        b.innerHTML = `<i class="${info.icon}"></i> ${info.label}`;
+      });
+    }
+
+    function utf8ToBase64(str) {
+      return btoa(unescape(encodeURIComponent(str)));
+    }
+
+    async function pushDataToGithub(commitMessage) {
+      const cfg = getGithubConfig();
+      if(!cfg.owner || !cfg.repo || !cfg.token) {
+        updateSyncStatus('unconfigured');
+        return false;
+      }
+
+      updateSyncStatus('loading');
+      try {
+        const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(cfg.path).replace(/%2F/g, '/')}`;
+
+        let sha = null;
+        const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(cfg.branch)}`, {
+          headers: { 'Authorization': `token ${cfg.token}`, 'Accept': 'application/vnd.github+json' }
+        });
+        if(getRes.ok) {
+          const getData = await getRes.json();
+          sha = getData.sha;
+        } else if(getRes.status !== 404) {
+          throw new Error(`ફાઈલ વાંચવામાં ભૂલ (HTTP ${getRes.status})`);
+        }
+
+        const putBody = {
+          message: commitMessage || `Content update via Admin Panel - ${new Date().toISOString()}`,
+          content: utf8ToBase64(JSON.stringify(siteData, null, 2)),
+          branch: cfg.branch
+        };
+        if(sha) putBody.sha = sha;
+
+        const putRes = await fetch(apiUrl, {
+          method: 'PUT',
+          headers: { 'Authorization': `token ${cfg.token}`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(putBody)
+        });
+
+        if(!putRes.ok) {
+          const errData = await putRes.json().catch(() => ({}));
+          throw new Error(errData.message || `GitHub commit નિષ્ફળ (HTTP ${putRes.status})`);
+        }
+
+        updateSyncStatus('ok');
+        return true;
+      } catch(err) {
+        console.error('GitHub sync error:', err);
+        updateSyncStatus('error', err.message);
+        return false;
+      }
+    }
+
+    async function fetchInitialSiteData() {
+      try {
+        const cfg = getGithubConfig();
+        const cacheBuster = `?_=${Date.now()}`;
+        const res = await fetch((cfg.path || 'data.json') + cacheBuster, { cache: 'no-store' });
+        if(res.ok) {
+          const remote = await res.json();
+          if(remote && typeof remote === 'object' && Array.isArray(remote.posts)) {
+            siteData = remote;
+            saveToLocalStorage();
+          }
+        }
+      } catch(e) {
+        console.warn('data.json ઉપલબ્ધ નથી, local/default data વાપરી રહ્યા છીએ.', e);
+      }
+    }
+
+    /* APPLY SOCIAL LINKS TO HOME HEADER ICONS */
+    function applyHeaderSocialLinks() {
+      if(!siteData.socialLinks) return;
+
+      const links = siteData.socialLinks;
+      
+      const instaBtn = document.getElementById('home-social-instagram');
+      const fbBtn = document.getElementById('home-social-facebook');
+      const ytBtn = document.getElementById('home-social-youtube');
+      const twBtn = document.getElementById('home-social-twitter');
+      const waBtn = document.getElementById('home-social-whatsapp');
+
+      if(instaBtn) { instaBtn.href = links.instagram || '#'; instaBtn.style.display = links.instagram ? 'flex' : 'none'; }
+      if(fbBtn) { fbBtn.href = links.facebook || '#'; fbBtn.style.display = links.facebook ? 'flex' : 'none'; }
+      if(ytBtn) { ytBtn.href = links.youtube || '#'; ytBtn.style.display = links.youtube ? 'flex' : 'none'; }
+      if(twBtn) { twBtn.href = links.twitter || '#'; twBtn.style.display = links.twitter ? 'flex' : 'none'; }
+      if(waBtn) { waBtn.href = links.whatsapp || '#'; waBtn.style.display = links.whatsapp ? 'flex' : 'none'; }
+    }
+
+    function switchAuthTab(which) {
+      const isLogin = which === 'login';
+      document.getElementById('auth-tab-login').classList.toggle('active', isLogin);
+      document.getElementById('auth-tab-register').classList.toggle('active', !isLogin);
+      document.getElementById('login-form').style.display = isLogin ? 'block' : 'none';
+      document.getElementById('register-form').style.display = isLogin ? 'none' : 'block';
+      hideAuthMessage('login-error-msg'); hideAuthMessage('login-success-msg');
+      hideAuthMessage('register-error-msg'); hideAuthMessage('register-success-msg');
+    }
+
+    function togglePasswordVisibility(inputId, iconEl) {
+      const input = document.getElementById(inputId);
+      const isHidden = input.type === 'password';
+      input.type = isHidden ? 'text' : 'password';
+      iconEl.classList.toggle('fa-eye', !isHidden);
+      iconEl.classList.toggle('fa-eye-slash', isHidden);
+    }
+
+    function showAuthMessage(elId, text) {
+      const el = document.getElementById(elId);
+      if(!el) return;
+      el.querySelector('span').innerText = text;
+      el.style.display = 'flex';
+    }
+
+    function hideAuthMessage(elId) {
+      const el = document.getElementById(elId);
+      if(el) el.style.display = 'none';
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function enterDirectly() {
+      document.getElementById('entry-modal').style.display = 'none';
+      document.getElementById('header-admin-btn').style.display = 'none';
+    }
+
+    function processRegister() {
+      hideAuthMessage('register-error-msg'); hideAuthMessage('register-success-msg');
+      const fname = document.getElementById('reg-fname').value.trim();
+      const lname = document.getElementById('reg-lname').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const pass = document.getElementById('reg-pass').value.trim();
+
+      if(!fname || !lname || !email || !pass) { showAuthMessage('register-error-msg', "મહેરબાની કરીને તમામ વિગતો ભરો!"); return; }
+      if(!isValidEmail(email)) { showAuthMessage('register-error-msg', "કૃપા કરી માન્ય ઇમેઇલ દાખલ કરો!"); return; }
+      if(pass.length < 6) { showAuthMessage('register-error-msg', "પાસવર્ડ ઓછામાં ઓછો 6 અક્ષરોનો હોવો જોઈએ!"); return; }
+      if(registeredUsers.find(u => u.email.toLowerCase() === email.toLowerCase())) {
+        showAuthMessage('register-error-msg', "આ ઇમેઇલથી એકાઉન્ટ પહેલેથી અસ્તિત્વમાં છે. Login કરો.");
+        return;
+      }
+
+      registeredUsers.push({ name: `${fname} ${lname}`, email: email, pass: pass });
+      localStorage.setItem('raj_registered_users', JSON.stringify(registeredUsers));
+      showAuthMessage('register-success-msg', "Registration સફળતાપૂર્વક થઈ ગયું! પ્રવેશ કરી રહ્યાં છીએ...");
+      setTimeout(() => { document.getElementById('entry-modal').style.display = 'none'; }, 900);
+    }
+
+    function processLogin() {
+      hideAuthMessage('login-error-msg'); hideAuthMessage('login-success-msg');
+      const email = document.getElementById('login-email').value.trim();
+      const pass = document.getElementById('login-pass').value.trim();
+
+      if(!email || !pass) { showAuthMessage('login-error-msg', "ઇમેઇલ અને પાસવર્ડ દાખલ કરો!"); return; }
+
+      if (email === "iamjigarr89@gmail.com" && pass === "i-am-batman078") {
+        isAdminLoggedIn = true;
+        document.getElementById('header-admin-btn').style.display = 'flex';
+        showAuthMessage('login-success-msg', "Admin તરીકે સફળતાપૂર્વક લોગિન થઈ ગયું!");
+        renderPosts();
+        setTimeout(() => { document.getElementById('entry-modal').style.display = 'none'; }, 700);
+        return;
+      }
+
+      const foundUser = registeredUsers.find(u => u.email === email && u.pass === pass);
+      if (foundUser) {
+        showAuthMessage('login-success-msg', "સફળતાપૂર્વક લોગિન થઈ ગયું!");
+        setTimeout(() => { document.getElementById('entry-modal').style.display = 'none'; }, 700);
+      } else {
+        showAuthMessage('login-error-msg', "વિગતો ખોટી છે અથવા એકાઉન્ટ નથી!");
+      }
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark-theme');
+    }
+
+    /* ---- Likes (per-browser, stored against siteData so it syncs via GitHub too) ---- */
+    function getLikedSet() {
+      return new Set(JSON.parse(localStorage.getItem('raj_liked_items') || '[]'));
+    }
+    function markLiked(id) {
+      const s = getLikedSet(); s.add(id);
+      localStorage.setItem('raj_liked_items', JSON.stringify([...s]));
+    }
+    function isLikedId(id) { return getLikedSet().has(id); }
+
+    function likeCategory(catKey) {
+      const id = 'cat:' + catKey;
+      if (isLikedId(id) || !siteData[catKey]) return;
+      siteData[catKey].likes = (siteData[catKey].likes || 0) + 1;
+      markLiked(id);
+      saveToLocalStorage();
+      renderCategoryPosts();
+      pushDataToGithub('Like: ' + catKey);
+    }
+
+    function postLikeId(p) { return 'post:' + p.date + '|' + p.title; }
+
+    function likePost(idx) {
+      const p = siteData.posts[idx];
+      if (!p) return;
+      const id = postLikeId(p);
+      if (isLikedId(id)) return;
+      p.likes = (p.likes || 0) + 1;
+      markLiked(id);
+      saveToLocalStorage();
+      renderPosts();
+      pushDataToGithub('Like post: ' + p.title);
+    }
+
+    /* ---- Archive (month/year) filter for daily posts ---- */
+    let activeArchiveFilter = null;
+    function postGroupLabel(dateStr) {
+      const parts = (dateStr || '').split(',');
+      if (parts.length < 2) return dateStr || '';
+      const monthDay = parts[0].trim().split(' ');
+      const month = monthDay.slice(1).join(' ');
+      return `${month} ${parts[1].trim()}`;
+    }
+    function setArchiveFilter(label) {
+      activeArchiveFilter = label;
+      renderPosts();
+    }
+    function renderArchiveFilterBar() {
+      const bar = document.getElementById('archive-filter-bar');
+      if (!bar) return;
+      const labels = [...new Set(siteData.posts.filter(p => p.status !== 'draft' || isAdminLoggedIn).map(p => postGroupLabel(p.date)))];
+      if (labels.length <= 1) { bar.innerHTML = ''; return; }
+      bar.innerHTML = `<div class="archive-chip ${activeArchiveFilter === null ? 'active' : ''}" onclick="setArchiveFilter(null)">બધું</div>` +
+        labels.map(l => `<div class="archive-chip ${activeArchiveFilter === l ? 'active' : ''}" onclick="setArchiveFilter('${l.replace(/'/g, "\\'")}')">${l}</div>`).join('');
+    }
+
+    function renderCategoryPosts() {
+      const cats = ['articles', 'gazal', 'kavita', 'chand', 'navalkatha'];
+      cats.forEach(c => {
+        const container = document.getElementById(`${c}-posts-container`);
+        if(siteData[c] && container) {
+          let extraHtml = "";
+          if(siteData[c].extraBoxes && siteData[c].extraBoxes.length > 0) {
+            siteData[c].extraBoxes.forEach(ex => {
+              if(ex.status === 'publish') {
+                extraHtml += `<div style="margin-top:0.6rem; padding:0.6rem; background:var(--bg-gray); border-radius:6px; font-size:0.9rem; white-space:${POEM_KEYS.includes(c) ? 'pre-line' : 'normal'};"><b>${ex.title}:</b> ${ex.content}</div>`;
+              }
+            });
+          }
+
+          const previewClass = POEM_KEYS.includes(c) ? 'line-clamp-3 preview-poem' : 'line-clamp-3';
+          const liked = isLikedId('cat:' + c);
+          const likeCount = siteData[c].likes || 0;
+
+          container.innerHTML = `
+            <div class="reading-post-card">
+              <div class="reading-post-title" onclick="openCustomSectionReader('${c}')">${siteData[c].title}</div>
+              <div class="${previewClass}" style="margin-top:0.5rem;">${siteData[c].content}</div>
+              ${extraHtml}
+              <div class="post-action-bar" style="margin-top:0.8rem;">
+                <button class="read-more-btn" onclick="openCustomSectionReader('${c}')"><i class="fa-solid fa-book-open"></i> Read More</button>
+                <button class="like-btn ${liked ? 'liked' : ''}" onclick="likeCategory('${c}')"><i class="fa-${liked ? 'solid' : 'regular'} fa-heart"></i> ${likeCount}</button>
+              </div>
+            </div>
+          `;
+        }
+      });
+    }
+
+    function renderPosts() {
+      const container = document.getElementById('home-daily-container');
+      container.innerHTML = "";
+      renderArchiveFilterBar();
+
+      let list = siteData.posts.map((p, idx) => ({ p, idx }));
+      list = list.filter(({p}) => p.status !== 'draft' || isAdminLoggedIn);
+      if (activeArchiveFilter) list = list.filter(({p}) => postGroupLabel(p.date) === activeArchiveFilter);
+      // Pinned posts float to top, otherwise keep original (newest-first) order
+      list.sort((a, b) => (b.p.pinned ? 1 : 0) - (a.p.pinned ? 1 : 0));
+
+      list.forEach(({p, idx}) => {
+        const draftBadge = p.status === 'draft' ? `<span style="color:var(--draft-amber); font-weight:bold;">[Draft]</span> ` : '';
+        const pinBadge = p.pinned ? `<i class="fa-solid fa-thumbtack pin-badge" title="Pinned"></i>` : '';
+        const liked = isLikedId(postLikeId(p));
+        const likeCount = p.likes || 0;
+
+        container.innerHTML += `
+          <div class="reading-post-card">
+            <div class="reading-post-header">
+              <div class="reading-post-title" onclick="openReaderModal(${idx})">${pinBadge}${draftBadge}${p.title}</div>
+              <div class="post-date">${p.date}</div>
+            </div>
+            <div class="line-clamp-3">${p.text}</div>
+            <div class="post-action-bar">
+              <button class="read-more-btn" onclick="openReaderModal(${idx})"><i class="fa-solid fa-book-open"></i> Read More</button>
+              <button class="like-btn ${liked ? 'liked' : ''}" onclick="likePost(${idx})"><i class="fa-${liked ? 'solid' : 'regular'} fa-heart"></i> ${likeCount}</button>
+            </div>
+          </div>
+        `;
+      });
+
+      if (list.length === 0) {
+        container.innerHTML = `<p style="color:var(--text-sub);">આ સમયગાળામાં કોઈ પોસ્ટ નથી.</p>`;
+      }
+
+      checkForNewPostNotification();
+    }
+
+    function switchAdminTab(tabNum) {
+      [1, 2, 3, 4].forEach(n => {
+        document.getElementById(`tab-btn-${n}`).classList.remove('active');
+        document.getElementById(`admin-page-${n}`).style.display = 'none';
+      });
+
+      document.getElementById(`tab-btn-${tabNum}`).classList.add('active');
+      document.getElementById(`admin-page-${tabNum}`).style.display = 'block';
+
+      if(tabNum === 2) {
+        renderAdminComments();
+      } else if(tabNum === 3) {
+        loadAdminSocialLinks();
+      } else if(tabNum === 4) {
+        loadGithubSettingsForm();
+      }
+    }
+
+    function openAdminPanel() {
+      document.getElementById('admin-panel-modal').style.display = 'flex';
+      loadSelectedColumnData();
+      restoreDraftAutosave();
+      renderAdminExistingPosts();
+      const cfg = getGithubConfig();
+      updateSyncStatus(cfg.owner && cfg.repo && cfg.token ? 'idle' : 'unconfigured');
+    }
+
+    function closeAdminPanel() {
+      document.getElementById('admin-panel-modal').style.display = 'none';
+    }
+
+    /* ADMIN SOCIAL LINKS MANAGEMENT */
+    function loadAdminSocialLinks() {
+      if(!siteData.socialLinks) {
+        siteData.socialLinks = { instagram: '', facebook: '', youtube: '', twitter: '', whatsapp: '' };
+      }
+      document.getElementById('admin-link-instagram').value = siteData.socialLinks.instagram || '';
+      document.getElementById('admin-link-facebook').value = siteData.socialLinks.facebook || '';
+      document.getElementById('admin-link-youtube').value = siteData.socialLinks.youtube || '';
+      document.getElementById('admin-link-twitter').value = siteData.socialLinks.twitter || '';
+      document.getElementById('admin-link-whatsapp').value = siteData.socialLinks.whatsapp || '';
+    }
+
+    function saveSocialMediaLinks() {
+      siteData.socialLinks = {
+        instagram: document.getElementById('admin-link-instagram').value.trim(),
+        facebook: document.getElementById('admin-link-facebook').value.trim(),
+        youtube: document.getElementById('admin-link-youtube').value.trim(),
+        twitter: document.getElementById('admin-link-twitter').value.trim(),
+        whatsapp: document.getElementById('admin-link-whatsapp').value.trim()
+      };
+      
+      saveToLocalStorage();
+      applyHeaderSocialLinks();
+      alert("સોશિયલ મીડિયા લિંક્સ સફળતાપૂર્વક હોમ પેજ આઇકન સાથે લિંક થઈ ગઈ છે!");
+      pushDataToGithub("Update social media links via Admin Panel");
+    }
+
+    function loadSelectedColumnData() {
+      const key = document.getElementById('admin-col-select').value;
+      if(siteData[key]) {
+        document.getElementById('admin-col-title').value = siteData[key].title || "";
+        document.getElementById('admin-col-text').value = siteData[key].content || "";
+        renderExtraBoxesInput(key);
+      }
+    }
+
+    function clearMainBox() {
+      if(confirm("શું તમે આ મુખ્ય લખાણ બોક્સ ખાલી કરવા માંગો છો?")) {
+        document.getElementById('admin-col-title').value = "";
+        document.getElementById('admin-col-text').value = "";
+      }
+    }
+
+    /* RENDER EXTRA BOXES WITH 4 DIRECT ACTION ICONS */
+    function renderExtraBoxesInput(key) {
+      const container = document.getElementById('extra-boxes-container');
+      container.innerHTML = "";
+
+      if(siteData[key].extraBoxes && siteData[key].extraBoxes.length > 0) {
+        siteData[key].extraBoxes.forEach((box, i) => {
+          container.innerHTML += `
+            <div class="extra-field-group">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; flex-wrap: wrap; gap: 8px;">
+                <label style="margin:0; font-weight:700;">અતિરિક્ત લખાણ બોક્સ ${i + 1}:</label>
+
+                <!-- 4 ACTION ICONS FOR EXTRA BOXES -->
+                <div class="column-actions-bar">
+                  <button class="action-icon-btn btn-act-add" onclick="addNewWritingBox()"><i class="fa-solid fa-plus"></i> Add</button>
+                  <button class="action-icon-btn btn-act-delete" onclick="removeExtraWritingBox('${key}', ${i})"><i class="fa-solid fa-trash"></i> Delete</button>
+                  <button class="action-icon-btn btn-act-draft" onclick="saveSingleExtraBox('${key}', ${i}, 'draft')"><i class="fa-solid fa-file-lines"></i> Draft</button>
+                  <button class="action-icon-btn btn-act-publish" onclick="saveSingleExtraBox('${key}', ${i}, 'publish')"><i class="fa-solid fa-paper-plane"></i> Publish</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="ex-title-${i}" value="${box.title || ''}" placeholder="બીજું ટાઇટલ લખો...">
+              </div>
+              <div class="form-group" style="margin-bottom:0;">
+                <textarea id="ex-content-${i}" placeholder="અહીં બીજું લખાણ ઉમેરો...">${box.content || ''}</textarea>
+              </div>
+            </div>
+          `;
+        });
+      }
+    }
+
+    function addNewWritingBox() {
+      const key = document.getElementById('admin-col-select').value;
+      if(!siteData[key].extraBoxes) siteData[key].extraBoxes = [];
+      siteData[key].extraBoxes.push({ title: '', content: '', status: 'draft' });
+      renderExtraBoxesInput(key);
+    }
+
+    function removeExtraWritingBox(key, idx) {
+      if(!siteData[key] || !siteData[key].extraBoxes) return;
+      if(confirm("શું તમે આ બોક્સ ડિલીટ કરવા માંગો છો?")) {
+        siteData[key].extraBoxes.splice(idx, 1);
+        saveToLocalStorage();
+        renderExtraBoxesInput(key);
+        pushDataToGithub(`Delete extra box in ${key}`);
+      }
+    }
+
+    function saveSingleExtraBox(key, idx, actionType) {
+      const tEl = document.getElementById(`ex-title-${idx}`);
+      const cEl = document.getElementById(`ex-content-${idx}`);
+      if(tEl && cEl && siteData[key] && siteData[key].extraBoxes && siteData[key].extraBoxes[idx]) {
+        siteData[key].extraBoxes[idx].title = tEl.value;
+        siteData[key].extraBoxes[idx].content = cEl.value;
+        siteData[key].extraBoxes[idx].status = actionType;
+        saveToLocalStorage();
+        alert(`બોક્સ સફળતાપૂર્વક ${actionType === 'draft' ? 'Draft' : 'Publish'} કરવામાં આવ્યું!`);
+        renderCategoryPosts();
+        pushDataToGithub(`${actionType === 'draft' ? 'Draft' : 'Publish'} extra box in ${key}`);
+      }
+    }
+
+    function saveAdminChanges(actionType = 'publish') {
+      const key = document.getElementById('admin-col-select').value;
+      if(!siteData[key]) siteData[key] = { title: '', content: '', extraBoxes: [] };
+
+      siteData[key].title = document.getElementById('admin-col-title').value;
+      siteData[key].content = document.getElementById('admin-col-text').value;
+
+      if(siteData[key].extraBoxes) {
+        siteData[key].extraBoxes.forEach((box, i) => {
+          const tEl = document.getElementById(`ex-title-${i}`);
+          const cEl = document.getElementById(`ex-content-${i}`);
+          if(tEl && cEl) {
+            box.title = tEl.value;
+            box.content = cEl.value;
+            box.status = actionType;
+          }
+        });
+      }
+
+      saveToLocalStorage();
+      alert(actionType === 'draft' ? "ડેટા Draft તરીકે સેવ થઈ ગયો!" : "ડેટા સફળતાપૂર્વક Publish થઈ ગયો!");
+      renderCategoryPosts();
+      closeAdminPanel();
+      pushDataToGithub(`${actionType === 'draft' ? 'Draft' : 'Publish'} column: ${key}`);
+    }
+
+    function publishNewPost(actionType = 'publish') {
+      const title = document.getElementById('new-post-title').value.trim();
+      const text = document.getElementById('new-post-text').value.trim();
+
+      if(!text) { alert("મહેરબાની કરીને લખાણ ઉમેરો!"); return; }
+
+      siteData.posts.unshift({ 
+        title: title || "સાહિત્યિક પોસ્ટ", 
+        text: text, 
+        date: getGujaratiDateString(), 
+        status: actionType,
+        pinned: false,
+        likes: 0,
+        comments: [] 
+      });
+      saveToLocalStorage();
+      alert(actionType === 'draft' ? "પોસ્ટ Draft માં સાચવવામાં આવી છે!" : "નવી પોસ્ટ Publish થઈ ગઈ!");
+      document.getElementById('new-post-title').value = '';
+      document.getElementById('new-post-text').value = '';
+      clearDraftAutosave();
+      renderPosts();
+      renderAdminExistingPosts();
+      closeAdminPanel();
+      pushDataToGithub(`${actionType === 'draft' ? 'Draft' : 'Publish'} new post: ${title || 'Untitled'}`);
+    }
+
+    /* ---- Draft auto-save for the "Add New Daily Post" form ---- */
+    function saveDraftAutosave() {
+      const title = document.getElementById('new-post-title').value;
+      const text = document.getElementById('new-post-text').value;
+      if (!title && !text) { clearDraftAutosave(); return; }
+      localStorage.setItem('raj_draft_autosave', JSON.stringify({ title, text }));
+    }
+    function clearDraftAutosave() { localStorage.removeItem('raj_draft_autosave'); }
+    function restoreDraftAutosave() {
+      const raw = localStorage.getItem('raj_draft_autosave');
+      if (!raw) return;
+      try {
+        const d = JSON.parse(raw);
+        const titleEl = document.getElementById('new-post-title');
+        const textEl = document.getElementById('new-post-text');
+        if (titleEl && textEl && !titleEl.value && !textEl.value && (d.title || d.text)) {
+          titleEl.value = d.title || '';
+          textEl.value = d.text || '';
+        }
+      } catch(e) {}
+    }
+
+    /* ---- Manage existing posts: Pin / Unpin / Delete ---- */
+    function renderAdminExistingPosts() {
+      const container = document.getElementById('admin-existing-posts-list');
+      if (!container) return;
+      container.innerHTML = "";
+      if (siteData.posts.length === 0) {
+        container.innerHTML = `<p style="color:var(--text-sub); font-size:0.9rem;">કોઈ પોસ્ટ નથી.</p>`;
+        return;
+      }
+      siteData.posts.forEach((p, idx) => {
+        const statusTag = p.status === 'draft' ? ' <span style="color:var(--draft-amber);">[Draft]</span>' : '';
+        container.innerHTML += `
+          <div class="admin-post-row">
+            <span class="apr-title">${p.pinned ? '<i class="fa-solid fa-thumbtack pin-badge"></i>' : ''}${p.title}${statusTag} <span style="color:var(--text-sub); font-weight:400;">(${p.date})</span></span>
+            <div class="apr-actions">
+              <button class="action-icon-btn btn-act-add" onclick="togglePinPost(${idx})"><i class="fa-solid fa-thumbtack"></i> ${p.pinned ? 'Unpin' : 'Pin'}</button>
+              <button class="action-icon-btn btn-act-delete" onclick="deleteExistingPost(${idx})"><i class="fa-solid fa-trash"></i> Delete</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+    function togglePinPost(idx) {
+      const p = siteData.posts[idx];
+      if (!p) return;
+      p.pinned = !p.pinned;
+      saveToLocalStorage();
+      renderPosts();
+      renderAdminExistingPosts();
+      pushDataToGithub(`${p.pinned ? 'Pin' : 'Unpin'} post: ${p.title}`);
+    }
+    function deleteExistingPost(idx) {
+      const p = siteData.posts[idx];
+      if (!p) return;
+      if (!confirm(`"${p.title}" પોસ્ટ ડિલીટ કરવી છે?`)) return;
+      siteData.posts.splice(idx, 1);
+      saveToLocalStorage();
+      renderPosts();
+      renderAllComments();
+      renderAdminExistingPosts();
+      pushDataToGithub(`Delete post: ${p.title}`);
+    }
+
+    /* ---- Browser notifications for new posts ---- */
+    function toggleNotifications() {
+      const isOn = localStorage.getItem('raj_notif_on') === '1';
+      if (isOn) {
+        localStorage.setItem('raj_notif_on', '0');
+        updateNotifBellUI(false);
+        return;
+      }
+      if (!('Notification' in window)) { alert('તમારું બ્રાઉઝર Notification સપોર્ટ કરતું નથી.'); return; }
+      Notification.requestPermission().then(perm => {
+        if (perm === 'granted') {
+          localStorage.setItem('raj_notif_on', '1');
+          if (siteData.posts[0]) localStorage.setItem('raj_last_seen_post', siteData.posts[0].date + '|' + siteData.posts[0].title);
+          updateNotifBellUI(true);
+          alert('નવી પોસ્ટ આવે ત્યારે તમને સૂચના મળશે!');
+        } else {
+          alert('Notification Permission આપવામાં આવી નથી.');
+        }
+      });
+    }
+    function updateNotifBellUI(on) {
+      const btn = document.getElementById('notif-bell-btn');
+      if (btn) btn.classList.toggle('notif-on', on);
+    }
+    function checkForNewPostNotification() {
+      updateNotifBellUI(localStorage.getItem('raj_notif_on') === '1');
+      if (localStorage.getItem('raj_notif_on') !== '1') return;
+      if (!siteData.posts[0]) return;
+      const latestKey = siteData.posts[0].date + '|' + siteData.posts[0].title;
+      const lastSeen = localStorage.getItem('raj_last_seen_post');
+      const dot = document.getElementById('notif-dot');
+      if (lastSeen && lastSeen !== latestKey) {
+        if (dot) dot.style.display = 'block';
+        if ('Notification' in window && Notification.permission === 'granted' && document.visibilityState === 'visible') {
+          new Notification('રાજ ની કલમ — નવી પોસ્ટ!', { body: siteData.posts[0].title });
+        }
+      }
+      localStorage.setItem('raj_last_seen_post', latestKey);
+    }
+
+    /* ---- Share currently open reading (Web Share API with copy-link fallback) ---- */
+    function shareCurrentReading() {
+      const title = document.getElementById('rm-title').innerText;
+      const bodyText = document.getElementById('rm-body').innerText;
+      const shareText = bodyText.length > 200 ? bodyText.slice(0, 200) + '…' : bodyText;
+      if (navigator.share) {
+        navigator.share({ title: title, text: shareText, url: window.location.href }).catch(() => {});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(`${title}\n\n${shareText}\n\n${window.location.href}`);
+        alert('લખાણ કોપી થઈ ગયું — હવે WhatsApp કે ગમે ત્યાં પેસ્ટ કરો!');
+      }
+    }
+
+    function renderAdminComments() {
+      const container = document.getElementById('admin-comments-list');
+      container.innerHTML = "";
+
+      let count = 0;
+      siteData.posts.forEach((p, pIdx) => {
+        if(p.comments && p.comments.length > 0) {
+          p.comments.forEach((c, cIdx) => {
+            count++;
+            const replyBlock = c.reply ? `<div class="admin-reply-text"><b>Admin Reply:</b> ${c.reply}</div>` : '';
+
+            container.innerHTML += `
+              <div class="admin-comment-card">
+                <div class="comment-header">
+                  <span><b>${c.author}</b> (પોસ્ટ: ${p.title})</span>
+                  <span>${c.time || ''}</span>
+                </div>
+                <div style="font-size:0.95rem; margin: 0.4rem 0;">${c.text}</div>
+                ${replyBlock}
+                
+                <div style="display:flex; gap:6px; margin-top:0.6rem;">
+                  <button class="btn" style="padding:3px 10px; font-size:0.8rem;" onclick="toggleReplyForm(${pIdx}, ${cIdx})"><i class="fa-solid fa-reply"></i> Reply</button>
+                  <button class="btn btn-danger" style="padding:3px 10px; font-size:0.8rem;" onclick="deleteCommentByAdmin(${pIdx}, ${cIdx})"><i class="fa-solid fa-trash"></i> Delete</button>
+                </div>
+
+                <div class="admin-reply-box" id="reply-box-${pIdx}-${cIdx}">
+                  <input type="text" id="reply-input-${pIdx}-${cIdx}" placeholder="જવાબ / Reply લખો..." style="margin-bottom:0.4rem;">
+                  <button class="btn" style="padding:3px 8px; font-size:0.8rem; background:var(--success-green);" onclick="sendAdminReply(${pIdx}, ${cIdx})">Send Reply</button>
+                </div>
+              </div>
+            `;
+          });
+        }
+      });
+
+      if(count === 0) {
+        container.innerHTML = `<p style="color:var(--text-sub);">કોઈ કોમેન્ટ ઉપલબ્ધ નથી.</p>`;
+      }
+    }
+
+    function toggleReplyForm(pIdx, cIdx) {
+      const box = document.getElementById(`reply-box-${pIdx}-${cIdx}`);
+      box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+    }
+
+    function sendAdminReply(pIdx, cIdx) {
+      const replyText = document.getElementById(`reply-input-${pIdx}-${cIdx}`).value.trim();
+      if(!replyText) return;
+
+      siteData.posts[pIdx].comments[cIdx].reply = replyText;
+      saveToLocalStorage();
+      alert("Reply મોકલાઈ ગયો!");
+      renderAdminComments();
+      renderAllComments();
+      pushDataToGithub("Admin reply to comment");
+    }
+
+    function deleteCommentByAdmin(pIdx, cIdx) {
+      if(confirm("શું તમે આ કોમેન્ટ ડિલીટ કરવા માંગો છો?")) {
+        siteData.posts[pIdx].comments.splice(cIdx, 1);
+        saveToLocalStorage();
+        renderAdminComments();
+        renderAllComments();
+        pushDataToGithub("Delete comment via Admin Panel");
+      }
+    }
+
+    let readerFontSize = parseInt(localStorage.getItem('raj_reader_font_size')) || 19;
+
+    // Which columns read as poetry (stanza/couplet) vs prose vs novel-structured prose
+    const POEM_KEYS = ['kavita', 'gazal', 'chand'];
+    const NOVEL_KEYS = ['navalkatha'];
+    const NO_COMMENT_KEYS = ['articles', 'gazal', 'kavita', 'chand', 'navalkatha']; // Sahitya page columns
+
+    function detectReaderMode(key) {
+      if (key && POEM_KEYS.includes(key)) return 'poem';
+      if (key && NOVEL_KEYS.includes(key)) return 'novel';
+      return 'prose';
+    }
+
+    // Novel-structure helpers
+    const CHAPTER_RE = /^(પ્રકરણ|અધ્યાય|ભાગ)[\s:\-।]*[૦-૯0-9]*\s*.{0,40}$|^chapter\s+\d+.{0,40}$/i;
+
+    function isChapterLine(line) {
+      return CHAPTER_RE.test(line.trim()) && line.trim().length < 60;
+    }
+    function isDialogueLine(line) {
+      const t = line.trim();
+      return /^["“'‘]/.test(t) || /^[\-–—]\s?/.test(t);
+    }
+
+    function renderReaderBody(title, text, key) {
+      document.getElementById('rm-title').innerText = title;
+      updateShareMeta(title, text);
+      const mode = detectReaderMode(key);
+      const bodyWrapEl = document.getElementById('rm-body-wrap');
+      bodyWrapEl.classList.toggle('poem-mode', mode === 'poem');
+
+      const bodyEl = document.getElementById('rm-body');
+      const raw = text || "";
+
+      if (mode === 'poem') {
+        // Preserve every line exactly; group stanzas by blank lines (couplet/stanza format)
+        const stanzas = raw.split(/\n\s*\n/).map(s => s.split('\n').map(l => l.trim()).filter(Boolean)).filter(s => s.length);
+        bodyEl.innerHTML = stanzas.length
+          ? stanzas.map(lines => `<div class="poem-stanza">${lines.map(l => `<div class="poem-line">${escapeHtml(l)}</div>`).join('')}</div>`).join('')
+          : `<div class="poem-line">${escapeHtml(raw)}</div>`;
+      } else if (mode === 'novel') {
+        // Prose structure: chapter headings render as headings, dialogue lines styled distinctly
+        const blocks = raw.split(/\n\s*\n/).map(t => t.trim()).filter(Boolean);
+        bodyEl.innerHTML = blocks.length
+          ? blocks.map(block => {
+              if (isChapterLine(block)) return `<div class="novel-chapter-heading">${escapeHtml(block)}</div>`;
+              if (isDialogueLine(block)) return `<p class="novel-dialogue">${escapeHtml(block)}</p>`;
+              return `<p>${escapeHtml(block)}</p>`;
+            }).join('')
+          : `<p>${escapeHtml(raw)}</p>`;
+      } else {
+        const paragraphs = raw.split(/\n+/).map(t => t.trim()).filter(Boolean);
+        bodyEl.innerHTML = paragraphs.length
+          ? paragraphs.map(p => `<p>${escapeHtml(p)}</p>`).join('')
+          : `<p>${escapeHtml(raw)}</p>`;
+      }
+
+      const wordCount = raw.trim().split(/\s+/).filter(Boolean).length;
+      const readMinutes = Math.max(1, Math.round(wordCount / 150));
+      document.getElementById('rm-word-count').innerText = `${wordCount} શબ્દો`;
+      document.getElementById('rm-read-time').innerText = `${readMinutes} મિનિટ`;
+
+      applyReaderFontSize();
+    }
+
+    function escapeHtml(str) {
+      const div = document.createElement('div');
+      div.innerText = str;
+      return div.innerHTML;
+    }
+
+    const DEFAULT_TITLE = document.title;
+    const DEFAULT_DESC = document.getElementById('meta-description') ? document.getElementById('meta-description').getAttribute('content') : '';
+
+    function updateShareMeta(title, text) {
+      const desc = (text || '').replace(/\s+/g, ' ').trim().slice(0, 150);
+      document.title = title ? `${title} | રાજ ની કલમ !` : DEFAULT_TITLE;
+      const descEl = document.getElementById('meta-description');
+      const ogT = document.getElementById('og-title');
+      const ogD = document.getElementById('og-description');
+      if (descEl) descEl.setAttribute('content', desc || DEFAULT_DESC);
+      if (ogT) ogT.setAttribute('content', title || DEFAULT_TITLE);
+      if (ogD) ogD.setAttribute('content', desc || DEFAULT_DESC);
+    }
+
+    function resetShareMeta() {
+      document.title = DEFAULT_TITLE;
+      const descEl = document.getElementById('meta-description');
+      const ogT = document.getElementById('og-title');
+      const ogD = document.getElementById('og-description');
+      if (descEl) descEl.setAttribute('content', DEFAULT_DESC);
+      if (ogT) ogT.setAttribute('content', DEFAULT_TITLE);
+      if (ogD) ogD.setAttribute('content', DEFAULT_DESC);
+    }
+
+    function applyReaderFontSize() {
+      document.getElementById('rm-body').style.fontSize = readerFontSize + 'px';
+    }
+
+    function adjustReaderFontSize(delta) {
+      readerFontSize = Math.min(28, Math.max(15, readerFontSize + delta));
+      localStorage.setItem('raj_reader_font_size', readerFontSize);
+      applyReaderFontSize();
+    }
+
+    function setCommentsSectionVisible(visible) {
+      const el = document.getElementById('comments-section-wrap');
+      if(el) el.style.display = visible ? 'block' : 'none';
+    }
+
+    function openReaderModal(idx) {
+      currentPostIdx = idx;
+      const p = siteData.posts[idx];
+      if(!p) return;
+      renderReaderBody(p.title, p.text, null);
+      setCommentsSectionVisible(true);
+      showReaderModal();
+      renderComments();
+    }
+
+    function openCustomSectionReader(key) {
+      if(!siteData[key]) return;
+      currentPostIdx = null;
+      renderReaderBody(siteData[key].title || "સાહિત્યિક કલમ", siteData[key].content || "", key);
+      // Sahitya page (Page 2) columns read as a clean article/poem — no comment box
+      setCommentsSectionVisible(!NO_COMMENT_KEYS.includes(key));
+      showReaderModal();
+      document.getElementById('comments-list').innerHTML = "";
+    }
+
+    function showReaderModal() {
+      document.getElementById('reader-modal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      const wrap = document.getElementById('rm-body-wrap');
+      wrap.scrollTop = 0;
+      updateReaderProgress();
+      wrap.removeEventListener('scroll', updateReaderProgress);
+      wrap.addEventListener('scroll', updateReaderProgress);
+    }
+
+    function updateReaderProgress() {
+      const wrap = document.getElementById('rm-body-wrap');
+      const fill = document.getElementById('rm-progress-fill');
+      if(!wrap || !fill) return;
+      const max = wrap.scrollHeight - wrap.clientHeight;
+      const pct = max > 0 ? Math.min(100, (wrap.scrollTop / max) * 100) : 100;
+      fill.style.width = pct + '%';
+    }
+
+    function closeReaderModal() {
+      document.getElementById('reader-modal').style.display = 'none';
+      document.body.style.overflow = '';
+      resetShareMeta();
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if(e.key === 'Escape' && document.getElementById('reader-modal').style.display === 'flex') {
+        closeReaderModal();
+      }
+    });
+
+    function addComment() {
+      if(currentPostIdx === null) return;
+      const author = document.getElementById('c-author').value.trim() || 'અનામિક યુઝર';
+      const text = document.getElementById('c-text').value.trim();
+      if(!text) return;
+
+      if(!siteData.posts[currentPostIdx].comments) siteData.posts[currentPostIdx].comments = [];
+      siteData.posts[currentPostIdx].comments.push({ author, text, time: new Date().toLocaleTimeString('gu-IN') });
+      saveToLocalStorage();
+      document.getElementById('c-text').value = "";
+      renderComments();
+      renderAllComments();
+    }
+
+    function renderComments() {
+      const container = document.getElementById('comments-list');
+      container.innerHTML = "";
+      if(currentPostIdx === null || !siteData.posts[currentPostIdx].comments) return;
+
+      siteData.posts[currentPostIdx].comments.forEach(c => {
+        const replyHtml = c.reply ? `<div style="background:var(--google-blue-light); padding:0.4rem 0.6rem; border-radius:4px; margin-top:0.3rem; font-size:0.85rem;"><b>Admin Reply:</b> ${c.reply}</div>` : '';
+        container.innerHTML += `
+          <div class="comment-card">
+            <div class="comment-header"><span><b>${c.author}</b></span><span>${c.time}</span></div>
+            <div>${c.text}</div>
+            ${replyHtml}
+          </div>
+        `;
+      });
+    }
+
+    function renderAllComments() {
+      const container = document.getElementById('all-user-comments-container');
+      container.innerHTML = "";
+      siteData.posts.forEach(p => {
+        if(p.comments) {
+          p.comments.forEach(c => {
+            const replyHtml = c.reply ? `<div style="background:var(--google-blue-light); padding:0.4rem 0.6rem; border-radius:4px; margin-top:0.3rem; font-size:0.85rem;"><b>Admin Reply:</b> ${c.reply}</div>` : '';
+            container.innerHTML += `
+              <div class="comment-card">
+                <div class="comment-header"><span><b>${c.author}</b> (પોસ્ટ: ${p.title})</span><span>${c.time}</span></div>
+                <div>${c.text}</div>
+                ${replyHtml}
+              </div>
+            `;
+          });
+        }
+      });
+    }
+
+    function submitContactComment() {
+      const email = document.getElementById('contact-email').value.trim();
+      const text = document.getElementById('contact-comment').value.trim();
+      if(!email || !text) return;
+
+      siteData.posts[0].comments.push({ author: email, text: text, time: new Date().toLocaleTimeString('gu-IN') });
+      saveToLocalStorage();
+      alert("કોમેન્ટ સફળતાપૂર્વક મોકલાઈ ગઈ!");
+      document.getElementById('contact-email').value = "";
+      document.getElementById('contact-comment').value = "";
+      renderAllComments();
+    }
+
+    function handleSearch() {
+      const query = document.getElementById('global-search-input').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.reading-post-card');
+      cards.forEach(card => {
+        card.style.display = card.innerText.toLowerCase().includes(query) ? 'block' : 'none';
+      });
+    }
+
+    // Initialize Page Data — try loading published data.json from GitHub first, then render
+    (async function initPage() {
+      await fetchInitialSiteData();
+      applyHeaderSocialLinks();
+      renderCategoryPosts();
+      renderPosts();
+      renderAllComments();
+      const cfg = getGithubConfig();
+      updateSyncStatus(cfg.owner && cfg.repo && cfg.token ? 'idle' : 'unconfigured');
+    })();
+  </script>
+</body>
+</html>
