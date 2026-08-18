@@ -2,7 +2,10 @@
 <html lang="gu">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#121212">
+  <meta name="color-scheme" content="dark light">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>રાજ ની કલમ !</title>
   <meta name="description" id="meta-description" content="ગુજરાતી સાહિત્યિક વેબસાઈટ — ગઝલ, કવિતા, છંદ, નવલકથા અને શૈક્ષણિક લેખો.">
 
@@ -57,15 +60,30 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Gujarati', 'Roboto', sans-serif; }
     
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 9rem;
+    }
 
-    body { 
-      background-color: var(--bg-gray); 
-      color: var(--text-main); 
-      line-height: 1.8; 
+    :root { --header-height: 76px; }
+
+    body {
+      background-color: var(--bg-gray);
+      color: var(--text-main);
+      line-height: 1.8;
       font-weight: 500;
-      -webkit-font-smoothing: antialiased; 
-      transition: background-color 0.3s, color 0.3s; 
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+
+    body.modal-open { overflow: hidden; overscroll-behavior: none; }
+
+    :focus-visible { outline: 3px solid var(--google-blue); outline-offset: 2px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
     }
 
     header { 
@@ -194,16 +212,23 @@
 
     .pagination-bar {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 10px;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+      flex-wrap: nowrap;
       position: sticky;
-      top: 4.5rem;
-      background: var(--bg-gray);
-      padding: 0.8rem 0;
+      top: calc(var(--header-height) + env(safe-area-inset-top));
+      background: rgba(18,18,18,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.55rem 0.1rem;
       z-index: 900;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      border-bottom: 1px solid var(--border-color);
     }
+    .pagination-bar::-webkit-scrollbar { display: none; }
     .page-btn {
       padding: 0.6rem 1.4rem;
       border-radius: 20px;
@@ -265,6 +290,14 @@
       padding: 6px 16px;
       border-radius: 18px;
     }
+
+    #site-scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--google-blue); z-index: 5000; }
+    #back-to-top { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--google-blue); box-shadow: 0 8px 24px rgba(0,0,0,.22); cursor: pointer; display: none; place-items: center; z-index: 1400; }
+    #back-to-top.show { display: grid; }
+    .last-read-banner { display: none; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 1rem; padding: .8rem 1rem; border: 1px solid var(--google-blue); border-radius: 12px; background: var(--google-blue-light); }
+    .last-read-banner.show { display: flex; }
+    .mini-btn { border: 1px solid var(--google-blue); background: var(--google-blue); color: #fff; border-radius: 18px; padding: .45rem .8rem; cursor: pointer; font-weight: 700; white-space: nowrap; }
+    .bookmark-btn { border: 1px solid var(--border-color); background: var(--bg-gray); color: var(--text-main); border-radius: 6px; padding: 0 10px; height: 30px; cursor: pointer; font-weight: 600; }
 
     /* Modal Styling */
     .modal-overlay {
@@ -518,14 +551,20 @@
     .admin-post-row .apr-actions { display: flex; gap: 6px; }
 
     @media (max-width: 768px) {
-      header { padding: 0.8rem 1rem; }
-      .logo { font-size: 1.2rem; }
-      main { padding: 0 0.8rem; margin: 4.8rem auto 1.5rem auto; }
+      :root { --header-height: 68px; }
+      header { padding: 0.65rem 0.8rem; }
+      .logo { font-size: 1.05rem; }
+      .header-right { gap: 0.35rem; }
+      .header-social { gap: 0.3rem; }
+      .header-social a, .admin-icon-btn, .notif-icon-btn, .theme-toggle-btn { width: 34px; height: 34px; font-size: 0.95rem; }
+      main { padding: 0 0.8rem; margin: calc(var(--header-height) + 0.8rem) auto 1.5rem auto; }
       .section-card { padding: 1.2rem; margin-bottom: 1.2rem; }
       .home-photo-gallery { grid-template-columns: 1fr; gap: 12px; }
       .home-photo-gallery img { height: 200px; }
       .column-actions-bar { justify-content: flex-start; }
       .admin-nav-tabs { flex-direction: column; }
+      .pagination-bar { margin-left: -0.2rem; margin-right: -0.2rem; padding-inline: 0.2rem; }
+      .search-box-container { position: sticky; top: calc(var(--header-height) + 3.4rem); z-index: 850; padding: 0.35rem 0; background: var(--bg-gray); }
 
       /* Reader modal: comfortable full-height reading on phones */
       .reader-modal-overlay { padding: 0; }
@@ -712,6 +751,7 @@
   </style>
 </head>
 <body class="dark-theme">
+  <div id="site-scroll-progress" aria-hidden="true"></div>
 
   <!-- ENTRY MODAL (Professional Auth Card) -->
   <div class="modal-overlay" id="entry-modal" style="display: flex;">
@@ -747,7 +787,10 @@
         <button class="auth-submit-btn" onclick="processLogin()"><i class="fa-solid fa-right-to-bracket"></i> Login કરો</button>
 
         <div class="auth-divider">અથવા</div>
-        <button class="auth-guest-btn" onclick="enterDirectly()"><i class="fa-solid fa-bolt"></i> Without Login (ડાયરેક્ટ પ્રવેશ)</button>
+        <div style="display:grid;gap:8px;">
+          
+          <button class="auth-guest-btn" onclick="enterDirectly()"><i class="fa-solid fa-bolt"></i> Without Login (ડાયરેક્ટ પ્રવેશ)</button>
+        </div>
       </div>
 
       <!-- Registration Form -->
@@ -827,6 +870,11 @@
       <a class="page-btn" href="#page-4">Page 4 (કોમેન્ટ્સ)</a>
     </div>
 
+    <div class="last-read-banner" id="last-read-banner">
+      <div><strong id="last-read-title">છેલ્લે વાંચેલું</strong><div style="font-size:0.85rem;color:var(--text-sub);">તમારી છેલ્લી reading position પરથી ફરી શરૂ કરો.</div></div>
+      <button class="mini-btn" onclick="resumeLastRead()"><i class="fa-solid fa-play"></i> Resume</button>
+    </div>
+
     <!-- Search Bar -->
     <div class="search-box-container">
       <input type="text" id="global-search-input" class="search-input" placeholder="🔍 સાહિત્યિક કૃતિઓ કે લેખ શોધો (Search)..." oninput="handleSearch()">
@@ -840,8 +888,8 @@
         </h1>
         
         <div class="home-photo-gallery">
-          <img id="home-img-1" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="Educational 1">
-          <img id="home-img-2" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="Educational 2">
+          <img id="home-img-1" src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80" alt="શૈક્ષણિક અને લેખન સંબંધિત દૃશ્ય" loading="lazy" decoding="async">
+          <img id="home-img-2" src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80" alt="પુસ્તક અને શિક્ષણનું દૃશ્ય" loading="lazy" decoding="async">
         </div>
 
         <div id="home-content-disp" class="line-clamp-3">
@@ -918,6 +966,8 @@
       </div>
     </section>
   </main>
+
+  <button id="back-to-top" aria-label="ઉપર જાઓ" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
 
   <!-- ADMIN CONTROL PAGE PANEL -->
   <div class="admin-modal-overlay" id="admin-panel-modal">
@@ -1057,7 +1107,7 @@
         <div class="github-info-box">
           <i class="fa-solid fa-circle-info"></i> અહીં સેટિંગ્સ સેવ કર્યા પછી, Admin Page પર જે પણ <b>Publish / Draft / Save</b> કરશો તે બધું આપોઆપ તમારા GitHub Repository ના <code id="gh-path-preview">data.json</code> ફાઈલમાં commit થઈ જશે — એટલે કે તે કોડમાં કાયમી સેવ થઈ જશે અને દરેક વિઝિટરને દેખાશે.<br><br>
           <b>ટોકન કેવી રીતે બનાવવો:</b> GitHub → Settings → Developer settings → Personal access tokens → Fine-grained token → આ repository માટે <b>Contents: Read & Write</b> પરમિશન આપો.<br>
-          ⚠️ ટોકન આ બ્રાઉઝરમાં જ સેવ થાય છે — તેને કોઈની સાથે શેર ન કરો.
+          ✓ GitHub publishing હવે server-side છે. Token browserમાં રાખવામાં આવતો નથી. Serverના .env માં GITHUB_TOKEN configure કરો.
         </div>
 
         <div class="extra-field-group">
@@ -1113,7 +1163,8 @@
           <span><i class="fa-regular fa-clock"></i> <span id="rm-read-time">1 મિનિટ</span></span>
           <span><i class="fa-solid fa-align-left"></i> <span id="rm-word-count">0 શબ્દો</span></span>
           <div class="rm-font-controls">
-            <button class="rm-share-btn" onclick="shareCurrentReading()" title="Share"><i class="fa-solid fa-share-nodes"></i> Share</button>
+            <button class="bookmark-btn" onclick="toggleBookmarkCurrent()" title="Bookmark"><i class="fa-regular fa-bookmark"></i></button>
+              <button class="rm-share-btn" onclick="shareCurrentReading()" title="Share"><i class="fa-solid fa-share-nodes"></i> Share</button>
             <button class="rm-font-btn" onclick="adjustReaderFontSize(-1)" title="Decrease font size">A-</button>
             <button class="rm-font-btn" onclick="adjustReaderFontSize(1)" title="Increase font size">A+</button>
           </div>
@@ -1140,71 +1191,60 @@
   </div>
 
   <script>
+    const defaultSiteData = {
+      socialLinks: { instagram:'', facebook:'', youtube:'', twitter:'', whatsapp:'' },
+      sectionLikes: {},
+      home1: { title:'શૈક્ષણિક અને સાહિત્યિક સંસ્કારો', content:'રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. શિક્ષણ અને સાહિત્ય માનવજીવનના સર્વાંગી વિકાસ માટે અત્યંત જરૂરી છે. અહીં રોજેરોજ નવા લેખો, વિચારો અને વાંચન સામગ્રી મળશે.', extraBoxes:[], likes:0 },
+      articles: { title:'લેખ', content:'ગુજરાતી ભાષા, શિક્ષણ, જીવનમૂલ્યો અને જ્ઞાનવિષયક ઉપયોગી લેખો અહીં વાંચો.', extraBoxes:[], likes:0 },
+      gazal: { title:'ગઝલ', content:'ગુજરાતી ગઝલના ભાવ, શબ્દ અને વિચાર સાથેનું વાંચન.', extraBoxes:[], likes:0 },
+      kavita: { title:'કવિતા', content:'કાવ્યપ્રેમીઓ માટે પસંદગીની ગુજરાતી કવિતાઓ અને સર્જનાત્મક લેખન.', extraBoxes:[], likes:0 },
+      chand: { title:'છંદ', content:'ગુજરાતી છંદ અને કાવ્યરચનાની સમજ માટે ઉપયોગી સામગ્રી.', extraBoxes:[], likes:0 },
+      navalkatha: { title:'નવલકથા', content:'નવલકથા અને વાર્તાસાહિત્યના રસપ્રદ અંશોનું વાંચન.', extraBoxes:[], likes:0 },
+      posts: [
+        {id:1,title:'રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત',text:'શિક્ષણ, સાહિત્ય અને સર્જનાત્મક વાંચન માટે રાજ ની કલમ સાથે જોડાયેલા રહો. નવી પોસ્ટ માટે નિયમિત મુલાકાત લો.',date:getGujaratiDateString(),status:'publish',pinned:true,likes:0,comments:[]}
+      ]
+    };
+    let siteData = JSON.parse(localStorage.getItem('raj_ni_kalam_merged_data') || 'null') || JSON.parse(JSON.stringify(defaultSiteData));
+
     function getGujaratiDateString(date = new Date()) {
       return date.toLocaleDateString('gu-IN', { year: 'numeric', month: 'long', day: 'numeric' });
     }
 
     let isAdminLoggedIn = false;
-    let registeredUsers = JSON.parse(localStorage.getItem('raj_registered_users')) || [];
+    let registeredUsers = JSON.parse(localStorage.getItem('raj_registered_users_v2') || '[]');
     let currentPostIdx = null;
+    let currentReaderKey = null;
+    let githubRuntimeToken = '';
 
-    const defaultSiteData = {
-      socialLinks: {
-        instagram: "https://instagram.com/jigneshgediya078",
-        facebook: "https://facebook.com",
-        youtube: "https://youtube.com/@jigneshgediya078",
-        twitter: "",
-        whatsapp: ""
-      },
-      home1: { title: "શૈક્ષણિક અને સાહિત્યિક સંસ્કારો", content: "રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. શિક્ષણ અને સાહિત્ય માનવજીવનના સર્વાંગી વિકાસ માટે અત્યંત જરૂરી છે.", extraBoxes: [] },
-      articles: { title: "શ્રેષ્ઠ શૈક્ષણિક લેખો", content: "શિક્ષણ ક્ષેત્રે નવી તકો અને માર્ગદર્શન પૂરું પાડતા વિશિષ્ટ આર્ટિકલ્સ...", extraBoxes: [] },
-      gazal: { title: "સાહિત્યિક ગઝલો", content: "ભાવનાત્મક ગઝલો અને શાયરીનો અદ્ભુત રસથાળ...", extraBoxes: [] },
-      kavita: { title: "કાવ્ય સંચય", content: "માનવ સંવેદનાઓને વાચા આપતી કવિતાઓ...", extraBoxes: [] },
-      chand: { title: "છંદ રચનાઓ", content: "શાસ્ત્રીય અને બંધારણીય છંદોબદ્ધ કાવ્યો...", extraBoxes: [] },
-      navalkatha: { title: "નવલકથા પઠન", content: "રસપ્રદ ધારાવાહિક વાર્તાઓ અને પ્રકરણો...", extraBoxes: [] },
-      posts: [
-        { title: "શિક્ષણનું મહત્વ", text: "શિક્ષણ એ માત્ર અક્ષરજ્ઞાન નથી પરંતુ જીવન જીવવાની સાચી કળા છે.", date: getGujaratiDateString(), status: 'publish', comments: [] }
-      ]
-    };
-
-    let siteData = JSON.parse(localStorage.getItem('raj_ni_kalam_merged_data')) || JSON.parse(JSON.stringify(defaultSiteData));
-
-    function saveToLocalStorage() {
-      localStorage.setItem('raj_ni_kalam_merged_data', JSON.stringify(siteData));
+    async function sha256Hex(value) {
+      const bytes = new TextEncoder().encode(value);
+      const digest = await crypto.subtle.digest('SHA-256', bytes);
+      return [...new Uint8Array(digest)].map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    /* ============ GITHUB SYNC (Admin publish/save -> commits to GitHub repo) ============ */
-    const GITHUB_CONFIG_KEY = 'raj_github_config';
-
-    function getGithubConfig() {
-      return JSON.parse(localStorage.getItem(GITHUB_CONFIG_KEY)) || { owner: '', repo: '', branch: 'main', path: 'data.json', token: '' };
+    function getGithubPublicConfig() {
+      try { return JSON.parse(localStorage.getItem('raj_github_public_config_v2')) || {owner:'',repo:'',branch:'main',path:'data.json'}; }
+      catch { return {owner:'',repo:'',branch:'main',path:'data.json'}; }
     }
+    function getGithubConfig() { return {...getGithubPublicConfig(), token: githubRuntimeToken}; }
+    function saveToLocalStorage() { try { localStorage.setItem('raj_ni_kalam_merged_data', JSON.stringify(siteData)); } catch(e) { console.warn(e); } }
 
     function loadGithubSettingsForm() {
-      const cfg = getGithubConfig();
-      document.getElementById('gh-owner').value = cfg.owner || '';
-      document.getElementById('gh-repo').value = cfg.repo || '';
-      document.getElementById('gh-branch').value = cfg.branch || 'main';
-      document.getElementById('gh-path').value = cfg.path || 'data.json';
-      document.getElementById('gh-token').value = cfg.token || '';
-      updateSyncStatus(cfg.owner && cfg.repo && cfg.token ? 'idle' : 'unconfigured');
+      const ids = [['gh-owner','Server ENV'],['gh-repo','Server ENV'],['gh-branch','main'],['gh-path','data.json']];
+      ids.forEach(([id,v])=>{const el=document.getElementById(id);if(el){el.value=v;}});
+      const token=document.getElementById('gh-token');
+      if(token){token.value='';token.disabled=true;token.placeholder='Server .env → GITHUB_TOKEN';}
+      updateSyncStatus('idle','GitHub publishing server-side છે');
     }
 
     function saveGithubSettingsForm() {
-      const cfg = {
-        owner: document.getElementById('gh-owner').value.trim(),
-        repo: document.getElementById('gh-repo').value.trim(),
-        branch: document.getElementById('gh-branch').value.trim() || 'main',
-        path: document.getElementById('gh-path').value.trim() || 'data.json',
-        token: document.getElementById('gh-token').value.trim()
-      };
-      if(!cfg.owner || !cfg.repo || !cfg.token) {
-        alert("કૃપા કરી GitHub Username, Repository Name અને Personal Access Token ભરો!");
-        return;
-      }
-      localStorage.setItem(GITHUB_CONFIG_KEY, JSON.stringify(cfg));
-      updateSyncStatus('idle', 'સેટિંગ્સ સેવ થઈ ગઈ');
-      alert("GitHub સેટિંગ્સ સફળતાપૂર્વક સેવ થઈ ગઈ! હવે Publish/Draft/Save કરવાથી ડેટા GitHub પર commit થશે.");
+      alert('GitHub settings હવે server પર .env દ્વારા configure થાય છે. GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO, GITHUB_BRANCH અને GITHUB_PATH server environmentમાં set કરો.');
+    }
+
+    function utf8ToBase64(str) {
+      const bytes = new TextEncoder().encode(str); let bin='';
+      for (let i=0;i<bytes.length;i+=0x8000) bin += String.fromCharCode(...bytes.subarray(i,i+0x8000));
+      return btoa(bin);
     }
 
     function updateSyncStatus(state, text) {
@@ -1227,71 +1267,47 @@
       return btoa(unescape(encodeURIComponent(str)));
     }
 
-    async function pushDataToGithub(commitMessage) {
-      const cfg = getGithubConfig();
-      if(!cfg.owner || !cfg.repo || !cfg.token) {
-        updateSyncStatus('unconfigured');
-        return false;
+    let githubWriteQueue = Promise.resolve();
+    async function pushDataToGithubNow(commitMessage) {
+      const cfg=getGithubConfig();
+      if(!cfg.owner || !cfg.repo || !cfg.token){ updateSyncStatus('unconfigured'); return false; }
+      updateSyncStatus('loading','GitHub પર સેવ થઈ રહ્યું છે...');
+      const apiUrl=`https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodeURIComponent(cfg.path).replace(/%2F/g,'/')}`;
+      for(let attempt=1;attempt<=2;attempt++){
+        try{
+          const getRes=await fetch(`${apiUrl}?ref=${encodeURIComponent(cfg.branch)}`,{headers:{'Authorization':`Bearer ${cfg.token}`,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10'}});
+          let sha=null;
+          if(getRes.ok) sha=(await getRes.json()).sha||null;
+          else if(getRes.status!==404) throw new Error(`GitHub read failed (HTTP ${getRes.status})`);
+          const body={message:commitMessage||`RajNiKalam update - ${new Date().toISOString()}`,content:utf8ToBase64(JSON.stringify(siteData,null,2)),branch:cfg.branch};
+          if(sha) body.sha=sha;
+          const putRes=await fetch(apiUrl,{method:'PUT',headers:{'Authorization':`Bearer ${cfg.token}`,'Accept':'application/vnd.github+json','X-GitHub-Api-Version':'2026-03-10','Content-Type':'application/json'},body:JSON.stringify(body)});
+          if(!putRes.ok){ const d=await putRes.json().catch(()=>({})); if(putRes.status===409&&attempt===1) continue; throw new Error(d.message||`GitHub commit failed (HTTP ${putRes.status})`); }
+          updateSyncStatus('ok','GitHub પર સેવ થયું'); return true;
+        }catch(err){ if(attempt===2){updateSyncStatus('error',err.message||'GitHub sync failed'); return false;} }
       }
-
-      updateSyncStatus('loading');
-      try {
-        const apiUrl = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${encodeURIComponent(cfg.path).replace(/%2F/g, '/')}`;
-
-        let sha = null;
-        const getRes = await fetch(`${apiUrl}?ref=${encodeURIComponent(cfg.branch)}`, {
-          headers: { 'Authorization': `token ${cfg.token}`, 'Accept': 'application/vnd.github+json' }
-        });
-        if(getRes.ok) {
-          const getData = await getRes.json();
-          sha = getData.sha;
-        } else if(getRes.status !== 404) {
-          throw new Error(`ફાઈલ વાંચવામાં ભૂલ (HTTP ${getRes.status})`);
-        }
-
-        const putBody = {
-          message: commitMessage || `Content update via Admin Panel - ${new Date().toISOString()}`,
-          content: utf8ToBase64(JSON.stringify(siteData, null, 2)),
-          branch: cfg.branch
-        };
-        if(sha) putBody.sha = sha;
-
-        const putRes = await fetch(apiUrl, {
-          method: 'PUT',
-          headers: { 'Authorization': `token ${cfg.token}`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(putBody)
-        });
-
-        if(!putRes.ok) {
-          const errData = await putRes.json().catch(() => ({}));
-          throw new Error(errData.message || `GitHub commit નિષ્ફળ (HTTP ${putRes.status})`);
-        }
-
-        updateSyncStatus('ok');
-        return true;
-      } catch(err) {
-        console.error('GitHub sync error:', err);
-        updateSyncStatus('error', err.message);
-        return false;
-      }
+      return false;
+    }
+    function pushDataToGithub(commitMessage){ githubWriteQueue=githubWriteQueue.then(()=>pushDataToGithubNow(commitMessage)); return githubWriteQueue; }
+    function normalizeSiteData(remote){
+      const base=JSON.parse(JSON.stringify(defaultSiteData));
+      const merged={...base,...remote};
+      merged.socialLinks={...base.socialLinks,...(remote.socialLinks||{})};
+      ['home1','articles','gazal','kavita','chand','navalkatha'].forEach(k=>{merged[k]={...base[k],...(remote[k]||{})};if(!Array.isArray(merged[k].extraBoxes))merged[k].extraBoxes=[];});
+      merged.sectionLikes={...base.sectionLikes,...(remote.sectionLikes||{})};
+      merged.posts=Array.isArray(remote.posts)?remote.posts.map(p=>({id:p.id||null,title:String(p.title||'સાહિત્યિક પોસ્ટ'),text:String(p.text||''),date:p.date||getGujaratiDateString(),status:p.status==='draft'?'draft':'publish',comments:Array.isArray(p.comments)?p.comments:[],likes:Number(p.likes)||0,pinned:Boolean(p.pinned)})):base.posts;
+      return merged;
+    }
+    async function fetchInitialSiteData(){
+      try{
+        const cfg=getGithubPublicConfig(); let url=cfg.path||'data.json';
+        if(cfg.owner&&cfg.repo){const rawPath=(cfg.path||'data.json').split('/').map(encodeURIComponent).join('/');url=`https://raw.githubusercontent.com/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/${encodeURIComponent(cfg.branch||'main')}/${rawPath}`;}
+        const res=await fetch(`${url}${url.includes('?')?'&':'?'}_=${Date.now()}`,{cache:'no-store'}); if(!res.ok)return;
+        const remote=await res.json(); if(remote&&typeof remote==='object'&&Array.isArray(remote.posts)){siteData=normalizeSiteData(remote);saveToLocalStorage();}
+      }catch(e){console.warn('Published data load failed; using local/default data.',e);}
     }
 
-    async function fetchInitialSiteData() {
-      try {
-        const cfg = getGithubConfig();
-        const cacheBuster = `?_=${Date.now()}`;
-        const res = await fetch((cfg.path || 'data.json') + cacheBuster, { cache: 'no-store' });
-        if(res.ok) {
-          const remote = await res.json();
-          if(remote && typeof remote === 'object' && Array.isArray(remote.posts)) {
-            siteData = remote;
-            saveToLocalStorage();
-          }
-        }
-      } catch(e) {
-        console.warn('data.json ઉપલબ્ધ નથી, local/default data વાપરી રહ્યા છીએ.', e);
-      }
-    }
+    function safeExternalUrl(v){try{const u=new URL(String(v||'').trim());return ['http:','https:'].includes(u.protocol)?u.href:'#';}catch{return '#';}}
 
     /* APPLY SOCIAL LINKS TO HOME HEADER ICONS */
     function applyHeaderSocialLinks() {
@@ -1305,11 +1321,11 @@
       const twBtn = document.getElementById('home-social-twitter');
       const waBtn = document.getElementById('home-social-whatsapp');
 
-      if(instaBtn) { instaBtn.href = links.instagram || '#'; instaBtn.style.display = links.instagram ? 'flex' : 'none'; }
-      if(fbBtn) { fbBtn.href = links.facebook || '#'; fbBtn.style.display = links.facebook ? 'flex' : 'none'; }
-      if(ytBtn) { ytBtn.href = links.youtube || '#'; ytBtn.style.display = links.youtube ? 'flex' : 'none'; }
-      if(twBtn) { twBtn.href = links.twitter || '#'; twBtn.style.display = links.twitter ? 'flex' : 'none'; }
-      if(waBtn) { waBtn.href = links.whatsapp || '#'; waBtn.style.display = links.whatsapp ? 'flex' : 'none'; }
+      if(instaBtn) { instaBtn.href = safeExternalUrl(links.instagram); instaBtn.style.display = links.instagram ? 'flex' : 'none'; }
+      if(fbBtn) { fbBtn.href = safeExternalUrl(links.facebook); fbBtn.style.display = links.facebook ? 'flex' : 'none'; }
+      if(ytBtn) { ytBtn.href = safeExternalUrl(links.youtube); ytBtn.style.display = links.youtube ? 'flex' : 'none'; }
+      if(twBtn) { twBtn.href = safeExternalUrl(links.twitter); twBtn.style.display = links.twitter ? 'flex' : 'none'; }
+      if(waBtn) { waBtn.href = safeExternalUrl(links.whatsapp); waBtn.style.display = links.whatsapp ? 'flex' : 'none'; }
     }
 
     function switchAuthTab(which) {
@@ -1351,55 +1367,35 @@
       document.getElementById('header-admin-btn').style.display = 'none';
     }
 
-    function processRegister() {
+    async function processRegister(){
       hideAuthMessage('register-error-msg'); hideAuthMessage('register-success-msg');
-      const fname = document.getElementById('reg-fname').value.trim();
-      const lname = document.getElementById('reg-lname').value.trim();
-      const email = document.getElementById('reg-email').value.trim();
-      const pass = document.getElementById('reg-pass').value.trim();
-
-      if(!fname || !lname || !email || !pass) { showAuthMessage('register-error-msg', "મહેરબાની કરીને તમામ વિગતો ભરો!"); return; }
-      if(!isValidEmail(email)) { showAuthMessage('register-error-msg', "કૃપા કરી માન્ય ઇમેઇલ દાખલ કરો!"); return; }
-      if(pass.length < 6) { showAuthMessage('register-error-msg', "પાસવર્ડ ઓછામાં ઓછો 6 અક્ષરોનો હોવો જોઈએ!"); return; }
-      if(registeredUsers.find(u => u.email.toLowerCase() === email.toLowerCase())) {
-        showAuthMessage('register-error-msg', "આ ઇમેઇલથી એકાઉન્ટ પહેલેથી અસ્તિત્વમાં છે. Login કરો.");
-        return;
-      }
-
-      registeredUsers.push({ name: `${fname} ${lname}`, email: email, pass: pass });
-      localStorage.setItem('raj_registered_users', JSON.stringify(registeredUsers));
-      showAuthMessage('register-success-msg', "Registration સફળતાપૂર્વક થઈ ગયું! પ્રવેશ કરી રહ્યાં છીએ...");
-      setTimeout(() => { document.getElementById('entry-modal').style.display = 'none'; }, 900);
+      const fname=document.getElementById('reg-fname').value.trim(), lname=document.getElementById('reg-lname').value.trim();
+      const email=document.getElementById('reg-email').value.trim().toLowerCase(), pass=document.getElementById('reg-pass').value;
+      if(!email||!email.includes('@')){showAuthMessage('register-error-msg','કૃપા કરી માન્ય ઇમેઇલ દાખલ કરો!');return;}
+      if(pass.length<8){showAuthMessage('register-error-msg','પાસવર્ડ ઓછામાં ઓછો 8 અક્ષરોનો હોવો જોઈએ.');return;}
+      if(registeredUsers.find(u=>u.email===email)){showAuthMessage('register-error-msg','આ account પહેલેથી અસ્તિત્વમાં છે.');return;}
+      registeredUsers.push({name:`${fname} ${lname}`.trim()||'Reader',email,passHash:await sha256Hex(pass)});
+      localStorage.setItem('raj_registered_users_v2',JSON.stringify(registeredUsers));
+      showAuthMessage('register-success-msg','Registration થઈ ગયું. આ account આ browser/device સુધી મર્યાદિત છે.');
+      setTimeout(()=>{document.getElementById('entry-modal').style.display='none';},900);
     }
-
-    function processLogin() {
+    async function processLogin(){
       hideAuthMessage('login-error-msg'); hideAuthMessage('login-success-msg');
-      const email = document.getElementById('login-email').value.trim();
-      const pass = document.getElementById('login-pass').value.trim();
-
-      if(!email || !pass) { showAuthMessage('login-error-msg', "ઇમેઇલ અને પાસવર્ડ દાખલ કરો!"); return; }
-
-      if (email === "iamjigarr89@gmail.com" && pass === "i-am-batman078") {
-        isAdminLoggedIn = true;
-        document.getElementById('header-admin-btn').style.display = 'flex';
-        showAuthMessage('login-success-msg', "Admin તરીકે સફળતાપૂર્વક લોગિન થઈ ગયું!");
-        renderPosts();
-        setTimeout(() => { document.getElementById('entry-modal').style.display = 'none'; }, 700);
-        return;
-      }
-
-      const foundUser = registeredUsers.find(u => u.email === email && u.pass === pass);
-      if (foundUser) {
-        showAuthMessage('login-success-msg', "સફળતાપૂર્વક લોગિન થઈ ગયું!");
-        setTimeout(() => { document.getElementById('entry-modal').style.display = 'none'; }, 700);
-      } else {
-        showAuthMessage('login-error-msg', "વિગતો ખોટી છે અથવા એકાઉન્ટ નથી!");
-      }
+      const email=document.getElementById('login-email').value.trim().toLowerCase(), pass=document.getElementById('login-pass').value;
+      if(!email||!pass){showAuthMessage('login-error-msg','ઇમેઇલ અને પાસવર્ડ દાખલ કરો!');return;}
+      const adminEmail=(localStorage.getItem('raj_local_admin_email')||'').toLowerCase(), adminHash=localStorage.getItem('raj_local_admin_hash')||'';
+      const passHash=await sha256Hex(pass);
+      if(adminEmail&&email===adminEmail&&adminHash===passHash){isAdminLoggedIn=true;document.getElementById('header-admin-btn').style.display='flex';showAuthMessage('login-success-msg','Local Admin તરીકે login સફળ.');setTimeout(()=>{document.getElementById('entry-modal').style.display='none';},700);return;}
+      const foundUser=registeredUsers.find(u=>u.email===email&&u.passHash===passHash);
+      if(foundUser){showAuthMessage('login-success-msg','સફળતાપૂર્વક login થઈ ગયું!');setTimeout(()=>{document.getElementById('entry-modal').style.display='none';},700);}else showAuthMessage('login-error-msg',adminEmail?'વિગતો ખોટી છે અથવા account નથી.':'Admin account આ device પર setup થયેલું નથી.');
     }
-
-    function toggleTheme() {
-      document.body.classList.toggle('dark-theme');
+    function setupLocalAdmin(){
+      const email=prompt('Admin email દાખલ કરો:'); if(!email)return;
+      const pass=prompt('નવું Admin password (ઓછામાં ઓછા 8 અક્ષરો):'); if(!pass||pass.length<8){alert('Password ઓછામાં ઓછું 8 અક્ષરોનું હોવું જોઈએ.');return;}
+      sha256Hex(pass).then(hash=>{localStorage.setItem('raj_local_admin_email',email.trim().toLowerCase());localStorage.setItem('raj_local_admin_hash',hash);alert('Local Admin setup થઈ ગયું. નોંધ: static frontend હોવાથી આ production-grade security નથી.');});
     }
+    function toggleTheme(){const dark=document.body.classList.toggle('dark-theme');localStorage.setItem('raj_theme',dark?'dark':'light');const i=document.getElementById('theme-icon');if(i)i.className=dark?'fa-solid fa-sun':'fa-solid fa-moon';}
+    function restoreTheme(){const dark=localStorage.getItem('raj_theme')!=='light';document.body.classList.toggle('dark-theme',dark);const i=document.getElementById('theme-icon');if(i)i.className=dark?'fa-solid fa-sun':'fa-solid fa-moon';}
 
     /* ---- Likes (per-browser, stored against siteData so it syncs via GitHub too) ---- */
     function getLikedSet() {
@@ -1473,7 +1469,7 @@
 
           const previewClass = POEM_KEYS.includes(c) ? 'line-clamp-3 preview-poem' : 'line-clamp-3';
           const liked = isLikedId('cat:' + c);
-          const likeCount = siteData[c].likes || 0;
+          const likeCount = Number(siteData.sectionLikes?.[c] ?? siteData[c].likes ?? 0);
 
           container.innerHTML = `
             <div class="reading-post-card">
@@ -1547,13 +1543,31 @@
       }
     }
 
+    async function loadAdminStats() {
+      if (!backendToken || backendUser?.role !== 'admin') return;
+      try {
+        const s = await apiRequest('/admin/stats');
+        let box = document.getElementById('admin-live-stats');
+        if (!box) {
+          box = document.createElement('div');
+          box.id = 'admin-live-stats';
+          box.style.cssText = 'display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 1rem;';
+          document.querySelector('#admin-panel-modal .admin-modal-content')?.prepend(box);
+        }
+        box.innerHTML = [
+          ['Users',s.users],['Posts',s.posts],['Published',s.publishedPosts],['Drafts',s.drafts],['Comments',s.comments],['Likes',s.likes]
+        ].map(([label,val])=>`<div style="padding:.65rem;border:1px solid var(--border-color);border-radius:10px;background:var(--bg-gray);text-align:center"><b style="font-size:1.2rem">${val}</b><div style="font-size:.78rem;color:var(--text-sub)">${label}</div></div>`).join('');
+      } catch(e) { console.warn('Admin stats:', e.message); }
+    }
+
     function openAdminPanel() {
+      if (!backendToken || backendUser?.role !== 'admin') { alert('Admin login જરૂરી છે.'); return; }
       document.getElementById('admin-panel-modal').style.display = 'flex';
       loadSelectedColumnData();
       restoreDraftAutosave();
       renderAdminExistingPosts();
-      const cfg = getGithubConfig();
-      updateSyncStatus(cfg.owner && cfg.repo && cfg.token ? 'idle' : 'unconfigured');
+      loadAdminStats();
+      loadGithubSettingsForm();
     }
 
     function closeAdminPanel() {
@@ -2014,29 +2028,26 @@
       if(el) el.style.display = visible ? 'block' : 'none';
     }
 
-    function openReaderModal(idx) {
-      currentPostIdx = idx;
-      const p = siteData.posts[idx];
-      if(!p) return;
-      renderReaderBody(p.title, p.text, null);
-      setCommentsSectionVisible(true);
-      showReaderModal();
-      renderComments();
-    }
+    function getBookmarks(){try{return JSON.parse(localStorage.getItem('raj_bookmarks')||'[]');}catch{return[];}}
+    function toggleBookmarkCurrent(){if(!currentReaderKey)return;const a=getBookmarks();const i=a.findIndex(x=>x.id===currentReaderKey);if(i>=0){a.splice(i,1);alert('Bookmark દૂર થયું.');}else{a.unshift({id:currentReaderKey,title:document.getElementById('rm-title').innerText,savedAt:Date.now()});alert('લખાણ bookmark થયું.');}localStorage.setItem('raj_bookmarks',JSON.stringify(a.slice(0,50)));}
+    function resumeLastRead(){try{const s=JSON.parse(localStorage.getItem('raj_last_read')||'null');if(!s)return;const i=siteData.posts.findIndex(p=>postLikeId(p)===s.id);if(i>=0)openReaderModal(i,Number(s.position)||0);}catch{}}
 
-    function openCustomSectionReader(key) {
-      if(!siteData[key]) return;
-      currentPostIdx = null;
-      renderReaderBody(siteData[key].title || "સાહિત્યિક કલમ", siteData[key].content || "", key);
-      // Sahitya page (Page 2) columns read as a clean article/poem — no comment box
-      setCommentsSectionVisible(!NO_COMMENT_KEYS.includes(key));
-      showReaderModal();
-      document.getElementById('comments-list').innerHTML = "";
+    function openReaderModal(idx, restorePosition=0){
+      currentPostIdx=idx; const p=siteData.posts[idx]; if(!p)return;
+      currentReaderKey=postLikeId(p); renderReaderBody(p.title,p.text,null); setCommentsSectionVisible(true); showReaderModal(); renderComments();
+      localStorage.setItem('raj_last_read',JSON.stringify({id:currentReaderKey,title:p.title||'',position:restorePosition}));
+      window.history.replaceState(null,'',`#post=${encodeURIComponent(currentReaderKey)}`);
+      setTimeout(()=>{const wrap=document.getElementById('rm-body-wrap');if(wrap){wrap.scrollTop=restorePosition||0;updateReaderProgress();}},0);
+    }
+    function openCustomSectionReader(key){
+      if(!siteData[key])return; currentPostIdx=null; currentReaderKey='section:'+key;
+      renderReaderBody(siteData[key].title||'સાહિત્યિક કલમ',siteData[key].content||'',key); setCommentsSectionVisible(!NO_COMMENT_KEYS.includes(key)); showReaderModal(); document.getElementById('comments-list').innerHTML='';
+      window.history.replaceState(null,'',`#section=${encodeURIComponent(key)}`);
     }
 
     function showReaderModal() {
       document.getElementById('reader-modal').style.display = 'flex';
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-open');
       const wrap = document.getElementById('rm-body-wrap');
       wrap.scrollTop = 0;
       updateReaderProgress();
@@ -2051,12 +2062,14 @@
       const max = wrap.scrollHeight - wrap.clientHeight;
       const pct = max > 0 ? Math.min(100, (wrap.scrollTop / max) * 100) : 100;
       fill.style.width = pct + '%';
+      if (currentReaderKey) { const old = JSON.parse(localStorage.getItem('raj_last_read') || 'null') || {}; localStorage.setItem('raj_last_read', JSON.stringify({...old,id:currentReaderKey,title:document.getElementById('rm-title')?.innerText||'',position:wrap.scrollTop})); }
     }
 
     function closeReaderModal() {
       document.getElementById('reader-modal').style.display = 'none';
-      document.body.style.overflow = '';
+      document.body.classList.remove('modal-open');
       resetShareMeta();
+      if (location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
     }
 
     document.addEventListener('keydown', function(e) {
@@ -2136,16 +2149,135 @@
       });
     }
 
-    // Initialize Page Data — try loading published data.json from GitHub first, then render
+    function updateScrollChrome(){const total=document.documentElement.scrollHeight-window.innerHeight;const pct=total>0?Math.min(100,Math.max(0,window.scrollY/total*100)):0;const p=document.getElementById('site-scroll-progress');if(p)p.style.width=pct+'%';const b=document.getElementById('back-to-top');if(b)b.classList.toggle('show',window.scrollY>500);}
+    function restoreLastReadBanner(){try{const s=JSON.parse(localStorage.getItem('raj_last_read')||'null');if(s&&s.title){document.getElementById('last-read-title').textContent=`છેલ્લે વાંચેલું: ${s.title}`;document.getElementById('last-read-banner').classList.add('show');}}catch{}}
+
+    // Initialize Page Data
     (async function initPage() {
+      restoreTheme();
       await fetchInitialSiteData();
       applyHeaderSocialLinks();
       renderCategoryPosts();
       renderPosts();
       renderAllComments();
-      const cfg = getGithubConfig();
-      updateSyncStatus(cfg.owner && cfg.repo && cfg.token ? 'idle' : 'unconfigured');
+      restoreLastReadBanner();
+      const cfg=getGithubConfig();
+      updateSyncStatus(cfg.owner&&cfg.repo&&cfg.token?'idle':'unconfigured');
+      window.addEventListener('scroll',updateScrollChrome,{passive:true});
+      updateScrollChrome();
+      if(location.hash.startsWith('#post=')){const id=decodeURIComponent(location.hash.slice(6));const i=siteData.posts.findIndex(p=>postLikeId(p)===id);if(i>=0)openReaderModal(i);}
+      else if(location.hash.startsWith('#section=')){const k=decodeURIComponent(location.hash.slice(9));if(siteData[k])openCustomSectionReader(k);}
     })();
-  </script>
+  
+
+    /* ================= FULL-STACK BACKEND BRIDGE ================= */
+    const API_BASE = '/api';
+    var backendToken = sessionStorage.getItem('raj_backend_token') || '';
+    var backendUser = JSON.parse(sessionStorage.getItem('raj_backend_user') || 'null');
+
+    async function apiRequest(path, options = {}) {
+      const headers = {'Content-Type':'application/json', ...(options.headers || {})};
+      if (backendToken) headers.Authorization = `Bearer ${backendToken}`;
+      const res = await fetch(API_BASE + path, {...options, headers});
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || `API error ${res.status}`);
+      return data;
+    }
+    function saveBackendSession(data) {
+      backendToken = data.token || '';
+      backendUser = data.user || null;
+      if (backendToken) sessionStorage.setItem('raj_backend_token', backendToken);
+      if (backendUser) sessionStorage.setItem('raj_backend_user', JSON.stringify(backendUser));
+      isAdminLoggedIn = backendUser?.role === 'admin';
+      const b = document.getElementById('header-admin-btn'); if (b) b.style.display = isAdminLoggedIn ? 'flex' : 'none';
+    }
+    function clearBackendSession() {
+      backendToken=''; backendUser=null; isAdminLoggedIn=false;
+      sessionStorage.removeItem('raj_backend_token'); sessionStorage.removeItem('raj_backend_user');
+      const b=document.getElementById('header-admin-btn'); if(b)b.style.display='none';
+    }
+
+    async function processRegister() {
+      hideAuthMessage('register-error-msg'); hideAuthMessage('register-success-msg');
+      const fname=document.getElementById('reg-fname').value.trim(), lname=document.getElementById('reg-lname').value.trim();
+      const email=document.getElementById('reg-email').value.trim(), password=document.getElementById('reg-pass').value;
+      try {
+        const data=await apiRequest('/auth/register',{method:'POST',body:JSON.stringify({name:`${fname} ${lname}`.trim(),email,password})});
+        saveBackendSession(data); showAuthMessage('register-success-msg','Account બની ગયું!');
+        setTimeout(()=>document.getElementById('entry-modal').style.display='none',600);
+      } catch(e){ showAuthMessage('register-error-msg',e.message); }
+    }
+    async function processLogin() {
+      hideAuthMessage('login-error-msg'); hideAuthMessage('login-success-msg');
+      try {
+        const data=await apiRequest('/auth/login',{method:'POST',body:JSON.stringify({email:document.getElementById('login-email').value.trim(),password:document.getElementById('login-pass').value})});
+        saveBackendSession(data); await fetchInitialSiteData(); renderCategoryPosts(); renderPosts(); renderAllComments(); showAuthMessage('login-success-msg',data.user.role==='admin'?'Admin login સફળ!':'Login સફળ!');
+        setTimeout(()=>document.getElementById('entry-modal').style.display='none',600);
+      } catch(e){ showAuthMessage('login-error-msg',e.message); }
+    }
+    async function fetchInitialSiteData() {
+      try {
+        const data=await apiRequest(isAdminLoggedIn?'/admin/site':'/site');
+        if(data && Array.isArray(data.posts)){ siteData=normalizeSiteData(data); saveToLocalStorage(); }
+      } catch(e) { console.warn('Backend unavailable; using local fallback.',e); }
+    }
+    async function pushDataToGithub(message) {
+      try {
+        if (!backendToken || backendUser?.role !== 'admin') { updateSyncStatus('unconfigured','Admin login જરૂરી'); return false; }
+        updateSyncStatus('loading','Backend પર સેવ થઈ રહ્યું છે...');
+        await apiRequest('/admin/snapshot',{method:'PUT',body:JSON.stringify(siteData)});
+        const fresh=await apiRequest('/admin/site');
+        siteData=normalizeSiteData(fresh);
+        saveToLocalStorage();
+        renderCategoryPosts(); renderPosts(); renderAllComments(); renderAdminExistingPosts();
+        const result=await apiRequest('/admin/publish-github',{method:'POST',body:JSON.stringify({message})});
+        updateSyncStatus('ok',result.skipped?'Backend પર સેવ થયું':'Backend + GitHub પર સેવ થયું');
+        return true;
+      } catch(e) { console.error(e); updateSyncStatus('error',e.message); return false; }
+    }
+    async function saveAdminChanges(actionType='publish') {
+      const key=document.getElementById('admin-col-select').value;
+      if(!siteData[key]) siteData[key]={title:'',content:'',extraBoxes:[]};
+      siteData[key].title=document.getElementById('admin-col-title').value;
+      siteData[key].content=document.getElementById('admin-col-text').value;
+      (siteData[key].extraBoxes||[]).forEach((box,i)=>{const t=document.getElementById(`ex-title-${i}`),c=document.getElementById(`ex-content-${i}`);if(t&&c){box.title=t.value;box.content=c.value;box.status=actionType;}});
+      saveToLocalStorage(); renderCategoryPosts();
+      const ok=await pushDataToGithub(`${actionType==='draft'?'Draft':'Publish'} column: ${key}`);
+      alert(ok?'ડેટા backend માં સેવ થયો.':'ડેટા local માં સેવ થયો, backend sync નિષ્ફળ.');
+      if(ok) closeAdminPanel();
+    }
+    async function publishNewPost(actionType='publish') {
+      const title=document.getElementById('new-post-title').value.trim(), text=document.getElementById('new-post-text').value.trim();
+      if(!text){alert('લખાણ ઉમેરો!');return;}
+      siteData.posts.unshift({title:title||'સાહિત્યિક પોસ્ટ',text,date:getGujaratiDateString(),status:actionType,pinned:false,likes:0,comments:[]});
+      saveToLocalStorage(); renderPosts(); renderAdminExistingPosts(); clearDraftAutosave();
+      const ok=await pushDataToGithub(`${actionType==='draft'?'Draft':'Publish'} new post: ${title||'Untitled'}`);
+      alert(ok?'પોસ્ટ backend માં સેવ થઈ.':'Local save થયું, backend sync નિષ્ફળ.');
+      if(ok) closeAdminPanel();
+    }
+    async function togglePinPost(idx){const p=siteData.posts[idx];if(!p)return;p.pinned=!p.pinned;saveToLocalStorage();renderPosts();renderAdminExistingPosts();await pushDataToGithub(`${p.pinned?'Pin':'Unpin'} post: ${p.title}`);}
+    async function deleteExistingPost(idx){const p=siteData.posts[idx];if(!p||!confirm(`"${p.title}" પોસ્ટ ડિલીટ કરવી છે?`))return;siteData.posts.splice(idx,1);saveToLocalStorage();renderPosts();renderAdminExistingPosts();await pushDataToGithub(`Delete post: ${p.title}`);}
+    async function saveSocialMediaLinks(){
+      const payload={instagram:document.getElementById('admin-link-instagram').value.trim(),facebook:document.getElementById('admin-link-facebook').value.trim(),youtube:document.getElementById('admin-link-youtube').value.trim(),twitter:document.getElementById('admin-link-twitter').value.trim(),whatsapp:document.getElementById('admin-link-whatsapp').value.trim()};
+      try { await apiRequest('/settings/social',{method:'PUT',body:JSON.stringify(payload)}); siteData.socialLinks=payload;saveToLocalStorage();applyHeaderSocialLinks();alert('Social links backend માં સેવ થઈ ગઈ.'); } catch(e){alert(e.message);}
+    }
+    async function addComment(){
+      if(currentPostIdx===null)return;
+      const author=document.getElementById('c-author').value.trim()||'અનામિક યુઝર', text=document.getElementById('c-text').value.trim();
+      if(!text)return; if(text.length>2000){alert('કોમેન્ટ 2000 અક્ષર સુધી રાખો.');return;}
+      try { const id=siteData.posts[currentPostIdx].id; if(!id) throw new Error('આ જૂની local post છે; પહેલા backend sync કરો.'); await apiRequest(`/posts/${id}/comments`,{method:'POST',body:JSON.stringify({author,text})}); document.getElementById('c-text').value=''; const data=await apiRequest(`/posts/${id}/comments`);siteData.posts[currentPostIdx].comments=data.comments;renderComments();renderAllComments(); } catch(e){alert(e.message);}
+    }
+    async function likePost(idx){const p=siteData.posts[idx];if(!p||!p.id)return;try{const d=await apiRequest(`/posts/${p.id}/like`,{method:'POST'});p.likes=d.likes;renderPosts();}catch(e){console.warn(e);}}
+    async function sendAdminReply(pIdx,cIdx){const c=siteData.posts[pIdx]?.comments?.[cIdx];if(!c)return;const text=document.getElementById(`reply-input-${pIdx}-${cIdx}`)?.value.trim();if(!text)return;try{await apiRequest(`/comments/${c.id}/reply`,{method:'PATCH',body:JSON.stringify({reply:text})});const d=await apiRequest(`/posts/${siteData.posts[pIdx].id}/comments`);siteData.posts[pIdx].comments=d.comments;renderAdminComments();renderAllComments();}catch(e){alert(e.message);}}
+    async function deleteCommentByAdmin(pIdx,cIdx){const c=siteData.posts[pIdx]?.comments?.[cIdx];if(!c||!confirm('શું તમે આ કોમેન્ટ ડિલીટ કરવા માંગો છો?'))return;try{await apiRequest(`/comments/${c.id}`,{method:'DELETE'});siteData.posts[pIdx].comments.splice(cIdx,1);renderAdminComments();renderAllComments();}catch(e){alert(e.message);}}
+
+    async function bootstrapBackendSession() {
+      if(!backendToken)return;
+      try { const d=await apiRequest('/auth/me'); saveBackendSession({token:backendToken,user:d.user}); }
+      catch { clearBackendSession(); }
+    }
+</script>
+
+
 </body>
 </html>
