@@ -40,29 +40,37 @@ const authToken = req => String(req.headers.authorization||'').replace(/^Bearer\
 async function dbInit(){
   if(!sql) throw new Error('DATABASE_URL is not configured');
   await sql`
-    CREATE TABLE IF NOT EXISTS users (
-      id BIGSERIAL PRIMARY KEY, name TEXT NOT NULL, email TEXT UNIQUE NOT NULL,
-      password_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'user', created_at TIMESTAMPTZ DEFAULT NOW()
-    );
-    CREATE TABLE IF NOT EXISTS posts (
-      id BIGSERIAL PRIMARY KEY, title TEXT NOT NULL, text TEXT NOT NULL, date_text TEXT NOT NULL,
-      status TEXT NOT NULL DEFAULT 'publish', pinned BOOLEAN NOT NULL DEFAULT FALSE, likes INTEGER NOT NULL DEFAULT 0,
-      created_at TIMESTAMPTZ DEFAULT NOW(), updated_at TIMESTAMPTZ DEFAULT NOW()
-    );
-    CREATE TABLE IF NOT EXISTS comments (
-      id BIGSERIAL PRIMARY KEY, post_id BIGINT REFERENCES posts(id) ON DELETE CASCADE,
-      author TEXT NOT NULL, text TEXT NOT NULL, reply TEXT, created_at TIMESTAMPTZ DEFAULT NOW()
-    );
-    CREATE TABLE IF NOT EXISTS likes (
-      id BIGSERIAL PRIMARY KEY, post_id BIGINT REFERENCES posts(id) ON DELETE CASCADE,
-      actor_key TEXT NOT NULL, created_at TIMESTAMPTZ DEFAULT NOW(), UNIQUE(post_id,actor_key)
-    );
-    CREATE TABLE IF NOT EXISTS section_likes (
-      id BIGSERIAL PRIMARY KEY, section_key TEXT NOT NULL, actor_key TEXT NOT NULL,
-      created_at TIMESTAMPTZ DEFAULT NOW(), UNIQUE(section_key,actor_key)
-    );
-    CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value JSONB NOT NULL);
-  `;
+      CREATE TABLE IF NOT EXISTS users (
+        id BIGSERIAL PRIMARY KEY, name TEXT NOT NULL, email TEXT UNIQUE NOT NULL,
+        password_hash TEXT NOT NULL, role TEXT NOT NULL DEFAULT 'user', created_at TIMESTAMPTZ DEFAULT NOW()
+      )
+    `;
+    await sql`
+      CREATE TABLE IF NOT EXISTS posts (
+        id BIGSERIAL PRIMARY KEY, title TEXT NOT NULL, text TEXT NOT NULL, date_text TEXT NOT NULL,
+        status TEXT NOT NULL DEFAULT 'publish', pinned BOOLEAN NOT NULL DEFAULT FALSE, likes INTEGER NOT NULL DEFAULT 0,
+        created_at TIMESTAMPTZ DEFAULT NOW(), updated_at TIMESTAMPTZ DEFAULT NOW()
+      )
+    `;
+    await sql`
+      CREATE TABLE IF NOT EXISTS comments (
+        id BIGSERIAL PRIMARY KEY, post_id BIGINT REFERENCES posts(id) ON DELETE CASCADE,
+        author TEXT NOT NULL, text TEXT NOT NULL, reply TEXT, created_at TIMESTAMPTZ DEFAULT NOW()
+      )
+    `;
+    await sql`
+      CREATE TABLE IF NOT EXISTS likes (
+        id BIGSERIAL PRIMARY KEY, post_id BIGINT REFERENCES posts(id) ON DELETE CASCADE,
+        actor_key TEXT NOT NULL, created_at TIMESTAMPTZ DEFAULT NOW(), UNIQUE(post_id,actor_key)
+      )
+    `;
+    await sql`
+      CREATE TABLE IF NOT EXISTS section_likes (
+        id BIGSERIAL PRIMARY KEY, section_key TEXT NOT NULL, actor_key TEXT NOT NULL,
+        created_at TIMESTAMPTZ DEFAULT NOW(), UNIQUE(section_key,actor_key)
+      )
+    `;
+    await sql`CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value JSONB NOT NULL)`;
 
   const defaults={
     home1:{title:'શૈક્ષણિક અને સાહિત્યિક સંસ્કારો',content:'રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. શિક્ષણ અને સાહિત્ય માનવજીવનના સર્વાંગી વિકાસ માટે અત્યંત જરૂરી છે.',extraBoxes:[]},
