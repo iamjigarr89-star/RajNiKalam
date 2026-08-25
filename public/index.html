@@ -184,27 +184,59 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
     .photo-gallery-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-      gap:18px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:28px;
     }
     .photo-gallery-card {
       background:var(--bg-gray);
       border:1px solid var(--border-color);
-      border-radius:12px;
+      border-radius:14px;
       overflow:hidden;
-      box-shadow:0 3px 10px rgba(0,0,0,.10);
+      box-shadow:0 4px 14px rgba(0,0,0,.14);
+      width:100%;
+      max-width:600px;
     }
     .photo-gallery-card img {
       display:block;
       width:100%;
       height:auto;
-      max-height:520px;
+      min-height:320px;
+      max-height:700px;
       object-fit:contain;
       background:var(--card-bg);
+      cursor:zoom-in;
     }
-    .photo-gallery-caption { padding:.75rem .9rem; font-weight:600; color:var(--text-main); }
+    .photo-gallery-caption { padding:.9rem 1.1rem; font-weight:600; color:var(--text-main); }
     .admin-photo-preview { width:90px; height:70px; object-fit:contain; background:var(--card-bg); border:1px solid var(--border-color); border-radius:8px; }
+
+    /* PHOTO ZOOM LIGHTBOX */
+    .photo-zoom-overlay {
+      display:none; position:fixed; inset:0; z-index:9999;
+      background:rgba(0,0,0,.92);
+      align-items:center; justify-content:center;
+      touch-action:none; overscroll-behavior:contain;
+    }
+    .photo-zoom-overlay.active { display:flex; }
+    .photo-zoom-overlay img {
+      max-width:94vw; max-height:88vh;
+      object-fit:contain;
+      user-select:none; -webkit-user-drag:none;
+      will-change:transform;
+      transition:transform .06s ease-out;
+    }
+    .photo-zoom-close {
+      position:absolute; top:18px; right:18px;
+      width:44px; height:44px; border-radius:50%;
+      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3);
+      color:#fff; font-size:1.3rem; display:flex; align-items:center; justify-content:center;
+      cursor:pointer; z-index:2;
+    }
+    .photo-zoom-hint {
+      position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
+      color:rgba(255,255,255,.75); font-size:.8rem; text-align:center; width:90%;
+    }
 
     .section-title { 
       color: var(--google-blue); 
@@ -583,8 +615,9 @@
       .section-card { padding: 1.2rem; margin-bottom: 1.2rem; }
       .home-photo-gallery { grid-template-columns: 1fr; gap: 12px; }
       .home-photo-gallery img { height: 200px; }
-      .photo-gallery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-      .photo-gallery-card img { max-height:320px; }
+      .photo-gallery-grid { gap:20px; }
+      .photo-gallery-card img { min-height:260px; max-height:520px; }
+      .photo-zoom-close { top:10px; right:10px; width:38px; height:38px; font-size:1.1rem; }
       .column-actions-bar { justify-content: flex-start; }
       .admin-nav-tabs { flex-direction: column; }
       .pagination-bar { margin-left: -0.2rem; margin-right: -0.2rem; padding-inline: 0.2rem; }
@@ -1001,6 +1034,13 @@
     </section>
   </main>
 
+  <!-- PHOTO ZOOM LIGHTBOX -->
+  <div class="photo-zoom-overlay" id="photo-zoom-overlay" onclick="if(event.target===this)closePhotoZoom()">
+    <div class="photo-zoom-close" onclick="closePhotoZoom()"><i class="fa-solid fa-xmark"></i></div>
+    <img id="photo-zoom-img" src="" alt="">
+    <div class="photo-zoom-hint">Scroll / Pinch to zoom &middot; Double-tap to reset &middot; Drag to pan</div>
+  </div>
+
   <button id="back-to-top" aria-label="ઉપર જાઓ" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
 
   <!-- ADMIN CONTROL PAGE PANEL -->
@@ -1147,7 +1187,7 @@
       <!-- ADMIN PAGE 5: PHOTO MANAGER -->
       <div class="admin-modal-body" id="admin-page-5" style="display:none;">
         <h4 style="color:var(--google-blue); margin-bottom:.8rem; font-size:1.1rem;"><i class="fa-solid fa-images"></i> ફોટો મેનેજર</h4>
-        <p style="color:var(--text-sub);font-size:.9rem;margin-bottom:1rem;">કોઈપણ size/aspect ratioના ફોટા ઉમેરો. ફોટો Galleryમાં ત્યારે જ દેખાશે જ્યારે Publish કરશો.</p>
+        <p style="color:var(--text-sub);font-size:.9rem;margin-bottom:1rem;">કોઈપણ size/aspect ratioના ફોટા ઉમેરો. ફોટો ઉમેરતાં જ Public Galleryમાં દેખાશે. જો કોઈ ફોટો હાલ પૂરતો છુપાવવો હોય તો નીચે "Draft" button વાપરો.</p>
         <div class="extra-field-group">
           <div class="form-group"><label>Photo file:</label><input type="file" id="admin-photo-file" accept="image/png,image/jpeg,image/webp,image/gif"></div>
           <div class="form-group"><label>અથવા Photo URL:</label><input type="url" id="admin-photo-url" placeholder="https://example.com/photo.jpg"></div>
@@ -1589,11 +1629,106 @@
       }
       container.innerHTML = photos.map(p => `
         <figure class="photo-gallery-card">
-          <img src="${safeExternalUrl(p.src)}" alt="${escapeHtml(p.alt || p.title || 'Photo')}" loading="lazy" decoding="async">
+          <img src="${safeExternalUrl(p.src)}" alt="${escapeHtml(p.alt || p.title || 'Photo')}" loading="lazy" decoding="async" data-zoom-src="${safeExternalUrl(p.src)}" data-zoom-alt="${escapeHtml(p.alt || p.title || 'Photo')}">
           ${p.title ? `<figcaption class="photo-gallery-caption">${escapeHtml(p.title)}</figcaption>` : ''}
         </figure>
       `).join('');
+      container.querySelectorAll('img[data-zoom-src]').forEach(img => {
+        img.addEventListener('click', () => openPhotoZoom(img.dataset.zoomSrc, img.dataset.zoomAlt));
+      });
     }
+
+    /* ===== PHOTO ZOOM LIGHTBOX (Instagram-style pinch/scroll/drag zoom) ===== */
+    let pzScale = 1, pzX = 0, pzY = 0, pzStartX = 0, pzStartY = 0, pzDragging = false;
+    let pzPinchDist = 0, pzPinchScale = 1;
+    const pzOverlay = () => document.getElementById('photo-zoom-overlay');
+    const pzImg = () => document.getElementById('photo-zoom-img');
+
+    function openPhotoZoom(src, alt) {
+      if (!src) return;
+      const img = pzImg();
+      img.src = src; img.alt = alt || 'Photo';
+      pzScale = 1; pzX = 0; pzY = 0;
+      pzApplyTransform();
+      pzOverlay().classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closePhotoZoom() {
+      pzOverlay().classList.remove('active');
+      pzImg().src = '';
+      document.body.style.overflow = '';
+    }
+    function pzApplyTransform() {
+      pzImg().style.transform = `translate(${pzX}px, ${pzY}px) scale(${pzScale})`;
+      pzImg().style.cursor = pzScale > 1 ? 'grab' : 'zoom-in';
+    }
+    function pzClamp(v, min, max) { return Math.min(Math.max(v, min), max); }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const overlay = pzOverlay(); const img = pzImg();
+      if (!overlay || !img) return;
+
+      // Desktop: scroll wheel zoom
+      overlay.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const delta = e.deltaY > 0 ? -0.15 : 0.15;
+        pzScale = pzClamp(pzScale + delta, 1, 5);
+        if (pzScale === 1) { pzX = 0; pzY = 0; }
+        pzApplyTransform();
+      }, { passive: false });
+
+      // Double-click / double-tap to toggle zoom
+      let lastTap = 0;
+      img.addEventListener('click', () => {
+        const now = Date.now();
+        if (now - lastTap < 300) {
+          if (pzScale > 1) { pzScale = 1; pzX = 0; pzY = 0; }
+          else { pzScale = 2.5; }
+          pzApplyTransform();
+        }
+        lastTap = now;
+      });
+
+      // Mouse drag to pan when zoomed
+      img.addEventListener('mousedown', (e) => {
+        if (pzScale <= 1) return;
+        pzDragging = true; pzStartX = e.clientX - pzX; pzStartY = e.clientY - pzY;
+        img.style.cursor = 'grabbing';
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (!pzDragging) return;
+        pzX = e.clientX - pzStartX; pzY = e.clientY - pzStartY;
+        pzApplyTransform();
+      });
+      window.addEventListener('mouseup', () => { pzDragging = false; if (pzScale > 1) img.style.cursor = 'grab'; });
+
+      // Touch: pinch to zoom + drag to pan
+      overlay.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 2) {
+          pzPinchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+          pzPinchScale = pzScale;
+        } else if (e.touches.length === 1 && pzScale > 1) {
+          pzDragging = true; pzStartX = e.touches[0].clientX - pzX; pzStartY = e.touches[0].clientY - pzY;
+        }
+      }, { passive: true });
+      overlay.addEventListener('touchmove', (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+          pzScale = pzClamp(pzPinchScale * (dist / pzPinchDist), 1, 5);
+          if (pzScale === 1) { pzX = 0; pzY = 0; }
+          pzApplyTransform();
+        } else if (e.touches.length === 1 && pzDragging) {
+          e.preventDefault();
+          pzX = e.touches[0].clientX - pzStartX; pzY = e.touches[0].clientY - pzStartY;
+          pzApplyTransform();
+        }
+      }, { passive: false });
+      overlay.addEventListener('touchend', () => { pzDragging = false; });
+
+      // Escape key closes
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('active')) closePhotoZoom(); });
+    });
 
     function renderPosts() {
       const container = document.getElementById('home-daily-container');
@@ -1995,7 +2130,7 @@
         siteData.photos=[...(siteData.photos||[]),photo];
         saveToLocalStorage(); renderPhotoGallery(); renderAdminPhotos();
         fileEl.value=''; urlEl.value=''; document.getElementById('admin-photo-title').value=''; document.getElementById('admin-photo-alt').value='';
-        alert('Photo Draft તરીકે add થઈ ગયો. Publish કરવા Publish button દબાવો.');
+        alert('Photo ઉમેરાઈ ગયો અને Public Gallery માં live થઈ ગયો!');
       } catch(e) { alert(e.message); }
     }
     function renderAdminPhotos() {
