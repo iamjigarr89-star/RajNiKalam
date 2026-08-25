@@ -186,7 +186,7 @@ app.post('/api/admin/photos/upload',requireAuth,requireAdmin,async(req,res)=>{
     const {GITHUB_OWNER:go,GITHUB_REPO:gr,GITHUB_BRANCH:gb='main'}=process.env;
     const rawUrl=`https://raw.githubusercontent.com/${encodeURIComponent(go)}/${encodeURIComponent(gr)}/${encodeURIComponent(gb)}/${filePath.split('/').map(encodeURIComponent).join('/')}`;
     const photos=await setting('photos',[]);
-    const photo={id:crypto.randomUUID(),src:rawUrl,title,alt,status:'draft',path:filePath,createdAt:new Date().toISOString()};
+    const photo={id:crypto.randomUUID(),src:rawUrl,title,alt,status:'publish',path:filePath,createdAt:new Date().toISOString()};
     photos.push(photo); await setSetting('photos',photos.slice(-200));
     await autoPublish(`Add photo: ${title||photo.id}`);
     res.status(201).json({photo});
@@ -197,7 +197,7 @@ app.post('/api/admin/photos/url',requireAuth,requireAdmin,async(req,res)=>{
     const src=text(req.body.src,2000),title=text(req.body.title,240)||'',alt=text(req.body.alt,240)||title||'Photo';
     const u=new URL(src); if(!['http:','https:'].includes(u.protocol)) throw new Error('Valid http/https photo URL required');
     const photos=await setting('photos',[]);
-    const photo={id:crypto.randomUUID(),src:u.href,title,alt,status:'draft',createdAt:new Date().toISOString()};
+    const photo={id:crypto.randomUUID(),src:u.href,title,alt,status:'publish',createdAt:new Date().toISOString()};
     photos.push(photo); await setSetting('photos',photos.slice(-200)); await autoPublish(`Add photo URL: ${title||photo.id}`);
     res.status(201).json({photo});
   }catch(e){res.status(400).json({error:e.message||'Photo URL failed'});}
