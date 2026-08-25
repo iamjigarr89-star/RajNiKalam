@@ -183,8 +183,10 @@ app.post('/api/admin/photos/upload',requireAuth,requireAdmin,async(req,res)=>{
     const ext=mime==='jpeg'?'jpg':mime;
     const filePath=safePhotoPath(`photo.${ext}`);
     await githubFileWrite(filePath,raw.toString('base64'),`Add photo: ${title||filePath}`);
+    const {GITHUB_OWNER:go,GITHUB_REPO:gr,GITHUB_BRANCH:gb='main'}=process.env;
+    const rawUrl=`https://raw.githubusercontent.com/${encodeURIComponent(go)}/${encodeURIComponent(gr)}/${encodeURIComponent(gb)}/${filePath.split('/').map(encodeURIComponent).join('/')}`;
     const photos=await setting('photos',[]);
-    const photo={id:crypto.randomUUID(),src:`/uploads/${filePath.split('/').pop()}`,title,alt,status:'draft',path:filePath,createdAt:new Date().toISOString()};
+    const photo={id:crypto.randomUUID(),src:rawUrl,title,alt,status:'draft',path:filePath,createdAt:new Date().toISOString()};
     photos.push(photo); await setSetting('photos',photos.slice(-200));
     await autoPublish(`Add photo: ${title||photo.id}`);
     res.status(201).json({photo});
