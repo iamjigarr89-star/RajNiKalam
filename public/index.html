@@ -1372,7 +1372,16 @@
     function escapeHtml(v){
       return String(v ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
     }
-    function safeExternalUrl(v){try{const u=new URL(String(v||'').trim());return ['http:','https:'].includes(u.protocol)?u.href:'#';}catch{return '#';}}
+    function safeExternalUrl(v){
+      try{
+        const raw=String(v||'').trim();
+        if(!raw) return '#';
+        // Allow same-site relative paths such as /uploads/photo.jpg as well as absolute http(s) URLs.
+        if(raw.startsWith('/') && !raw.startsWith('//')) return raw;
+        const u=new URL(raw, window.location.href);
+        return ['http:','https:'].includes(u.protocol)?u.href:'#';
+      }catch{return '#';}
+    }
 
     /* APPLY SOCIAL LINKS TO HOME HEADER ICONS */
     function applyHeaderSocialLinks() {
