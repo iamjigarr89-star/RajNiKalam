@@ -183,6 +183,28 @@
       border: 1px solid var(--border-color);
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
+    .photo-gallery-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+      gap:18px;
+    }
+    .photo-gallery-card {
+      background:var(--bg-gray);
+      border:1px solid var(--border-color);
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 3px 10px rgba(0,0,0,.10);
+    }
+    .photo-gallery-card img {
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:520px;
+      object-fit:contain;
+      background:var(--card-bg);
+    }
+    .photo-gallery-caption { padding:.75rem .9rem; font-weight:600; color:var(--text-main); }
+    .admin-photo-preview { width:90px; height:70px; object-fit:contain; background:var(--card-bg); border:1px solid var(--border-color); border-radius:8px; }
 
     .section-title { 
       color: var(--google-blue); 
@@ -561,6 +583,8 @@
       .section-card { padding: 1.2rem; margin-bottom: 1.2rem; }
       .home-photo-gallery { grid-template-columns: 1fr; gap: 12px; }
       .home-photo-gallery img { height: 200px; }
+      .photo-gallery-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+      .photo-gallery-card img { max-height:320px; }
       .column-actions-bar { justify-content: flex-start; }
       .admin-nav-tabs { flex-direction: column; }
       .pagination-bar { margin-left: -0.2rem; margin-right: -0.2rem; padding-inline: 0.2rem; }
@@ -868,6 +892,7 @@
       <a class="page-btn" href="#page-2">Page 2 (સાહિત્ય)</a>
       <a class="page-btn" href="#page-3">Page 3 (About/Contact)</a>
       <a class="page-btn" href="#page-4">Page 4 (કોમેન્ટ્સ)</a>
+      <a class="page-btn" href="#page-5">Page 5 (ફોટોઝ)</a>
     </div>
 
     <div class="last-read-banner" id="last-read-banner">
@@ -965,6 +990,15 @@
         <div id="all-user-comments-container"></div>
       </div>
     </section>
+
+    <!-- PAGE 5: PHOTO GALLERY -->
+    <section id="page-5">
+      <div class="section-card">
+        <h2 class="section-title"><i class="fa-solid fa-images"></i> ફોટો ગેલેરી</h2>
+        <p style="color:var(--text-sub); margin-bottom:1rem;">અહીં પ્રકાશિત થયેલા ફોટોઝ જુઓ.</p>
+        <div id="photo-gallery-container" class="photo-gallery-grid"></div>
+      </div>
+    </section>
   </main>
 
   <button id="back-to-top" aria-label="ઉપર જાઓ" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
@@ -980,12 +1014,13 @@
         </div>
       </div>
 
-      <!-- ADMIN TAB NAVIGATION (4 PAGES) -->
+      <!-- ADMIN TAB NAVIGATION (5 PAGES) -->
       <div class="admin-nav-tabs">
         <button class="admin-tab-btn active" id="tab-btn-1" onclick="switchAdminTab(1)"><i class="fa-solid fa-pen-to-square"></i> ૧. કોલમ અને લખાણ</button>
         <button class="admin-tab-btn" id="tab-btn-2" onclick="switchAdminTab(2)"><i class="fa-solid fa-comments"></i> ૨. કોમેન્ટ્સ મોડરેશન</button>
         <button class="admin-tab-btn" id="tab-btn-3" onclick="switchAdminTab(3)"><i class="fa-solid fa-share-nodes"></i> ૩. સોશિયલ મીડિયા લિંક્સ</button>
         <button class="admin-tab-btn" id="tab-btn-4" onclick="switchAdminTab(4)"><i class="fa-brands fa-github"></i> ૪. GitHub Sync</button>
+        <button class="admin-tab-btn" id="tab-btn-5" onclick="switchAdminTab(5)"><i class="fa-solid fa-images"></i> ૫. ફોટોઝ</button>
       </div>
 
       <!-- ADMIN PAGE 1: WRITING BOXES & COLUMN EDITING -->
@@ -1037,8 +1072,19 @@
           <input type="text" id="new-post-title" placeholder="પોસ્ટનું ટાઇટલ લખો..." oninput="saveDraftAutosave()">
         </div>
         <div class="form-group">
+          <label>પોસ્ટ કયા કોલમમાં દેખાડવી છે?</label>
+          <select id="new-post-category" style="font-size:1rem;font-weight:600;padding:.7rem;">
+            <option value="home">Home / દૈનિક પોસ્ટ</option>
+            <option value="articles">લેખ</option>
+            <option value="gazal">ગઝલ</option>
+            <option value="kavita">કવિતા</option>
+            <option value="chand">છંદ</option>
+            <option value="navalkatha">નવલકથા</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label>પોસ્ટનું વિગતવાર લખાણ / Writing Box:</label>
-          <textarea id="new-post-text" placeholder="અહીં દૈનિક પોસ્ટનું લખાણ ઉમેરો..." oninput="saveDraftAutosave()"></textarea>
+          <textarea id="new-post-text" placeholder="અહીં પોસ્ટનું લખાણ ઉમેરો..." oninput="saveDraftAutosave()"></textarea>
         </div>
         <div style="display: flex; gap: 10px; margin-top: 0.8rem;">
           <button class="btn btn-draft" style="padding: 0.79rem 1.4rem;" onclick="publishNewPost('draft')"><i class="fa-solid fa-file-lines"></i> Save Draft</button>
@@ -1096,6 +1142,20 @@
         <button class="btn btn-publish" style="width: 100%; padding: 0.85rem;" onclick="saveSocialMediaLinks()">
           <i class="fa-solid fa-floppy-disk"></i> સોશિયલ મીડિયા લિંક્સ સેવ કરો (Save All Links)
         </button>
+      </div>
+
+      <!-- ADMIN PAGE 5: PHOTO MANAGER -->
+      <div class="admin-modal-body" id="admin-page-5" style="display:none;">
+        <h4 style="color:var(--google-blue); margin-bottom:.8rem; font-size:1.1rem;"><i class="fa-solid fa-images"></i> ફોટો મેનેજર</h4>
+        <p style="color:var(--text-sub);font-size:.9rem;margin-bottom:1rem;">કોઈપણ size/aspect ratioના ફોટા ઉમેરો. ફોટો Galleryમાં ત્યારે જ દેખાશે જ્યારે Publish કરશો.</p>
+        <div class="extra-field-group">
+          <div class="form-group"><label>Photo file:</label><input type="file" id="admin-photo-file" accept="image/png,image/jpeg,image/webp,image/gif"></div>
+          <div class="form-group"><label>અથવા Photo URL:</label><input type="url" id="admin-photo-url" placeholder="https://example.com/photo.jpg"></div>
+          <div class="form-group"><label>Photo Title:</label><input type="text" id="admin-photo-title" placeholder="ફોટોનું નામ..."></div>
+          <div class="form-group"><label>Alt Text:</label><input type="text" id="admin-photo-alt" placeholder="ફોટો વિશે ટૂંકું વર્ણન..."></div>
+          <button class="btn btn-add" onclick="addAdminPhoto()"><i class="fa-solid fa-plus"></i> Add Photo</button>
+        </div>
+        <div id="admin-photos-list"></div>
       </div>
 
       <!-- ADMIN PAGE 4: GITHUB SYNC SETTINGS -->
@@ -1194,6 +1254,7 @@
     const defaultSiteData = {
       socialLinks: { instagram:'', facebook:'', youtube:'', twitter:'', whatsapp:'' },
       sectionLikes: {},
+      photos: [],
       home1: { title:'શૈક્ષણિક અને સાહિત્યિક સંસ્કારો', content:'રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. શિક્ષણ અને સાહિત્ય માનવજીવનના સર્વાંગી વિકાસ માટે અત્યંત જરૂરી છે. અહીં રોજેરોજ નવા લેખો, વિચારો અને વાંચન સામગ્રી મળશે.', extraBoxes:[], likes:0 },
       articles: { title:'લેખ', content:'ગુજરાતી ભાષા, શિક્ષણ, જીવનમૂલ્યો અને જ્ઞાનવિષયક ઉપયોગી લેખો અહીં વાંચો.', extraBoxes:[], likes:0 },
       gazal: { title:'ગઝલ', content:'ગુજરાતી ગઝલના ભાવ, શબ્દ અને વિચાર સાથેનું વાંચન.', extraBoxes:[], likes:0 },
@@ -1201,7 +1262,7 @@
       chand: { title:'છંદ', content:'ગુજરાતી છંદ અને કાવ્યરચનાની સમજ માટે ઉપયોગી સામગ્રી.', extraBoxes:[], likes:0 },
       navalkatha: { title:'નવલકથા', content:'નવલકથા અને વાર્તાસાહિત્યના રસપ્રદ અંશોનું વાંચન.', extraBoxes:[], likes:0 },
       posts: [
-        {id:1,title:'રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત',text:'શિક્ષણ, સાહિત્ય અને સર્જનાત્મક વાંચન માટે રાજ ની કલમ સાથે જોડાયેલા રહો. નવી પોસ્ટ માટે નિયમિત મુલાકાત લો.',date:getGujaratiDateString(),status:'publish',pinned:true,likes:0,comments:[]}
+        {id:1,title:'રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત',text:'શિક્ષણ, સાહિત્ય અને સર્જનાત્મક વાંચન માટે રાજ ની કલમ સાથે જોડાયેલા રહો. નવી પોસ્ટ માટે નિયમિત મુલાકાત લો.',date:getGujaratiDateString(),status:'publish',category:'home',pinned:true,likes:0,comments:[]}
       ]
     };
     let siteData = JSON.parse(localStorage.getItem('raj_ni_kalam_merged_data') || 'null') || JSON.parse(JSON.stringify(defaultSiteData));
@@ -1295,7 +1356,8 @@
       merged.socialLinks={...base.socialLinks,...(remote.socialLinks||{})};
       ['home1','articles','gazal','kavita','chand','navalkatha'].forEach(k=>{merged[k]={...base[k],...(remote[k]||{})};if(!Array.isArray(merged[k].extraBoxes))merged[k].extraBoxes=[];});
       merged.sectionLikes={...base.sectionLikes,...(remote.sectionLikes||{})};
-      merged.posts=Array.isArray(remote.posts)?remote.posts.map(p=>({id:p.id||null,title:String(p.title||'સાહિત્યિક પોસ્ટ'),text:String(p.text||''),date:p.date||getGujaratiDateString(),status:p.status==='draft'?'draft':'publish',comments:Array.isArray(p.comments)?p.comments:[],likes:Number(p.likes)||0,pinned:Boolean(p.pinned)})):base.posts;
+      merged.photos=Array.isArray(remote.photos)?remote.photos.map(p=>({id:String(p.id||crypto.randomUUID()),src:String(p.src||''),title:String(p.title||''),alt:String(p.alt||p.title||'Photo'),status:p.status==='draft'?'draft':'publish',path:p.path||'',createdAt:p.createdAt||''})).filter(p=>p.src):[];
+      merged.posts=Array.isArray(remote.posts)?remote.posts.map(p=>({id:p.id||null,title:String(p.title||'સાહિત્યિક પોસ્ટ'),text:String(p.text||''),date:p.date||getGujaratiDateString(),status:p.status==='draft'?'draft':'publish',category:['home','articles','gazal','kavita','chand','navalkatha'].includes(p.category)?p.category:'home',comments:Array.isArray(p.comments)?p.comments:[],likes:Number(p.likes)||0,pinned:Boolean(p.pinned)})):base.posts;
       return merged;
     }
     async function fetchInitialSiteData(){
@@ -1307,6 +1369,9 @@
       }catch(e){console.warn('Published data load failed; using local/default data.',e);}
     }
 
+    function escapeHtml(v){
+      return String(v ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    }
     function safeExternalUrl(v){try{const u=new URL(String(v||'').trim());return ['http:','https:'].includes(u.protocol)?u.href:'#';}catch{return '#';}}
 
     /* APPLY SOCIAL LINKS TO HOME HEADER ICONS */
@@ -1457,33 +1522,68 @@
       const cats = ['articles', 'gazal', 'kavita', 'chand', 'navalkatha'];
       cats.forEach(c => {
         const container = document.getElementById(`${c}-posts-container`);
-        if(siteData[c] && container) {
-          let extraHtml = "";
-          if(siteData[c].extraBoxes && siteData[c].extraBoxes.length > 0) {
-            siteData[c].extraBoxes.forEach(ex => {
-              if(ex.status === 'publish') {
-                extraHtml += `<div style="margin-top:0.6rem; padding:0.6rem; background:var(--bg-gray); border-radius:6px; font-size:0.9rem; white-space:${POEM_KEYS.includes(c) ? 'pre-line' : 'normal'};"><b>${ex.title}:</b> ${ex.content}</div>`;
-              }
-            });
-          }
+        if (!siteData[c] || !container) return;
 
-          const previewClass = POEM_KEYS.includes(c) ? 'line-clamp-3 preview-poem' : 'line-clamp-3';
-          const liked = isLikedId('cat:' + c);
-          const likeCount = Number(siteData.sectionLikes?.[c] ?? siteData[c].likes ?? 0);
-
-          container.innerHTML = `
-            <div class="reading-post-card">
-              <div class="reading-post-title" onclick="openCustomSectionReader('${c}')">${siteData[c].title}</div>
-              <div class="${previewClass}" style="margin-top:0.5rem;">${siteData[c].content}</div>
-              ${extraHtml}
-              <div class="post-action-bar" style="margin-top:0.8rem;">
-                <button class="read-more-btn" onclick="openCustomSectionReader('${c}')"><i class="fa-solid fa-book-open"></i> Read More</button>
-                <button class="like-btn ${liked ? 'liked' : ''}" onclick="likeCategory('${c}')"><i class="fa-${liked ? 'solid' : 'regular'} fa-heart"></i> ${likeCount}</button>
-              </div>
-            </div>
-          `;
+        let extraHtml = "";
+        if(siteData[c].extraBoxes && siteData[c].extraBoxes.length > 0) {
+          siteData[c].extraBoxes.forEach(ex => {
+            if(ex.status === 'publish') {
+              extraHtml += `<div style="margin-top:0.6rem; padding:0.6rem; background:var(--bg-gray); border-radius:6px; font-size:0.9rem; white-space:${POEM_KEYS.includes(c) ? 'pre-line' : 'normal'};"><b>${escapeHtml(ex.title)}:</b> ${escapeHtml(ex.content)}</div>`;
+            }
+          });
         }
+
+        const previewClass = POEM_KEYS.includes(c) ? 'line-clamp-3 preview-poem' : 'line-clamp-3';
+        const liked = isLikedId('cat:' + c);
+        const likeCount = Number(siteData.sectionLikes?.[c] ?? siteData[c].likes ?? 0);
+        const categoryPosts = (siteData.posts || []).map((p, idx) => ({p, idx}))
+          .filter(({p}) => p.category === c && p.status === 'publish');
+
+        let html = `
+          <div class="reading-post-card">
+            <div class="reading-post-title" onclick="openCustomSectionReader('${c}')">${escapeHtml(siteData[c].title)}</div>
+            <div class="${previewClass}" style="margin-top:0.5rem;">${escapeHtml(siteData[c].content)}</div>
+            ${extraHtml}
+            <div class="post-action-bar" style="margin-top:0.8rem;">
+              <button class="read-more-btn" onclick="openCustomSectionReader('${c}')"><i class="fa-solid fa-book-open"></i> Read More</button>
+              <button class="like-btn ${liked ? 'liked' : ''}" onclick="likeCategory('${c}')"><i class="fa-${liked ? 'solid' : 'regular'} fa-heart"></i> ${likeCount}</button>
+            </div>
+          </div>`;
+
+        categoryPosts.forEach(({p, idx}) => {
+          const likedPost = isLikedId(postLikeId(p));
+          html += `
+            <div class="reading-post-card category-post-card">
+              <div class="reading-post-header">
+                <div class="reading-post-title" onclick="openReaderModal(${idx})">${escapeHtml(p.title)}</div>
+                <div class="post-date">${escapeHtml(p.date)}</div>
+              </div>
+              <div class="${POEM_KEYS.includes(c) ? 'line-clamp-3 preview-poem' : 'line-clamp-3'}">${escapeHtml(p.text)}</div>
+              <div class="post-action-bar">
+                <button class="read-more-btn" onclick="openReaderModal(${idx})"><i class="fa-solid fa-book-open"></i> Read More</button>
+                <button class="like-btn ${likedPost ? 'liked' : ''}" onclick="likePost(${idx})"><i class="fa-${likedPost ? 'solid' : 'regular'} fa-heart"></i> ${Number(p.likes)||0}</button>
+              </div>
+            </div>`;
+        });
+
+        container.innerHTML = html;
       });
+    }
+
+    function renderPhotoGallery() {
+      const container = document.getElementById('photo-gallery-container');
+      if(!container) return;
+      const photos = (siteData.photos || []).filter(p => p.status === 'publish' && p.src);
+      if(!photos.length) {
+        container.innerHTML = `<p style="color:var(--text-sub);">હજુ કોઈ ફોટો Publish થયો નથી.</p>`;
+        return;
+      }
+      container.innerHTML = photos.map(p => `
+        <figure class="photo-gallery-card">
+          <img src="${safeExternalUrl(p.src)}" alt="${escapeHtml(p.alt || p.title || 'Photo')}" loading="lazy" decoding="async">
+          ${p.title ? `<figcaption class="photo-gallery-caption">${escapeHtml(p.title)}</figcaption>` : ''}
+        </figure>
+      `).join('');
     }
 
     function renderPosts() {
@@ -1526,7 +1626,7 @@
     }
 
     function switchAdminTab(tabNum) {
-      [1, 2, 3, 4].forEach(n => {
+      [1, 2, 3, 4, 5].forEach(n => {
         document.getElementById(`tab-btn-${n}`).classList.remove('active');
         document.getElementById(`admin-page-${n}`).style.display = 'none';
       });
@@ -1540,6 +1640,8 @@
         loadAdminSocialLinks();
       } else if(tabNum === 4) {
         loadGithubSettingsForm();
+      } else if(tabNum === 5) {
+        renderAdminPhotos();
       }
     }
 
@@ -1566,6 +1668,7 @@
       loadSelectedColumnData();
       restoreDraftAutosave();
       renderAdminExistingPosts();
+      renderAdminPhotos();
       loadAdminStats();
       loadGithubSettingsForm();
     }
@@ -1710,24 +1813,28 @@
     function publishNewPost(actionType = 'publish') {
       const title = document.getElementById('new-post-title').value.trim();
       const text = document.getElementById('new-post-text').value.trim();
+      const category = ['home','articles','gazal','kavita','chand','navalkatha'].includes(document.getElementById('new-post-category')?.value) ? document.getElementById('new-post-category').value : 'home';
 
       if(!text) { alert("મહેરબાની કરીને લખાણ ઉમેરો!"); return; }
 
-      siteData.posts.unshift({ 
-        title: title || "સાહિત્યિક પોસ્ટ", 
-        text: text, 
-        date: getGujaratiDateString(), 
+      siteData.posts.unshift({
+        title: title || "સાહિત્યિક પોસ્ટ",
+        text: text,
+        date: getGujaratiDateString(),
         status: actionType,
+        category,
         pinned: false,
         likes: 0,
-        comments: [] 
+        comments: []
       });
       saveToLocalStorage();
       alert(actionType === 'draft' ? "પોસ્ટ Draft માં સાચવવામાં આવી છે!" : "નવી પોસ્ટ Publish થઈ ગઈ!");
       document.getElementById('new-post-title').value = '';
       document.getElementById('new-post-text').value = '';
+      if(document.getElementById('new-post-category')) document.getElementById('new-post-category').value = 'home';
       clearDraftAutosave();
       renderPosts();
+      renderCategoryPosts();
       renderAdminExistingPosts();
       closeAdminPanel();
       pushDataToGithub(`${actionType === 'draft' ? 'Draft' : 'Publish'} new post: ${title || 'Untitled'}`);
@@ -1771,6 +1878,7 @@
             <span class="apr-title">${p.pinned ? '<i class="fa-solid fa-thumbtack pin-badge"></i>' : ''}${p.title}${statusTag} <span style="color:var(--text-sub); font-weight:400;">(${p.date})</span></span>
             <div class="apr-actions">
               <button class="action-icon-btn btn-act-add" onclick="togglePinPost(${idx})"><i class="fa-solid fa-thumbtack"></i> ${p.pinned ? 'Unpin' : 'Pin'}</button>
+              <button class="action-icon-btn ${p.status==='draft'?'btn-act-publish':'btn-act-draft'}" onclick="togglePostPublish(${idx})"><i class="fa-solid ${p.status==='draft'?'fa-paper-plane':'fa-file-lines'}"></i> ${p.status==='draft'?'Publish':'Draft'}</button>
               <button class="action-icon-btn btn-act-delete" onclick="deleteExistingPost(${idx})"><i class="fa-solid fa-trash"></i> Delete</button>
             </div>
           </div>
@@ -1785,6 +1893,13 @@
       renderPosts();
       renderAdminExistingPosts();
       pushDataToGithub(`${p.pinned ? 'Pin' : 'Unpin'} post: ${p.title}`);
+    }
+    async function togglePostPublish(idx) {
+      const p = siteData.posts[idx]; if(!p) return;
+      p.status = p.status === 'draft' ? 'publish' : 'draft';
+      saveToLocalStorage();
+      renderPosts(); renderCategoryPosts(); renderAdminExistingPosts();
+      await pushDataToGithub(`${p.status==='publish'?'Publish':'Draft'} post: ${p.title}`);
     }
     function deleteExistingPost(idx) {
       const p = siteData.posts[idx];
@@ -1849,6 +1964,59 @@
         navigator.clipboard.writeText(`${title}\n\n${shareText}\n\n${window.location.href}`);
         alert('લખાણ કોપી થઈ ગયું — હવે WhatsApp કે ગમે ત્યાં પેસ્ટ કરો!');
       }
+    }
+
+    async function addAdminPhoto() {
+      const fileEl=document.getElementById('admin-photo-file');
+      const urlEl=document.getElementById('admin-photo-url');
+      const title=document.getElementById('admin-photo-title').value.trim();
+      const alt=document.getElementById('admin-photo-alt').value.trim();
+      try {
+        let photo;
+        if(fileEl?.files?.[0]) {
+          const file=fileEl.files[0];
+          if(file.size > 8*1024*1024) throw new Error('Photo 8MB કરતા નાનો હોવો જોઈએ.');
+          const dataUrl=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(new Error('Photo read failed'));r.readAsDataURL(file);});
+          const d=await apiRequest('/admin/photos/upload',{method:'POST',body:JSON.stringify({dataUrl,title,alt})});
+          photo=d.photo;
+        } else if(urlEl?.value.trim()) {
+          const d=await apiRequest('/admin/photos/url',{method:'POST',body:JSON.stringify({src:urlEl.value.trim(),title,alt})});
+          photo=d.photo;
+        } else throw new Error('Photo file અથવા Photo URL આપો.');
+        siteData.photos=[...(siteData.photos||[]),photo];
+        saveToLocalStorage(); renderPhotoGallery(); renderAdminPhotos();
+        fileEl.value=''; urlEl.value=''; document.getElementById('admin-photo-title').value=''; document.getElementById('admin-photo-alt').value='';
+        alert('Photo Draft તરીકે add થઈ ગયો. Publish કરવા Publish button દબાવો.');
+      } catch(e) { alert(e.message); }
+    }
+    function renderAdminPhotos() {
+      const c=document.getElementById('admin-photos-list'); if(!c) return;
+      const photos=siteData.photos||[];
+      if(!photos.length){c.innerHTML='<p style="color:var(--text-sub);">હજુ કોઈ ફોટો નથી.</p>';return;}
+      c.innerHTML=photos.map((p,i)=>`
+        <div class="admin-post-row" style="align-items:center;">
+          <img class="admin-photo-preview" src="${safeExternalUrl(p.src)}" alt="${escapeHtml(p.alt||'Photo')}">
+          <span class="apr-title">${escapeHtml(p.title||'Untitled Photo')} <span style="color:var(--text-sub);font-weight:400;">[${p.status==='draft'?'Draft':'Published'}]</span></span>
+          <div class="apr-actions">
+            <button class="action-icon-btn ${p.status==='draft'?'btn-act-publish':'btn-act-draft'}" onclick="togglePhotoPublish(${i})"><i class="fa-solid ${p.status==='draft'?'fa-paper-plane':'fa-file-lines'}"></i> ${p.status==='draft'?'Publish':'Draft'}</button>
+            <button class="action-icon-btn btn-act-delete" onclick="deleteAdminPhoto(${i})"><i class="fa-solid fa-trash"></i> Delete</button>
+          </div>
+        </div>`).join('');
+    }
+    async function togglePhotoPublish(i) {
+      const p=siteData.photos?.[i]; if(!p)return;
+      try {
+        const status=p.status==='draft'?'publish':'draft';
+        const d=await apiRequest(`/admin/photos/${encodeURIComponent(p.id)}`,{method:'PATCH',body:JSON.stringify({status})});
+        siteData.photos[i]=d.photo; saveToLocalStorage(); renderPhotoGallery(); renderAdminPhotos();
+      } catch(e){alert(e.message);}
+    }
+    async function deleteAdminPhoto(i) {
+      const p=siteData.photos?.[i]; if(!p || !confirm(`"${p.title||'Photo'}" ફોટો ડિલીટ કરવો છે?`))return;
+      try {
+        await apiRequest(`/admin/photos/${encodeURIComponent(p.id)}`,{method:'DELETE'});
+        siteData.photos.splice(i,1); saveToLocalStorage(); renderPhotoGallery(); renderAdminPhotos();
+      } catch(e){alert(e.message);}
     }
 
     function renderAdminComments() {
@@ -2158,6 +2326,7 @@
       await fetchInitialSiteData();
       applyHeaderSocialLinks();
       renderCategoryPosts();
+      renderPhotoGallery();
       renderPosts();
       renderAllComments();
       restoreLastReadBanner();
@@ -2211,7 +2380,7 @@
       hideAuthMessage('login-error-msg'); hideAuthMessage('login-success-msg');
       try {
         const data=await apiRequest('/auth/login',{method:'POST',body:JSON.stringify({email:document.getElementById('login-email').value.trim(),password:document.getElementById('login-pass').value})});
-        saveBackendSession(data); await fetchInitialSiteData(); renderCategoryPosts(); renderPosts(); renderAllComments(); showAuthMessage('login-success-msg',data.user.role==='admin'?'Admin login સફળ!':'Login સફળ!');
+        saveBackendSession(data); await fetchInitialSiteData(); renderCategoryPosts(); renderPosts(); renderPhotoGallery(); renderAllComments(); showAuthMessage('login-success-msg',data.user.role==='admin'?'Admin login સફળ!':'Login સફળ!');
         setTimeout(()=>document.getElementById('entry-modal').style.display='none',600);
       } catch(e){ showAuthMessage('login-error-msg',e.message); }
     }
@@ -2229,7 +2398,7 @@
         const fresh=await apiRequest('/admin/site');
         siteData=normalizeSiteData(fresh);
         saveToLocalStorage();
-        renderCategoryPosts(); renderPosts(); renderAllComments(); renderAdminExistingPosts();
+        renderCategoryPosts(); renderPosts(); renderPhotoGallery(); renderAllComments(); renderAdminExistingPosts();
         const result=await apiRequest('/admin/publish-github',{method:'POST',body:JSON.stringify({message})});
         updateSyncStatus('ok',result.skipped?'Backend પર સેવ થયું':'Backend + GitHub પર સેવ થયું');
         return true;
