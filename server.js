@@ -14,6 +14,7 @@ const PORT = Number(process.env.PORT || 3000);
 const VERCEL = Boolean(process.env.VERCEL);
 const sql = process.env.DATABASE_URL ? neon(process.env.DATABASE_URL) : null;
 const SECTIONS = ['home1','articles','gazal','kavita','chand','navalkatha'];
+const POST_CATEGORIES = ['home','articles','gazal','kavita','chand','navalkatha'];
 
 if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32)) {
   throw new Error('JWT_SECRET must be at least 32 characters in production.');
@@ -23,7 +24,7 @@ app.disable('x-powered-by');
 app.set('trust proxy', 1);
 app.use(helmet({ contentSecurityPolicy: false, crossOriginEmbedderPolicy: false }));
 app.use(compression());
-app.use(express.json({ limit: '1mb' }));
+app.use(express.json({ limit: '12mb' }));
 app.use(express.urlencoded({ extended: false, limit: '100kb' }));
 app.use('/api/', rateLimit({ windowMs: 15*60*1000, limit: 300, standardHeaders: 'draft-8', legacyHeaders: false }));
 
@@ -49,9 +50,13 @@ async function dbInit(){
       CREATE TABLE IF NOT EXISTS posts (
         id BIGSERIAL PRIMARY KEY, title TEXT NOT NULL, text TEXT NOT NULL, date_text TEXT NOT NULL,
         status TEXT NOT NULL DEFAULT 'publish', pinned BOOLEAN NOT NULL DEFAULT FALSE, likes INTEGER NOT NULL DEFAULT 0,
+        category TEXT NOT NULL DEFAULT 'home',
         created_at TIMESTAMPTZ DEFAULT NOW(), updated_at TIMESTAMPTZ DEFAULT NOW()
       )
     `;
+    await sql`ALTER TABLE posts ADD COLUMN IF NOT EXISTS category TEXT NOT NULL DEFAULT 'home'`;
+    await sql`UPDATE posts SET category='kavita' WHERE category='home' AND title='કવિતા'`;
+    await sql`UPDATE posts SET category='chand' WHERE category='home' AND title='કથા કરમ ની'`;
     await sql`
       CREATE TABLE IF NOT EXISTS comments (
         id BIGSERIAL PRIMARY KEY, post_id BIGINT REFERENCES posts(id) ON DELETE CASCADE,
@@ -111,7 +116,9 @@ function actor(req){const ip=String(req.headers['x-forwarded-for']||req.socket.r
 async function setting(k,fallback=null){const r=await sql`SELECT value FROM settings WHERE key=${k} LIMIT 1`;return r[0]?.value??fallback}
 async function setSetting(k,v){await sql`INSERT INTO settings(key,value) VALUES(${k},${JSON.stringify(v)}::jsonb) ON CONFLICT(key) DO UPDATE SET value=EXCLUDED.value`}
 async function commentsFor(id){const r=await sql`SELECT id,author,text,reply,created_at AS time FROM comments WHERE post_id=${id} ORDER BY id ASC`;return r.map(c=>({...c,id:Number(c.id)}))}
-async function posts(includeDrafts=false){const r=includeDrafts?await sql`SELECT id,title,text,date_text AS date,status,pinned,likes FROM posts ORDER BY pinned DESC,id DESC`:await sql`SELECT id,title,text,date_text AS date,status,pinned,likes FROM posts WHERE status='publish' ORDER BY pinned DESC,id DESC`;return Promise.all(r.map(async p=>({...p,id:Number(p.id),pinned:Boolean(p.pinned),likes:Number(p.likes),comments:await commentsFor(p.id)})))}
+async function posts(includeDrafts=false){const r=includeDrafts
+  ? await sql`SELECT id,title,text,date_text AS date,status,pinned,likes,category FROM posts ORDER BY pinned DESC,id DESC`
+  : await sql`SELECT id,title,text,date_text AS date,status,pinned,likes,category FROM posts WHERE status='publish' ORDER BY pinned DESC,id DESC`;return Promise.all(r.map(async p=>({...p,id:Number(p.id),pinned:Boolean(p.pinned),likes:Number(p.likes),comments:await commentsFor(p.id)})))}
 async function snapshot(includeDrafts=false){const sections={};for(const k of SECTIONS)sections[k]=await setting(`section:${k}`,null);const likes={};const lr=await sql`SELECT section_key,COUNT(*)::int AS count FROM section_likes GROUP BY section_key`;for(const k of SECTIONS)likes[k]=0;for(const r of lr)likes[r.section_key]=Number(r.count);return {posts:await posts(includeDrafts),socialLinks:await setting('socialLinks',{}),sections,sectionLikes:likes}}
 
 app.get('/api/health',async(req,res)=>res.json({ok:true,database:'postgres',service:'rajnikalam',time:new Date().toISOString()}));
@@ -121,8 +128,8 @@ app.get('/api/auth/me',requireAuth,(req,res)=>res.json({user:req.user}));
 app.get('/api/site',async(req,res)=>res.json(await snapshot(false)));
 app.get('/api/admin/site',requireAuth,requireAdmin,async(req,res)=>res.json(await snapshot(true)));
 
-app.post('/api/posts',requireAuth,requireAdmin,async(req,res)=>{const t=text(req.body.title,240)||'સાહિત્યિક પોસ્ટ',x=text(req.body.text,30000),s=req.body.status==='draft'?'draft':'publish';if(!x)return res.status(400).json({error:'Post text required'});const r=await sql`INSERT INTO posts(title,text,date_text,status) VALUES(${t},${x},${today()},${s}) RETURNING id,title,text,date_text AS date,status,pinned,likes`;await autoPublish(`Create post: ${t}`);res.status(201).json({post:r[0]})});
-app.patch('/api/posts/:id',requireAuth,requireAdmin,async(req,res)=>{const id=Number(req.params.id),old=(await sql`SELECT * FROM posts WHERE id=${id} LIMIT 1`)[0];if(!old)return res.status(404).json({error:'Post not found'});const t=text(req.body.title??old.title,240)||old.title,x=text(req.body.text??old.text,30000),s=req.body.status==='draft'||req.body.status==='publish'?req.body.status:old.status,p=req.body.pinned===undefined?old.pinned:Boolean(req.body.pinned);const r=await sql`UPDATE posts SET title=${t},text=${x},status=${s},pinned=${p},updated_at=NOW() WHERE id=${id} RETURNING id,title,text,date_text AS date,status,pinned,likes`;await autoPublish(`Update post: ${t}`);res.json({post:r[0]})});
+app.post('/api/posts',requireAuth,requireAdmin,async(req,res)=>{const t=text(req.body.title,240)||'સાહિત્યિક પોસ્ટ',x=text(req.body.text,30000),s=req.body.status==='draft'?'draft':'publish',category=POST_CATEGORIES.includes(req.body.category)?req.body.category:'home';if(!x)return res.status(400).json({error:'Post text required'});const r=await sql`INSERT INTO posts(title,text,date_text,status,category) VALUES(${t},${x},${today()},${s},${category}) RETURNING id,title,text,date_text AS date,status,pinned,likes`;await autoPublish(`Create post: ${t}`);res.status(201).json({post:r[0]})});
+app.patch('/api/posts/:id',requireAuth,requireAdmin,async(req,res)=>{const id=Number(req.params.id),old=(await sql`SELECT * FROM posts WHERE id=${id} LIMIT 1`)[0];if(!old)return res.status(404).json({error:'Post not found'});const t=text(req.body.title??old.title,240)||old.title,x=text(req.body.text??old.text,30000),s=req.body.status==='draft'||req.body.status==='publish'?req.body.status:old.status,p=req.body.pinned===undefined?old.pinned:Boolean(req.body.pinned),category=POST_CATEGORIES.includes(req.body.category)?req.body.category:(old.category||'home');const r=await sql`UPDATE posts SET title=${t},text=${x},status=${s},pinned=${p},category=${category},updated_at=NOW() WHERE id=${id} RETURNING id,title,text,date_text AS date,status,pinned,likes,category`;await autoPublish(`Update post: ${t}`);res.json({post:r[0]})});
 app.delete('/api/posts/:id',requireAuth,requireAdmin,async(req,res)=>{const id=Number(req.params.id),r=await sql`DELETE FROM posts WHERE id=${id}`;if(!r.count)return res.status(404).json({error:'Post not found'});await autoPublish(`Delete post: ${id}`);res.json({ok:true})});
 app.post('/api/posts/:id/like',async(req,res)=>{const id=Number(req.params.id),p=(await sql`SELECT id,likes FROM posts WHERE id=${id} AND status='publish' LIMIT 1`)[0];if(!p)return res.status(404).json({error:'Post not found'});const ins=await sql`INSERT INTO likes(post_id,actor_key) VALUES(${id},${actor(req)}) ON CONFLICT(post_id,actor_key) DO NOTHING RETURNING id`;if(ins.length)await sql`UPDATE posts SET likes=likes+1 WHERE id=${id}`;const c=(await sql`SELECT likes FROM posts WHERE id=${id}`)[0];res.json({liked:Boolean(ins.length),likes:Number(c.likes)})});
 app.get('/api/posts/:id/comments',async(req,res)=>res.json({comments:await commentsFor(Number(req.params.id))}));
@@ -134,12 +141,83 @@ app.get('/api/sections/:key',async(req,res)=>{const k=String(req.params.key);if(
 app.put('/api/admin/sections/:key',requireAuth,requireAdmin,async(req,res)=>{const k=String(req.params.key);if(!SECTIONS.includes(k))return res.status(404).json({error:'Section not found'});const s={title:text(req.body.title,240),content:text(req.body.content,30000),extraBoxes:Array.isArray(req.body.extraBoxes)?req.body.extraBoxes.slice(0,50).map(b=>({title:text(b?.title,240),content:text(b?.content,30000),status:b?.status==='draft'?'draft':'publish'})):[]};await setSetting(`section:${k}`,s);await autoPublish(`Update section: ${k}`);res.json({key:k,section:s})});
 app.put('/api/settings/social',requireAuth,requireAdmin,async(req,res)=>{const out={};for(const k of ['instagram','facebook','youtube','twitter','whatsapp']){const v=text(req.body[k],500);if(!v){out[k]='';continue}try{const u=new URL(v);if(!['http:','https:'].includes(u.protocol))throw 0;out[k]=u.href}catch{return res.status(400).json({error:`Invalid URL for ${k}`})}}await setSetting('socialLinks',out);await autoPublish('Update social links');res.json({socialLinks:out})});
 
+
+function safePhotoPath(name){
+  const base=path.basename(String(name||'photo')).replace(/[^a-zA-Z0-9._-]/g,'-').slice(0,120) || 'photo';
+  return `public/uploads/${Date.now()}-${crypto.randomBytes(5).toString('hex')}-${base}`;
+}
+async function githubFileWrite(filePath, contentBase64, msg){
+  const {GITHUB_TOKEN:t,GITHUB_OWNER:o,GITHUB_REPO:r,GITHUB_BRANCH:b='main'}=process.env;
+  if(!t||!o||!r) throw new Error('GitHub upload is not configured. Set GITHUB_TOKEN, GITHUB_OWNER and GITHUB_REPO.');
+  const u=`https://api.github.com/repos/${encodeURIComponent(o)}/${encodeURIComponent(r)}/contents/${filePath.split('/').map(encodeURIComponent).join('/')}`;
+  const h={Authorization:`Bearer ${t}`,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};
+  const g=await fetch(`${u}?ref=${encodeURIComponent(b)}`,{headers:h});
+  let sha=null; if(g.ok) sha=(await g.json()).sha||null; else if(g.status!==404) throw Error(`GitHub read failed: ${g.status}`);
+  const body={message:msg||'RajNiKalam photo upload',content:contentBase64,branch:b}; if(sha) body.sha=sha;
+  const p=await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(body)});
+  if(!p.ok){const d=await p.json().catch(()=>({}));throw Error(d.message||`GitHub write failed: ${p.status}`);}
+  return {path:filePath};
+}
+async function githubFileDelete(filePath){
+  const {GITHUB_TOKEN:t,GITHUB_OWNER:o,GITHUB_REPO:r,GITHUB_BRANCH:b='main'}=process.env;
+  if(!t||!o||!r) throw new Error('GitHub upload is not configured.');
+  const u=`https://api.github.com/repos/${encodeURIComponent(o)}/${encodeURIComponent(r)}/contents/${filePath.split('/').map(encodeURIComponent).join('/')}`;
+  const h={Authorization:`Bearer ${t}`,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};
+  const g=await fetch(`${u}?ref=${encodeURIComponent(b)}`,{headers:h}); if(!g.ok){if(g.status===404)return;throw Error(`GitHub read failed: ${g.status}`);}
+  const sha=(await g.json()).sha; const p=await fetch(u,{method:'DELETE',headers:h,body:JSON.stringify({message:`Delete photo: ${filePath}`,sha,branch:b})});
+  if(!p.ok){const d=await p.json().catch(()=>({}));throw Error(d.message||`GitHub delete failed: ${p.status}`);}
+}
 async function github(snapshot,msg){const {GITHUB_TOKEN:t,GITHUB_OWNER:o,GITHUB_REPO:r,GITHUB_BRANCH:b='main',GITHUB_PATH:f='data.json'}=process.env;if(!t||!o||!r)return{skipped:true};const u=`https://api.github.com/repos/${encodeURIComponent(o)}/${encodeURIComponent(r)}/contents/${f.split('/').map(encodeURIComponent).join('/')}`,h={Authorization:`Bearer ${t}`,Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28','Content-Type':'application/json'};const g=await fetch(`${u}?ref=${encodeURIComponent(b)}`,{headers:h});let sha=null;if(g.ok)sha=(await g.json()).sha||null;else if(g.status!==404)throw Error(`GitHub read failed: ${g.status}`);const body={message:msg||'RajNiKalam update',content:Buffer.from(JSON.stringify(snapshot,null,2)).toString('base64'),branch:b};if(sha)body.sha=sha;const p=await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(body)});if(!p.ok)throw Error(`GitHub write failed: ${p.status}`);return{ok:true,skipped:false}}
 async function autoPublish(msg){if(String(process.env.GITHUB_AUTO_PUBLISH||'').toLowerCase()!=='true')return{skipped:true};try{return await github(await snapshot(true),msg)}catch(e){console.warn(e.message);return{ok:false,error:e.message}}}
+
+app.post('/api/admin/photos/upload',requireAuth,requireAdmin,async(req,res)=>{
+  try{
+    const dataUrl=String(req.body.dataUrl||'');
+    const title=text(req.body.title,240)||'';
+    const alt=text(req.body.alt,240)||title||'Photo';
+    if(!/^data:image\/(png|jpe?g|webp|gif);base64,/i.test(dataUrl)) return res.status(400).json({error:'Valid PNG, JPG, WEBP or GIF image required'});
+    const match=dataUrl.match(/^data:image\/(png|jpe?g|webp|gif);base64,(.+)$/i);
+    const mime=match[1].toLowerCase().replace('jpg','jpeg');
+    const raw=Buffer.from(match[2],'base64');
+    if(raw.length>8*1024*1024) return res.status(413).json({error:'Photo must be 8MB or smaller'});
+    const ext=mime==='jpeg'?'jpg':mime;
+    const filePath=safePhotoPath(`photo.${ext}`);
+    await githubFileWrite(filePath,raw.toString('base64'),`Add photo: ${title||filePath}`);
+    const photos=await setting('photos',[]);
+    const photo={id:crypto.randomUUID(),src:`/uploads/${filePath.split('/').pop()}`,title,alt,status:'draft',path:filePath,createdAt:new Date().toISOString()};
+    photos.push(photo); await setSetting('photos',photos.slice(-200));
+    await autoPublish(`Add photo: ${title||photo.id}`);
+    res.status(201).json({photo});
+  }catch(e){console.error(e);res.status(500).json({error:e.message||'Photo upload failed'});}
+});
+app.post('/api/admin/photos/url',requireAuth,requireAdmin,async(req,res)=>{
+  try{
+    const src=text(req.body.src,2000),title=text(req.body.title,240)||'',alt=text(req.body.alt,240)||title||'Photo';
+    const u=new URL(src); if(!['http:','https:'].includes(u.protocol)) throw new Error('Valid http/https photo URL required');
+    const photos=await setting('photos',[]);
+    const photo={id:crypto.randomUUID(),src:u.href,title,alt,status:'draft',createdAt:new Date().toISOString()};
+    photos.push(photo); await setSetting('photos',photos.slice(-200)); await autoPublish(`Add photo URL: ${title||photo.id}`);
+    res.status(201).json({photo});
+  }catch(e){res.status(400).json({error:e.message||'Photo URL failed'});}
+});
+app.patch('/api/admin/photos/:id',requireAuth,requireAdmin,async(req,res)=>{
+  const photos=await setting('photos',[]); const id=String(req.params.id); const i=photos.findIndex(p=>String(p.id)===id);
+  if(i<0)return res.status(404).json({error:'Photo not found'});
+  if(req.body.status==='publish'||req.body.status==='draft')photos[i].status=req.body.status;
+  if(req.body.title!==undefined)photos[i].title=text(req.body.title,240);
+  if(req.body.alt!==undefined)photos[i].alt=text(req.body.alt,240);
+  await setSetting('photos',photos); await autoPublish(`${photos[i].status==='publish'?'Publish':'Draft'} photo: ${photos[i].title||id}`); res.json({photo:photos[i]});
+});
+app.delete('/api/admin/photos/:id',requireAuth,requireAdmin,async(req,res)=>{
+  const photos=await setting('photos',[]); const id=String(req.params.id); const photo=photos.find(p=>String(p.id)===id);
+  if(!photo)return res.status(404).json({error:'Photo not found'});
+  try{if(photo.path)await githubFileDelete(photo.path);}catch(e){console.warn('Photo file delete:',e.message);}
+  await setSetting('photos',photos.filter(p=>String(p.id)!==id)); await autoPublish(`Delete photo: ${photo.title||id}`); res.json({ok:true});
+});
 app.post('/api/admin/publish-github',requireAuth,requireAdmin,async(req,res)=>{try{res.json(await github(await snapshot(true),text(req.body.message,200)||'RajNiKalam admin publish'))}catch(e){res.status(502).json({error:e.message})}});
 
 // Compatibility endpoint used by the existing frontend: sync its current state into Postgres.
-app.put('/api/admin/snapshot',requireAuth,requireAdmin,async(req,res)=>{const d=req.body||{},ps=Array.isArray(d.posts)?d.posts.slice(0,500):[];await sql`DELETE FROM comments`;await sql`DELETE FROM likes`;await sql`DELETE FROM posts`;for(const p of ps){const r=await sql`INSERT INTO posts(title,text,date_text,status,pinned,likes) VALUES(${text(p.title,240)||'સાહિત્યિક પોસ્ટ'},${text(p.text,30000)},${text(p.date,80)||today()},${p.status==='draft'?'draft':'publish'},${Boolean(p.pinned)},${Math.max(0,Number(p.likes)||0)}) RETURNING id`;for(const c of (Array.isArray(p.comments)?p.comments:[]).slice(0,100))await sql`INSERT INTO comments(post_id,author,text,reply) VALUES(${r[0].id},${text(c.author,80)||'અનામિક યુઝર'},${text(c.text,2000)},${text(c.reply,2000)||null})`}if(d.socialLinks)await setSetting('socialLinks',d.socialLinks);if(d.sections)for(const k of SECTIONS)if(d.sections[k])await setSetting(`section:${k}`,d.sections[k]);await autoPublish('RajNiKalam snapshot update');res.json({ok:true,site:await snapshot(true)})});
+app.put('/api/admin/snapshot',requireAuth,requireAdmin,async(req,res)=>{const d=req.body||{},ps=Array.isArray(d.posts)?d.posts.slice(0,500):[];await sql`DELETE FROM comments`;await sql`DELETE FROM likes`;await sql`DELETE FROM posts`;for(const p of ps){const r=await sql`INSERT INTO posts(title,text,date_text,status,pinned,likes,category) VALUES(${text(p.title,240)||'સાહિત્યિક પોસ્ટ'},${text(p.text,30000)},${text(p.date,80)||today()},${p.status==='draft'?'draft':'publish'},${Boolean(p.pinned)},${Math.max(0,Number(p.likes)||0)},${POST_CATEGORIES.includes(p.category)?p.category:'home'}) RETURNING id`;for(const c of (Array.isArray(p.comments)?p.comments:[]).slice(0,100))await sql`INSERT INTO comments(post_id,author,text,reply) VALUES(${r[0].id},${text(c.author,80)||'અનામિક યુઝર'},${text(c.text,2000)},${text(c.reply,2000)||null})`}if(d.socialLinks)await setSetting('socialLinks',d.socialLinks);if(d.sections)for(const k of SECTIONS)if(d.sections[k])await setSetting(`section:${k}`,d.sections[k]);if(Array.isArray(d.photos))await setSetting('photos',d.photos.slice(0,200));await autoPublish('RajNiKalam snapshot update');res.json({ok:true,site:await snapshot(true)})});
 app.get('/api/admin/stats',requireAuth,requireAdmin,async(req,res)=>{const r=await sql`SELECT (SELECT COUNT(*) FROM users)::int AS users,(SELECT COUNT(*) FROM posts)::int AS posts,(SELECT COUNT(*) FROM posts WHERE status='publish')::int AS "publishedPosts",(SELECT COUNT(*) FROM posts WHERE status='draft')::int AS drafts,(SELECT COUNT(*) FROM comments)::int AS comments,(SELECT COUNT(*) FROM likes)::int AS likes`;res.json(r[0])});
 app.get('/api/admin/comments',requireAuth,requireAdmin,async(req,res)=>{const r=await sql`SELECT c.id,c.author,c.text,c.reply,c.created_at AS time,p.id AS post_id,p.title AS post_title FROM comments c JOIN posts p ON p.id=c.post_id ORDER BY c.id DESC`;res.json({comments:r.map(c=>({...c,id:Number(c.id),post_id:Number(c.post_id)}))})});
 
