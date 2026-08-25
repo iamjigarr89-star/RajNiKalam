@@ -8,7 +8,8 @@
       "status": "publish",
       "pinned": true,
       "likes": 0,
-      "comments": []
+      "comments": [],
+      "category": "home"
     },
     {
       "id": 36,
@@ -18,7 +19,8 @@
       "status": "publish",
       "pinned": false,
       "likes": 0,
-      "comments": []
+      "comments": [],
+      "category": "kavita"
     },
     {
       "id": 35,
@@ -28,7 +30,8 @@
       "status": "publish",
       "pinned": false,
       "likes": 0,
-      "comments": []
+      "comments": [],
+      "category": "chand"
     }
   ],
   "socialLinks": {
@@ -77,5 +80,6 @@
     "kavita": 0,
     "chand": 0,
     "navalkatha": 0
-  }
+  },
+  "photos": []
 }
