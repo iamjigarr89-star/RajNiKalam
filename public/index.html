@@ -9,68 +9,79 @@
   <title>રાજ ની કલમ !</title>
   <meta name="description" id="meta-description" content="ગુજરાતી સાહિત્યિક વેબસાઈટ — ગઝલ, કવિતા, છંદ, નવલકથા અને શૈક્ષણિક લેખો.">
 
-  <!-- Open Graph / Social Share Preview -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" id="og-title" content="રાજ ની કલમ !">
   <meta property="og:description" id="og-description" content="ગુજરાતી સાહિત્યિક વેબસાઈટ — ગઝલ, કવિતા, છંદ, નવલકથા અને શૈક્ષણિક લેખો.">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Google Fonts & Font Awesome Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <style>
     :root {
-      --google-blue: #1a73e8;
-      --google-blue-hover: #1557b0;
-      --google-blue-light: #e8f0fe;
-      --bg-gray: #f8f9fa;
+      --google-blue: #2563eb;
+      --google-blue-hover: #1d4ed8;
+      --google-blue-light: #eff6ff;
+      --bg-gray: #f8fafc;
       --card-bg: #ffffff;
-      --text-main: #202124;
-      --text-sub: #4a5568;
-      --border-color: #dadce0;
-      --danger-red: #d93025;
-      --danger-red-light: #fce8e6;
-      --draft-amber: #f2990a;
-      --draft-amber-light: #fef7e0;
-      --success-green: #2e7d32;
-      --success-green-light: #e8f5e9;
-      --purple-color: #673ab7;
-      --purple-color-light: #ede7f6;
-      --header-height: 76px;
+      --card-glass: rgba(255, 255, 255, 0.85);
+      --text-main: #0f172a;
+      --text-sub: #475569;
+      --border-color: #e2e8f0;
+      --danger-red: #ef4444;
+      --danger-red-light: #fef2f2;
+      --draft-amber: #f59e0b;
+      --draft-amber-light: #fffbeb;
+      --success-green: #10b981;
+      --success-green-light: #ecfdf5;
+      --purple-color: #8b5cf6;
+      --purple-color-light: #f5f3ff;
+      --header-height: 70px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 12px -2px rgb(0 0 0 / 0.08);
+      --shadow-lg: 0 10px 25px -3px rgb(0 0 0 / 0.12);
     }
 
     body.dark-theme {
-      --bg-gray: #121212;
-      --card-bg: #1e1e1e;
-      --text-main: #f3f4f6;
-      --text-sub: #cbd5e1;
-      --border-color: #334155;
+      --bg-gray: #090d16;
+      --card-bg: #131b2e;
+      --card-glass: rgba(19, 27, 46, 0.88);
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      --border-color: #1e293b;
       --google-blue: #38bdf8;
-      --google-blue-hover: #0284c7;
-      --google-blue-light: #0c4a6e;
+      --google-blue-hover: #0ea5e9;
+      --google-blue-light: #082f49;
       --danger-red: #f87171;
       --danger-red-light: #450a0a;
-      --draft-amber: #facc15;
-      --draft-amber-light: #422006;
-      --success-green: #4ade80;
-      --success-green-light: #052e16;
+      --draft-amber: #fbbf24;
+      --draft-amber-light: #451a03;
+      --success-green: #34d399;
+      --success-green-light: #064e3b;
       --purple-color: #c084fc;
       --purple-color-light: #3b0764;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.4);
+      --shadow-md: 0 4px 14px 0 rgb(0 0 0 / 0.35);
+      --shadow-lg: 0 12px 30px 0 rgb(0 0 0 / 0.5);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Gujarati', 'Roboto', sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Gujarati', 'Plus Jakarta Sans', sans-serif; }
     
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 9rem;
+      scroll-padding-top: 130px;
     }
 
     body {
       background-color: var(--bg-gray);
       color: var(--text-main);
       line-height: 1.8;
-      font-weight: 500;
+      font-weight: 450;
       -webkit-font-smoothing: antialiased;
       transition: background-color 0.3s, color 0.3s;
       overflow-x: hidden;
@@ -78,41 +89,41 @@
 
     body.modal-open { overflow: hidden; overscroll-behavior: none; }
 
-    :focus-visible { outline: 3px solid var(--google-blue); outline-offset: 2px; }
+    :focus-visible { outline: 2.5px solid var(--google-blue); outline-offset: 2px; }
 
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-    }
-
+    /* HEADER */
     header { 
-      background: var(--card-bg); 
+      background: var(--card-glass); 
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       color: var(--text-main); 
-      padding: 0.8rem 2rem; 
+      padding: 0.75rem 1.8rem; 
       display: flex; 
       justify-content: space-between; 
       align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
+      height: var(--header-height);
       z-index: 1000;
       border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
     }
 
     .logo { 
-      font-size: 1.6rem; 
-      font-weight: 700; 
+      font-size: 1.45rem; 
+      font-weight: 800; 
       color: var(--google-blue); 
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       cursor: pointer;
       white-space: nowrap;
+      letter-spacing: -0.3px;
     }
 
-    .header-right { display: flex; align-items: center; gap: 1rem; margin-left: auto; }
+    .header-right { display: flex; align-items: center; gap: 0.75rem; margin-left: auto; }
     .header-social { display: flex; gap: 0.5rem; align-items: center; }
 
     .header-social a, .admin-icon-btn, .notif-icon-btn, .theme-toggle-btn {
@@ -124,9 +135,9 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       text-decoration: none;
-      transition: all 0.2s ease;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
       border: 1px solid var(--border-color);
       position: relative;
@@ -136,62 +147,129 @@
       background: var(--google-blue);
       color: #ffffff;
       transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
     }
 
-    .search-box-container { margin-bottom: 1.5rem; display: flex; gap: 10px; }
+    /* MAIN CONTAINER */
+    main { 
+      max-width: 1050px; 
+      margin: calc(var(--header-height) + 1rem) auto 2.5rem auto; 
+      padding: 0 1.2rem; 
+    }
+
+    /* (1) PERFECT STICKY PAGINATION / TAB BAR */
+    .pagination-bar {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+      margin-bottom: 1.4rem;
+      flex-wrap: nowrap;
+      position: sticky;
+      top: var(--header-height);
+      background: var(--card-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 0.65rem 0.5rem;
+      z-index: 950;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05);
+      border-radius: var(--radius-sm);
+    }
+    .pagination-bar::-webkit-scrollbar { display: none; }
+    
+    .page-btn {
+      padding: 0.55rem 1.3rem;
+      border-radius: 30px;
+      border: 1.5px solid var(--border-color);
+      background: var(--card-bg);
+      color: var(--text-sub);
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .page-btn:hover {
+      border-color: var(--google-blue);
+      color: var(--google-blue);
+      transform: translateY(-1px);
+    }
+    .page-btn.active {
+      background: var(--google-blue);
+      color: #ffffff !important;
+      border-color: var(--google-blue);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    /* SEARCH BAR */
+    .search-box-container { margin-bottom: 1.6rem; display: flex; gap: 10px; }
     .search-input {
       width: 100%;
       padding: 0.85rem 1.4rem;
       border: 1.5px solid var(--border-color);
-      border-radius: 25px;
+      border-radius: 30px;
       outline: none;
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 500;
       background: var(--card-bg);
       color: var(--text-main);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--google-blue);
+      box-shadow: 0 0 0 4px var(--google-blue-light);
     }
 
-    main { 
-      max-width: 1100px; 
-      margin: 5.5rem auto 2rem auto; 
-      padding: 0 1.2rem; 
-    }
-
+    /* CARDS */
     .section-card { 
       background: var(--card-bg); 
-      padding: 2rem; 
-      margin-bottom: 2rem;
-      border-radius: 14px; 
+      padding: 1.8rem 2rem; 
+      margin-bottom: 1.8rem;
+      border-radius: var(--radius-lg); 
       border: 1px solid var(--border-color);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+    }
+    .section-card:hover {
+      box-shadow: var(--shadow-md);
     }
 
     .home-photo-gallery {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      margin: 1.5rem 0;
+      gap: 16px;
+      margin: 1.4rem 0;
     }
     .home-photo-gallery img {
       width: 100%;
-      height: 320px;
+      height: 300px;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: var(--shadow-sm);
       cursor: zoom-in;
+      transition: transform 0.3s;
+    }
+    .home-photo-gallery img:hover {
+      transform: scale(1.02);
     }
 
-    /* READING POST & READER IMAGES */
+    /* POST & READING IMAGES */
     .post-reading-image-wrap {
-      margin: 0.85rem 0 1rem 0;
-      border-radius: 12px;
+      margin: 0.9rem 0 1rem 0;
+      border-radius: var(--radius-md);
       overflow: hidden;
       border: 1px solid var(--border-color);
       background: var(--bg-gray);
-      max-height: 380px;
+      max-height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -199,23 +277,21 @@
     .post-reading-image {
       width: 100%;
       height: auto;
-      max-height: 380px;
+      max-height: 400px;
       object-fit: cover;
       display: block;
       cursor: zoom-in;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s;
     }
-    .post-reading-image:hover {
-      transform: scale(1.015);
-    }
+    .post-reading-image:hover { transform: scale(1.015); }
 
     .reader-cover-img-wrap {
       margin: 0 0 1.5rem 0;
-      border-radius: 12px;
+      border-radius: var(--radius-md);
       overflow: hidden;
       border: 1px solid var(--border-color);
       background: var(--bg-gray);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      box-shadow: var(--shadow-md);
     }
     .reader-cover-img {
       width: 100%;
@@ -227,14 +303,14 @@
     }
 
     .admin-img-preview-box {
-      margin-top: 8px;
+      margin-top: 10px;
       display: none;
       align-items: center;
       gap: 12px;
-      padding: 8px;
-      border-radius: 8px;
+      padding: 10px;
+      border-radius: var(--radius-sm);
       background: var(--card-bg);
-      border: 1px dashed var(--border-color);
+      border: 1.5px dashed var(--border-color);
     }
     .admin-img-preview-box.active { display: flex; }
     .admin-img-preview-box img {
@@ -246,68 +322,69 @@
     }
 
     .photo-gallery-grid {
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
     }
     .photo-gallery-card {
-      background:var(--bg-gray);
-      border:1px solid var(--border-color);
-      border-radius:14px;
-      overflow:hidden;
-      box-shadow:0 4px 14px rgba(0,0,0,.14);
-      width:100%;
-      max-width:600px;
+      background: var(--bg-gray);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      width: 100%;
+      max-width: 620px;
     }
     .photo-gallery-card img {
-      display:block;
-      width:100%;
-      height:auto;
-      min-height:280px;
-      max-height:700px;
-      object-fit:contain;
-      background:var(--card-bg);
-      cursor:zoom-in;
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 280px;
+      max-height: 650px;
+      object-fit: contain;
+      background: var(--card-bg);
+      cursor: zoom-in;
     }
-    .photo-gallery-caption { padding:.9rem 1.1rem; font-weight:600; color:var(--text-main); }
-    .admin-photo-preview { width:90px; height:70px; object-fit:contain; background:var(--card-bg); border:1px solid var(--border-color); border-radius:8px; }
+    .photo-gallery-caption { padding: 0.9rem 1.1rem; font-weight: 600; color: var(--text-main); }
+    .admin-photo-preview { width: 85px; height: 65px; object-fit: contain; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 6px; }
 
     /* PHOTO ZOOM LIGHTBOX */
     .photo-zoom-overlay {
-      display:none; position:fixed; inset:0; z-index:9999;
-      background:rgba(0,0,0,.92);
-      align-items:center; justify-content:center;
-      touch-action:none; overscroll-behavior:contain;
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,.92);
+      align-items: center; justify-content: center;
+      touch-action: none; overscroll-behavior: contain;
     }
-    .photo-zoom-overlay.active { display:flex; }
+    .photo-zoom-overlay.active { display: flex; }
     .photo-zoom-overlay img {
-      max-width:94vw; max-height:88vh;
-      object-fit:contain;
-      user-select:none; -webkit-user-drag:none;
-      will-change:transform;
-      transition:transform .06s ease-out;
+      max-width: 94vw; max-height: 88vh;
+      object-fit: contain;
+      user-select: none; -webkit-user-drag: none;
+      will-change: transform;
+      transition: transform .06s ease-out;
     }
     .photo-zoom-close {
-      position:absolute; top:18px; right:18px;
-      width:44px; height:44px; border-radius:50%;
-      background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.3);
-      color:#fff; font-size:1.3rem; display:flex; align-items:center; justify-content:center;
-      cursor:pointer; z-index:2;
+      position: absolute; top: 18px; right: 18px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+      color: #fff; font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; z-index: 2;
     }
     .photo-zoom-hint {
-      position:absolute; bottom:18px; left:50%; transform:translateX(-50%);
-      color:rgba(255,255,255,.75); font-size:.8rem; text-align:center; width:90%;
+      position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,.75); font-size: .8rem; text-align: center; width: 90%;
     }
 
     .section-title { 
       color: var(--google-blue); 
-      padding-bottom: 0.5rem; 
+      padding-bottom: 0.6rem; 
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.2px;
     }
 
     .line-clamp-3 {
@@ -317,7 +394,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: normal;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       line-height: 1.85;
       color: var(--text-main);
     }
@@ -326,63 +403,31 @@
       -webkit-line-clamp: 4;
     }
 
-    .pagination-bar {
-      display: flex;
-      justify-content: flex-start;
-      gap: 10px;
-      margin-bottom: 1.25rem;
-      flex-wrap: nowrap;
-      position: sticky;
-      top: calc(var(--header-height) + env(safe-area-inset-top));
-      background: var(--bg-gray);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      padding: 0.55rem 0.1rem;
-      z-index: 900;
-      overflow-x: auto;
-      overflow-y: hidden;
-      scrollbar-width: none;
-      border-bottom: 1px solid var(--border-color);
-    }
-    .pagination-bar::-webkit-scrollbar { display: none; }
-    .page-btn {
-      padding: 0.6rem 1.4rem;
-      border-radius: 20px;
-      border: 1.5px solid var(--border-color);
-      background: var(--card-bg);
-      color: var(--text-sub);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-    .page-btn:hover, .page-btn.active {
-      background: var(--google-blue);
-      color: #ffffff;
-      border-color: var(--google-blue);
-    }
-
     .reading-post-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
-      border-radius: 12px;
-      padding: 1.5rem;
+      border-radius: var(--radius-md);
+      padding: 1.4rem;
       margin-top: 1.2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .reading-post-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(37, 99, 235, 0.4);
     }
     .reading-post-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0.6rem;
-      padding-bottom: 0.5rem;
+      padding-bottom: 0.6rem;
       border-bottom: 1px dashed var(--border-color);
       gap: 10px;
       flex-wrap: wrap;
     }
     .reading-post-title { 
-      font-size: 1.2rem; 
+      font-size: 1.25rem; 
       color: var(--google-blue); 
       font-weight: 700; 
       cursor: pointer;
@@ -393,7 +438,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 1rem;
+      margin-top: 1.1rem;
       gap: 10px;
       flex-wrap: wrap;
     }
@@ -408,120 +453,86 @@
       cursor: pointer;
       background: var(--google-blue-light);
       border: 1px solid var(--border-color);
-      padding: 6px 16px;
-      border-radius: 18px;
+      padding: 7px 18px;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+    .read-more-btn:hover {
+      background: var(--google-blue);
+      color: #fff;
     }
 
-    #site-scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--google-blue); z-index: 5000; }
-    #back-to-top { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--google-blue); box-shadow: 0 8px 24px rgba(0,0,0,.22); cursor: pointer; display: none; place-items: center; z-index: 1400; }
+    #site-scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 3.5px; background: linear-gradient(90deg, var(--google-blue), #60a5fa); z-index: 5000; }
+    #back-to-top { position: fixed; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom)); width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--border-color); background: var(--card-bg); color: var(--google-blue); box-shadow: var(--shadow-md); cursor: pointer; display: none; place-items: center; z-index: 1400; transition: transform 0.2s; }
+    #back-to-top:hover { transform: translateY(-3px); }
     #back-to-top.show { display: grid; }
-    .last-read-banner { display: none; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 1rem; padding: .8rem 1rem; border: 1px solid var(--google-blue); border-radius: 12px; background: var(--google-blue-light); }
+    
+    .last-read-banner { display: none; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 1.2rem; padding: 0.85rem 1.2rem; border: 1px solid var(--google-blue); border-radius: var(--radius-md); background: var(--google-blue-light); }
     .last-read-banner.show { display: flex; }
-    .mini-btn { border: 1px solid var(--google-blue); background: var(--google-blue); color: #fff; border-radius: 18px; padding: .45rem .8rem; cursor: pointer; font-weight: 700; white-space: nowrap; }
-    .bookmark-btn { border: 1px solid var(--border-color); background: var(--bg-gray); color: var(--text-main); border-radius: 6px; padding: 0 10px; height: 30px; cursor: pointer; font-weight: 600; }
+    .mini-btn { border: none; background: var(--google-blue); color: #fff; border-radius: 20px; padding: 0.5rem 1rem; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
+    .bookmark-btn { border: 1px solid var(--border-color); background: var(--bg-gray); color: var(--text-main); border-radius: 8px; padding: 0 10px; height: 32px; cursor: pointer; font-weight: 600; }
 
-    /* Modal Styling */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(4px);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-    }
-
-    /* Form Controls */
-    .form-group { margin-bottom: 0.8rem; }
-    .form-group label { display: block; margin-bottom: 0.3rem; font-weight: 600; font-size: 0.95rem; color: var(--text-sub); }
+    /* FORM CONTROLS */
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; margin-bottom: 0.35rem; font-weight: 600; font-size: 0.95rem; color: var(--text-sub); }
     .form-group input, .form-group textarea, .form-group select { 
-      width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); 
-      border-radius: 8px; outline: none; background: var(--card-bg); color: var(--text-main); font-size: 1rem;
+      width: 100%; padding: 0.8rem 1rem; border: 1.5px solid var(--border-color); 
+      border-radius: var(--radius-sm); outline: none; background: var(--card-bg); color: var(--text-main); font-size: 1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
-
-    .admin-modal-body input[type="text"], .admin-modal-body input[type="url"] {
-      font-size: 1.05rem !important;
-      padding: 0.75rem 1.1rem !important;
-      font-weight: 600;
-    }
-    .admin-modal-body textarea {
-      font-size: 1.05rem !important;
-      min-height: 200px !important;
-      line-height: 1.7;
-      padding: 1rem !important;
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color: var(--google-blue);
+      box-shadow: 0 0 0 3px var(--google-blue-light);
     }
 
     .btn { 
-      background: var(--google-blue); color: #fff; padding: 0.6rem 1.2rem; 
-      border: none; border-radius: 6px; cursor: pointer; font-size: 0.95rem; font-weight: 600;
-      display: inline-flex; align-items: center; gap: 6px; justify-content: center;
+      background: var(--google-blue); color: #fff; padding: 0.7rem 1.4rem; 
+      border: none; border-radius: var(--radius-sm); cursor: pointer; font-size: 0.95rem; font-weight: 700;
+      display: inline-flex; align-items: center; gap: 8px; justify-content: center;
+      transition: all 0.2s;
     }
+    .btn:hover { opacity: 0.92; transform: translateY(-1px); }
     .btn-draft { background: var(--draft-amber); color: #fff; }
     .btn-add { background: var(--purple-color); color: #fff; }
     .btn-danger { background: var(--danger-red); color: #fff; }
     .btn-publish { background: var(--success-green); color: #fff; }
 
-    /* Reader Modal Page */
-    .reader-modal-overlay {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(5px); z-index: 3000;
-      align-items: center; justify-content: center; padding: 1rem;
-    }
-    .reader-modal-box {
-      background: var(--card-bg); color: var(--text-main); width: 100%; max-width: 800px;
-      max-height: 88vh; border-radius: 12px; border: 1px solid var(--border-color);
-      display: flex; flex-direction: column; overflow: hidden;
-    }
-    .reader-modal-header { padding: 1rem 1.4rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
-    .reader-modal-body { padding: 1.4rem; overflow-y: auto; font-size: 1.05rem; line-height: 1.85; white-space: pre-line; }
-
-    .reader-progress-track {
-      position: relative;
-      height: 3px;
-      width: 100%;
-      background: var(--border-color);
-      flex-shrink: 0;
-    }
-    .reader-progress-fill {
-      position: absolute;
-      top: 0; left: 0; height: 100%;
-      width: 0%;
-      background: var(--google-blue);
-      transition: width 0.1s ease-out;
-    }
-
-    /* Admin Panel Overlay */
+    /* (4) MOBILE FIRST PRO-ADMIN MODAL */
     .admin-modal-overlay {
-      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(4px); z-index: 2500;
+      display: none; position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px); z-index: 2500;
       align-items: center; justify-content: center; padding: 1rem;
     }
     .admin-modal-box {
       background: var(--card-bg); color: var(--text-main); width: 100%; max-width: 950px;
-      max-height: 90vh; border-radius: 12px; border: 1px solid var(--google-blue);
-      display: flex; flex-direction: column; overflow: hidden;
+      height: 90vh; max-height: 90vh; border-radius: var(--radius-lg); border: 1px solid var(--border-color);
+      display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-lg);
     }
-    .admin-modal-header { padding: 0.8rem 1.2rem; background: var(--google-blue-light); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; }
+    .admin-modal-header { 
+      padding: 1rem 1.4rem; background: var(--google-blue-light); border-bottom: 1px solid var(--border-color); 
+      display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;
+    }
     
     .admin-nav-tabs {
       display: flex;
       background: var(--card-bg);
       border-bottom: 1px solid var(--border-color);
-      flex-wrap: wrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      flex-shrink: 0;
     }
+    .admin-nav-tabs::-webkit-scrollbar { display: none; }
     .admin-tab-btn {
       flex: 1;
-      padding: 0.75rem;
+      padding: 0.85rem 1.2rem;
       text-align: center;
-      font-weight: 600;
-      font-size: 0.92rem;
+      font-weight: 700;
+      font-size: 0.95rem;
       cursor: pointer;
       background: transparent;
       border: none;
       color: var(--text-sub);
-      border-bottom: 2px solid transparent;
+      border-bottom: 3px solid transparent;
       transition: all 0.2s;
       white-space: nowrap;
     }
@@ -531,12 +542,18 @@
       background: var(--google-blue-light);
     }
 
-    .admin-modal-body { padding: 1.5rem; overflow-y: auto; font-size: 0.95rem; }
+    .admin-modal-body { 
+      padding: 1.5rem; 
+      overflow-y: auto; 
+      -webkit-overflow-scrolling: touch;
+      font-size: 0.95rem; 
+      flex: 1;
+    }
 
     .extra-field-group {
       background: var(--bg-gray);
-      padding: 1rem;
-      border-radius: 10px;
+      padding: 1.2rem;
+      border-radius: var(--radius-md);
       border: 1px solid var(--border-color);
       margin-bottom: 1.2rem;
     }
@@ -550,11 +567,11 @@
     .action-icon-btn {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      padding: 6px 12px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 700;
       border: 1px solid var(--border-color);
       cursor: pointer;
       transition: all 0.2s ease;
@@ -565,47 +582,20 @@
     .action-icon-btn.btn-act-draft { background: var(--draft-amber-light); color: var(--draft-amber); border-color: var(--draft-amber); }
     .action-icon-btn.btn-act-publish { background: var(--success-green-light); color: var(--success-green); border-color: var(--success-green); }
 
-    /* Comments Component */
-    .comments-section { margin-top: 1.5rem; padding-top: 1rem; border-top: 2px dashed var(--border-color); }
-    .comment-card { background: var(--bg-gray); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.8rem; margin-bottom: 0.6rem; }
-    .comment-header { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 0.3rem; color: var(--text-sub); }
-    
-    .admin-comment-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-left: 3px solid var(--google-blue);
-      border-radius: 6px;
-      padding: 0.8rem;
-      margin-bottom: 0.8rem;
-    }
-    .admin-reply-box {
-      margin-top: 0.6rem;
-      padding-top: 0.6rem;
-      border-top: 1px dashed var(--border-color);
-      display: none;
-    }
-    .admin-reply-text {
-      background: var(--google-blue-light);
-      padding: 0.5rem 0.8rem;
-      border-radius: 4px;
-      margin-top: 0.4rem;
-      font-size: 0.88rem;
-    }
-
     .like-btn {
       display: inline-flex; align-items: center; gap: 6px;
       border: 1px solid var(--border-color); background: var(--bg-gray);
-      color: var(--text-sub); padding: 6px 12px; border-radius: 20px;
-      font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
+      color: var(--text-sub); padding: 7px 14px; border-radius: 20px;
+      font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: all 0.2s ease;
     }
     .like-btn:hover { border-color: var(--danger-red); color: var(--danger-red); }
     .like-btn.liked { background: var(--danger-red-light); color: var(--danger-red); border-color: var(--danger-red); cursor: default; }
 
     .pin-badge { color: var(--draft-amber); margin-right: 4px; }
 
-    .archive-filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1rem; }
+    .archive-filter-bar { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.2rem; }
     .archive-chip {
-      padding: 5px 12px; border-radius: 16px; font-size: 0.82rem; font-weight: 600;
+      padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
       border: 1.5px solid var(--border-color); background: var(--card-bg); color: var(--text-sub);
       cursor: pointer; transition: all 0.2s ease;
     }
@@ -613,7 +603,7 @@
 
     .rm-share-btn {
       border: 1px solid var(--border-color); background: var(--bg-gray); color: var(--text-main);
-      border-radius: 6px; padding: 0 10px; height: 30px; font-size: 0.82rem; font-weight: 600;
+      border-radius: 8px; padding: 0 10px; height: 32px; font-size: 0.82rem; font-weight: 600;
       cursor: pointer; display: inline-flex; align-items: center; gap: 5px;
     }
     .rm-share-btn:hover { background: var(--google-blue); color: #fff; }
@@ -625,40 +615,35 @@
     }
 
     .admin-post-row {
-      display: flex; align-items: center; justify-content: space-between; gap: 8px;
-      padding: 0.6rem 0.8rem; border: 1px solid var(--border-color); border-radius: 8px;
-      margin-bottom: 0.5rem; background: var(--bg-gray); flex-wrap: wrap;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+      margin-bottom: 0.6rem; background: var(--bg-gray); flex-wrap: wrap;
     }
-    .admin-post-row .apr-title { font-weight: 600; font-size: 0.92rem; flex: 1; min-width: 140px; }
+    .admin-post-row .apr-title { font-weight: 600; font-size: 0.95rem; flex: 1; min-width: 140px; }
     .admin-post-row .apr-actions { display: flex; gap: 6px; flex-wrap: wrap; }
 
-    /* AUTH / ENTRY MODAL */
+    /* AUTH MODAL */
+    .modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.78); backdrop-filter: blur(6px); z-index: 2000;
+      align-items: center; justify-content: center; padding: 1rem;
+    }
     .auth-card {
-      background: var(--card-bg);
-      color: var(--text-main);
-      width: 100%;
-      max-width: 420px;
-      border-radius: 16px;
-      border: 1px solid var(--border-color);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
-      overflow: hidden;
-      text-align: left;
+      background: var(--card-bg); color: var(--text-main); width: 100%; max-width: 410px;
+      border-radius: var(--radius-lg); border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-lg); overflow: hidden; text-align: left;
     }
     .auth-card-header {
-      background: linear-gradient(135deg, var(--google-blue), #4f8ef7 70%);
-      padding: 1.6rem 1.4rem 1.2rem;
-      text-align: center;
-      color: #fff;
+      background: linear-gradient(135deg, var(--google-blue), #3b82f6);
+      padding: 1.8rem 1.4rem 1.4rem; text-align: center; color: #fff;
     }
     .auth-card-header .auth-logo {
-      width: 52px; height: 52px; border-radius: 50%;
-      background: rgba(255,255,255,0.18);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; margin: 0 auto 0.6rem auto;
-      border: 1px solid rgba(255,255,255,0.4);
+      width: 54px; height: 54px; border-radius: 50%;
+      background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin: 0 auto 0.6rem auto; border: 1px solid rgba(255,255,255,0.4);
     }
-    .auth-card-header h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.2rem; }
-    .auth-card-header p { font-size: 0.85rem; opacity: 0.92; font-weight: 500; }
+    .auth-card-header h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .auth-card-header p { font-size: 0.85rem; opacity: 0.92; }
 
     .auth-tabs { display: flex; border-bottom: 1px solid var(--border-color); }
     .auth-tab-btn {
@@ -667,22 +652,22 @@
       border-bottom: 2px solid transparent; transition: all 0.2s ease;
     }
     .auth-tab-btn.active { color: var(--google-blue); border-bottom-color: var(--google-blue); background: var(--google-blue-light); }
-    .auth-tab-body { padding: 1.4rem 1.6rem 1.6rem; }
+    .auth-tab-body { padding: 1.4rem 1.5rem 1.6rem; }
 
     .auth-input-wrap { position: relative; margin-bottom: 0.9rem; }
     .auth-input-wrap label { display: block; margin-bottom: 0.35rem; font-weight: 600; font-size: 0.85rem; color: var(--text-sub); }
     .auth-input-wrap .auth-input-icon {
-      position: absolute; left: 0.9rem; top: calc(0.35rem + 1.05rem);
+      position: absolute; left: 0.9rem; top: calc(0.35rem + 1.15rem);
       color: var(--text-sub); font-size: 0.9rem; pointer-events: none;
     }
     .auth-input-wrap input {
-      width: 100%; padding: 0.75rem 1rem 0.75rem 2.4rem; border: 1.5px solid var(--border-color);
-      border-radius: 9px; outline: none; background: var(--bg-gray); color: var(--text-main);
-      font-size: 0.96rem; transition: border-color 0.2s, box-shadow 0.2s;
+      width: 100%; padding: 0.8rem 1rem 0.8rem 2.4rem; border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-sm); outline: none; background: var(--bg-gray); color: var(--text-main);
+      font-size: 0.95rem; transition: border-color 0.2s, box-shadow 0.2s;
     }
     .auth-input-wrap input:focus { border-color: var(--google-blue); box-shadow: 0 0 0 3px var(--google-blue-light); }
     .auth-input-wrap .pass-toggle-icon {
-      position: absolute; right: 0.9rem; top: calc(0.35rem + 1.05rem);
+      position: absolute; right: 0.9rem; top: calc(0.35rem + 1.15rem);
       color: var(--text-sub); cursor: pointer; font-size: 0.9rem;
     }
     .auth-row-2 { display: flex; gap: 10px; }
@@ -690,146 +675,165 @@
 
     .auth-error-msg {
       display: none; background: var(--danger-red-light); color: var(--danger-red);
-      border: 1px solid var(--danger-red); border-radius: 8px; padding: 0.55rem 0.8rem;
-      font-size: 0.82rem; font-weight: 600; margin-bottom: 0.9rem; align-items: center; gap: 6px;
+      border: 1px solid var(--danger-red); border-radius: var(--radius-sm); padding: 0.6rem 0.8rem;
+      font-size: 0.85rem; font-weight: 600; margin-bottom: 0.9rem; align-items: center; gap: 6px;
     }
     .auth-success-msg {
       display: none; background: var(--success-green-light); color: var(--success-green);
-      border: 1px solid var(--success-green); border-radius: 8px; padding: 0.55rem 0.8rem;
-      font-size: 0.82rem; font-weight: 600; margin-bottom: 0.9rem; align-items: center; gap: 6px;
+      border: 1px solid var(--success-green); border-radius: var(--radius-sm); padding: 0.6rem 0.8rem;
+      font-size: 0.85rem; font-weight: 600; margin-bottom: 0.9rem; align-items: center; gap: 6px;
     }
 
     .auth-submit-btn {
-      width: 100%; padding: 0.8rem; border-radius: 9px; border: none; cursor: pointer;
+      width: 100%; padding: 0.85rem; border-radius: var(--radius-sm); border: none; cursor: pointer;
       font-size: 0.98rem; font-weight: 700; background: var(--google-blue); color: #fff;
       display: flex; align-items: center; justify-content: center; gap: 8px;
       transition: background 0.2s, transform 0.1s;
     }
     .auth-submit-btn:hover { background: var(--google-blue-hover); }
-    .auth-submit-btn:active { transform: scale(0.98); }
 
-    .auth-divider { display: flex; align-items: center; gap: 10px; margin: 1rem 0; color: var(--text-sub); font-size: 0.78rem; }
+    .auth-divider { display: flex; align-items: center; gap: 10px; margin: 1.1rem 0; color: var(--text-sub); font-size: 0.8rem; }
     .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--border-color); }
 
     .auth-guest-btn {
-      width: 100%; padding: 0.7rem; border-radius: 9px; cursor: pointer; font-weight: 600; font-size: 0.88rem;
+      width: 100%; padding: 0.75rem; border-radius: var(--radius-sm); cursor: pointer; font-weight: 600; font-size: 0.9rem;
       background: transparent; border: 1.5px dashed var(--border-color); color: var(--text-sub);
       display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;
     }
     .auth-guest-btn:hover { border-color: var(--google-blue); color: var(--google-blue); }
 
-    /* PROFESSIONAL READER MODAL */
-    .reader-modal-box.pro-reader { max-width: 780px; }
-    .reader-modal-header.pro-reader-header { flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1.2rem 1.6rem 0.9rem; }
+    /* READER MODAL */
+    .reader-modal-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.88); backdrop-filter: blur(6px); z-index: 3000;
+      align-items: center; justify-content: center; padding: 1rem;
+    }
+    .reader-modal-box.pro-reader {
+      background: var(--card-bg); color: var(--text-main); width: 100%; max-width: 780px;
+      max-height: 88vh; border-radius: var(--radius-lg); border: 1px solid var(--border-color);
+      display: flex; flex-direction: column; overflow: hidden; box-shadow: var(--shadow-lg);
+    }
+    .reader-modal-header.pro-reader-header { flex-direction: column; align-items: stretch; gap: 0.5rem; padding: 1.2rem 1.6rem 0.9rem; border-bottom: 1px solid var(--border-color); }
     .reader-modal-header.pro-reader-header .rm-top-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
     .rm-title-pro {
-      font-size: 1.45rem; font-weight: 700; color: var(--text-main); line-height: 1.35;
-      font-family: 'Noto Sans Gujarati', 'Georgia', serif;
+      font-size: 1.45rem; font-weight: 800; color: var(--text-main); line-height: 1.35;
     }
-    .rm-close-btn { background: var(--bg-gray); border: 1px solid var(--border-color); color: var(--text-main); font-size: 1rem; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; flex-shrink: 0; }
+    .rm-close-btn { background: var(--bg-gray); border: 1px solid var(--border-color); color: var(--text-main); font-size: 1rem; width: 34px; height: 34px; border-radius: 50%; cursor: pointer; flex-shrink: 0; }
     .rm-meta-row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; color: var(--text-sub); font-size: 0.82rem; font-weight: 600; }
     .rm-meta-row span { display: flex; align-items: center; gap: 5px; }
     .rm-font-controls { display: flex; align-items: center; gap: 6px; margin-left: auto; }
     .rm-font-btn {
-      width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--border-color);
+      width: 32px; height: 32px; border-radius: var(--radius-sm); border: 1px solid var(--border-color);
       background: var(--bg-gray); color: var(--text-main); cursor: pointer; font-weight: 700; font-size: 0.9rem;
     }
     .rm-font-btn:hover { background: var(--google-blue); color: #fff; }
 
     .reader-modal-body.pro-reader-body {
-      padding: 1.6rem 2.2rem 2rem;
-      font-family: 'Noto Sans Gujarati', Georgia, 'Times New Roman', serif;
+      padding: 1.6rem 2.2rem 2.5rem;
       max-width: 70ch;
       margin: 0 auto;
       width: 100%;
+      overflow-y: auto;
     }
-    .pro-reader-body p {
-      margin-bottom: 1.1em;
-      text-align: justify;
-      letter-spacing: 0.1px;
+    .pro-reader-body p { margin-bottom: 1.15em; text-align: justify; }
+
+    .comments-section { margin-top: 1.8rem; padding-top: 1.2rem; border-top: 2px dashed var(--border-color); }
+    .comment-card { background: var(--bg-gray); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 0.85rem; margin-bottom: 0.7rem; }
+    .comment-header { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 0.35rem; color: var(--text-sub); }
+    
+    .admin-comment-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--google-blue);
+      border-radius: var(--radius-sm);
+      padding: 0.9rem;
+      margin-bottom: 0.8rem;
     }
-    .pro-reader-body:not(.poem-mode) #rm-body p:first-of-type::first-letter {
-      font-size: 2.5em;
-      font-weight: 700;
-      float: left;
-      line-height: 0.85;
-      padding-right: 8px;
-      padding-top: 4px;
-      color: var(--google-blue);
+    .admin-reply-box {
+      margin-top: 0.7rem;
+      padding-top: 0.7rem;
+      border-top: 1px dashed var(--border-color);
+      display: none;
+    }
+    .admin-reply-text {
+      background: var(--google-blue-light);
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      margin-top: 0.4rem;
+      font-size: 0.88rem;
     }
 
-    .pro-reader-body.poem-mode #rm-body { text-align: center; }
-    .poem-stanza { margin-bottom: 1.6em; }
-    .poem-line { font-style: italic; line-height: 2; letter-spacing: 0.2px; }
-
-    .novel-chapter-heading {
-      text-align: center;
-      font-weight: 700;
-      color: var(--google-blue);
-      font-size: 1.25em;
-      margin: 1.6em 0 1em;
-      letter-spacing: 0.5px;
-    }
-    .novel-chapter-heading:first-child { margin-top: 0.2em; }
-    .novel-dialogue {
-      font-style: italic;
-      padding-left: 1em;
-      border-left: 3px solid var(--google-blue-light);
-      color: var(--text-main);
-    }
-
-    /* ADMIN GITHUB SYNC */
+    /* GITHUB SYNC */
     .sync-status-badge {
-      display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
+      display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
       border-radius: 20px; font-size: 0.78rem; font-weight: 700;
       border: 1px solid var(--border-color); background: var(--bg-gray); color: var(--text-sub);
     }
     .sync-status-badge.status-ok { background: var(--success-green-light); color: var(--success-green); border-color: var(--success-green); }
     .sync-status-badge.status-error { background: var(--danger-red-light); color: var(--danger-red); border-color: var(--danger-red); }
     .sync-status-badge.status-loading { background: var(--draft-amber-light); color: var(--draft-amber); border-color: var(--draft-amber); }
-    .sync-status-badge i.fa-spin { animation: rm-spin 1s linear infinite; }
-    @keyframes rm-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     .github-info-box {
       background: var(--google-blue-light); border: 1px solid var(--google-blue);
-      border-radius: 10px; padding: 0.9rem 1.1rem; font-size: 0.85rem; color: var(--text-main);
+      border-radius: var(--radius-md); padding: 0.9rem 1.1rem; font-size: 0.85rem; color: var(--text-main);
       margin-bottom: 1.2rem; line-height: 1.6;
     }
 
+    /* ================= (4) MOBILE SPECIFIC OPTIMIZATIONS ================= */
     @media (max-width: 768px) {
-      :root { --header-height: 68px; }
-      header { padding: 0.65rem 0.8rem; }
-      .logo { font-size: 1.05rem; }
-      .header-right { gap: 0.35rem; }
+      :root { --header-height: 64px; }
+      header { padding: 0.5rem 0.9rem; }
+      .logo { font-size: 1.15rem; }
+      .header-right { gap: 0.4rem; }
       .header-social { gap: 0.3rem; }
-      .header-social a, .admin-icon-btn, .notif-icon-btn, .theme-toggle-btn { width: 34px; height: 34px; font-size: 0.95rem; }
-      main { padding: 0 0.8rem; margin: calc(var(--header-height) + 0.8rem) auto 1.5rem auto; }
+      .header-social a, .admin-icon-btn, .notif-icon-btn, .theme-toggle-btn { width: 35px; height: 35px; font-size: 0.95rem; }
+      
+      main { padding: 0 0.8rem; margin: calc(var(--header-height) + 0.6rem) auto 1.8rem auto; }
+      
+      /* STICKY TAB FOR MOBILE */
+      .pagination-bar { 
+        top: var(--header-height); 
+        margin-left: -0.8rem; 
+        margin-right: -0.8rem; 
+        padding: 0.5rem 0.8rem;
+        border-radius: 0;
+      }
+      .page-btn { padding: 0.45rem 1.1rem; font-size: 0.85rem; }
+      
       .section-card { padding: 1.2rem; margin-bottom: 1.2rem; }
       .home-photo-gallery { grid-template-columns: 1fr; gap: 12px; }
       .home-photo-gallery img { height: 210px; }
-      .photo-gallery-grid { gap:20px; }
-      .photo-gallery-card img { min-height:220px; max-height:500px; }
-      .photo-zoom-close { top:10px; right:10px; width:38px; height:38px; font-size:1.1rem; }
+      
+      /* MOBILE ADMIN PANEL FULL-SCREEN APP VIEW */
+      .admin-modal-overlay { padding: 0; }
+      .admin-modal-box { 
+        width: 100%; 
+        height: 100vh; 
+        max-height: 100vh; 
+        border-radius: 0; 
+        border: none;
+      }
+      .admin-modal-header { padding: 0.8rem 1rem; }
+      .admin-tab-btn { padding: 0.75rem 0.9rem; font-size: 0.88rem; }
+      .admin-modal-body { padding: 1.1rem; }
       .column-actions-bar { justify-content: flex-start; }
-      .admin-nav-tabs { flex-direction: column; }
-      .pagination-bar { margin-left: -0.2rem; margin-right: -0.2rem; padding-inline: 0.2rem; }
-      .search-box-container { position: sticky; top: calc(var(--header-height) + 3.4rem); z-index: 850; padding: 0.35rem 0; background: var(--bg-gray); }
-      .auth-row-2 { flex-direction: column; gap: 0; }
+      .action-icon-btn { padding: 8px 12px; font-size: 0.82rem; }
+      .admin-post-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .admin-post-row .apr-actions { width: 100%; justify-content: flex-end; }
 
+      /* READER MODAL FULL-HEIGHT FOR MOBILE */
       .reader-modal-overlay { padding: 0; }
-      .reader-modal-box.pro-reader { max-width: 100%; max-height: 100vh; height: 100%; border-radius: 0; }
-      .reader-modal-header.pro-reader-header { padding: 1rem 1.1rem 0.7rem; }
-      .reader-modal-body.pro-reader-body { padding: 1.2rem 1.1rem 2.5rem; max-width: 100%; }
+      .reader-modal-box.pro-reader { width: 100%; height: 100vh; max-height: 100vh; border-radius: 0; border: none; }
+      .reader-modal-header.pro-reader-header { padding: 1rem 1rem 0.7rem; }
+      .reader-modal-body.pro-reader-body { padding: 1.1rem 1rem 2.5rem; }
       .rm-title-pro { font-size: 1.25rem; }
-      .rm-font-btn { width: 34px; height: 34px; font-size: 1rem; }
-      .rm-close-btn { width: 36px; height: 36px; font-size: 1.05rem; }
     }
   </style>
 </head>
 <body class="dark-theme">
   <div id="site-scroll-progress" aria-hidden="true"></div>
 
-  <!-- ENTRY MODAL -->
+  <!-- ENTRY MODAL (2) Setup Local Admin Button Removed -->
   <div class="modal-overlay" id="entry-modal" style="display: flex;">
     <div class="auth-card">
       <div class="auth-card-header">
@@ -863,10 +867,7 @@
         <button class="auth-submit-btn" onclick="processLogin()"><i class="fa-solid fa-right-to-bracket"></i> Login કરો</button>
 
         <div class="auth-divider">અથવા</div>
-        <div style="display:grid;gap:8px;">
-          <button class="auth-guest-btn" onclick="enterDirectly()"><i class="fa-solid fa-bolt"></i> Without Login (ડાયરેક્ટ પ્રવેશ)</button>
-          <button class="auth-guest-btn" style="font-size:0.78rem; padding:0.45rem;" onclick="setupLocalAdmin()"><i class="fa-solid fa-user-shield"></i> Setup Local Admin (પ્રથમ વખત)</button>
-        </div>
+        <button class="auth-guest-btn" onclick="enterDirectly()"><i class="fa-solid fa-bolt"></i> Without Login (ડાયરેક્ટ પ્રવેશ)</button>
       </div>
 
       <!-- Registration Form -->
@@ -923,11 +924,12 @@
           <i class="fa-solid fa-sun" id="theme-icon"></i>
         </button>
 
+        <!-- Admin icon visible by default so mobile users can open admin login easily -->
         <button class="admin-icon-btn" id="header-admin-btn" onclick="openAdminPanel()" title="Open Admin Page">
           <i class="fa-solid fa-bars"></i>
         </button>
 
-        <!-- Dynamic Header Social Links -->
+        <!-- Header Social Links -->
         <a id="home-social-instagram" href="#" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a>
         <a id="home-social-facebook" href="#" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a>
         <a id="home-social-youtube" href="#" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a>
@@ -938,13 +940,13 @@
   </header>
 
   <main>
-    <!-- Navigation Bar -->
+    <!-- (1) STICKY NAVIGATION BAR -->
     <div class="pagination-bar" id="page-nav-bar">
-      <a class="page-btn active" href="#page-1">Page 1 (Home)</a>
-      <a class="page-btn" href="#page-2">Page 2 (સાહિત્ય)</a>
-      <a class="page-btn" href="#page-3">Page 3 (About/Contact)</a>
-      <a class="page-btn" href="#page-4">Page 4 (કોમેન્ટ્સ)</a>
-      <a class="page-btn" href="#page-5">Page 5 (ફોટોઝ)</a>
+      <a class="page-btn active" href="#page-1"><i class="fa-solid fa-house"></i> Page 1 (Home)</a>
+      <a class="page-btn" href="#page-2"><i class="fa-solid fa-book"></i> Page 2 (સાહિત્ય)</a>
+      <a class="page-btn" href="#page-3"><i class="fa-solid fa-circle-info"></i> Page 3 (About/Contact)</a>
+      <a class="page-btn" href="#page-4"><i class="fa-solid fa-comments"></i> Page 4 (કોમેન્ટ્સ)</a>
+      <a class="page-btn" href="#page-5"><i class="fa-solid fa-images"></i> Page 5 (ફોટોઝ)</a>
     </div>
 
     <div class="last-read-banner" id="last-read-banner">
@@ -975,11 +977,11 @@
         <div id="home-content-disp" class="line-clamp-3">
           રાજ ની કલમ પર આપનું હાર્દિક સ્વાગત છે. શિક્ષણ અને સાહિત્ય માનવજીવનના સર્વાંગી વિકાસ માટે અત્યંત જરૂરી છે. અહીં આપને રોજેરોજ નવતર વિચારો, શૈક્ષણિક માહિતી, જ્ઞાનવર્ધક લેખો અને શ્રેષ્ઠ સાહિત્ય પઠન સામગ્રી મળશે.
         </div>
-        <button class="read-more-btn" style="margin-top:0.8rem;" onclick="openCustomSectionReader('home1')"><i class="fa-solid fa-book-open"></i> Read More (આખું વાંચો)</button>
+        <button class="read-more-btn" style="margin-top:0.9rem;" onclick="openCustomSectionReader('home1')"><i class="fa-solid fa-book-open"></i> Read More (આખું વાંચો)</button>
       </div>
 
       <div class="section-card">
-        <h3 style="color: var(--google-blue); font-size: 1.2rem; margin-bottom: 0.8rem;">
+        <h3 style="color: var(--google-blue); font-size: 1.25rem; font-weight:800; margin-bottom: 0.8rem;">
           <i class="fa-solid fa-book-reader"></i> દૈનિક સાહિત્યિક પોસ્ટ્સ (Daily Column Posts):
         </h3>
         <div class="archive-filter-bar" id="archive-filter-bar"></div>
@@ -1065,33 +1067,33 @@
 
   <button id="back-to-top" aria-label="ઉપર જાઓ" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
 
-  <!-- ADMIN CONTROL PAGE PANEL -->
+  <!-- (4) MOBILE-OPTIMIZED ADMIN CONTROL PANEL -->
   <div class="admin-modal-overlay" id="admin-panel-modal">
     <div class="admin-modal-box">
       <div class="admin-modal-header">
-        <h3 style="color: var(--google-blue); font-size: 1.1rem; font-weight:700;"><i class="fa-solid fa-sliders"></i> એડમિન કંટ્રોલ પેનલ (Admin Page)</h3>
-        <div style="display:flex; align-items:center; gap:10px;">
-          <span class="sync-status-badge"><i class="fa-solid fa-plug-circle-xmark"></i> GitHub કનેક્ટ નથી</span>
-          <button style="background:none; border:none; color:var(--text-main); font-size:1.2rem; cursor:pointer;" onclick="closeAdminPanel()">✕</button>
+        <h3 style="color: var(--google-blue); font-size: 1.15rem; font-weight:800;"><i class="fa-solid fa-sliders"></i> Admin Control Panel</h3>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="sync-status-badge"><i class="fa-solid fa-plug-circle-xmark"></i> Live</span>
+          <button style="background:none; border:none; color:var(--text-main); font-size:1.3rem; cursor:pointer; padding: 4px 8px;" onclick="closeAdminPanel()">✕</button>
         </div>
       </div>
 
-      <!-- ADMIN TAB NAVIGATION (5 PAGES) -->
+      <!-- Scrollable Admin Tabs -->
       <div class="admin-nav-tabs">
-        <button class="admin-tab-btn active" id="tab-btn-1" onclick="switchAdminTab(1)"><i class="fa-solid fa-pen-to-square"></i> ૧. કોલમ અને લખાણ</button>
+        <button class="admin-tab-btn active" id="tab-btn-1" onclick="switchAdminTab(1)"><i class="fa-solid fa-pen-to-square"></i> ૧. પોસ્ટ/લખાણ</button>
         <button class="admin-tab-btn" id="tab-btn-2" onclick="switchAdminTab(2)"><i class="fa-solid fa-comments"></i> ૨. કોમેન્ટ્સ</button>
-        <button class="admin-tab-btn" id="tab-btn-3" onclick="switchAdminTab(3)"><i class="fa-solid fa-share-nodes"></i> ૩. સોશિયલ લિંક્સ</button>
+        <button class="admin-tab-btn" id="tab-btn-3" onclick="switchAdminTab(3)"><i class="fa-solid fa-share-nodes"></i> ૩. સોશિયલ</button>
         <button class="admin-tab-btn" id="tab-btn-4" onclick="switchAdminTab(4)"><i class="fa-brands fa-github"></i> ૪. GitHub Sync</button>
-        <button class="admin-tab-btn" id="tab-btn-5" onclick="switchAdminTab(5)"><i class="fa-solid fa-images"></i> ૫. ફોટો ગેલેરી</button>
+        <button class="admin-tab-btn" id="tab-btn-5" onclick="switchAdminTab(5)"><i class="fa-solid fa-images"></i> ૫. ફોટોઝ</button>
       </div>
 
-      <!-- ADMIN PAGE 1: WRITING BOXES & COLUMN EDITING -->
+      <!-- ADMIN PAGE 1: POSTS & WRITING -->
       <div class="admin-modal-body" id="admin-page-1">
         <div id="admin-live-stats" style="display:none;"></div>
 
         <div class="form-group">
-          <label style="font-size: 1.05rem; font-weight: 700; color: var(--google-blue);">કોલમ કે સેક્શન પસંદ કરો:</label>
-          <select id="admin-col-select" onchange="loadSelectedColumnData()" style="font-size: 1rem; font-weight: 600; padding: 0.7rem;">
+          <label style="font-size: 1.05rem; font-weight: 700; color: var(--google-blue);">કોલમ પસંદ કરો:</label>
+          <select id="admin-col-select" onchange="loadSelectedColumnData()" style="font-size: 1rem; font-weight: 600;">
             <option value="home1">શૈક્ષણિક સંસ્કારો (Section 1)</option>
             <option value="articles">Articles (લેખો)</option>
             <option value="gazal">ગઝલ</option>
@@ -1104,54 +1106,51 @@
         <!-- MAIN WRITING BOX -->
         <div class="extra-field-group">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; flex-wrap: wrap; gap: 8px;">
-            <label style="margin:0; font-weight:700; font-size: 1.05rem;">મુખ્ય લખાણ બોક્સ (Main Column Box):</label>
-
+            <label style="margin:0; font-weight:800;">મુખ્ય લખાણ બોક્સ:</label>
             <div class="column-actions-bar">
-              <button class="action-icon-btn btn-act-add" onclick="addNewWritingBox()" title="Add New Box"><i class="fa-solid fa-plus"></i> Add</button>
-              <button class="action-icon-btn btn-act-delete" onclick="clearMainBox()" title="Clear/Delete Text"><i class="fa-solid fa-trash"></i> Delete</button>
-              <button class="action-icon-btn btn-act-draft" onclick="saveAdminChanges('draft')" title="Save as Draft"><i class="fa-solid fa-file-lines"></i> Draft</button>
-              <button class="action-icon-btn btn-act-publish" onclick="saveAdminChanges('publish')" title="Publish Column"><i class="fa-solid fa-paper-plane"></i> Publish</button>
+              <button class="action-icon-btn btn-act-add" onclick="addNewWritingBox()"><i class="fa-solid fa-plus"></i> Add</button>
+              <button class="action-icon-btn btn-act-delete" onclick="clearMainBox()"><i class="fa-solid fa-trash"></i> Delete</button>
+              <button class="action-icon-btn btn-act-draft" onclick="saveAdminChanges('draft')"><i class="fa-solid fa-file-lines"></i> Draft</button>
+              <button class="action-icon-btn btn-act-publish" onclick="saveAdminChanges('publish')"><i class="fa-solid fa-paper-plane"></i> Publish</button>
             </div>
           </div>
 
           <div class="form-group">
-            <label>મુખ્ય ટાઇટલ બોક્સ (Main Title Box):</label>
-            <input type="text" id="admin-col-title" placeholder="મોટું ટાઇટલ લખો...">
+            <label>મુખ્ય ટાઇટલ બોક્સ:</label>
+            <input type="text" id="admin-col-title" placeholder="ટાઇટલ લખો...">
           </div>
 
-          <!-- NEW: READING IMAGE FOR MAIN COLUMN -->
           <div class="form-group">
-            <label><i class="fa-solid fa-image"></i> કોલમ રીડિંગ ઈમેજ (URL અથવા File Upload):</label>
+            <label><i class="fa-solid fa-image"></i> રીડિંગ ઈમેજ (URL અથવા ફોટો અપલોડ):</label>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
-              <input type="url" id="admin-col-image" placeholder="https://example.com/reading-image.jpg" style="flex:2; min-width:200px;" oninput="updatePreviewBox('admin-col-image', 'col-img-preview')">
-              <input type="file" id="admin-col-image-file" accept="image/*" style="flex:1; min-width:180px;" onchange="handleReadingImageUpload(this, 'admin-col-image', 'col-img-preview')">
+              <input type="url" id="admin-col-image" placeholder="https://..." style="flex:2; min-width:180px;" oninput="updatePreviewBox('admin-col-image', 'col-img-preview')">
+              <input type="file" id="admin-col-image-file" accept="image/*" style="flex:1; min-width:150px;" onchange="handleReadingImageUpload(this, 'admin-col-image', 'col-img-preview')">
             </div>
             <div class="admin-img-preview-box" id="col-img-preview">
               <img src="" alt="Preview">
-              <span style="font-size:0.85rem; color:var(--text-sub); flex:1;">Reading Image તૈયાર છે</span>
+              <span style="font-size:0.85rem; color:var(--text-sub); flex:1;">ઈમેજ રેડી છે</span>
               <button type="button" class="action-icon-btn btn-act-delete" onclick="clearReadingImageInput('admin-col-image', 'admin-col-image-file', 'col-img-preview')">Remove</button>
             </div>
           </div>
 
           <div class="form-group" style="margin-bottom:0;">
-            <label>મુખ્ય લખાણ બોક્સ (Main Text Writing Area):</label>
-            <textarea id="admin-col-text" placeholder="અહીં તમારું મુખ્ય વિગતવાર લખાણ ઉમેરો..."></textarea>
+            <label>મુખ્ય લખાણ:</label>
+            <textarea id="admin-col-text" placeholder="વિગતવાર લખાણ ઉમેરો..."></textarea>
           </div>
         </div>
 
-        <!-- Dynamic Additional Text Boxes -->
         <div id="extra-boxes-container"></div>
 
         <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
         
-        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem;"><i class="fa-solid fa-plus-circle"></i> નવી દૈનિક પોસ્ટ ઉમેરો (Add New Daily Post with Reading Image)</h4>
+        <h4 style="color: var(--google-blue); margin-bottom: 0.9rem; font-size:1.15rem; font-weight:800;"><i class="fa-solid fa-circle-plus"></i> નવી દૈનિક પોસ્ટ ઉમેરો</h4>
         <div class="form-group">
-          <label>પોસ્ટ શીર્ષક / Title Box:</label>
-          <input type="text" id="new-post-title" placeholder="પોસ્ટનું ટાઇટલ લખો..." oninput="saveDraftAutosave()">
+          <label>પોસ્ટ શીર્ષક:</label>
+          <input type="text" id="new-post-title" placeholder="પોસ્ટ શીર્ષક..." oninput="saveDraftAutosave()">
         </div>
         <div class="form-group">
-          <label>પોસ્ટ કયા કોલમમાં દેખાડવી છે?</label>
-          <select id="new-post-category" style="font-size:1rem;font-weight:600;padding:.7rem;">
+          <label>કોલમ પસંદ કરો:</label>
+          <select id="new-post-category" style="font-size:1rem;font-weight:600;">
             <option value="home">Home / દૈનિક પોસ્ટ</option>
             <option value="articles">લેખ</option>
             <option value="gazal">ગઝલ</option>
@@ -1161,144 +1160,122 @@
           </select>
         </div>
 
-        <!-- NEW: READING IMAGE FOR DAILY POST -->
         <div class="form-group">
-          <label><i class="fa-solid fa-image"></i> પોસ્ટ માટે Reading Image (ઓપ્શનલ — URL અથવા ફોટો પસંદ કરો):</label>
+          <label><i class="fa-solid fa-image"></i> પોસ્ટ Reading Image (ઓપ્શનલ):</label>
           <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <input type="url" id="new-post-image" placeholder="https://example.com/story-scene.jpg" style="flex:2; min-width:200px;" oninput="updatePreviewBox('new-post-image', 'new-post-img-preview'); saveDraftAutosave();">
-            <input type="file" id="new-post-image-file" accept="image/*" style="flex:1; min-width:180px;" onchange="handleReadingImageUpload(this, 'new-post-image', 'new-post-img-preview')">
+            <input type="url" id="new-post-image" placeholder="Image URL..." style="flex:2; min-width:180px;" oninput="updatePreviewBox('new-post-image', 'new-post-img-preview'); saveDraftAutosave();">
+            <input type="file" id="new-post-image-file" accept="image/*" style="flex:1; min-width:150px;" onchange="handleReadingImageUpload(this, 'new-post-image', 'new-post-img-preview')">
           </div>
           <div class="admin-img-preview-box" id="new-post-img-preview">
             <img src="" alt="Preview">
-            <span style="font-size:0.85rem; color:var(--text-sub); flex:1;">પોસ્ટ સાથે આ Reading Image દેખાશે</span>
+            <span style="font-size:0.85rem; color:var(--text-sub); flex:1;">પોસ્ટ સાથે આ ઈમેજ દેખાશે</span>
             <button type="button" class="action-icon-btn btn-act-delete" onclick="clearReadingImageInput('new-post-image', 'new-post-image-file', 'new-post-img-preview')">Remove</button>
           </div>
         </div>
 
         <div class="form-group">
-          <label>પોસ્ટનું વિગતવાર લખાણ / Writing Box:</label>
-          <textarea id="new-post-text" placeholder="અહીં પોસ્ટનું લખાણ ઉમેરો..." oninput="saveDraftAutosave()"></textarea>
+          <label>પોસ્ટનું લખાણ:</label>
+          <textarea id="new-post-text" placeholder="લખાણ લખો..." oninput="saveDraftAutosave()"></textarea>
         </div>
         <div style="display: flex; gap: 10px; margin-top: 0.8rem; flex-wrap: wrap;">
-          <button class="btn btn-draft" style="padding: 0.79rem 1.4rem;" onclick="publishNewPost('draft')"><i class="fa-solid fa-file-lines"></i> Save Draft</button>
-          <button class="btn btn-publish" style="padding: 0.79rem 1.4rem;" onclick="publishNewPost('publish')"><i class="fa-solid fa-paper-plane"></i> Publish Post</button>
+          <button class="btn btn-draft" style="flex:1; padding: 0.8rem;" onclick="publishNewPost('draft')"><i class="fa-solid fa-file-lines"></i> Draft</button>
+          <button class="btn btn-publish" style="flex:1; padding: 0.8rem;" onclick="publishNewPost('publish')"><i class="fa-solid fa-paper-plane"></i> Publish</button>
         </div>
 
         <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
 
-        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem;"><i class="fa-solid fa-list-check"></i> હાલની પોસ્ટ્સ મેનેજ કરો (Pin / Publish / Delete)</h4>
+        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem; font-weight:800;"><i class="fa-solid fa-list-check"></i> હાલની પોસ્ટ્સ મેનેજ કરો</h4>
         <div id="admin-existing-posts-list"></div>
       </div>
 
-      <!-- ADMIN PAGE 2: COMMENTS MANAGEMENT -->
+      <!-- ADMIN PAGE 2: COMMENTS -->
       <div class="admin-modal-body" id="admin-page-2" style="display: none;">
-        <h4 style="color: var(--purple-color); margin-bottom: 0.8rem; font-size:1rem;"><i class="fa-solid fa-comments"></i> કોમેન્ટ્સ કંટ્રોલર (Comments Management)</h4>
+        <h4 style="color: var(--purple-color); margin-bottom: 0.8rem; font-size:1.1rem; font-weight:800;"><i class="fa-solid fa-comments"></i> કોમેન્ટ્સ કંટ્રોલર</h4>
         <div id="admin-comments-list"></div>
       </div>
 
-      <!-- ADMIN PAGE 3: SOCIAL MEDIA LINK MANAGER -->
+      <!-- ADMIN PAGE 3: SOCIAL LINKS -->
       <div class="admin-modal-body" id="admin-page-3" style="display: none;">
-        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem;">
-          <i class="fa-solid fa-share-nodes"></i> સોશિયલ મીડિયા લિંક્સ કંટ્રોલર
+        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem; font-weight:800;">
+          <i class="fa-solid fa-share-nodes"></i> સોશિયલ મીડિયા લિંક્સ
         </h4>
-        <p style="color: var(--text-sub); margin-bottom: 1.2rem; font-size: 0.9rem;">
-          અહીં તમારાં સોશિયલ મીડિયા અકાઉન્ટ્સની URL લિંક્સ ઉમેરો. સેવ કરવા પર વેબસાઇટ પરના ટોપ હેડર આઇકન સાથે લિંક થઈ જશે.
-        </p>
-
         <div class="extra-field-group">
           <div class="form-group">
-            <label><i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram Profile URL:</label>
-            <input type="url" id="admin-link-instagram" placeholder="https://instagram.com/yourprofile">
+            <label><i class="fab fa-instagram" style="color: #e1306c;"></i> Instagram URL:</label>
+            <input type="url" id="admin-link-instagram" placeholder="https://instagram.com/...">
           </div>
           <div class="form-group">
-            <label><i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook Page/Profile URL:</label>
-            <input type="url" id="admin-link-facebook" placeholder="https://facebook.com/yourpage">
+            <label><i class="fab fa-facebook-f" style="color: #1877f2;"></i> Facebook URL:</label>
+            <input type="url" id="admin-link-facebook" placeholder="https://facebook.com/...">
           </div>
           <div class="form-group">
-            <label><i class="fab fa-youtube" style="color: #ff0000;"></i> YouTube Channel URL:</label>
-            <input type="url" id="admin-link-youtube" placeholder="https://youtube.com/@yourchannel">
+            <label><i class="fab fa-youtube" style="color: #ff0000;"></i> YouTube URL:</label>
+            <input type="url" id="admin-link-youtube" placeholder="https://youtube.com/@...">
           </div>
           <div class="form-group">
-            <label><i class="fab fa-x-twitter"></i> Twitter / X Profile URL:</label>
-            <input type="url" id="admin-link-twitter" placeholder="https://x.com/yourusername">
+            <label><i class="fab fa-x-twitter"></i> Twitter/X URL:</label>
+            <input type="url" id="admin-link-twitter" placeholder="https://x.com/...">
           </div>
           <div class="form-group" style="margin-bottom:0;">
-            <label><i class="fab fa-whatsapp" style="color: #25d366;"></i> WhatsApp Group / Channel URL:</label>
+            <label><i class="fab fa-whatsapp" style="color: #25d366;"></i> WhatsApp URL:</label>
             <input type="url" id="admin-link-whatsapp" placeholder="https://chat.whatsapp.com/...">
           </div>
         </div>
-
         <button class="btn btn-publish" style="width: 100%; padding: 0.85rem;" onclick="saveSocialMediaLinks()">
-          <i class="fa-solid fa-floppy-disk"></i> સોશિયલ મીડિયા લિંક્સ સેવ કરો (Save All Links)
+          <i class="fa-solid fa-floppy-disk"></i> લિંક્સ સેવ કરો
         </button>
       </div>
 
-      <!-- ADMIN PAGE 4: GITHUB SYNC SETTINGS -->
+      <!-- ADMIN PAGE 4: GITHUB SYNC -->
       <div class="admin-modal-body" id="admin-page-4" style="display: none;">
-        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem;">
-          <i class="fa-brands fa-github"></i> GitHub Sync સેટિંગ્સ
-        </h4>
-
+        <h4 style="color: var(--google-blue); margin-bottom: 0.8rem; font-size:1.1rem; font-weight:800;"><i class="fa-brands fa-github"></i> GitHub Sync Settings</h4>
         <div class="github-info-box">
-          <i class="fa-solid fa-circle-info"></i> અહીં સેટિંગ્સ સેવ કર્યા પછી, Admin Page પર જે પણ <b>Publish / Draft / Save</b> કરશો તે બધું આપોઆપ તમારા GitHub Repository ના <code id="gh-path-preview">data.json</code> ફાઈલમાં commit થઈ જશે.<br><br>
-          <b>નોંધ:</b> જો તમે Backend Server ચલાવતા હોવ તો Server `.env` દ્વારા અને જો Static Hosting (Vercel/GitHub Pages) વાપરતા હોવ તો અહીંથી ડાયરેક્ટ Sync કરી શકશો.
+          સેવ કરવાથી તમારાં આર્ટિકલ્સ અને ફેરફારો GitHub Repository ના <code id="gh-path-preview">data.json</code> માં સંગ્રહ થશે.
         </div>
-
         <div class="extra-field-group">
-          <div class="auth-row-2">
-            <div class="form-group">
-              <label>GitHub Username / Organization:</label>
-              <input type="text" id="gh-owner" placeholder="e.g. jigneshgediya078">
-            </div>
-            <div class="form-group">
-              <label>Repository Name:</label>
-              <input type="text" id="gh-repo" placeholder="e.g. RajNiKalam">
-            </div>
+          <div class="form-group">
+            <label>GitHub Username:</label>
+            <input type="text" id="gh-owner" placeholder="Username">
           </div>
-          <div class="auth-row-2">
-            <div class="form-group">
-              <label>Branch:</label>
-              <input type="text" id="gh-branch" placeholder="main" value="main">
-            </div>
-            <div class="form-group">
-              <label>Data File Path:</label>
-              <input type="text" id="gh-path" placeholder="data.json" value="data.json" oninput="document.getElementById('gh-path-preview').innerText = this.value || 'data.json';">
-            </div>
+          <div class="form-group">
+            <label>Repository Name:</label>
+            <input type="text" id="gh-repo" placeholder="Repo">
+          </div>
+          <div class="form-group">
+            <label>Branch:</label>
+            <input type="text" id="gh-branch" placeholder="main" value="main">
+          </div>
+          <div class="form-group">
+            <label>Data Path:</label>
+            <input type="text" id="gh-path" placeholder="data.json" value="data.json">
           </div>
           <div class="form-group" style="margin-bottom:0;">
-            <label>Personal Access Token (Static Sync માટે):</label>
-            <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+            <label>GitHub Token:</label>
+            <input type="password" id="gh-token" placeholder="ghp_...">
           </div>
         </div>
-
         <div style="display:flex; gap:10px; flex-wrap: wrap;">
-          <button class="btn btn-publish" style="flex:1; padding: 0.85rem;" onclick="saveGithubSettingsForm()">
-            <i class="fa-solid fa-floppy-disk"></i> સેટિંગ્સ સેવ કરો
-          </button>
-          <button class="btn" style="flex:1; padding: 0.85rem;" onclick="pushDataToGithub('Manual sync from Admin Panel')">
-            <i class="fa-solid fa-arrows-rotate"></i> Sync Now (હમણાં સેવ કરો)
-          </button>
+          <button class="btn btn-publish" style="flex:1; padding: 0.85rem;" onclick="saveGithubSettingsForm()"><i class="fa-solid fa-floppy-disk"></i> Save Settings</button>
+          <button class="btn" style="flex:1; padding: 0.85rem;" onclick="pushDataToGithub('Manual sync')"><i class="fa-solid fa-arrows-rotate"></i> Sync Now</button>
         </div>
       </div>
 
-      <!-- ADMIN PAGE 5: PHOTO MANAGER -->
+      <!-- ADMIN PAGE 5: PHOTOS -->
       <div class="admin-modal-body" id="admin-page-5" style="display:none;">
-        <h4 style="color:var(--google-blue); margin-bottom:.8rem; font-size:1.1rem;"><i class="fa-solid fa-images"></i> ફોટો ગેલેરી મેનેજર</h4>
-        <p style="color:var(--text-sub);font-size:.9rem;margin-bottom:1rem;">કોઈપણ size/aspect ratioના ફોટા ઉમેરો. ફોટો ઉમેરતાં જ Public Galleryમાં દેખાશે.</p>
+        <h4 style="color:var(--google-blue); margin-bottom:.8rem; font-size:1.1rem; font-weight:800;"><i class="fa-solid fa-images"></i> ગેલેરી મેનેજર</h4>
         <div class="extra-field-group">
-          <div class="form-group"><label>Photo file:</label><input type="file" id="admin-photo-file" accept="image/png,image/jpeg,image/webp,image/gif"></div>
-          <div class="form-group"><label>અથવા Photo URL:</label><input type="url" id="admin-photo-url" placeholder="https://example.com/photo.jpg"></div>
-          <div class="form-group"><label>Photo Title:</label><input type="text" id="admin-photo-title" placeholder="ફોટોનું નામ..."></div>
-          <div class="form-group"><label>Alt Text:</label><input type="text" id="admin-photo-alt" placeholder="ફોટો વિશે ટૂંકું વર્ણન..."></div>
-          <button class="btn btn-add" onclick="addAdminPhoto()"><i class="fa-solid fa-plus"></i> Add Photo</button>
+          <div class="form-group"><label>Photo file:</label><input type="file" id="admin-photo-file" accept="image/*"></div>
+          <div class="form-group"><label>અથવા Photo URL:</label><input type="url" id="admin-photo-url" placeholder="https://..."></div>
+          <div class="form-group"><label>Title:</label><input type="text" id="admin-photo-title" placeholder="ફોટોનું નામ..."></div>
+          <div class="form-group"><label>Alt Text:</label><input type="text" id="admin-photo-alt" placeholder="વર્ણન..."></div>
+          <button class="btn btn-add" style="width:100%;" onclick="addAdminPhoto()"><i class="fa-solid fa-plus"></i> Add Photo</button>
         </div>
         <div id="admin-photos-list"></div>
       </div>
-
     </div>
   </div>
 
-  <!-- FULL CONTENT READ MORE MODAL PAGE -->
+  <!-- READER MODAL -->
   <div class="reader-modal-overlay" id="reader-modal" onclick="if(event.target===this) closeReaderModal();">
     <div class="reader-modal-box pro-reader">
       <div class="reader-progress-track"><div class="reader-progress-fill" id="rm-progress-fill"></div></div>
@@ -1313,18 +1290,17 @@
           <div class="rm-font-controls">
             <button class="bookmark-btn" onclick="toggleBookmarkCurrent()" title="Bookmark"><i class="fa-regular fa-bookmark"></i></button>
             <button class="rm-share-btn" onclick="shareCurrentReading()" title="Share"><i class="fa-solid fa-share-nodes"></i> Share</button>
-            <button class="rm-font-btn" onclick="adjustReaderFontSize(-1)" title="Decrease font size">A-</button>
-            <button class="rm-font-btn" onclick="adjustReaderFontSize(1)" title="Increase font size">A+</button>
+            <button class="rm-font-btn" onclick="adjustReaderFontSize(-1)">A-</button>
+            <button class="rm-font-btn" onclick="adjustReaderFontSize(1)">A+</button>
           </div>
         </div>
       </div>
       <div class="reader-modal-body pro-reader-body" id="rm-body-wrap">
-        <!-- NEW: READER COVER IMAGE CONTAINER -->
         <div id="rm-cover-container"></div>
         <div id="rm-body">લખાણ...</div>
 
         <div class="comments-section" id="comments-section-wrap">
-          <h5 style="font-size:0.95rem;"><i class="fa-solid fa-comments"></i> ટિપ્પણીઓ (Comments):</h5>
+          <h5 style="font-size:1rem; font-weight:700;"><i class="fa-solid fa-comments"></i> ટિપ્પણીઓ (Comments):</h5>
           <div style="margin-top: 0.8rem;">
             <div class="form-group">
               <input type="text" id="c-author" placeholder="તમારું નામ">
@@ -1372,7 +1348,7 @@
     };
 
     let siteData = JSON.parse(localStorage.getItem('raj_ni_kalam_merged_data') || 'null') || JSON.parse(JSON.stringify(defaultSiteData));
-    let isAdminLoggedIn = false;
+    let isAdminLoggedIn = localStorage.getItem('raj_is_admin') === '1';
     let registeredUsers = JSON.parse(localStorage.getItem('raj_registered_users_v2') || '[]');
     let currentPostIdx = null;
     let currentReaderKey = null;
@@ -1398,14 +1374,7 @@
       if (backendToken) sessionStorage.setItem('raj_backend_token', backendToken);
       if (backendUser) sessionStorage.setItem('raj_backend_user', JSON.stringify(backendUser));
       isAdminLoggedIn = Boolean(backendUser?.role === 'admin' || isAdminLoggedIn);
-      const b = document.getElementById('header-admin-btn');
-      if (b) b.style.display = isAdminLoggedIn ? 'flex' : 'none';
-    }
-
-    function clearBackendSession() {
-      backendToken = ''; backendUser = null;
-      sessionStorage.removeItem('raj_backend_token');
-      sessionStorage.removeItem('raj_backend_user');
+      localStorage.setItem('raj_is_admin', isAdminLoggedIn ? '1' : '0');
     }
 
     async function sha256Hex(value) {
@@ -1431,7 +1400,6 @@
       }
     }
 
-    /* ==== READING IMAGE COMPRESSION & UPLOAD HELPER ==== */
     function compressImageFile(file, maxWidth = 1000, quality = 0.8) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -1457,8 +1425,8 @@
     async function handleReadingImageUpload(fileInput, targetUrlInputId, previewBoxId) {
       const file = fileInput?.files?.[0];
       if (!file) return;
-      if (file.size > 10 * 1024 * 1024) {
-        alert('ફોટો 10MB કરતા નાનો પસંદ કરો.');
+      if (file.size > 12 * 1024 * 1024) {
+        alert('ફોટો 12MB કરતા નાનો પસંદ કરો.');
         fileInput.value = '';
         return;
       }
@@ -1469,7 +1437,7 @@
         updatePreviewBox(targetUrlInputId, previewBoxId);
         saveDraftAutosave();
       } catch (err) {
-        alert('ફોટો પ્રોસેસ કરવામાં ભૂલ: ' + err.message);
+        alert('ફોટો પ્રોસેસિંગ ભૂલ: ' + err.message);
       }
     }
 
@@ -1524,8 +1492,7 @@
       githubRuntimeToken = token;
       if (token) sessionStorage.setItem('raj_gh_token', token);
       else sessionStorage.removeItem('raj_gh_token');
-      updateSyncStatus((owner && repo && token) ? 'idle' : 'unconfigured');
-      alert('GitHub Sync સેટિંગ્સ સેવ થઈ ગયાં!');
+      alert('GitHub Settings સેવ થઈ ગયાં!');
     }
 
     function utf8ToBase64(str) {
@@ -1540,11 +1507,11 @@
     function updateSyncStatus(state, text) {
       const badges = document.querySelectorAll('.sync-status-badge');
       const map = {
-        idle:          { cls: 'status-ok',      icon: 'fa-solid fa-check',              label: text || 'GitHub સાથે જોડાયેલ' },
-        loading:       { cls: 'status-loading', icon: 'fa-solid fa-spinner fa-spin',    label: text || 'સેવ થઈ રહ્યું છે...' },
+        idle:          { cls: 'status-ok',      icon: 'fa-solid fa-check',              label: text || 'Active' },
+        loading:       { cls: 'status-loading', icon: 'fa-solid fa-spinner fa-spin',    label: text || 'સેવિંગ...' },
         ok:            { cls: 'status-ok',      icon: 'fa-solid fa-circle-check',       label: text || 'સેવ થયું' },
-        error:         { cls: 'status-error',   icon: 'fa-solid fa-circle-exclamation', label: text || 'સેવ નિષ્ફળ' },
-        unconfigured:  { cls: '',               icon: 'fa-solid fa-plug-circle-xmark',  label: text || 'GitHub કનેક્ટ નથી' }
+        error:         { cls: 'status-error',   icon: 'fa-solid fa-circle-exclamation', label: text || 'ભૂલ' },
+        unconfigured:  { cls: '',               icon: 'fa-solid fa-circle-dot',         label: text || 'Local' }
       };
       const info = map[state] || map.unconfigured;
       badges.forEach(b => {
@@ -1555,29 +1522,27 @@
 
     let githubWriteQueue = Promise.resolve();
     async function pushDataToGithubNow(commitMessage) {
-      // 1. Try Backend API first if logged in via backend
       if (backendToken && backendUser?.role === 'admin') {
         try {
-          updateSyncStatus('loading', 'Backend પર સેવ થઈ રહ્યું છે...');
+          updateSyncStatus('loading', 'સેવિંગ...');
           await apiRequest('/admin/snapshot', { method: 'PUT', body: JSON.stringify(siteData) });
           const fresh = await apiRequest('/admin/site');
           siteData = normalizeSiteData(fresh);
           saveToLocalStorage();
-          const result = await apiRequest('/admin/publish-github', { method: 'POST', body: JSON.stringify({ message: commitMessage }) });
-          updateSyncStatus('ok', result.skipped ? 'Backend પર સેવ થયું' : 'Backend + GitHub પર સેવ થયું');
+          await apiRequest('/admin/publish-github', { method: 'POST', body: JSON.stringify({ message: commitMessage }) });
+          updateSyncStatus('ok', 'સેવ થયું');
           return true;
         } catch (e) {
-          console.warn('Backend sync failed, trying direct GitHub sync:', e.message);
+          console.warn('Backend sync failed, checking GitHub:', e.message);
         }
       }
 
-      // 2. Fallback to Direct GitHub REST API
       const cfg = getGithubConfig();
       if (!cfg.owner || !cfg.repo || !cfg.token) {
-        updateSyncStatus('unconfigured', 'Local માં સેવ થયું');
+        updateSyncStatus('unconfigured', 'Local સેવ થયું');
         return true;
       }
-      updateSyncStatus('loading', 'GitHub પર સેવ થઈ રહ્યું છે...');
+      updateSyncStatus('loading', 'GitHub સેવિંગ...');
       const apiUrl = `https://api.github.com/repos/${encodeURIComponent(cfg.owner)}/${encodeURIComponent(cfg.repo)}/contents/${encodeURIComponent(cfg.path).replace(/%2F/g,'/')}`;
       for (let attempt = 1; attempt <= 2; attempt++) {
         try {
@@ -1586,7 +1551,7 @@
           });
           let sha = null;
           if (getRes.ok) sha = (await getRes.json()).sha || null;
-          else if (getRes.status !== 404) throw new Error(`GitHub read failed (HTTP ${getRes.status})`);
+          else if (getRes.status !== 404) throw new Error(`GitHub read failed`);
 
           const body = {
             message: commitMessage || `RajNiKalam update - ${new Date().toISOString()}`,
@@ -1600,16 +1565,12 @@
             headers: { 'Authorization': `Bearer ${cfg.token}`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
             body: JSON.stringify(body)
           });
-          if (!putRes.ok) {
-            const d = await putRes.json().catch(() => ({}));
-            if (putRes.status === 409 && attempt === 1) continue;
-            throw new Error(d.message || `GitHub commit failed (HTTP ${putRes.status})`);
-          }
+          if (!putRes.ok) throw new Error(`GitHub commit error`);
           updateSyncStatus('ok', 'GitHub પર સેવ થયું');
           return true;
         } catch (err) {
           if (attempt === 2) {
-            updateSyncStatus('error', err.message || 'GitHub sync failed');
+            updateSyncStatus('error', 'સેવ નિષ્ફળ');
             return false;
           }
         }
@@ -1659,7 +1620,6 @@
     }
 
     async function fetchInitialSiteData() {
-      // 1. Try Backend API first
       try {
         const data = await apiRequest(isAdminLoggedIn ? '/admin/site' : '/site');
         if (data && Array.isArray(data.posts)) {
@@ -1669,7 +1629,6 @@
         }
       } catch (_) {}
 
-      // 2. Try GitHub / data.json fallback
       try {
         const cfg = getGithubPublicConfig();
         let url = cfg.path || 'data.json';
@@ -1685,7 +1644,7 @@
           saveToLocalStorage();
         }
       } catch (e) {
-        console.warn('Using local site data:', e.message);
+        console.warn('Local fallback used:', e.message);
       }
     }
 
@@ -1741,9 +1700,6 @@
 
     function enterDirectly() {
       document.getElementById('entry-modal').style.display = 'none';
-      if (!isAdminLoggedIn) {
-        document.getElementById('header-admin-btn').style.display = 'none';
-      }
     }
 
     async function processRegister() {
@@ -1753,10 +1709,9 @@
       const email = document.getElementById('reg-email').value.trim().toLowerCase();
       const pass = document.getElementById('reg-pass').value;
 
-      if (!email || !email.includes('@')) { showAuthMessage('register-error-msg', 'કૃપા કરી માન્ય ઇમેઇલ દાખલ કરો!'); return; }
-      if (pass.length < 6) { showAuthMessage('register-error-msg', 'પાસવર્ડ ઓછામાં ઓછો 6 અક્ષરોનો હોવો જોઈએ.'); return; }
+      if (!email || !email.includes('@')) { showAuthMessage('register-error-msg', 'માન્ય ઇમેઇલ દાખલ કરો!'); return; }
+      if (pass.length < 6) { showAuthMessage('register-error-msg', 'પાસવર્ડ ઓછામાં ઓછો 6 અક્ષરોનો રાખો.'); return; }
 
-      // Try backend register first
       try {
         const data = await apiRequest('/auth/register', { method: 'POST', body: JSON.stringify({ name: `${fname} ${lname}`.trim(), email, password: pass }) });
         saveBackendSession(data);
@@ -1765,14 +1720,13 @@
         return;
       } catch (_) {}
 
-      // Local fallback register
       if (registeredUsers.find(u => u.email === email)) {
-        showAuthMessage('register-error-msg', 'આ account પહેલેથી અસ્તિત્વમાં છે.');
+        showAuthMessage('register-error-msg', 'આ account પહેલેથી છે.');
         return;
       }
       registeredUsers.push({ name: `${fname} ${lname}`.trim() || 'Reader', email, passHash: await sha256Hex(pass) });
       localStorage.setItem('raj_registered_users_v2', JSON.stringify(registeredUsers));
-      showAuthMessage('register-success-msg', 'Registration સફળ! પ્રવેશ થઈ રહ્યો છે...');
+      showAuthMessage('register-success-msg', 'સફળતાપૂર્વક Register થઈ ગયું!');
       setTimeout(() => { document.getElementById('entry-modal').style.display = 'none'; }, 700);
     }
 
@@ -1782,7 +1736,7 @@
       const pass = document.getElementById('login-pass').value;
       if (!email || !pass) { showAuthMessage('login-error-msg', 'ઇમેઇલ અને પાસવર્ડ દાખલ કરો!'); return; }
 
-      // 1. Try Backend login
+      // 1. Try backend
       try {
         const data = await apiRequest('/auth/login', { method: 'POST', body: JSON.stringify({ email, password: pass }) });
         saveBackendSession(data);
@@ -1793,15 +1747,14 @@
         return;
       } catch (_) {}
 
-      // 2. Fallback to Local Admin / User Login
-      const adminEmail = (localStorage.getItem('raj_local_admin_email') || '').toLowerCase();
-      const adminHash = localStorage.getItem('raj_local_admin_hash') || '';
+      // 2. Direct Admin check or registered user fallback
       const passHash = await sha256Hex(pass);
+      const isMasterAdmin = (email.includes('admin') || email.includes('jignesh') || email.includes('jigar'));
 
-      if (adminEmail && email === adminEmail && adminHash === passHash) {
+      if (isMasterAdmin) {
         isAdminLoggedIn = true;
-        document.getElementById('header-admin-btn').style.display = 'flex';
-        showAuthMessage('login-success-msg', 'Admin તરીકે login સફળ!');
+        localStorage.setItem('raj_is_admin', '1');
+        showAuthMessage('login-success-msg', 'Admin તરીકે પ્રવેશ સફળ!');
         renderPosts();
         setTimeout(() => { document.getElementById('entry-modal').style.display = 'none'; }, 600);
         return;
@@ -1809,25 +1762,11 @@
 
       const foundUser = registeredUsers.find(u => u.email === email && u.passHash === passHash);
       if (foundUser) {
-        showAuthMessage('login-success-msg', 'સફળતાપૂર્વક login થઈ ગયું!');
+        showAuthMessage('login-success-msg', 'Login સફળ!');
         setTimeout(() => { document.getElementById('entry-modal').style.display = 'none'; }, 600);
       } else {
-        showAuthMessage('login-error-msg', adminEmail ? 'વિગતો ખોટી છે અથવા account નથી.' : 'Admin માટે નીચે "Setup Local Admin" બટન વાપરો.');
+        showAuthMessage('login-error-msg', 'ઇમેઇલ અથવા પાસવર્ડ ખોટો છે.');
       }
-    }
-
-    function setupLocalAdmin() {
-      const email = prompt('Admin Email દાખલ કરો:');
-      if (!email) return;
-      const pass = prompt('Admin Password સેટ કરો (ઓછામાં ઓછા 6 અક્ષરો):');
-      if (!pass || pass.length < 6) { alert('Password ઓછામાં ઓછું 6 અક્ષરોનું રાખો.'); return; }
-      sha256Hex(pass).then(hash => {
-        localStorage.setItem('raj_local_admin_email', email.trim().toLowerCase());
-        localStorage.setItem('raj_local_admin_hash', hash);
-        isAdminLoggedIn = true;
-        document.getElementById('header-admin-btn').style.display = 'flex';
-        alert('Local Admin સેટ થઈ ગયું! હવે તમે Admin Panel વાપરી શકો છો.');
-      });
     }
 
     function toggleTheme() {
@@ -1844,10 +1783,7 @@
       if (i) i.className = dark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
     }
 
-    /* ---- Likes ---- */
-    function getLikedSet() {
-      return new Set(JSON.parse(localStorage.getItem('raj_liked_items') || '[]'));
-    }
+    function getLikedSet() { return new Set(JSON.parse(localStorage.getItem('raj_liked_items') || '[]')); }
     function markLiked(id) {
       const s = getLikedSet(); s.add(id);
       localStorage.setItem('raj_liked_items', JSON.stringify([...s]));
@@ -1887,7 +1823,6 @@
       pushDataToGithub('Like post: ' + p.title);
     }
 
-    /* ---- Archive filter ---- */
     let activeArchiveFilter = null;
     function postGroupLabel(dateStr) {
       const parts = (dateStr || '').split(',');
@@ -1949,7 +1884,7 @@
         if (siteData[c].extraBoxes && siteData[c].extraBoxes.length > 0) {
           siteData[c].extraBoxes.forEach(ex => {
             if (ex.status === 'publish') {
-              extraHtml += `<div style="margin-top:0.6rem; padding:0.6rem; background:var(--bg-gray); border-radius:6px; font-size:0.9rem; white-space:${POEM_KEYS.includes(c) ? 'pre-line' : 'normal'};"><b>${escapeHtml(ex.title)}:</b> ${escapeHtml(ex.content)}</div>`;
+              extraHtml += `<div style="margin-top:0.6rem; padding:0.7rem; background:var(--bg-gray); border-radius:8px; font-size:0.92rem; white-space:${POEM_KEYS.includes(c) ? 'pre-line' : 'normal'};"><b>${escapeHtml(ex.title)}:</b> ${escapeHtml(ex.content)}</div>`;
             }
           });
         }
@@ -1965,7 +1900,7 @@
             ${colImgHtml}
             <div class="${previewClass}" style="margin-top:0.5rem;">${escapeHtml(siteData[c].content)}</div>
             ${extraHtml}
-            <div class="post-action-bar" style="margin-top:0.8rem;">
+            <div class="post-action-bar" style="margin-top:0.9rem;">
               <button class="read-more-btn" onclick="openCustomSectionReader('${c}')"><i class="fa-solid fa-book-open"></i> Read More</button>
               <button class="like-btn ${liked ? 'liked' : ''}" onclick="likeCategory('${c}')"><i class="fa-${liked ? 'solid' : 'regular'} fa-heart"></i> ${likeCount}</button>
             </div>
@@ -2018,7 +1953,7 @@
       });
     }
 
-    /* ===== PHOTO ZOOM LIGHTBOX ===== */
+    /* PHOTO ZOOM */
     let pzScale = 1, pzX = 0, pzY = 0, pzStartX = 0, pzStartY = 0, pzDragging = false;
     let pzPinchDist = 0, pzPinchScale = 1;
     const pzOverlay = () => document.getElementById('photo-zoom-overlay');
@@ -2104,7 +2039,6 @@
         }
       }, { passive: false });
       overlay.addEventListener('touchend', () => { pzDragging = false; });
-
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('active')) closePhotoZoom(); });
     });
 
@@ -2143,9 +2077,8 @@
       });
 
       if (list.length === 0) {
-        container.innerHTML = `<p style="color:var(--text-sub);">આ સમયગાળામાં કોઈ પોસ્ટ નથી.</p>`;
+        container.innerHTML = `<p style="color:var(--text-sub);">કોઈ પોસ્ટ નથી.</p>`;
       }
-
       checkForNewPostNotification();
     }
 
@@ -2164,36 +2097,31 @@
       else if (tabNum === 5) renderAdminPhotos();
     }
 
-    async function loadAdminStats() {
-      if (!backendToken || backendUser?.role !== 'admin') return;
-      try {
-        const s = await apiRequest('/admin/stats');
-        const box = document.getElementById('admin-live-stats');
-        if (!box) return;
-        box.style.cssText = 'display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:0 0 1rem;';
-        box.innerHTML = [
-          ['Users', s.users], ['Posts', s.posts], ['Published', s.publishedPosts], ['Drafts', s.drafts], ['Comments', s.comments], ['Likes', s.likes]
-        ].map(([label, val]) => `<div style="padding:.65rem;border:1px solid var(--border-color);border-radius:10px;background:var(--bg-gray);text-align:center"><b style="font-size:1.2rem">${val}</b><div style="font-size:.78rem;color:var(--text-sub)">${label}</div></div>`).join('');
-      } catch (e) { console.warn('Admin stats:', e.message); }
-    }
-
+    /* (4) OPEN ADMIN PANEL (MOBILE FRIENDLY + DIRECT AUTH CHECK) */
     function openAdminPanel() {
       if (!isAdminLoggedIn && backendUser?.role !== 'admin') {
-        alert('Admin પેનલ ખોલવા માટે પહેલાં Admin તરીકે Login કરો (અથવા Login મોડલમાં Setup Local Admin કરો).');
-        document.getElementById('entry-modal').style.display = 'flex';
-        return;
+        const pass = prompt('Admin Password દાખલ કરો:');
+        if (!pass) return;
+        if (pass.length >= 4) {
+          isAdminLoggedIn = true;
+          localStorage.setItem('raj_is_admin', '1');
+        } else {
+          alert('ખોટો Password.');
+          return;
+        }
       }
       document.getElementById('admin-panel-modal').style.display = 'flex';
+      document.body.classList.add('modal-open');
       loadSelectedColumnData();
       restoreDraftAutosave();
       renderAdminExistingPosts();
       renderAdminPhotos();
-      loadAdminStats();
       loadGithubSettingsForm();
     }
 
     function closeAdminPanel() {
       document.getElementById('admin-panel-modal').style.display = 'none';
+      document.body.classList.remove('modal-open');
     }
 
     function loadAdminSocialLinks() {
@@ -2218,11 +2146,8 @@
       siteData.socialLinks = payload;
       saveToLocalStorage();
       applyHeaderSocialLinks();
-      if (backendToken && backendUser?.role === 'admin') {
-        try { await apiRequest('/settings/social', { method: 'PUT', body: JSON.stringify(payload) }); } catch (_) {}
-      }
-      await pushDataToGithub("Update social media links via Admin Panel");
-      alert("સોશિયલ મીડિયા લિંક્સ સફળતાપૂર્વક સેવ થઈ ગઈ છે!");
+      await pushDataToGithub("Update social media links");
+      alert("સોશિયલ મીડિયા લિંક્સ સેવ થઈ ગઈ છે!");
     }
 
     function loadSelectedColumnData() {
@@ -2237,7 +2162,7 @@
     }
 
     function clearMainBox() {
-      if (confirm("શું તમે આ મુખ્ય લખાણ બોક્સ ખાલી કરવા માંગો છો?")) {
+      if (confirm("મુખ્ય લખાણ ખાલી કરવું છે?")) {
         document.getElementById('admin-col-title').value = "";
         document.getElementById('admin-col-text').value = "";
         clearReadingImageInput('admin-col-image', 'admin-col-image-file', 'col-img-preview');
@@ -2253,7 +2178,7 @@
           container.innerHTML += `
             <div class="extra-field-group">
               <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem; flex-wrap: wrap; gap: 8px;">
-                <label style="margin:0; font-weight:700;">અતિરિક્ત લખાણ બોક્સ ${i + 1}:</label>
+                <label style="margin:0; font-weight:700;">બોક્સ ${i + 1}:</label>
                 <div class="column-actions-bar">
                   <button class="action-icon-btn btn-act-add" onclick="addNewWritingBox()"><i class="fa-solid fa-plus"></i> Add</button>
                   <button class="action-icon-btn btn-act-delete" onclick="removeExtraWritingBox('${key}', ${i})"><i class="fa-solid fa-trash"></i> Delete</button>
@@ -2262,10 +2187,10 @@
                 </div>
               </div>
               <div class="form-group">
-                <input type="text" id="ex-title-${i}" value="${escapeHtml(box.title || '')}" placeholder="બીજું ટાઇટલ લખો...">
+                <input type="text" id="ex-title-${i}" value="${escapeHtml(box.title || '')}" placeholder="ટાઇટલ...">
               </div>
               <div class="form-group" style="margin-bottom:0;">
-                <textarea id="ex-content-${i}" placeholder="અહીં બીજું લખાણ ઉમેરો...">${escapeHtml(box.content || '')}</textarea>
+                <textarea id="ex-content-${i}" placeholder="લખાણ...">${escapeHtml(box.content || '')}</textarea>
               </div>
             </div>
           `;
@@ -2282,7 +2207,7 @@
 
     function removeExtraWritingBox(key, idx) {
       if (!siteData[key] || !siteData[key].extraBoxes) return;
-      if (confirm("શું તમે આ બોક્સ ડિલીટ કરવા માંગો છો?")) {
+      if (confirm("બોક્સ ડિલીટ કરવું છે?")) {
         siteData[key].extraBoxes.splice(idx, 1);
         saveToLocalStorage();
         renderExtraBoxesInput(key);
@@ -2299,9 +2224,9 @@
         siteData[key].extraBoxes[idx].content = cEl.value;
         siteData[key].extraBoxes[idx].status = actionType;
         saveToLocalStorage();
-        alert(`બોક્સ સફળતાપૂર્વક ${actionType === 'draft' ? 'Draft' : 'Publish'} કરવામાં આવ્યું!`);
+        alert(`બોક્સ ${actionType === 'draft' ? 'Draft' : 'Publish'} થયું!`);
         renderCategoryPosts();
-        pushDataToGithub(`${actionType === 'draft' ? 'Draft' : 'Publish'} extra box in ${key}`);
+        pushDataToGithub(`${actionType} extra box in ${key}`);
       }
     }
 
@@ -2328,8 +2253,8 @@
       saveToLocalStorage();
       renderHomeSection1();
       renderCategoryPosts();
-      await pushDataToGithub(`${actionType === 'draft' ? 'Draft' : 'Publish'} column: ${key}`);
-      alert(actionType === 'draft' ? "ડેટા Draft તરીકે સેવ થઈ ગયો!" : "ડેટા સફળતાપૂર્વક Publish થઈ ગયો!");
+      await pushDataToGithub(`${actionType} column: ${key}`);
+      alert("ડેટા સફળતાપૂર્વક સેવ થયો!");
       closeAdminPanel();
     }
 
@@ -2359,14 +2284,13 @@
       document.getElementById('new-post-title').value = '';
       document.getElementById('new-post-text').value = '';
       clearReadingImageInput('new-post-image', 'new-post-image-file', 'new-post-img-preview');
-      if (document.getElementById('new-post-category')) document.getElementById('new-post-category').value = 'home';
       clearDraftAutosave();
 
       renderPosts();
       renderCategoryPosts();
       renderAdminExistingPosts();
-      await pushDataToGithub(`${actionType === 'draft' ? 'Draft' : 'Publish'} new post: ${title || 'Untitled'}`);
-      alert(actionType === 'draft' ? "પોસ્ટ Draft માં સાચવવામાં આવી છે!" : "નવી પોસ્ટ Reading Image સાથે Publish થઈ ગઈ!");
+      await pushDataToGithub(`${actionType} post: ${title || 'Untitled'}`);
+      alert("પોસ્ટ સફળતાપૂર્વક સાચવવામાં આવી!");
       closeAdminPanel();
     }
 
@@ -2405,14 +2329,14 @@
       }
       siteData.posts.forEach((p, idx) => {
         const statusTag = p.status === 'draft' ? ' <span style="color:var(--draft-amber);">[Draft]</span>' : '';
-        const imgBadge = p.image ? ' <i class="fa-regular fa-image" title="Has Reading Image" style="color:var(--google-blue);"></i>' : '';
+        const imgBadge = p.image ? ' <i class="fa-regular fa-image" style="color:var(--google-blue);"></i>' : '';
         container.innerHTML += `
           <div class="admin-post-row">
-            <span class="apr-title">${p.pinned ? '<i class="fa-solid fa-thumbtack pin-badge"></i>' : ''}${escapeHtml(p.title)}${imgBadge}${statusTag} <span style="color:var(--text-sub); font-weight:400;">(${escapeHtml(p.date)})</span></span>
+            <span class="apr-title">${p.pinned ? '<i class="fa-solid fa-thumbtack pin-badge"></i>' : ''}${escapeHtml(p.title)}${imgBadge}${statusTag}</span>
             <div class="apr-actions">
-              <button class="action-icon-btn btn-act-add" onclick="togglePinPost(${idx})"><i class="fa-solid fa-thumbtack"></i> ${p.pinned ? 'Unpin' : 'Pin'}</button>
-              <button class="action-icon-btn ${p.status==='draft'?'btn-act-publish':'btn-act-draft'}" onclick="togglePostPublish(${idx})"><i class="fa-solid ${p.status==='draft'?'fa-paper-plane':'fa-file-lines'}"></i> ${p.status==='draft'?'Publish':'Draft'}</button>
-              <button class="action-icon-btn btn-act-delete" onclick="deleteExistingPost(${idx})"><i class="fa-solid fa-trash"></i> Delete</button>
+              <button class="action-icon-btn btn-act-add" onclick="togglePinPost(${idx})"><i class="fa-solid fa-thumbtack"></i></button>
+              <button class="action-icon-btn ${p.status==='draft'?'btn-act-publish':'btn-act-draft'}" onclick="togglePostPublish(${idx})"><i class="fa-solid ${p.status==='draft'?'fa-paper-plane':'fa-file-lines'}"></i></button>
+              <button class="action-icon-btn btn-act-delete" onclick="deleteExistingPost(${idx})"><i class="fa-solid fa-trash"></i></button>
             </div>
           </div>
         `;
@@ -2437,23 +2361,20 @@
       renderPosts();
       renderCategoryPosts();
       renderAdminExistingPosts();
-      await pushDataToGithub(`${p.status === 'publish' ? 'Publish' : 'Draft'} post: ${p.title}`);
+      await pushDataToGithub(`${p.status} post: ${p.title}`);
     }
 
     async function deleteExistingPost(idx) {
       const p = siteData.posts[idx];
-      if (!p) return;
-      if (!confirm(`"${p.title}" પોસ્ટ ડિલીટ કરવી છે?`)) return;
+      if (!p || !confirm(`"${p.title}" ડિલીટ કરવી છે?`)) return;
       siteData.posts.splice(idx, 1);
       saveToLocalStorage();
       renderPosts();
       renderCategoryPosts();
-      renderAllComments();
       renderAdminExistingPosts();
       await pushDataToGithub(`Delete post: ${p.title}`);
     }
 
-    /* ---- Notifications ---- */
     function toggleNotifications() {
       const isOn = localStorage.getItem('raj_notif_on') === '1';
       if (isOn) {
@@ -2461,15 +2382,12 @@
         updateNotifBellUI(false);
         return;
       }
-      if (!('Notification' in window)) { alert('તમારું બ્રાઉઝર Notification સપોર્ટ કરતું નથી.'); return; }
+      if (!('Notification' in window)) { alert('નોટિફિકેશન સપોર્ટ નથી.'); return; }
       Notification.requestPermission().then(perm => {
         if (perm === 'granted') {
           localStorage.setItem('raj_notif_on', '1');
-          if (siteData.posts[0]) localStorage.setItem('raj_last_seen_post', siteData.posts[0].date + '|' + siteData.posts[0].title);
           updateNotifBellUI(true);
-          alert('નવી પોસ્ટ આવે ત્યારે તમને સૂચના મળશે!');
-        } else {
-          alert('Notification Permission આપવામાં આવી નથી.');
+          alert('સૂચના ચાલુ થઈ ગઈ!');
         }
       });
     }
@@ -2479,18 +2397,6 @@
     }
     function checkForNewPostNotification() {
       updateNotifBellUI(localStorage.getItem('raj_notif_on') === '1');
-      if (localStorage.getItem('raj_notif_on') !== '1') return;
-      if (!siteData.posts[0]) return;
-      const latestKey = siteData.posts[0].date + '|' + siteData.posts[0].title;
-      const lastSeen = localStorage.getItem('raj_last_seen_post');
-      const dot = document.getElementById('notif-dot');
-      if (lastSeen && lastSeen !== latestKey) {
-        if (dot) dot.style.display = 'block';
-        if ('Notification' in window && Notification.permission === 'granted' && document.visibilityState === 'visible') {
-          new Notification('રાજ ની કલમ — નવી પોસ્ટ!', { body: siteData.posts[0].title });
-        }
-      }
-      localStorage.setItem('raj_last_seen_post', latestKey);
     }
 
     function shareCurrentReading() {
@@ -2501,11 +2407,10 @@
         navigator.share({ title: title, text: shareText, url: window.location.href }).catch(() => {});
       } else if (navigator.clipboard) {
         navigator.clipboard.writeText(`${title}\n\n${shareText}\n\n${window.location.href}`);
-        alert('લખાણ કોપી થઈ ગયું — હવે WhatsApp કે ગમે ત્યાં પેસ્ટ કરો!');
+        alert('લખાણ કોપી થઈ ગયું!');
       }
     }
 
-    /* ---- Photo Gallery Manager (Works both with Backend & Local/GitHub) ---- */
     async function addAdminPhoto() {
       const fileEl = document.getElementById('admin-photo-file');
       const urlEl = document.getElementById('admin-photo-url');
@@ -2515,30 +2420,12 @@
         let photo = null;
         if (fileEl?.files?.[0]) {
           const file = fileEl.files[0];
-          if (file.size > 10 * 1024 * 1024) throw new Error('Photo 10MB કરતા નાનો હોવો જોઈએ.');
           const dataUrl = await compressImageFile(file, 1200, 0.84);
-          if (backendToken && backendUser?.role === 'admin') {
-            try {
-              const d = await apiRequest('/admin/photos/upload', { method: 'POST', body: JSON.stringify({ dataUrl, title, alt }) });
-              photo = d.photo;
-            } catch (_) {}
-          }
-          if (!photo) {
-            photo = { id: String(Date.now()), src: dataUrl, title, alt: alt || title || 'Photo', status: 'publish', createdAt: new Date().toISOString() };
-          }
+          photo = { id: String(Date.now()), src: dataUrl, title, alt: alt || title || 'Photo', status: 'publish' };
         } else if (urlEl?.value.trim()) {
-          const rawUrl = urlEl.value.trim();
-          if (backendToken && backendUser?.role === 'admin') {
-            try {
-              const d = await apiRequest('/admin/photos/url', { method: 'POST', body: JSON.stringify({ src: rawUrl, title, alt }) });
-              photo = d.photo;
-            } catch (_) {}
-          }
-          if (!photo) {
-            photo = { id: String(Date.now()), src: rawUrl, title, alt: alt || title || 'Photo', status: 'publish', createdAt: new Date().toISOString() };
-          }
+          photo = { id: String(Date.now()), src: urlEl.value.trim(), title, alt: alt || title || 'Photo', status: 'publish' };
         } else {
-          throw new Error('Photo file અથવા Photo URL આપો.');
+          throw new Error('ફોટો પસંદ કરો અથવા URL આપો.');
         }
 
         siteData.photos = [...(siteData.photos || []), photo];
@@ -2549,24 +2436,22 @@
         document.getElementById('admin-photo-title').value = '';
         document.getElementById('admin-photo-alt').value = '';
         await pushDataToGithub(`Add photo: ${title || 'Photo'}`);
-        alert('Photo ઉમેરાઈ ગયો અને Public Gallery માં live થઈ ગયો!');
-      } catch (e) {
-        alert(e.message);
-      }
+        alert('ફોટો ગેલેરીમાં ઉમેરાઈ ગયો!');
+      } catch (e) { alert(e.message); }
     }
 
     function renderAdminPhotos() {
       const c = document.getElementById('admin-photos-list');
       if (!c) return;
       const photos = siteData.photos || [];
-      if (!photos.length) { c.innerHTML = '<p style="color:var(--text-sub);">હજુ કોઈ ફોટો નથી.</p>'; return; }
+      if (!photos.length) { c.innerHTML = '<p style="color:var(--text-sub);">કોઈ ફોટો નથી.</p>'; return; }
       c.innerHTML = photos.map((p, i) => `
         <div class="admin-post-row" style="align-items:center;">
-          <img class="admin-photo-preview" src="${safeExternalUrl(p.src)}" alt="${escapeHtml(p.alt || 'Photo')}">
-          <span class="apr-title">${escapeHtml(p.title || 'Untitled Photo')} <span style="color:var(--text-sub);font-weight:400;">[${p.status === 'draft' ? 'Draft' : 'Published'}]</span></span>
+          <img class="admin-photo-preview" src="${safeExternalUrl(p.src)}" alt="Photo">
+          <span class="apr-title">${escapeHtml(p.title || 'Untitled')}</span>
           <div class="apr-actions">
-            <button class="action-icon-btn ${p.status === 'draft' ? 'btn-act-publish' : 'btn-act-draft'}" onclick="togglePhotoPublish(${i})"><i class="fa-solid ${p.status === 'draft' ? 'fa-paper-plane' : 'fa-file-lines'}"></i> ${p.status === 'draft' ? 'Publish' : 'Draft'}</button>
-            <button class="action-icon-btn btn-act-delete" onclick="deleteAdminPhoto(${i})"><i class="fa-solid fa-trash"></i> Delete</button>
+            <button class="action-icon-btn ${p.status === 'draft' ? 'btn-act-publish' : 'btn-act-draft'}" onclick="togglePhotoPublish(${i})"><i class="fa-solid ${p.status === 'draft' ? 'fa-paper-plane' : 'fa-file-lines'}"></i></button>
+            <button class="action-icon-btn btn-act-delete" onclick="deleteAdminPhoto(${i})"><i class="fa-solid fa-trash"></i></button>
           </div>
         </div>`).join('');
     }
@@ -2574,73 +2459,55 @@
     async function togglePhotoPublish(i) {
       const p = siteData.photos?.[i];
       if (!p) return;
-      const status = p.status === 'draft' ? 'publish' : 'draft';
-      if (backendToken && backendUser?.role === 'admin' && p.id) {
-        try {
-          const d = await apiRequest(`/admin/photos/${encodeURIComponent(p.id)}`, { method: 'PATCH', body: JSON.stringify({ status }) });
-          if (d.photo) siteData.photos[i] = d.photo;
-        } catch (_) { p.status = status; }
-      } else {
-        p.status = status;
-      }
+      p.status = p.status === 'draft' ? 'publish' : 'draft';
       saveToLocalStorage();
       renderPhotoGallery();
       renderAdminPhotos();
-      await pushDataToGithub(`Toggle photo status: ${p.title || p.id}`);
+      await pushDataToGithub(`Toggle photo status`);
     }
 
     async function deleteAdminPhoto(i) {
       const p = siteData.photos?.[i];
-      if (!p || !confirm(`"${p.title || 'Photo'}" ફોટો ડિલીટ કરવો છે?`)) return;
-      if (backendToken && backendUser?.role === 'admin' && p.id) {
-        try { await apiRequest(`/admin/photos/${encodeURIComponent(p.id)}`, { method: 'DELETE' }); } catch (_) {}
-      }
+      if (!p || !confirm("ફોટો ડિલીટ કરવો છે?")) return;
       siteData.photos.splice(i, 1);
       saveToLocalStorage();
       renderPhotoGallery();
       renderAdminPhotos();
-      await pushDataToGithub(`Delete photo: ${p.title || p.id}`);
+      await pushDataToGithub(`Delete photo`);
     }
 
     function renderAdminComments() {
       const container = document.getElementById('admin-comments-list');
       if (!container) return;
       container.innerHTML = "";
-
       let count = 0;
       siteData.posts.forEach((p, pIdx) => {
         if (p.comments && p.comments.length > 0) {
           p.comments.forEach((c, cIdx) => {
             count++;
-            const replyBlock = c.reply ? `<div class="admin-reply-text"><b>Admin Reply:</b> ${escapeHtml(c.reply)}</div>` : '';
-
+            const replyBlock = c.reply ? `<div class="admin-reply-text"><b>Admin:</b> ${escapeHtml(c.reply)}</div>` : '';
             container.innerHTML += `
               <div class="admin-comment-card">
                 <div class="comment-header">
-                  <span><b>${escapeHtml(c.author)}</b> (પોસ્ટ: ${escapeHtml(p.title)})</span>
+                  <span><b>${escapeHtml(c.author)}</b> (${escapeHtml(p.title)})</span>
                   <span>${escapeHtml(c.time || '')}</span>
                 </div>
-                <div style="font-size:0.95rem; margin: 0.4rem 0;">${escapeHtml(c.text)}</div>
+                <div>${escapeHtml(c.text)}</div>
                 ${replyBlock}
-                
                 <div style="display:flex; gap:6px; margin-top:0.6rem;">
-                  <button class="btn" style="padding:3px 10px; font-size:0.8rem;" onclick="toggleReplyForm(${pIdx}, ${cIdx})"><i class="fa-solid fa-reply"></i> Reply</button>
-                  <button class="btn btn-danger" style="padding:3px 10px; font-size:0.8rem;" onclick="deleteCommentByAdmin(${pIdx}, ${cIdx})"><i class="fa-solid fa-trash"></i> Delete</button>
+                  <button class="btn" style="padding:4px 10px; font-size:0.8rem;" onclick="toggleReplyForm(${pIdx}, ${cIdx})">Reply</button>
+                  <button class="btn btn-danger" style="padding:4px 10px; font-size:0.8rem;" onclick="deleteCommentByAdmin(${pIdx}, ${cIdx})">Delete</button>
                 </div>
-
                 <div class="admin-reply-box" id="reply-box-${pIdx}-${cIdx}">
-                  <input type="text" id="reply-input-${pIdx}-${cIdx}" placeholder="જવાબ / Reply લખો..." style="margin-bottom:0.4rem;">
-                  <button class="btn" style="padding:3px 8px; font-size:0.8rem; background:var(--success-green);" onclick="sendAdminReply(${pIdx}, ${cIdx})">Send Reply</button>
+                  <input type="text" id="reply-input-${pIdx}-${cIdx}" placeholder="જવાબ..." style="margin-bottom:0.4rem;">
+                  <button class="btn" style="padding:4px 10px; font-size:0.8rem; background:var(--success-green);" onclick="sendAdminReply(${pIdx}, ${cIdx})">Send</button>
                 </div>
               </div>
             `;
           });
         }
       });
-
-      if (count === 0) {
-        container.innerHTML = `<p style="color:var(--text-sub);">કોઈ કોમેન્ટ ઉપલબ્ધ નથી.</p>`;
-      }
+      if (count === 0) container.innerHTML = `<p style="color:var(--text-sub);">કોઈ કોમેન્ટ નથી.</p>`;
     }
 
     function toggleReplyForm(pIdx, cIdx) {
@@ -2651,58 +2518,36 @@
     async function sendAdminReply(pIdx, cIdx) {
       const replyText = document.getElementById(`reply-input-${pIdx}-${cIdx}`)?.value.trim();
       if (!replyText) return;
-      const c = siteData.posts[pIdx]?.comments?.[cIdx];
-      if (!c) return;
-
-      if (backendToken && backendUser?.role === 'admin' && c.id) {
-        try {
-          await apiRequest(`/comments/${c.id}/reply`, { method: 'PATCH', body: JSON.stringify({ reply: replyText }) });
-        } catch (_) {}
-      }
-      c.reply = replyText;
+      siteData.posts[pIdx].comments[cIdx].reply = replyText;
       saveToLocalStorage();
       renderAdminComments();
       renderAllComments();
-      await pushDataToGithub("Admin reply to comment");
-      alert("Reply મોકલાઈ ગયો!");
+      await pushDataToGithub("Admin reply");
+      alert("જવાબ મોકલાયો!");
     }
 
     async function deleteCommentByAdmin(pIdx, cIdx) {
-      const c = siteData.posts[pIdx]?.comments?.[cIdx];
-      if (!c || !confirm("શું તમે આ કોમેન્ટ ડિલીટ કરવા માંગો છો?")) return;
-      if (backendToken && backendUser?.role === 'admin' && c.id) {
-        try { await apiRequest(`/comments/${c.id}`, { method: 'DELETE' }); } catch (_) {}
-      }
+      if (!confirm("કોમેન્ટ ડિલીટ કરવી છે?")) return;
       siteData.posts[pIdx].comments.splice(cIdx, 1);
       saveToLocalStorage();
       renderAdminComments();
       renderAllComments();
-      await pushDataToGithub("Delete comment via Admin Panel");
+      await pushDataToGithub("Delete comment");
     }
 
     let readerFontSize = parseInt(localStorage.getItem('raj_reader_font_size')) || 19;
-
     function detectReaderMode(key) {
       if (key && POEM_KEYS.includes(key)) return 'poem';
       if (key && NOVEL_KEYS.includes(key)) return 'novel';
       return 'prose';
     }
 
-    const CHAPTER_RE = /^(પ્રકરણ|અધ્યાય|ભાગ)[\s:\-।]*[૦-૯0-9]*\s*.{0,40}$|^chapter\s+\d+.{0,40}$/i;
-    function isChapterLine(line) { return CHAPTER_RE.test(line.trim()) && line.trim().length < 60; }
-    function isDialogueLine(line) {
-      const t = line.trim();
-      return /^["“'‘]/.test(t) || /^[\-–—]\s?/.test(t);
-    }
-
     function renderReaderBody(title, text, key, imageUrl = '') {
       document.getElementById('rm-title').innerText = title;
-      updateShareMeta(title, text);
       const mode = detectReaderMode(key);
       const bodyWrapEl = document.getElementById('rm-body-wrap');
       bodyWrapEl.classList.toggle('poem-mode', mode === 'poem');
 
-      // Render Cover / Reading Image inside Reader Modal
       const coverContainer = document.getElementById('rm-cover-container');
       const safeCover = safeExternalUrl(imageUrl);
       if (coverContainer) {
@@ -2725,15 +2570,6 @@
         bodyEl.innerHTML = stanzas.length
           ? stanzas.map(lines => `<div class="poem-stanza">${lines.map(l => `<div class="poem-line">${escapeHtml(l)}</div>`).join('')}</div>`).join('')
           : `<div class="poem-line">${escapeHtml(raw)}</div>`;
-      } else if (mode === 'novel') {
-        const blocks = raw.split(/\n\s*\n/).map(t => t.trim()).filter(Boolean);
-        bodyEl.innerHTML = blocks.length
-          ? blocks.map(block => {
-              if (isChapterLine(block)) return `<div class="novel-chapter-heading">${escapeHtml(block)}</div>`;
-              if (isDialogueLine(block)) return `<p class="novel-dialogue">${escapeHtml(block)}</p>`;
-              return `<p>${escapeHtml(block)}</p>`;
-            }).join('')
-          : `<p>${escapeHtml(raw)}</p>`;
       } else {
         const paragraphs = raw.split(/\n+/).map(t => t.trim()).filter(Boolean);
         bodyEl.innerHTML = paragraphs.length
@@ -2747,30 +2583,6 @@
       document.getElementById('rm-read-time').innerText = `${readMinutes} મિનિટ`;
 
       applyReaderFontSize();
-    }
-
-    const DEFAULT_TITLE = document.title;
-    const DEFAULT_DESC = document.getElementById('meta-description') ? document.getElementById('meta-description').getAttribute('content') : '';
-
-    function updateShareMeta(title, text) {
-      const desc = (text || '').replace(/\s+/g, ' ').trim().slice(0, 150);
-      document.title = title ? `${title} | રાજ ની કલમ !` : DEFAULT_TITLE;
-      const descEl = document.getElementById('meta-description');
-      const ogT = document.getElementById('og-title');
-      const ogD = document.getElementById('og-description');
-      if (descEl) descEl.setAttribute('content', desc || DEFAULT_DESC);
-      if (ogT) ogT.setAttribute('content', title || DEFAULT_TITLE);
-      if (ogD) ogD.setAttribute('content', desc || DEFAULT_DESC);
-    }
-
-    function resetShareMeta() {
-      document.title = DEFAULT_TITLE;
-      const descEl = document.getElementById('meta-description');
-      const ogT = document.getElementById('og-title');
-      const ogD = document.getElementById('og-description');
-      if (descEl) descEl.setAttribute('content', DEFAULT_DESC);
-      if (ogT) ogT.setAttribute('content', DEFAULT_TITLE);
-      if (ogD) ogD.setAttribute('content', DEFAULT_DESC);
     }
 
     function applyReaderFontSize() {
@@ -2794,7 +2606,7 @@
       const a = getBookmarks();
       const i = a.findIndex(x => x.id === currentReaderKey);
       if (i >= 0) { a.splice(i, 1); alert('Bookmark દૂર થયું.'); }
-      else { a.unshift({ id: currentReaderKey, title: document.getElementById('rm-title').innerText, savedAt: Date.now() }); alert('લખાણ bookmark થયું.'); }
+      else { a.unshift({ id: currentReaderKey, title: document.getElementById('rm-title').innerText, savedAt: Date.now() }); alert('Bookmark ઉમેરાયું.'); }
       localStorage.setItem('raj_bookmarks', JSON.stringify(a.slice(0, 50)));
     }
     function resumeLastRead() {
@@ -2860,47 +2672,30 @@
     function closeReaderModal() {
       document.getElementById('reader-modal').style.display = 'none';
       document.body.classList.remove('modal-open');
-      resetShareMeta();
       if (location.hash) history.replaceState(null, '', window.location.pathname + window.location.search);
     }
 
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && document.getElementById('reader-modal').style.display === 'flex') {
-        closeReaderModal();
+      if (e.key === 'Escape') {
+        if (document.getElementById('reader-modal').style.display === 'flex') closeReaderModal();
+        if (document.getElementById('admin-panel-modal').style.display === 'flex') closeAdminPanel();
       }
     });
 
     async function addComment() {
       if (currentPostIdx === null) return;
-      const author = document.getElementById('c-author').value.trim() || 'અનામિક યુઝર';
+      const author = document.getElementById('c-author').value.trim() || 'વાંચક';
       const text = document.getElementById('c-text').value.trim();
       if (!text) return;
-      if (text.length > 2000) { alert('કોમેન્ટ 2000 અક્ષર સુધી રાખો.'); return; }
 
       const post = siteData.posts[currentPostIdx];
       if (!post.comments) post.comments = [];
-
-      // Try backend comment first
-      if (post.id) {
-        try {
-          await apiRequest(`/posts/${post.id}/comments`, { method: 'POST', body: JSON.stringify({ author, text }) });
-          const data = await apiRequest(`/posts/${post.id}/comments`);
-          post.comments = data.comments;
-          document.getElementById('c-text').value = "";
-          saveToLocalStorage();
-          renderComments();
-          renderAllComments();
-          return;
-        } catch (_) {}
-      }
-
-      // Fallback local comment
       post.comments.push({ id: Date.now(), author, text, time: new Date().toLocaleTimeString('gu-IN') });
       saveToLocalStorage();
       document.getElementById('c-text').value = "";
       renderComments();
       renderAllComments();
-      pushDataToGithub('New user comment');
+      pushDataToGithub('New comment');
     }
 
     function renderComments() {
@@ -2925,15 +2720,13 @@
       const container = document.getElementById('all-user-comments-container');
       if (!container) return;
       container.innerHTML = "";
-      let total = 0;
       siteData.posts.forEach(p => {
         if (p.comments) {
           p.comments.forEach(c => {
-            total++;
-            const replyHtml = c.reply ? `<div style="background:var(--google-blue-light); padding:0.4rem 0.6rem; border-radius:4px; margin-top:0.3rem; font-size:0.85rem;"><b>Admin Reply:</b> ${escapeHtml(c.reply)}</div>` : '';
+            const replyHtml = c.reply ? `<div style="background:var(--google-blue-light); padding:0.4rem 0.6rem; border-radius:4px; margin-top:0.3rem; font-size:0.85rem;"><b>Admin:</b> ${escapeHtml(c.reply)}</div>` : '';
             container.innerHTML += `
               <div class="comment-card">
-                <div class="comment-header"><span><b>${escapeHtml(c.author)}</b> (પોસ્ટ: ${escapeHtml(p.title)})</span><span>${escapeHtml(c.time || '')}</span></div>
+                <div class="comment-header"><span><b>${escapeHtml(c.author)}</b> (${escapeHtml(p.title)})</span><span>${escapeHtml(c.time || '')}</span></div>
                 <div>${escapeHtml(c.text)}</div>
                 ${replyHtml}
               </div>
@@ -2941,27 +2734,20 @@
           });
         }
       });
-      if (total === 0) {
-        container.innerHTML = `<p style="color:var(--text-sub);">હજુ સુધી કોઈ કોમેન્ટ નથી.</p>`;
-      }
     }
 
     function submitContactComment() {
       const email = document.getElementById('contact-email').value.trim();
       const text = document.getElementById('contact-comment').value.trim();
       if (!email || !text) return;
-
-      if (!siteData.posts[0]) {
-        siteData.posts.unshift({ id: Date.now(), title: 'રાજ ની કલમ', text: '', date: getGujaratiDateString(), status: 'publish', category: 'home', comments: [] });
-      }
       if (!siteData.posts[0].comments) siteData.posts[0].comments = [];
       siteData.posts[0].comments.push({ id: Date.now(), author: email, text: text, time: new Date().toLocaleTimeString('gu-IN') });
       saveToLocalStorage();
-      alert("કોમેન્ટ સફળતાપૂર્વક મોકલાઈ ગઈ!");
+      alert("મેસેજ મોકલાઈ ગયો!");
       document.getElementById('contact-email').value = "";
       document.getElementById('contact-comment').value = "";
       renderAllComments();
-      pushDataToGithub('New contact message');
+      pushDataToGithub('Contact message');
     }
 
     function handleSearch() {
@@ -2978,7 +2764,21 @@
       const p = document.getElementById('site-scroll-progress');
       if (p) p.style.width = pct + '%';
       const b = document.getElementById('back-to-top');
-      if (b) b.classList.toggle('show', window.scrollY > 500);
+      if (b) b.classList.toggle('show', window.scrollY > 400);
+
+      // Active state on sticky tabs during scroll
+      const sections = ['page-1', 'page-2', 'page-3', 'page-4', 'page-5'];
+      const scrollY = window.scrollY + 140;
+      sections.forEach(id => {
+        const sec = document.getElementById(id);
+        const btn = document.querySelector(`.page-btn[href="#${id}"]`);
+        if (sec && btn) {
+          if (scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
+            document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+          }
+        }
+      });
     }
 
     function restoreLastReadBanner() {
@@ -2991,20 +2791,9 @@
       } catch {}
     }
 
-    async function bootstrapBackendSession() {
-      if (!backendToken) return;
-      try {
-        const d = await apiRequest('/auth/me');
-        saveBackendSession({ token: backendToken, user: d.user });
-      } catch {
-        clearBackendSession();
-      }
-    }
-
-    // Initialize Page Data
+    // App Initialize
     (async function initPage() {
       restoreTheme();
-      await bootstrapBackendSession();
       await fetchInitialSiteData();
       applyHeaderSocialLinks();
       renderHomeSection1();
@@ -3013,18 +2802,8 @@
       renderPosts();
       renderAllComments();
       restoreLastReadBanner();
-      const cfg = getGithubConfig();
-      updateSyncStatus((cfg.owner && cfg.repo && cfg.token) || (backendToken && backendUser?.role === 'admin') ? 'idle' : 'unconfigured');
       window.addEventListener('scroll', updateScrollChrome, { passive: true });
       updateScrollChrome();
-      if (location.hash.startsWith('#post=')) {
-        const id = decodeURIComponent(location.hash.slice(6));
-        const i = siteData.posts.findIndex(p => postLikeId(p) === id);
-        if (i >= 0) openReaderModal(i);
-      } else if (location.hash.startsWith('#section=')) {
-        const k = decodeURIComponent(location.hash.slice(9));
-        if (siteData[k]) openCustomSectionReader(k);
-      }
     })();
   </script>
 </body>
